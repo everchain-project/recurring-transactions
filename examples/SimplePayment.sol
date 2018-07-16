@@ -34,9 +34,8 @@ contract SimplePaymentScheduler {
     
     using PaymentSchedulerLib for IPaymentScheduler;
     
-    IPaymentScheduler public paymentScheduler = IPaymentScheduler(0x0);
+    IPaymentScheduler public paymentScheduler = IPaymentScheduler(0x6C21887FFCDDC1bE5Bad4E3686cBE32Fa98Ef3A2);
     SchedulerInterface public EthereumAlarmClock = SchedulerInterface(0x31bBbf5180f2bD9C213e2E1D91a439677243268A);
-    IPriceOracle public priceOracle = new PriceOracle();
     
     function scheduleSimplePayment (
         uint[6] alarmOptions,
