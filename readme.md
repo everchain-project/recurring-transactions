@@ -18,7 +18,7 @@ Features include:
 
 ## Scheduling A Recurring Payment
 
-To schedule a payment with the **Payment Scheduler** you must supply a **Recurring Payment** smart contract. The **Recurring Payment** must containt all the components necesary for the Payment Scheduler and any extra information needed when the `process()` function is called by the **Payment Scheduler**.
+To schedule a payment with the **Payment Scheduler** you must supply a **Recurring Payment** smart contract. The **Recurring Payment** must containt all the components necessary for the Payment Scheduler and any extra information needed when the `process()` function is called by the **Payment Scheduler**.
 
 ```
 contract IRecurringPayment {
