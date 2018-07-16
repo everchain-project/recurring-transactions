@@ -15,7 +15,7 @@ contract PriceOracle is IPriceOracle, Owned {
         // Although 'futureTimestamp' is not used here, in the future it may be
         // possible to reliably predict costs at a future timestamp
         
-        return GAS_PRICE / 1 ether;
+        return GAS_PRICE;
     }
     
     function alarmFee (uint futureTimestamp) public view returns (uint) {
