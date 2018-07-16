@@ -3,6 +3,12 @@ pragma solidity ^0.4.23;
 import "import/LibList.sol";
 import "Interfaces.sol";
 
+library PaymentSchedulerLib {
+    function create(IPaymentScheduler scheduler, IRecurringPayment payment) public {
+        scheduler.schedule(payment);
+    }
+}
+
 contract PaymentScheduler is IPaymentScheduler {
     
     using LibList for LibList.AddressList;
