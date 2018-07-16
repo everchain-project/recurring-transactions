@@ -1,5 +1,9 @@
 pragma solidity ^0.4.21;
 
+// These contracts are found in the Ethereum Alarm Clock Github Repo found at
+//
+// https://github.com/ethereum-alarm-clock/ethereum-alarm-clock/tree/master/contracts/Interface
+
 contract TransactionRequestInterface {
     
     // Primary actions
@@ -28,7 +32,8 @@ contract TransactionRequestInterface {
  * @dev The base contract that the higher contracts: BaseScheduler, BlockScheduler and TimestampScheduler all inherit from.
  */
 contract SchedulerInterface {
-    
-    function schedule(address _toAddress, bytes _callData, uint[8] _uintArgs) public payable returns (address);
-
+    function schedule(address _toAddress, bytes _callData, uint[8] _uintArgs)
+        public payable returns (address);
+    function computeEndowment(uint _bounty, uint _fee, uint _callGas, uint _callValue, uint _gasPrice)
+        public view returns (uint);
 }
