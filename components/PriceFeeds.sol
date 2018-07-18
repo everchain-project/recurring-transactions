@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import "PaymentScheduler.sol";
+import "components/Interfaces.sol";
 
 contract PriceFeeds is IPriceFeeds, Owned {
     

@@ -2,12 +2,20 @@ pragma solidity ^0.4.23;
 
 import "import/Owned.sol";
 import "import/ERC20.sol";
-import "Interfaces.sol";
+import "components/Interfaces.sol";
 
 contract Delegated is Owned {
     
-    address[] public delegates;
+    address[] public delegateArray;
     mapping (address => bool) public delegateLookup;
+    
+    function delegates () public view returns (address[]) {
+        return delegateArray;
+    }
+    
+    function totalDelegates () public view returns (uint) {
+        return delegateArray.length;
+    }
     
     function isDelegate (address account) public view returns(bool) {
         return delegateLookup[account];
@@ -15,18 +23,18 @@ contract Delegated is Owned {
     
     function addDelegate (address account) public onlyOwner {
         if(!isDelegate(account)){
-            delegates.push(account);
+            delegateArray.push(account);
             delegateLookup[account] = true;
         }
     }
     
     function removeDelegate (uint index) public onlyOwner {
-        require(index < delegates.length);
+        require(index < delegateArray.length);
         
-        address account = delegates[index];
-        address replacement = delegates[delegates.length-1]; // The last value in the list
-        delegates[index] = replacement;
-        delegates.length--;
+        address account = delegateArray[index];
+        address replacement = delegateArray[delegateArray.length-1]; // The last value in the list
+        delegateArray[index] = replacement;
+        delegateArray.length--;
         delegateLookup[account] = false;
     }
     
@@ -102,11 +110,11 @@ contract DelegatedWalletFactory {
         DelegatedWallet wallet = new DelegatedWallet();
         wallet.transferOwnership(msg.sender);
         
-        emit Wallet_event(msg.sender, wallet);
+        emit Creation_event(msg.sender, wallet);
         
         return wallet;
     }
     
-    event Wallet_event (address indexed creator, address walletAddress);
+    event Creation_event (address indexed creator, address walletAddress);
     
 }

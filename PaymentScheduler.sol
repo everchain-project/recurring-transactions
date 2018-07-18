@@ -1,12 +1,18 @@
 pragma solidity ^0.4.23;
 
+import "import/Owned.sol";
 import "import/LibList.sol";
-import "Interfaces.sol";
+import "components/Interfaces.sol";
 
 library PaymentSchedulerLib {
     function create(IPaymentScheduler scheduler, IRecurringPayment payment) public {
         scheduler.schedule(payment);
     }
+}
+
+contract IPaymentScheduler {
+    function schedule (IRecurringPayment payment) public returns (address alarm);
+    function trigger (address alarm) public returns (address nextAlarm);
 }
 
 contract PaymentScheduler is IPaymentScheduler {

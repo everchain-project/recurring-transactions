@@ -1,23 +1,26 @@
 pragma solidity ^0.4.23;
 
 import "import/ERC20.sol";
-import "examples/AlarmClock.sol";
+import "import/LibList.sol";
+import "PaymentScheduler.sol";
+import "components/DelegatedWallet.sol";
+import "components/AlarmClock.sol";
+import "components/PriceFeeds.sol";
 
-contract EverchainWalletManager {
+contract EverchainWalletManager is Owned {
     
     using LibList for LibList.AddressList;
     
+    DelegatedWalletFactory public Factory = DelegatedWalletFactory(0x7020eC7CC2f2AEdAabDb9642fD4C6E86C384A661);
+    
     mapping (address => LibList.AddressList) wallets;
     
-    function createWallet (
-        IDelegatedWalletFactory Factory, 
-        address[] delegates
-    ) public returns (address walletAddress) {
+    function createWallet (address[] delegates) public returns (address) {
         IDelegatedWallet wallet = Factory.createWallet();
         
         for(uint i = 0; i < delegates.length; i++)
             wallet.addDelegate(delegates[i]);
-            
+        
         wallet.transferOwnership(msg.sender);
         wallets[msg.sender].add(wallet);
         
@@ -26,6 +29,10 @@ contract EverchainWalletManager {
     
     function getWallets (address account) public view returns (address[]) {
         return wallets[account].array;
+    }
+    
+    function updateFactory (DelegatedWalletFactory newFactory) public onlyOwner {
+        Factory = newFactory;
     }
     
 }
@@ -146,9 +153,9 @@ contract EverchainPaymentScheduler {
     
     using PaymentSchedulerLib for IPaymentScheduler;
     
-    SchedulerInterface public EthereumAlarmClock = SchedulerInterface(0x31bBbf5180f2bD9C213e2E1D91a439677243268A);
-    IPriceOracle public priceOracle = new PriceOracle();
-    IPaymentScheduler public paymentScheduler = IPaymentScheduler(0x0);
+    IPaymentScheduler public paymentScheduler = IPaymentScheduler(0x6C21887FFCDDC1bE5Bad4E3686cBE32Fa98Ef3A2);
+    SchedulerInterface public ethereumAlarmClock = SchedulerInterface(0x31bBbf5180f2bD9C213e2E1D91a439677243268A);
+    IPriceOracle public priceOracle = IPriceOracle(0x0);
     
     function schedule (
         uint[6] alarmOptions,
@@ -159,7 +166,7 @@ contract EverchainPaymentScheduler {
         uint[2] values
     ) public returns (uint) {
         AlarmClock alarmClock = new AlarmClock();
-        alarmClock.init(wallet, alarmOptions);
+        alarmClock.init(ethereumAlarmClock, priceOracle, wallet, alarmOptions, "");
         alarmClock.transferOwnership(paymentScheduler);
         
         EverchainPayment payment = new EverchainPayment();

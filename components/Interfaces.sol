@@ -4,24 +4,27 @@ import "import/Owned.sol";
 import "import/EthereumAlarmClock.sol";
 import "import/PriceFeed.sol";
 
-contract IDelegatedWallet {
-    function transfer (address to, address token, uint amount) public returns (bool);
-    function registerTrigger (address caller, address target, bytes4 callData) public;
-    function isDelegate (address account) public view returns (bool);
+contract IRecurringPayment is Owned {
+    IAlarmClock public alarmClock;
+    IDelegatedWallet public wallet;
+    address public recipient;
+    address public spendToken;
+    function process () public returns (uint paymentAmount);
 }
 
-contract IDelegatedWalletFactory {
-    function createWallet () public returns (IDelegatedWallet);
+contract IDelegatedWallet is Owned {
+    function transfer (address to, address token, uint amount) public returns (bool);
+    function registerTrigger (address caller, address target, bytes4 callData) public;
+    function addDelegate (address newDelegate) public;
+    function removeDelegate (uint index) public;
+    function isDelegate (address account) public view returns (bool);
 }
 
 contract IPriceOracle {
     function gasPrice (uint futureTimestamp) public view returns (uint);
-    function alarmFee (uint futureTimestamp) public view returns (uint);
-    function protocolFee (uint futureTimestamp) public view returns (uint);
-    function claimDeposit (uint futureTimestamp) public view returns (uint);
 }
 
-contract IAlarmClock {
+contract IAlarmClock is Owned {
     SchedulerInterface public alarmScheduler;
     IPriceOracle public priceOracle;
     IDelegatedWallet public wallet;   // The wallet to call when the alarm goes off
@@ -36,20 +39,7 @@ contract IAlarmClock {
     function getNextAlarmCost() public view returns (uint);
 }
 
-contract IRecurringPayment {
-    IAlarmClock public alarmClock;
-    IDelegatedWallet public wallet;
-    address public recipient;
-    address public spendToken;
-    function process () public returns (uint paymentAmount);
-}
-
 contract IPriceFeeds {
     function exists (address priceToken, address spendToken) public view returns (bool);
     function read (address priceToken, address spendToken) public view returns (uint price);
-}
-
-contract IPaymentScheduler {
-    function schedule (IRecurringPayment payment) public returns (address alarm);
-    function trigger (address alarm) public returns (address nextAlarm);
 }
