@@ -2,20 +2,15 @@ pragma solidity ^0.4.23;
 
 import "import/Owned.sol";
 import "import/LibList.sol";
-import "components/Interfaces.sol";
+import "Interfaces.sol";
 
-library PaymentSchedulerLib {
-    function create(IPaymentScheduler scheduler, IRecurringPayment payment) public {
+library RecurringPaymentSchedulerLib {
+    function schedule(IRecurringPaymentScheduler scheduler, IRecurringPayment payment) public {
         scheduler.schedule(payment);
     }
 }
 
-contract IPaymentScheduler {
-    function schedule (IRecurringPayment payment) public returns (address alarm);
-    function trigger (address alarm) public returns (address nextAlarm);
-}
-
-contract PaymentScheduler is IPaymentScheduler {
+contract RecurringPaymentScheduler is IRecurringPaymentScheduler {
     
     using LibList for LibList.AddressList;
     
@@ -30,6 +25,8 @@ contract PaymentScheduler is IPaymentScheduler {
         alarm = scheduleAlarmFor(payment);
         require(alarm != address(0x0));
         
+        payments[alarm] = payment;
+        
         outgoingPayments[payment.wallet()].add(alarm);
         incomingPayments[payment.recipient()].add(alarm);
     }
@@ -42,10 +39,11 @@ contract PaymentScheduler is IPaymentScheduler {
         outgoingPayments[payment.wallet()].remove(alarm);
         incomingPayments[payment.recipient()].remove(alarm);
         
+        uint paymentAmount = payment.process();
         payment.wallet().transfer(
-            payment.recipient(),
             payment.spendToken(),
-            payment.process()
+            payment.recipient(),
+            paymentAmount
         );
         
         nextAlarm = scheduleAlarmFor(payment);
@@ -57,11 +55,35 @@ contract PaymentScheduler is IPaymentScheduler {
     }
     
     function scheduleAlarmFor (IRecurringPayment payment) internal returns (address alarm) {
-        uint alarmCost = payment.alarmClock().getNextAlarmCost();
-        if(payment.wallet().transfer(this, ETHER, alarmCost))
-            alarm = payment.alarmClock().setNextAlarm.value(alarmCost)();
+        IAlarmClock alarmClock = payment.alarmClock();
+        IDelegatedWallet wallet = payment.wallet();
+        uint alarmCost = alarmClock.getNextAlarmCost();
+        address alarmToken = alarmClock.token();
+        bool alarmPaid = wallet.transfer(
+            alarmToken, 
+            this, 
+            alarmCost
+        );
+        
+        if(alarmPaid){
+            if(alarmToken == ETHER) {
+                alarm = alarmClock.setNextAlarm.value(alarmCost)();
+            } else {
+                payment.wallet().transfer(alarmToken, alarmClock, alarmCost);
+                alarm = alarmClock.setNextAlarm();
+            }
             
-        payment.wallet().registerTrigger(alarm, payment.wallet(), CALL_DATA);
+            if(alarm != address(0x0))
+                payment.wallet().registerTrigger(alarm, wallet, CALL_DATA);
+        }
+    }
+    
+    function getIncomingPayments (address account) public view returns (address[]) {
+        return incomingPayments[account].array;
+    }
+    
+    function getOutgoingPayments (address account) public view returns (address[]) {
+        return outgoingPayments[account].array;
     }
     
 }

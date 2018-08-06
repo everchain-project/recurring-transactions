@@ -1,9 +1,10 @@
 pragma solidity ^0.4.23;
 
-import "PaymentScheduler.sol";
+import "Interfaces.sol";
+import "import/CloneFactory.sol";
 import "components/AlarmClock.sol";
 
-contract SimplePayment is IRecurringPayment {
+contract SimpleRecurringPayment is IRecurringPayment {
     
     IAlarmClock public alarmClock;
     IDelegatedWallet public wallet;
@@ -31,30 +32,32 @@ contract SimplePayment is IRecurringPayment {
     
 }
 
-contract SimplePaymentScheduler {
+contract SimpleRecurringPaymentFactory is CloneFactory {
     
-    using PaymentSchedulerLib for IPaymentScheduler;
-    
-    IPaymentScheduler public paymentScheduler = IPaymentScheduler(0x6C21887FFCDDC1bE5Bad4E3686cBE32Fa98Ef3A2);
+    IRecurringPaymentScheduler public recurringScheduler = IRecurringPaymentScheduler(0x6C21887FFCDDC1bE5Bad4E3686cBE32Fa98Ef3A2);
     SchedulerInterface public ethereumAlarmClock = SchedulerInterface(0x31bBbf5180f2bD9C213e2E1D91a439677243268A);
-    IPriceOracle public priceOracle = IPriceOracle(0xAA89152D31DeC8A54b8640f927Aa5B606Ee3DA7d);
     
-    function scheduleSimplePayment (
-        uint[6] alarmOptions,
+    address public alarmClockBlueprint;
+    address public simpleRecurringPaymentBlueprint;
+    
+    function scheduleRecurringPayment (
+        uint[7] alarmOptions,
         IDelegatedWallet wallet,
         address recipient,
         address spendToken,
         uint amount
     ) public {
-        AlarmClock alarmClock = new AlarmClock();
-        alarmClock.init(ethereumAlarmClock, priceOracle, wallet, alarmOptions, "");
-        alarmClock.transferOwnership(paymentScheduler);
+        AlarmClock alarmClock = AlarmClock(createClone(alarmClockBlueprint));
+        alarmClock.init(ethereumAlarmClock, wallet, alarmOptions, "");
+        alarmClock.transferOwnership(recurringScheduler);
         
-        SimplePayment payment = new SimplePayment();
+        SimpleRecurringPayment payment = SimpleRecurringPayment(
+            createClone(simpleRecurringPaymentBlueprint)
+        );
         payment.init(alarmClock, wallet, recipient, spendToken, amount);
-        payment.transferOwnership(paymentScheduler);
+        payment.transferOwnership(recurringScheduler);
         
-        paymentScheduler.create(payment);
+        recurringScheduler.schedule(payment);
     }
     
 }

@@ -1,56 +1,56 @@
 pragma solidity ^0.4.23;
 
-import "import/Owned.sol";
 import "import/ERC20.sol";
-import "components/Interfaces.sol";
+import "import/LibList.sol";
+import "import/CloneFactory.sol";
+import "Interfaces.sol";
 
 contract Delegated is Owned {
     
-    address[] public delegateArray;
-    mapping (address => bool) public delegateLookup;
+    using LibList for LibList.AddressList;
     
-    function delegates () public view returns (address[]) {
-        return delegateArray;
+    LibList.AddressList delegates;
+    
+    function getDelegates () public view returns (address[]) {
+        return delegates.array;
     }
     
     function totalDelegates () public view returns (uint) {
-        return delegateArray.length;
+        return delegates.getLength();
     }
     
     function isDelegate (address account) public view returns(bool) {
-        return delegateLookup[account];
+        return delegates.contains(account);
     }
     
     function addDelegate (address account) public onlyOwner {
-        if(!isDelegate(account)){
-            delegateArray.push(account);
-            delegateLookup[account] = true;
-        }
+        delegates.add(account);
     }
     
-    function removeDelegate (uint index) public onlyOwner {
-        require(index < delegateArray.length);
-        
-        address account = delegateArray[index];
-        address replacement = delegateArray[delegateArray.length-1]; // The last value in the list
-        delegateArray[index] = replacement;
-        delegateArray.length--;
-        delegateLookup[account] = false;
+    function removeDelegate (address account) public onlyOwner {
+        delegates.remove(account);
     }
     
 }
 
 contract DelegatedWallet is IDelegatedWallet, Delegated {
     
+    uint public blockCreated = block.number;
+    
     struct Trigger {
         address target;
         bytes4 callData;
     }
-    
-    uint public blockCreated = block.number;
+
     mapping (address => Trigger) public triggers;
     
-    function transfer (address recipient, address token, uint amount) public returns (bool success) {
+    mapping (address => uint) public allowance;
+    
+    function init () public {
+        owner = msg.sender;
+    }
+    
+    function transfer (address token, address recipient, uint amount) public returns (bool success) {
         require(isDelegate(msg.sender));
         
         if(token == address(0x0))
@@ -58,6 +58,25 @@ contract DelegatedWallet is IDelegatedWallet, Delegated {
         else
             success = ERC20(token).transfer(recipient, amount);
         
+        emit Transfer_event(msg.sender, token, recipient, amount, success);
+    }
+    
+    function approve (address token, address recipient, uint amount) public returns (bool success) {
+        require(isDelegate(msg.sender));
+        
+        if(token == address(0x0)){
+            allowance[recipient] += amount;
+        } else {
+            ERC20 Token = ERC20(token);
+            uint currentAllowance = Token.allowance(this, recipient);
+            uint expectedAllowance = currentAllowance + amount;
+            Token.approve(recipient, amount);
+            uint newAllowance = Token.allowance(this, recipient);
+            if(newAllowance != expectedAllowance)
+                Token.approve(this, expectedAllowance);
+        }
+        
+        success = true;
         emit Transfer_event(msg.sender, token, recipient, amount, success);
     }
 
@@ -102,19 +121,56 @@ contract DelegatedWallet is IDelegatedWallet, Delegated {
     
 }
 
-contract DelegatedWalletFactory {
+contract DelegatedWalletFactory is CloneFactory {
     
     uint public blockCreated = block.number;
     
-    function createWallet () public returns (DelegatedWallet) {
-        DelegatedWallet wallet = new DelegatedWallet();
+    address public walletBlueprint;
+    
+    constructor (address _walletBlueprint) public {
+        walletBlueprint = _walletBlueprint;
+    }
+    
+    function createWallet () public returns (IDelegatedWallet) {
+        DelegatedWallet wallet = DelegatedWallet(createClone(walletBlueprint));
+        wallet.init();
         wallet.transferOwnership(msg.sender);
         
-        emit Creation_event(msg.sender, wallet);
+        emit NewWallet_event(msg.sender, wallet);
         
         return wallet;
     }
     
-    event Creation_event (address indexed creator, address walletAddress);
+    event NewWallet_event (address indexed creator, address walletAddress);
+    
+}
+
+contract DelegatedWalletManager is Owned {
+    
+    using LibList for LibList.AddressList;
+    
+    DelegatedWalletFactory public Factory = DelegatedWalletFactory(0x0);
+    
+    mapping (address => LibList.AddressList) wallets;
+    
+    function createWallet (address[] delegates) public returns (address) {
+        IDelegatedWallet wallet = Factory.createWallet();
+        
+        for(uint i = 0; i < delegates.length; i++)
+            wallet.addDelegate(delegates[i]);
+        
+        wallet.transferOwnership(msg.sender);
+        wallets[msg.sender].add(wallet);
+        
+        return wallet;
+    }
+    
+    function getWallets (address account) public view returns (address[]) {
+        return wallets[account].array;
+    }
+    
+    function updateFactory (DelegatedWalletFactory newFactory) public onlyOwner {
+        Factory = newFactory;
+    }
     
 }
