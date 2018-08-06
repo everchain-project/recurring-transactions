@@ -8,13 +8,6 @@ Features include:
 - Capable of static or arbitrary payment intervals
 - Alarms can be centralized or decentralized depending on use case (safety vs efficiency)
 
-```
-contract IPaymentScheduler {
-    function schedule (IRecurringPayment payment) public returns (address alarm);
-    function trigger (address alarm) public returns (address nextAlarm);
-}
-```
-
 ## Scheduling A Recurring Payment
 
 To schedule a payment with the **Payment Scheduler** you must supply a **Recurring Payment** smart contract. The **Recurring Payment** must containt all the components necessary for the Payment Scheduler and any extra information needed when the `process()` function is called by the **Payment Scheduler**.

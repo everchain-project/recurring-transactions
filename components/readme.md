@@ -8,11 +8,12 @@ A **Delegated Wallet** is a smart contract that allows any account assigned as a
 
 ```
 contract IDelegatedWallet is Owned {
-    function transfer (address to, address token, uint amount) public returns (bool);
-    function registerTrigger (address caller, address target, bytes4 callData) public;
-    function addDelegate (address newDelegate) public;
-    function removeDelegate (uint index) public;
     function isDelegate (address account) public view returns (bool);
+    function transfer (address token, address to, uint amount) public returns (bool);
+    function approve (address token, address to, uint amount) public returns (bool);
+    function addDelegate (address account) public;
+    function removeDelegate (address account) public;
+    function registerTrigger (address caller, address target, bytes4 callData) public;
 }
 ```
 
@@ -22,13 +23,6 @@ The **Alarm Clock** is the smart contract responsible for creating the alarms th
 
 ```
 contract IAlarmClock {
-    SchedulerInterface public alarmScheduler;
-    IPriceOracle public  priceOracle;
-        
-    uint public windowStart; // The payment can be executed after the 'windowStart' timestamp
-    uint public windowSize;  // The payment has 'windowSize' seconds to be executed or it fails
-    uint public gas;         // The amount of gas to call the transaction with
-    
     function setNextAlarm () public payable returns (address);
     function getNextAlarmCost() public view returns (uint);
 }
