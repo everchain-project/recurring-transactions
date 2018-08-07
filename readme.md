@@ -1,6 +1,6 @@
-# Everchain Payment Scheduler
+# Recurring Payment Scheduler
 
-The **Everchain Payment Scheduler** is a decentralized payment scheduler on the Ethereum Blockchain for creating automatic recurring on-chain payments in Ether or any ERC20 token.
+The **Recurring Payment Scheduler (RPS)** is a smart contract on the Ethereum Blockchain for creating automatic, recurring, on-chain payments in Ether or any ERC20 token.
 
 Features include:
 
@@ -33,11 +33,11 @@ More complex payments will require separate components than the five above and t
 
 ### Alarm Clock
 
-see [components](../components).
+see [components](https://github.com/everchain-project/contracts/tree/master/components).
 
 ### Delegated Wallet
 
-see [components](../components).
+see [components](https://github.com/everchain-project/contracts/tree/master/components).
 
 ### Recipient Address
 
@@ -66,6 +66,6 @@ contract ExampleRecipientContract is Owned {
 
 The **Spend Token** is the address of the ERC20 token that is being sent for a particular payment. If the payment is in ether, the address will be `0x0`
 
-### Process Payment Amount
+### Process Payment
 
-When an alarm is triggered the **Payment Scheduler** calls the `process()` function of the **Recurring Payment** smart contract. The **Recurring Payment** smart contract then calculates the proper send amount and passes it back to the **Payment Scheduler**. The **Payment Scheduler** then transfers the send amount from the **Delegated Wallet** to the payment **Recipient**. Note that the **Payment Scheduler** *must* be a delegate of the wallet. Regardless of if the payment goes through, the **Payment Scheduler** will attempt to schedule the next alarm. First the **Payment Scheduler** fetches the cost of the next alarm from the supplied **Alarm Clock**, it then pulls that amount from the **Delegated Wallet** and uses it to schedule the next alarm.
+When an alarm is triggered, the Recurring Payment Scheduler (RPS) calls the `process()` function of the Recurring Payment smart contract. The Recurring Payment smart contract then calculates the proper send amount and passes it back to the RPS to execute the transfer from the Delegated Wallet to the Recipient. Note that the RPS *must* be a delegate of the supplied wallet. Regardless of if the payment goes through, the RPS will attempt to schedule the next alarm by forwarding the it's cost from the Delegated Wallet to the Alarm Clock and calling the `setNextAlarm()` function.
