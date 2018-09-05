@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 
-/// @dev A library for a simple unordered list that stores unique uint values.
-library LibList {
+/// @dev A library for a simple unordered list that stores unique values.
+library ListLib {
 
     /// @dev 'List' is an unordered list that holds uint value;
     struct Bytes32List {
@@ -112,7 +112,7 @@ library LibList {
         return list.array.length;
     }
     
-    function contains (AddressList storage list, address value) public view returns (bool) {
+     function contains (AddressList storage list, address value) public view returns (bool) {
         return list.exists[value];
     }
     

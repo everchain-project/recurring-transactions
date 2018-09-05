@@ -1,7 +1,6 @@
 pragma solidity ^0.4.23;
 
 contract ERC20 {
-    
     string public name;
     string public symbol;
     uint256 public totalSupply;
@@ -15,5 +14,4 @@ contract ERC20 {
 
     event Transfer(address indexed from, address indexed to, uint tokens);
     event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
-
 }

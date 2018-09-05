@@ -1,8 +1,13 @@
-pragma solidity ^0.4.21;
+pragma solidity 0.4.24;
 
-// These contracts are found in the Ethereum Alarm Clock Github Repo found at
-//
-// https://github.com/ethereum-alarm-clock/ethereum-alarm-clock/tree/master/contracts/Interface
+contract RequestFactoryInterface {
+    event RequestCreated(address request, address indexed owner, int indexed bucket, uint[12] params);
+
+    function createRequest(address[3] addressArgs, uint[12] uintArgs, bytes callData) public payable returns (address);
+    function createValidatedRequest(address[3] addressArgs, uint[12] uintArgs, bytes callData) public payable returns (address);
+    function validateRequestParams(address[3] addressArgs, uint[12] uintArgs, uint endowment) public view returns (bool[6]);
+    function isKnownRequest(address _address) public view returns (bool);
+}
 
 contract TransactionRequestInterface {
     
@@ -12,12 +17,10 @@ contract TransactionRequestInterface {
     function claim() public payable returns (bool);
 
     // Proxy function
-    function proxy(address recipient, bytes callData)
-        public payable returns (bool);
+    function proxy(address recipient, bytes callData) public payable returns (bool);
 
     // Data accessors
     function requestData() public view returns (address[6], bool[3], uint[15], uint8[1]);
-
     function callData() public view returns (bytes);
 
     // Pull mechanisms for payments.
@@ -25,12 +28,9 @@ contract TransactionRequestInterface {
     function sendFee() public returns (bool);
     function sendBounty() public returns (bool);
     function sendOwnerEther() public returns (bool);
+    function sendOwnerEther(address recipient) public returns (bool);
 }
 
-/**
- * @title SchedulerInterface
- * @dev The base contract that the higher contracts: BaseScheduler, BlockScheduler and TimestampScheduler all inherit from.
- */
 contract SchedulerInterface {
     function schedule(address _toAddress, bytes _callData, uint[8] _uintArgs)
         public payable returns (address);
