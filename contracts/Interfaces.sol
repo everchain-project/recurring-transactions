@@ -34,6 +34,6 @@ contract ITask {
     function execute() public returns (bool success);
 }
 
-contract IAlarmClock is IFuturePayment {
+contract IRecurringAlarmClock is IFuturePayment {
     ITask public task;  // The task to execute when the alarm is triggered
 }
