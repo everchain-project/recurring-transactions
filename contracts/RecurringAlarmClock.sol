@@ -6,43 +6,41 @@ import "./Interfaces.sol";
 
 contract RecurringAlarmClock is IRecurringAlarmClock {
     
-    IDelegatedWallet public wallet;     // The wallet that funds each alarm deposit
-    IPaymentDelegate public delegate;   // The delegate that pulls the deposit from the wallet
-    address public token;               // The token the delegate pulls from the wallet
-    uint public deposit;                // The amount of tokens to pull from the wallet
+    IDelegatedWallet public wallet;         // The wallet that funds each alarm deposit
+    IFuturePaymentDelegate public delegate; // The delegate that pulls the deposit from the wallet
+    address public token;                   // The token the delegate pulls from the wallet
+    uint public deposit;                    // The amount of tokens to pull from the wallet
 
-    RequestFactoryInterface public eacScheduler; // Provided by the Ethereum Alarm Clock
-    uint[10] public eacOptions;         // The options used when setting an alarm using the eac scheduler
-    address public feeRecipient;        // The priority recipient of part of the alarm deposit
-    address public alarm;               // The next scheduled alarm contract
+    RequestFactoryInterface public eac;     // Interface provided by the Ethereum Alarm Clock
+    uint[10] public eacOptions;             // The options used when setting an alarm using the Ethereum Alarm Clock
+    address public feeRecipient;            // The priority recipient of part of the alarm deposit
+    address public alarm;                   // The next scheduled alarm contract
 
-    ITask public task;                  // The task to execute when the alarm is triggered
-    uint public period;                 // The amount of time between each alarm
-    uint public maxIntervals;           // The number of times this alarm will go off
-    uint public currentInterval;        // Keeps track of how many alarms have been called
+    ITask public task;                      // The task to execute when the alarm is triggered
+    uint public period;                     // The amount of time between each alarm
+    uint public maxIntervals;               // The number of times this alarm will go off
+    uint public currentInterval;            // Keeps track of how many alarms have been called
 
     function initialize (
         ITask _task,
         IDelegatedWallet _wallet,
-        IPaymentDelegate _delegate,
-        RequestFactoryInterface _eacScheduler,
+        IFuturePaymentDelegate _delegate,
+        RequestFactoryInterface _eac,
         address _feeRecipient,
         address _token,
-        uint _deposit,
-        uint _period,
-        uint _maxIntervals,
-        uint[10] _eacOptions
+        uint[3] _recurringAlarmClockOptions,
+        uint[10] _ethereumAlarmClockOptions
     ) public payable {
         task = _task;
         wallet = _wallet;
         delegate = _delegate;
-        eacScheduler = _eacScheduler;
+        eac = _eac;
         feeRecipient = _feeRecipient;
         token = _token;
-        deposit = _deposit;
-        period = _period;
-        maxIntervals = _maxIntervals;
-        eacOptions = _eacOptions;
+        deposit = _recurringAlarmClockOptions[0];
+        period = _recurringAlarmClockOptions[1];
+        maxIntervals = _recurringAlarmClockOptions[2];
+        eacOptions = _ethereumAlarmClockOptions;
 
         scheduleAlarm();
     }
@@ -76,7 +74,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         uint priorityFee = etherPayment / 100;
         uint callBounty = etherPayment - priorityFee;
         
-        return eacScheduler.createRequest.value(etherPayment)(
+        return eac.createRequest.value(etherPayment)(
             [
                 wallet,         // Change from the alarm is sent to this address, also the account that can owns the alarm. In the future, I'd like these two functions seperated
                 feeRecipient,   // The priority fee is sent to this address
@@ -99,41 +97,4 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         );
     }
     
-}
-
-contract RecurringAlarmClockFactory is CloneFactory {
-    
-    RecurringAlarmClock public blueprint;
-    RequestFactoryInterface public eacScheduler;
-
-    constructor (RequestFactoryInterface _ethereumAlarmClock) public {
-        eacScheduler = _ethereumAlarmClock;
-    }
-
-    function createRecurringAlarmClock(
-        ITask task,
-        IDelegatedWallet wallet,
-        IPaymentDelegate delegate,
-        address feeRecipient,
-        address token,
-        uint[3] racOptions,
-        uint[10] eacOptions
-    ) public returns (RecurringAlarmClock) {
-        RecurringAlarmClock alarmClock = RecurringAlarmClock(createClone(blueprint));
-        alarmClock.initialize(
-            task,
-            wallet,
-            delegate,
-            eacScheduler,
-            feeRecipient,
-            token,
-            racOptions[0], // deposit
-            racOptions[1], // period
-            racOptions[2], // maxIntervals
-            eacOptions
-        );
-
-        return alarmClock;
-    }
-
 }

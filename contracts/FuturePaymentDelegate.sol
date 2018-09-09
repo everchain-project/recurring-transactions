@@ -2,13 +2,7 @@ pragma solidity ^0.4.23;
 
 import "./Interfaces.sol";
 
-library PaymentDelegateLib {
-    function validate (IPaymentDelegate delegate, IFuturePayment payment) public returns (bool) {
-        return delegate.register(payment);
-    }
-}
-
-contract PaymentDelegate is IPaymentDelegate {
+contract FuturePaymentDelegate is ITokenSender {
 
     mapping (address => bool) public valid;
     

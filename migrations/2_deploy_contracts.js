@@ -1,21 +1,39 @@
 var MiniMeTokenFactory = artifacts.require("MiniMeTokenFactory");
 var MiniMeToken = artifacts.require("MiniMeToken");
+var ERC20 = artifacts.require("ERC20");
 
 var ListLib = artifacts.require("ListLib");
 var ListLibTests = artifacts.require("ListLibTests");
+
 var TokenCore = artifacts.require("TokenCore");
+var Delegated = artifacts.require("Delegated");
 var DelegatedWallet = artifacts.require("DelegatedWallet");
 var DelegatedWalletFactory = artifacts.require("DelegatedWalletFactory");
 var DelegatedWalletManager = artifacts.require("DelegatedWalletManager");
+var PaymentDelegate = artifacts.require("PaymentDelegate");
 
-var Rescheduler = artifacts.require("Rescheduler");
-var ReschedulerLib = artifacts.require("ReschedulerLib");
-var AlarmClock = artifacts.require("AlarmClock");
-var RecurringPayment = artifacts.require("RecurringPayment");
+var RecurringAlarmClock = artifacts.require("RecurringAlarmClock");
+var RecurringAlarmClockFactory = artifacts.require("RecurringAlarmClockFactory");
+var RecurringPaymentTask = artifacts.require("RecurringPayment");
 var RecurringPaymentFactory = artifacts.require("RecurringPaymentFactory");
 
 module.exports = function(deployer, network, accounts) {
     
+    console.log(network);
+    console.log(accounts);
+
+    if(network == 'develop'){
+    
+    } else if(network == 'kovan'){
+
+    } else if(network == 'live'){
+
+    } else {
+        console.log("Tests not supported on the " + network + " network.")
+    }
+
+
+    /*
     var EthereumAlarmClock = '0x0';
     var feeRecipient = accounts[9];
 
@@ -75,5 +93,5 @@ module.exports = function(deployer, network, accounts) {
             {from: accounts[0]}
         );
     })
-    
+    */
 };

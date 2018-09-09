@@ -3,7 +3,6 @@ const DelegatedWallet = artifacts.require("DelegatedWallet");
 const DelegatedWalletManager = artifacts.require("DelegatedWalletManager");
 const MiniMeToken = artifacts.require("MiniMeToken");
 const MiniMeTokenFactory = artifacts.require("MiniMeTokenFactory");
-const Rescheduler = artifacts.require("Rescheduler");
 
 contract('DelegatedWallet', function(accounts) {
 
@@ -12,7 +11,7 @@ contract('DelegatedWallet', function(accounts) {
     
     var primaryAccount = accounts[0];
     var secondaryAccount = accounts[1];
-
+    var Rescheduler = accounts[2];
     var delegatedWalletManager;
     var delegatedWallet;
     var tokenCore;
@@ -23,7 +22,7 @@ contract('DelegatedWallet', function(accounts) {
         .then(function(instance) {
             delegatedWalletManager = instance;
             return delegatedWalletManager.createWallet(
-                [Rescheduler.address, primaryAccount], 
+                [Rescheduler, primaryAccount], 
                 {from: primaryAccount}
             );
         })
@@ -47,9 +46,9 @@ contract('DelegatedWallet', function(accounts) {
         })
         .then(function(delegates){
             assert(delegates.length == 2, "there should be two delegates");
-            assert(delegates[0] == Rescheduler.address, "the first delegate should be the rescheduler");
+            assert(delegates[0] == Rescheduler, "the first delegate should be the rescheduler");
             assert(delegates[1] == primaryAccount, "the second delegate should be the primary account");
-            return delegatedWallet.isDelegate(Rescheduler.address);
+            return delegatedWallet.isDelegate(Rescheduler);
         })
         .then(function(isDelegate){
             assert(isDelegate == true, "the rescheduler should be flagged as a delegate");
@@ -167,7 +166,7 @@ contract('DelegatedWallet', function(accounts) {
         })
         .then(function(delegates){
             assert(delegates.length == 2, "there should be two delegates");
-            assert(delegates[0] == Rescheduler.address, "the first delegate should be the rescheduler");
+            assert(delegates[0] == Rescheduler, "the first delegate should be the rescheduler");
             assert(delegates[1] == primaryAccount, "the second delegate should be the primary account");
             return delegatedWallet.totalDelegates();
         })
@@ -190,7 +189,7 @@ contract('DelegatedWallet', function(accounts) {
         })
         .then(function(delegates){
             assert(delegates.length == 3, "there should be three delegates");
-            assert(delegates[0] == Rescheduler.address, "the first delegate should be the rescheduler");
+            assert(delegates[0] == Rescheduler, "the first delegate should be the rescheduler");
             assert(delegates[1] == primaryAccount, "the second delegate should be the primary account");
             assert(delegates[2] == secondaryAccount, "the third delegate should be the secondary account");
             return delegatedWallet.totalDelegates();
@@ -202,7 +201,7 @@ contract('DelegatedWallet', function(accounts) {
 
     it("have a non-owner attempt to remove a delegate", function() {
         return delegatedWallet.removeDelegate(
-            Rescheduler.address,
+            Rescheduler,
             {from: secondaryAccount}
         )
         .then(function(txReceipt){
@@ -213,7 +212,7 @@ contract('DelegatedWallet', function(accounts) {
         })
         .then(function(delegates){
             assert(delegates.length == 3, "there should be two delegates");
-            assert(delegates[0] == Rescheduler.address, "the first delegate should be the rescheduler");
+            assert(delegates[0] == Rescheduler, "the first delegate should be the rescheduler");
             assert(delegates[1] == primaryAccount, "the second delegate should be the primary account");
             assert(delegates[2] == secondaryAccount, "the third delegate should be the secondary account");
         })
@@ -229,7 +228,7 @@ contract('DelegatedWallet', function(accounts) {
         })
         .then(function(delegates){
             assert(delegates.length == 2, "there should be two delegates");
-            assert(delegates[0] == Rescheduler.address, "the first delegate should be the rescheduler")
+            assert(delegates[0] == Rescheduler, "the first delegate should be the rescheduler")
             assert(delegates[1] == secondaryAccount, "the second delegate should be the secondary account")
         })
     });

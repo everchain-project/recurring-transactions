@@ -1,8 +1,8 @@
 pragma solidity ^0.4.23;
 
-import "./external/Owned.sol";
-import "./external/ERC20.sol";
-import "./Interfaces.sol";
+import "../external/Owned.sol";
+import "../external/ERC20.sol";
+import "../Interfaces.sol";
 
 contract TokenCore is Owned, ITokenSender {
     
@@ -36,14 +36,4 @@ contract TokenCore is Owned, ITokenSender {
     event Deposit_event (address sender, uint amount);
     event Transfer_event (address delegate, address token, address recipient, uint amount, bool success);
     
-}
-
-contract hasTokenCore is Owned {
-
-    TokenCore public tokenCore;
-
-    function transferTokenCore (address newOwner) public onlyOwner {
-        tokenCore.transferOwnership(newOwner);
-    }
-
 }
