@@ -24,6 +24,7 @@ contract IFuturePayment is ITask {
     IFuturePaymentDelegate public delegate; // The delegate that pulls the funds from the wallet
     IDelegatedWallet public wallet;         // The wallet that funds each alarm deposit
     address public token;                   // The token to pull from the delegated wallet
+    uint public amount;                     // The amount of tokens to pull from the delegated wallet for the alarm deposit
 }
 
 contract IFuturePaymentDelegate is ITokenSender {

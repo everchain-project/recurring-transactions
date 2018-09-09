@@ -9,7 +9,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
     IDelegatedWallet public wallet;         // The wallet that funds each alarm deposit
     IFuturePaymentDelegate public delegate; // The delegate that pulls the deposit from the wallet
     address public token;                   // The token the delegate pulls from the wallet
-    uint public deposit;                    // The amount of tokens to pull from the wallet
+    uint public amount;                     // The amount of tokens to pull from the wallet
 
     RequestFactoryInterface public eac;     // Interface provided by the Ethereum Alarm Clock
     uint[10] public eacOptions;             // The options used when setting an alarm using the Ethereum Alarm Clock
@@ -37,7 +37,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         eac = _eac;
         feeRecipient = _feeRecipient;
         token = _token;
-        deposit = _recurringAlarmClockOptions[0];
+        amount = _recurringAlarmClockOptions[0];
         period = _recurringAlarmClockOptions[1];
         maxIntervals = _recurringAlarmClockOptions[2];
         eacOptions = _ethereumAlarmClockOptions;
@@ -57,7 +57,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         alarm = address(0x0);
 
         if(currentInterval <= maxIntervals){
-            delegate.transfer(token, this, deposit);
+            delegate.transfer(token, this, amount);
             alarm = createAlarm();
             eacOptions[5] += period;
             currentInterval++;
