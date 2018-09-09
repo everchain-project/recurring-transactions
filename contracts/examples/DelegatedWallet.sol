@@ -51,11 +51,18 @@ contract DelegatedWallet is IDelegatedWallet, Delegated {
 
     ITokenSender public tokenCore;
 
-    function initialize (address _owner, TokenCore _tokenCore) public {
+    function initialize (
+        address _owner, 
+        TokenCore _tokenCore,
+        address[] _delegateList
+    ) public {
         require(!initialized, "contract is already initialized");
         
         owner = _owner;
         tokenCore = _tokenCore;
+
+        for(uint i = 0; i < _delegateList.length; i++)
+            delegates.add(_delegateList[i]);
 
         initialized = true;
     }
@@ -91,7 +98,7 @@ contract DelegatedWalletFactory is CloneFactory {
         DelegatedWallet delegateWallet = DelegatedWallet(createClone(delegatedWalletBlueprint));
 
         tokenCore.initialize(delegateWallet);
-        delegateWallet.initialize(owner, tokenCore);
+        delegateWallet.initialize(owner, tokenCore, delegateList);
         
         emit NewWallet_event(owner, delegateWallet);
     }
