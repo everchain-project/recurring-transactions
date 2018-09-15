@@ -4,12 +4,12 @@ import "./external/EthereumAlarmClock.sol";
 import "./external/CloneFactory.sol";
 import "./Interfaces.sol";
 
-contract RecurringAlarmClock is IRecurringAlarmClock {
+contract RecurringAlarmClock is IAlarmClock {
     
-    IDelegatedWallet public wallet;         // The wallet that funds each alarm deposit
+    address public changeAddress;           // The address which owns the alarm and collects any leftover funds
     IFuturePaymentDelegate public delegate; // The delegate that pulls the deposit from the wallet
     address public token;                   // The token the delegate pulls from the wallet
-    uint public amount;                     // The amount of tokens to pull from the wallet
+    uint public alarmCost;                  // The amount of tokens to pull from the wallet
 
     RequestFactoryInterface public eac;     // Interface provided by the Ethereum Alarm Clock
     uint[10] public eacOptions;             // The options used when setting an alarm using the Ethereum Alarm Clock
@@ -23,7 +23,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
 
     function initialize (
         ITask _task,
-        IDelegatedWallet _wallet,
+        address _changeAddress,
         IFuturePaymentDelegate _delegate,
         RequestFactoryInterface _eac,
         address _feeRecipient,
@@ -32,12 +32,12 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         uint[10] _ethereumAlarmClockOptions
     ) public payable {
         task = _task;
-        wallet = _wallet;
+        changeAddress = _changeAddress;
         delegate = _delegate;
         eac = _eac;
         feeRecipient = _feeRecipient;
         token = _token;
-        amount = _recurringAlarmClockOptions[0];
+        alarmCost = _recurringAlarmClockOptions[0];
         period = _recurringAlarmClockOptions[1];
         maxIntervals = _recurringAlarmClockOptions[2];
         eacOptions = _ethereumAlarmClockOptions;
@@ -48,23 +48,27 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
     function () public {
         require(msg.sender == alarm);
 
-        task.execute(); // ignore success or failure
+        task.execute(currentInterval == maxIntervals); // ignore success or failure
 
         scheduleAlarm();
+    }
+
+    function amount () public view returns (uint) {
+        return alarmCost;
     }
 
     function scheduleAlarm () internal {
         alarm = address(0x0);
 
         if(currentInterval <= maxIntervals){
-            delegate.transfer(token, this, amount);
+            delegate.transfer(token, this, amount());
             alarm = createAlarm();
             eacOptions[5] += period;
             currentInterval++;
         }
         
         if(alarm == address(0x0)){
-            address(wallet).transfer(address(this).balance);
+            address(changeAddress).transfer(address(this).balance);
             delegate.unregister();
         }
     }
@@ -76,7 +80,8 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         
         return eac.createRequest.value(etherPayment)(
             [
-                wallet,         // Change from the alarm is sent to this address, also the account that can owns the alarm. In the future, I'd like these two functions seperated
+                changeAddress,  // Change from the alarm is sent to this address, also the account that can owns the alarm. 
+                /* owner,       // In the future, I'd like these two functions seperated into a change address and owner address */
                 feeRecipient,   // The priority fee is sent to this address
                 this            // The contract to call at execution
             ],[

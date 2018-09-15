@@ -1,33 +1,41 @@
 pragma solidity ^0.4.23;
 
+import "./libraries/ListLib.sol";
 import "./Interfaces.sol";
 
-contract FuturePaymentDelegate is ITokenSender {
+contract FuturePaymentDelegate is IFuturePaymentDelegate {
 
-    mapping (address => bool) public valid;
+    using ListLib for ListLib.AddressList;
+
+    mapping (address => IDelegatedWallet) public futurePayments;
+    mapping (address => ListLib.AddressList) paymentList;
     
     function transfer (address token, address recipient, uint amount) public returns (bool) {
-        IFuturePayment payment = IFuturePayment(msg.sender);
-        require(valid[payment], "payment is not valid");
-        
-        return payment.wallet().transfer(token, recipient, amount);
+        IDelegatedWallet wallet = futurePayments[msg.sender];
+
+        return wallet.transfer(token, recipient, amount);
     }
 
-    function register (IFuturePayment payment) public returns (bool) {
-        require(payment.wallet().isDelegate(msg.sender), "msg.sender must be a delegate");
-        require(payment.wallet().isDelegate(this), "this contract must be a delegate");
+    function register (IFuturePayment payment, IDelegatedWallet wallet) public returns (bool) {
+        require(wallet.isDelegate(msg.sender), "msg.sender must be a delegate");
+        require(wallet.isDelegate(this), "this contract must be a delegate");
 
-        valid[payment] = true;
+        futurePayments[payment] = wallet;
+        paymentList[wallet].add(payment);
     }
     
     function unregister (IFuturePayment payment) public {
-        require(payment.wallet().isDelegate(msg.sender), "msg.sender must be a delegate");
-        
-        delete valid[payment];
+        IDelegatedWallet wallet = futurePayments[payment];
+        require(wallet.isDelegate(msg.sender), "msg.sender must be a delegate");
+
+        delete futurePayments[payment];
+        paymentList[wallet].add(payment);
     }
 
     function unregister () public {
-        delete valid[msg.sender];
+        IDelegatedWallet wallet = futurePayments[msg.sender];
+        paymentList[wallet].remove(msg.sender);
+        delete futurePayments[msg.sender];
     }
     
 }

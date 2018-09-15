@@ -13,26 +13,25 @@ contract IDelegated {
 }
 
 contract IDelegatedWallet is IDelegated, ITokenSender {
-    ITokenSender public tokenCore;
-}
-
-contract ITask {
-    function execute() public returns (bool success);
-}
-
-contract IFuturePayment is ITask {
-    IFuturePaymentDelegate public delegate; // The delegate that pulls the funds from the wallet
-    IDelegatedWallet public wallet;         // The wallet that funds each alarm deposit
-    address public token;                   // The token to pull from the delegated wallet
-    uint public amount;                     // The amount of tokens to pull from the delegated wallet for the alarm deposit
+    // implements a transfer function that can only be called by delegates
 }
 
 contract IFuturePaymentDelegate is ITokenSender {
-    function register (IFuturePayment) public returns(bool);
+    function register (IFuturePayment, IDelegatedWallet) public returns (bool);
     function unregister (IFuturePayment) public;
     function unregister () public;
 }
 
-contract IRecurringAlarmClock is IFuturePayment {
-    ITask public task;  // The task to execute when the alarm is triggered
+contract ITask {
+    function execute(bool) public returns (bool success);
+}
+
+contract IFuturePayment {
+    IFuturePaymentDelegate delegate;
+    address token;
+    function amount () public view returns (uint);
+}
+
+contract IAlarmClock is IFuturePayment {
+    ITask public task;
 }
