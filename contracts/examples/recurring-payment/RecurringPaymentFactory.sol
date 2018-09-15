@@ -1,22 +1,22 @@
 pragma solidity ^0.4.23;
 
-import "../libraries/FuturePaymentLib.sol";
-import "../RecurringAlarmClockFactory.sol";
-import "../examples/RecurringPayment.sol";
+import "../../libraries/FuturePaymentLib.sol";
+import "../../RecurringAlarmClockFactory.sol";
+import "./RecurringPayment.sol";
 
 contract RecurringPaymentFactory is CloneFactory {
     
     using FuturePaymentLib for IFuturePaymentDelegate;
     
-    RecurringPayment public blueprint;
     RecurringAlarmClockFactory public factory;
+    RecurringPayment public blueprint;
 
     constructor (
-        RecurringPayment _blueprint,
-        RecurringAlarmClockFactory _factory
+        RecurringAlarmClockFactory _factory,
+        RecurringPayment _blueprint
     ) public {
-        blueprint = _blueprint;
         factory = _factory;
+        blueprint = _blueprint;
     }
 
     function createRecurringPayment (
@@ -44,15 +44,14 @@ contract RecurringPaymentFactory is CloneFactory {
         
         recurringPayment.initialize(
             recurrungAlarmClock,    // the owner of the recurring payment
-            delegatedWallet,        // wallet to pull alarm funds from
             paymentDelegate,        // the delegate that pulls funds from the wallet
             transferToken,          // the token to use when making a payment
             recipient,              // the recipient of the payment
             paymentAmount           // how much of the token to send each payment
         );
 
-        paymentDelegate.schedule(recurrungAlarmClock);
-        paymentDelegate.schedule(recurringPayment);
+        paymentDelegate.schedule(recurrungAlarmClock, delegatedWallet);
+        paymentDelegate.schedule(recurringPayment, delegatedWallet);
     }
     
 }
