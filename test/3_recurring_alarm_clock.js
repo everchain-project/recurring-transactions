@@ -1,13 +1,13 @@
 const RecurringPayment = artifacts.require("RecurringPayment");
 const RecurringPaymentFactory = artifacts.require("RecurringPaymentFactory");
 
-contract('RecurringPayment', async(accounts) => {
+contract('RecurringAlarmClock', async(accounts) => {
     
-    it("schedules a recurring payment", async() => {
+    it("schedule a recurring alarm clock", async() => {
         return true;
     });
 
-    it("attempt to execute a payment early", function() {
+    it("attempt to execute an alarm early", function() {
         return true;
     });
 

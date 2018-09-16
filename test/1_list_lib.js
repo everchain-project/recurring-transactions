@@ -1,38 +1,30 @@
 const ListLibTests = artifacts.require("ListLibTests");
 
 contract('ListLib', function(accounts) {
-    
-    var listLibTest;
 
     it("check correctness of address list", function(){
         return ListLibTests.deployed()
-        .then(function(instance){
-            listLibTest = instance;
-            return listLibTest.testAddressList()
-        })
+        .then(listLibTest => listLibTest.testAddressList({from:accounts[0]}))
         .catch(function(err){
+            console.log(err);
             assert(false, 'address tests failed');
         })
     });
 
     it("check correctness of bytes32 list", function(){
         return ListLibTests.deployed()
-        .then(function(instance){
-            listLibTest = instance;
-            return listLibTest.testBytes32List()
-        })
+        .then(listLibTest => listLibTest.testBytes32List({from:accounts[0]}))
         .catch(function(err){
+            console.log(err);
             assert(false, 'bytes32 tests failed');
         })
     });
 
     it("check correctness of uint list", function(){
         return ListLibTests.deployed()
-        .then(function(instance){
-            listLibTest = instance;
-            return listLibTest.testUintList()
-        })
+        .then(listLibTest => listLibTest.testUintList({from:accounts[0]}))
         .catch(function(err){
+            console.log(err);
             assert(false, 'uint tests failed');
         })
     });

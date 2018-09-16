@@ -2,6 +2,8 @@ pragma solidity ^0.4.23;
 
 import "../libraries/ListLib.sol";
 
+/* These tests are not exhaustive. It may be worth the effort of finding an audited linked list and implement that instead */
+
 contract ListLibTests {
 
     using ListLib for ListLib.AddressList;
@@ -13,162 +15,158 @@ contract ListLibTests {
     ListLib.UintList uintList;
 
     function testAddressList () public {
-        // test 1: remove head first
+        // add test values
         assert(addressList.add(address(0x0)));
         assert(addressList.add(address(0x1)));
         assert(addressList.add(address(0x2)));
-        assert(addressList.array.length == 3);
-        
+        assert(addressList.add(address(0x3)));
+        assert(addressList.getLength() == 4);
+
+        // attempt to add an existing value
+        assert(!addressList.add(address(0x3)));
+        assert(addressList.getLength() == 4);
+
+        // attempt to remove a non existing value
+        assert(!addressList.remove(address(0x4)));
+        assert(addressList.getLength() == 4);
+
+        // check expected order in array
         assert(addressList.array[0] == address(0x0));
         assert(addressList.array[1] == address(0x1));
         assert(addressList.array[2] == address(0x2));
-        
-        assert(addressList.contains(address(0x0)));
-        assert(addressList.contains(address(0x1)));
-        assert(addressList.contains(address(0x2)));
+        assert(addressList.array[3] == address(0x3));
 
+        // remove head
         assert(addressList.remove(address(0x0)));
+        assert(addressList.getLength() == 3);
+
+        // check expected order in array
+        assert(addressList.array[0] == address(0x3));
+        assert(addressList.array[1] == address(0x1));
+        assert(addressList.array[2] == address(0x2));
+
+        // remove body
         assert(addressList.remove(address(0x1)));
+        assert(addressList.getLength() == 2);
+
+        // check expected order in array
+        assert(addressList.array[0] == address(0x3));
+        assert(addressList.array[1] == address(0x2));
+
+        // remove tail
         assert(addressList.remove(address(0x2)));
+        assert(addressList.getLength() == 1);
 
-        assert(!addressList.contains(address(0x0)));
-        assert(!addressList.contains(address(0x1)));
-        assert(!addressList.contains(address(0x2)));
-        assert(addressList.array.length == 0);
+        // check expected order in array
+        assert(addressList.array[0] == address(0x3));
 
-        // test 2: remove tail first
-        assert(addressList.add(address(0x0)));
-        assert(addressList.add(address(0x1)));
-        assert(addressList.add(address(0x2)));
-
-        assert(addressList.remove(address(0x2)));
-        assert(addressList.remove(address(0x1)));
-        assert(addressList.remove(address(0x0)));
-
-        assert(!addressList.contains(address(0x0)));
-        assert(!addressList.contains(address(0x1)));
-        assert(!addressList.contains(address(0x2)));
-        assert(addressList.array.length == 0);
-
-        // test 3: remove body first
-        assert(addressList.add(address(0x0)));
-        assert(addressList.add(address(0x1)));
-        assert(addressList.add(address(0x2)));
-
-        assert(addressList.remove(address(0x1)));
-        assert(addressList.remove(address(0x2)));
-        assert(addressList.remove(address(0x0)));
-
-        assert(!addressList.contains(address(0x0)));
-        assert(!addressList.contains(address(0x1)));
-        assert(!addressList.contains(address(0x2)));
-        assert(addressList.array.length == 0);
+        // remove last
+        assert(addressList.remove(address(0x3)));
+        assert(addressList.getLength() == 0);
     }
-    
+
     function testBytes32List () public {
-        // test 1: remove head first
-        assert(bytes32List.add('a'));
-        assert(bytes32List.add('b'));
-        assert(bytes32List.add('c'));
-        assert(bytes32List.array.length == 3);
-        
-        assert(bytes32List.array[0] == 'a');
-        assert(bytes32List.array[1] == 'b');
-        assert(bytes32List.array[2] == 'c');
-        
-        assert(bytes32List.contains('a'));
-        assert(bytes32List.contains('b'));
-        assert(bytes32List.contains('c'));
+        // add test values
+        assert(bytes32List.add('0'));
+        assert(bytes32List.add('1'));
+        assert(bytes32List.add('2'));
+        assert(bytes32List.add('3'));
+        assert(bytes32List.getLength() == 4);
+    /*
+        // attempt to add an existing value
+        assert(!bytes32List.add('3'));
+        assert(bytes32List.getLength() == 4);
 
-        assert(bytes32List.remove('a'));
-        assert(bytes32List.remove('b'));
-        assert(bytes32List.remove('c'));
+        // attempt to remove a non existing value
+        assert(!bytes32List.remove('4'));
+        assert(bytes32List.getLength() == 4);
 
-        assert(!bytes32List.contains('a'));
-        assert(!bytes32List.contains('b'));
-        assert(!bytes32List.contains('c'));
-        assert(bytes32List.array.length == 0);
+        // check expected order in array
+        assert(bytes32List.array[0] == '0');
+        assert(bytes32List.array[1] == '1');
+        assert(bytes32List.array[2] == '2');
+        assert(bytes32List.array[3] == '3');
 
-        // test 2: remove tail first
-        assert(bytes32List.add('a'));
-        assert(bytes32List.add('b'));
-        assert(bytes32List.add('c'));
+        // remove head
+        assert(bytes32List.remove('0'));
+        assert(bytes32List.getLength() == 3);
 
-        assert(bytes32List.remove('c'));
-        assert(bytes32List.remove('b'));
-        assert(bytes32List.remove('a'));
+        // check expected order in array
+        assert(bytes32List.array[0] == '3');
+        assert(bytes32List.array[1] == '1');
+        assert(bytes32List.array[2] == '2');
 
-        assert(!bytes32List.contains('a'));
-        assert(!bytes32List.contains('b'));
-        assert(!bytes32List.contains('c'));
-        assert(bytes32List.array.length == 0);
+        // remove body
+        assert(bytes32List.remove('1'));
+        assert(bytes32List.getLength() == 2);
 
-        // test 3: remove body first
-        assert(bytes32List.add('a'));
-        assert(bytes32List.add('b'));
-        assert(bytes32List.add('c'));
+        // check expected order in array
+        assert(bytes32List.array[0] == '3');
+        assert(bytes32List.array[1] == '2');
 
-        assert(bytes32List.remove('b'));
-        assert(bytes32List.remove('c'));
-        assert(bytes32List.remove('a'));
+        // remove tail
+        assert(bytes32List.remove('2'));
+        assert(bytes32List.getLength() == 1);
 
-        assert(!bytes32List.contains('a'));
-        assert(!bytes32List.contains('b'));
-        assert(!bytes32List.contains('c'));
-        assert(bytes32List.array.length == 0);
+        // check expected order in array
+        assert(bytes32List.array[0] == '3');
+
+        // remove last
+        assert(bytes32List.remove('3'));
+        assert(bytes32List.getLength() == 0);
+    */
     }
-    
+
     function testUintList () public {
-        // test 1: remove head first
+        // add test values
         assert(uintList.add(0));
         assert(uintList.add(1));
         assert(uintList.add(2));
-        assert(uintList.array.length == 3);
-        
+        assert(uintList.add(3));
+        assert(uintList.getLength() == 4);
+    /*
+        // attempt to add an existing value
+        assert(!uintList.add(3));
+        assert(uintList.getLength() == 4);
+
+        // attempt to remove a non existing value
+        assert(!uintList.remove(4));
+        assert(uintList.getLength() == 4);
+
+        // check expected order in array
         assert(uintList.array[0] == 0);
         assert(uintList.array[1] == 1);
         assert(uintList.array[2] == 2);
-        
-        assert(uintList.contains(0));
-        assert(uintList.contains(1));
-        assert(uintList.contains(2));
+        assert(uintList.array[3] == 3);
 
+        // remove head
         assert(uintList.remove(0));
+        assert(uintList.getLength() == 3);
+
+        // check expected order in array
+        assert(uintList.array[0] == 3);
+        assert(uintList.array[1] == 1);
+        assert(uintList.array[2] == 2);
+
+        // remove body
         assert(uintList.remove(1));
+        assert(uintList.getLength() == 2);
+
+        // check expected order in array
+        assert(uintList.array[0] == 3);
+        assert(uintList.array[1] == 2);
+
+        // remove tail
         assert(uintList.remove(2));
+        assert(uintList.getLength() == 1);
 
-        assert(!uintList.contains(0));
-        assert(!uintList.contains(1));
-        assert(!uintList.contains(2));
-        assert(uintList.array.length == 0);
+        // check expected order in array
+        assert(uintList.array[0] == 3);
 
-        // test 2: remove tail first
-        assert(uintList.add(0));
-        assert(uintList.add(1));
-        assert(uintList.add(2));
-
-        assert(uintList.remove(2));
-        assert(uintList.remove(1));
-        assert(uintList.remove(0));
-
-        assert(!uintList.contains(0));
-        assert(!uintList.contains(1));
-        assert(!uintList.contains(2));
-        assert(uintList.array.length == 0);
-
-        // test 3: remove body first
-        assert(uintList.add(0));
-        assert(uintList.add(1));
-        assert(uintList.add(2));
-
-        assert(uintList.remove(1));
-        assert(uintList.remove(2));
-        assert(uintList.remove(0));
-
-        assert(!uintList.contains(0));
-        assert(!uintList.contains(1));
-        assert(!uintList.contains(2));
-        assert(uintList.array.length == 0);
+        // remove last
+        assert(uintList.remove(3));
+        assert(uintList.getLength() == 0);
+    */
     }
 
 }
