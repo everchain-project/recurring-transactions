@@ -4,16 +4,13 @@ contract ITokenSender {
     function transfer (address token, address recipient, uint amount) public returns (bool);
 }
 
-contract IDelegated {
+contract IDelegatedWallet is ITokenSender {
+    // implements a transfer function that can only be called by delegates
     function isDelegate (address) public view returns (bool);
     function getDelegates () public view returns (address[]);
     function totalDelegates () public view returns (uint);
     function addDelegate (address) public;
     function removeDelegate (address) public;
-}
-
-contract IDelegatedWallet is IDelegated, ITokenSender {
-    // implements a transfer function that can only be called by delegates
 }
 
 contract IFuturePaymentDelegate is ITokenSender {

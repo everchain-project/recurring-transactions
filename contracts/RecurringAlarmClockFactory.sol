@@ -14,7 +14,7 @@ contract RecurringAlarmClockFactory is CloneFactory {
 
     function createRecurringAlarmClock(
         ITask task,
-        IDelegatedWallet wallet,
+        ITokenSender changeAddress,
         IFuturePaymentDelegate delegate,
         address feeRecipient,
         address token,
@@ -25,7 +25,7 @@ contract RecurringAlarmClockFactory is CloneFactory {
         
         recurringAlarmClock.initialize(
             task,
-            wallet,
+            changeAddress,
             delegate,
             ethereumAlarmClock,
             feeRecipient,
