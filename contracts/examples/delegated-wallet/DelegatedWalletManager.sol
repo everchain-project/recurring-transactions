@@ -13,19 +13,17 @@ contract DelegatedWalletManager is Owned {
 
     mapping (address => ListLib.AddressList) wallets;
 
-    function createWallet (DelegatedWalletFactory factory, address[] delegateList) public returns (DelegatedWallet) {
+    function createWallet (DelegatedWalletFactory factory, address[] delegateList) public returns (bool success) {
         DelegatedWallet wallet = factory.createWallet(msg.sender, delegateList);
-        wallets[msg.sender].add(wallet);
-        
-        return wallet;
+        return wallets[msg.sender].add(wallet);
     }
 
-    function addWallet (DelegatedWallet wallet) public {
-        wallets[msg.sender].add(wallet);
+    function addWallet (DelegatedWallet wallet) public returns (bool success) {
+        return wallets[msg.sender].add(wallet);
     }
 
-    function removeWallet (DelegatedWallet wallet) public {
-        wallets[msg.sender].remove(wallet);
+    function removeWallet (DelegatedWallet wallet) public returns (bool success) {
+        return wallets[msg.sender].remove(wallet);
     }
 
     function getWallets (address account) public view returns (address[]) {
