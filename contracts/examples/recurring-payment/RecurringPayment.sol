@@ -1,53 +1,62 @@
 pragma solidity ^0.4.23;
 
-import "../../external/CloneFactory.sol";
-import "../../FuturePaymentDelegate.sol";
-import "../../RecurringAlarmClock.sol";
 import "../../Interfaces.sol";
 
 contract RecurringPayment is IFuturePayment, ITask {
     
-    bool initialized;
-    
-    RecurringAlarmClock public alarm;
+    uint public blockCreated;
+
+    IRecurringAlarmClock public alarmClock;
     IFuturePaymentDelegate public delegate;
+    IDelegatedWallet public wallet;
     address public token;
     address public recipient;
     uint public paymentAmount;
     
     function initialize (
-        RecurringAlarmClock _recurringAlarmClock,
-        IFuturePaymentDelegate _futurePaymentDelegate,
+        IRecurringAlarmClock _alarmClock,
+        IFuturePaymentDelegate _delegate,
+        IDelegatedWallet _wallet,
         address _token,
         address _recipient,
         uint _amount
     ) public {
-        require(!initialized);
+        require(blockCreated == 0, "contract can only be initialized once");
 
-        alarm = _recurringAlarmClock;
-        delegate = _futurePaymentDelegate;
+        alarmClock = _alarmClock;
+        delegate = _delegate;
+        wallet = _wallet;
         token = _token;
         recipient = _recipient;
         paymentAmount = _amount;
 
-        initialized = true;
-    }
-    
-    function execute(bool finalPayment) public onlyAlarm returns (bool success){
-        success = delegate.transfer(token, recipient, amount());
-        
-        if(finalPayment)
-            delegate.unregister();
+        blockCreated = block.number;
     }
 
     function amount () public view returns (uint) {
         return paymentAmount;
     }
+    
+    function execute(bool lastAlarm) public onlyAlarmClock returns (bool success){
+        success = delegate.transfer(token, recipient, amount());
+        
+        if(lastAlarm)
+            delegate.finished();
+    }
 
-    modifier onlyAlarm () {
-        require(msg.sender == address(alarm));
+    function cancel () public onlyDelegates {
+        alarmClock.cancel();
+        delegate.finished();
+    }
+
+    modifier onlyAlarmClock () {
+        require(msg.sender == address(alarmClock), "only the alarm can call this function");
+        _;
+    }
+
+    modifier onlyDelegates () {
+        require(wallet.isDelegate(msg.sender), "only a delegate can call this function");
         _;
     }
     
 }
-

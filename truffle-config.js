@@ -8,7 +8,7 @@ module.exports = {
             network_id: "*", // Match any network id
             from: '0x627306090abab3a6e1400e9345bc60c78a8bef57',
             gas: 4700000,
-            gasPrice: 10000000000,
+            gasPrice: 0,
         },
         kovan: {
             host: "localhost",
@@ -30,5 +30,8 @@ module.exports = {
             //          - function that returns a web3 provider instance (see below.)
             //          - if specified, host and port are ignored.
         }
+    },
+    mocha: {
+        enableTimeouts: false
     }
 };

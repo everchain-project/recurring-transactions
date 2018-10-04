@@ -1,35 +1,34 @@
 pragma solidity ^0.4.23;
 
+import "./external/CloneFactory.sol";
 import "./RecurringAlarmClock.sol";
 
 contract RecurringAlarmClockFactory is CloneFactory {
-    
-    RequestFactoryInterface public ethereumAlarmClock;
-    RecurringAlarmClock public recurringAlarmClockBlueprint;
 
-    constructor (RequestFactoryInterface _ethereumAlarmClock, RecurringAlarmClock _recurringAlarmClockBlueprint) public {
+    RequestFactoryInterface public ethereumAlarmClock;
+    RecurringAlarmClock public alarmClockBlueprint;
+
+    constructor (
+        RequestFactoryInterface _ethereumAlarmClock, 
+        RecurringAlarmClock _alarmClockBlueprint
+    ) public {
         ethereumAlarmClock = _ethereumAlarmClock;
-        recurringAlarmClockBlueprint = _recurringAlarmClockBlueprint;
+        alarmClockBlueprint = _alarmClockBlueprint;
     }
 
     function createRecurringAlarmClock(
-        ITask task,
-        ITokenSender changeAddress,
         IFuturePaymentDelegate delegate,
-        address feeRecipient,
-        address token,
+        address wallet,
+        address priorityCaller,
         uint[3] recurringAlarmClockOptions,
         uint[10] ethereumAlarmClockOptions
     ) public returns (RecurringAlarmClock) {
-        RecurringAlarmClock recurringAlarmClock = RecurringAlarmClock(createClone(recurringAlarmClockBlueprint));
-        
+        RecurringAlarmClock recurringAlarmClock = RecurringAlarmClock(createClone(alarmClockBlueprint));
         recurringAlarmClock.initialize(
-            task,
-            changeAddress,
-            delegate,
             ethereumAlarmClock,
-            feeRecipient,
-            token,
+            delegate,
+            wallet,
+            priorityCaller,
             recurringAlarmClockOptions,
             ethereumAlarmClockOptions
         );

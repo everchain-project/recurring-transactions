@@ -1,105 +1,137 @@
 pragma solidity ^0.4.23;
 
-import "./external/EthereumAlarmClock.sol";
-import "./external/CloneFactory.sol";
+import "./external/RequestFactoryInterface.sol";
 import "./Interfaces.sol";
 
-contract RecurringAlarmClock is IAlarmClock {
+contract RecurringAlarmClock is IRecurringAlarmClock {
+
+    uint public blockStarted;
+    address constant ETHER = address(0x0);
     
-    address public changeAddress;           // The address which owns the alarm and collects any leftover funds
-    IFuturePaymentDelegate public delegate; // The delegate that pulls the deposit from the wallet
-    address public token;                   // The token the delegate pulls from the wallet
-    uint public alarmCost;                  // The amount of tokens to pull from the wallet
+    ITask public task;                          // The task to execute when the alarm is triggered
+    RequestFactoryInterface public eac;         // Interface provided by the Ethereum Alarm Clock
+    IFuturePaymentDelegate public delegate;     // The delegate that pulls funds for each alarm
+    address public wallet;                      // The address which owns the alarm and collects any leftover funds
+    address public priorityCaller;              // The priority recipient of part of the alarm deposit
+    address public alarm;                       // The next scheduled alarm contract
 
-    RequestFactoryInterface public eac;     // Interface provided by the Ethereum Alarm Clock
-    uint[10] public eacOptions;             // The options used when setting an alarm using the Ethereum Alarm Clock
-    address public feeRecipient;            // The priority recipient of part of the alarm deposit
-    address public alarm;                   // The next scheduled alarm contract
-
-    ITask public task;                      // The task to execute when the alarm is triggered
-    uint public period;                     // The amount of time between each alarm
-    uint public maxIntervals;               // The number of times this alarm will go off
-    uint public currentInterval;            // Keeps track of how many alarms have been called
+    uint[10] public eacOptions;                 // The options used when setting an alarm using the Ethereum Alarm Clock
+    uint public safetyMultiplier;               // The multiplier to use when calculating the alarm cost
+    uint public period;                         // The amount of time between each alarm
+    uint public maxIntervals;                   // The number of times this alarm will go off
+    uint public currentInterval;                // Keeps track of how many alarms have been called
 
     function initialize (
-        ITask _task,
-        address _changeAddress,
-        IFuturePaymentDelegate _delegate,
         RequestFactoryInterface _eac,
-        address _feeRecipient,
-        address _token,
+        IFuturePaymentDelegate _delegate,
+        address _wallet,
+        address _priorityCaller,
         uint[3] _recurringAlarmClockOptions,
         uint[10] _ethereumAlarmClockOptions
-    ) public payable {
-        task = _task;
-        changeAddress = _changeAddress;
-        delegate = _delegate;
+    ) public {
+        require(blockStarted == 0, "contract can only be before the alarm clock is started");
+
         eac = _eac;
-        feeRecipient = _feeRecipient;
-        token = _token;
-        alarmCost = _recurringAlarmClockOptions[0];
+        wallet = _wallet;
+        delegate = _delegate;
+        priorityCaller = _priorityCaller;
+
+        eacOptions = _ethereumAlarmClockOptions;
+        safetyMultiplier = _recurringAlarmClockOptions[0];
         period = _recurringAlarmClockOptions[1];
         maxIntervals = _recurringAlarmClockOptions[2];
-        eacOptions = _ethereumAlarmClockOptions;
+        currentInterval = 1;
+        
+        blockStarted = block.number;
+    }
 
+    function start (ITask _task) public {
+        require(task == address(0x0), "contract can only be started when the alarm is empty");
+        
+        task = _task;
+        
         scheduleAlarm();
     }
-    
-    function () public {
-        require(msg.sender == alarm);
 
-        task.execute(currentInterval == maxIntervals); // ignore success or failure
+    function cancel () public {
+        require(msg.sender == address(task));
 
-        scheduleAlarm();
+        delegate.finished();
     }
 
     function amount () public view returns (uint) {
-        return alarmCost;
+        // uint gas = eacOptions[6];
+        // return tx.gasprice * gas * safetyMultiplier / 10^18;
+        return 1 ether;
+    }
+
+    function () public payable {
+        if(msg.value == 0)
+            handleAlarmCall();
+        else
+            emit Deposit_event(msg.sender, msg.value);
+    }
+
+    function handleAlarmCall () internal {
+        require(msg.sender == address(alarm));
+        
+        bool finished = currentInterval == maxIntervals;
+        task.execute(finished); // ignore success or failure
+
+        if(finished){
+            delegate.finished();
+            alarm = address(0x0);
+        } else {
+            currentInterval++;
+            eacOptions[5] += period;
+            scheduleAlarm();
+        }
     }
 
     function scheduleAlarm () internal {
-        alarm = address(0x0);
-
-        if(currentInterval <= maxIntervals){
-            delegate.transfer(token, this, amount());
-            alarm = createAlarm();
-            eacOptions[5] += period;
-            currentInterval++;
-        }
+        delegate.transfer(ETHER, this, amount());
         
-        if(alarm == address(0x0)){
-            address(changeAddress).transfer(address(this).balance);
-            delegate.unregister();
-        }
-    }
+        uint endowment = address(this).balance;    
+        uint priorityFee = endowment / 100;
+        uint callBounty = endowment - priorityFee;
 
-    function createAlarm () internal returns (address) {
-        uint etherPayment = address(this).balance;    
-        uint priorityFee = etherPayment / 100;
-        uint callBounty = etherPayment - priorityFee;
-        
-        return eac.createRequest.value(etherPayment)(
-            [
-                changeAddress,  // Change from the alarm is sent to this address, also the account that can owns the alarm. 
-                /* owner,       // In the future, I'd like these two functions seperated into a change address and owner address */
-                feeRecipient,   // The priority fee is sent to this address
-                this            // The contract to call at execution
-            ],[
-                priorityFee,    // A fee that goes to the fee recipient
-                callBounty,     // The bounty for the account that triggers this alarm
-                eacOptions[0],  // claimWindowSize
-                eacOptions[1],  // freezePeriod
-                eacOptions[2],  // reservedWindowSize
-                eacOptions[3],  // 2 = Use timestamp based scheduling instead of blocks
-                eacOptions[4],  // The size of the execution window
-                eacOptions[5],  // The start of the execution window
-                eacOptions[6],  // The amount of gas to be sent with the transaction
-                eacOptions[7],  // The amount of ether to be sent
-                eacOptions[8],  // The minimum gas price for the alarm when called
-                eacOptions[9]   // The required ether the caller must deposit
-            ],
-            ""                  // The data used when the alarm is triggered
+        address[3] memory addressOptions = [
+        //  this,           // In the future, I'd like the owner address to equal this contract and keep the wallet as the change address
+            wallet,         // Change from the alarm is sent to this address, also the account that can owns the alarm. 
+            priorityCaller, // The priority fee is sent to this address
+            this            // The contract to call at execution
+        ];
+
+        uint[12] memory uintOptions = [
+            priorityFee,    // A fee that goes to the fee recipient
+            callBounty,     // The bounty for the account that triggers this alarm
+            eacOptions[0],  // claimWindowSize
+            eacOptions[1],  // freezePeriod
+            eacOptions[2],  // reservedWindowSize
+            eacOptions[3],  // 2 = Use timestamp based scheduling instead of blocks
+            eacOptions[4],  // The size of the execution window
+            eacOptions[5],  // The start of the execution window
+            eacOptions[6],  // The amount of gas to be sent with the transaction
+            eacOptions[7],  // The amount of ether to be sent
+            eacOptions[8],  // The minimum gas price for the alarm when called
+            eacOptions[9]   // The required deposit by the claimer
+        ];
+
+        bool[6] memory params = eac.validateRequestParams(
+            addressOptions,
+            uintOptions,
+            endowment
         );
+
+        if(params[0] && params[1] && params[2] && params[3] && params[4] && params[5]){
+            alarm = eac.createValidatedRequest.value(endowment)(addressOptions, uintOptions, "");
+            emit ValidRequest_event(msg.sender, alarm);
+        } else {
+            emit InvalidRequest_event(params);
+        }
     }
     
+    event Deposit_event (address indexed sender, uint amount);
+    event ValidRequest_event (address sender, address alarm);
+    event InvalidRequest_event (bool[6] params);
 }
