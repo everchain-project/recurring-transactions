@@ -1,0 +1,3174 @@
+{
+  "contractName": "DelegatedWalletManager",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "listFactory",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "wallets",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "walletFactory",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_listFactory",
+          "type": "address"
+        },
+        {
+          "name": "_walletFactory",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "factory",
+          "type": "address"
+        },
+        {
+          "name": "delegateList",
+          "type": "address[]"
+        }
+      ],
+      "name": "createWallet",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "wallet",
+          "type": "address"
+        }
+      ],
+      "name": "addWallet",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "wallet",
+          "type": "address"
+        }
+      ],
+      "name": "removeWallet",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b50604051604080610d648339810180604052810190808051906020019092919080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555081600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505050610c54806101106000396000f30060806040526004361061008e576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631a244e7c146100935780633a4cba161461013157806389b08f11146101885780638da5cb5b1461020b578063a75fe8e114610262578063c5c03699146102bd578063efeb5f1f14610314578063f2fde38b1461036f575b600080fd5b34801561009f57600080fd5b50610117600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001908201803590602001908080602002602001604051908101604052809392919081815260200183836020028082843782019150505050505091929192905050506103b2565b604051808215151515815260200191505060405180910390f35b34801561013d57600080fd5b5061014661086a565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561019457600080fd5b506101c9600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610890565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561021757600080fd5b506102206108c3565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561026e57600080fd5b506102a3600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506108e8565b604051808215151515815260200191505060405180910390f35b3480156102c957600080fd5b506102d2610a26565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561032057600080fd5b50610355600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610a4c565b604051808215151515815260200191505060405180910390f35b34801561037b57600080fd5b506103b0600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610b8a565b005b6000606060008073ffffffffffffffffffffffffffffffffffffffff16600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16141561060a57600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16633d5291a230846040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200180602001828103825283818151815260200191508051906020019060200280838360005b8381101561052b578082015181840152602081019050610510565b505050509050019350505050602060405180830381600087803b15801561055157600080fd5b505af1158015610565573d6000803e3d6000fd5b505050506040513d602081101561057b57600080fd5b8101908080519060200190929190505050600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505b8473ffffffffffffffffffffffffffffffffffffffff16631a244e7c33866040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200180602001828103825283818151815260200191508051906020019060200280838360005b838110156106c85780820151818401526020810190506106ad565b505050509050019350505050602060405180830381600087803b1580156106ee57600080fd5b505af1158015610702573d6000803e3d6000fd5b505050506040513d602081101561071857600080fd5b81019080805190602001909291905050509050600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16630a3b0a4f826040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b15801561082557600080fd5b505af1158015610839573d6000803e3d6000fd5b505050506040513d602081101561084f57600080fd5b81019080805190602001909291905050509250505092915050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60036020528060005260406000206000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166329092d0e836040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b1580156109e457600080fd5b505af11580156109f8573d6000803e3d6000fd5b505050506040513d6020811015610a0e57600080fd5b81019080805190602001909291905050509050919050565b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16630a3b0a4f836040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b158015610b4857600080fd5b505af1158015610b5c573d6000803e3d6000fd5b505050506040513d6020811015610b7257600080fd5b81019080805190602001909291905050509050919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610be557600080fd5b806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820f3613dfd4144050445c4f9eb6ebba514f5d5fd9bb265b41c74fd941397934eca0029",
+  "deployedBytecode": "0x60806040526004361061008e576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631a244e7c146100935780633a4cba161461013157806389b08f11146101885780638da5cb5b1461020b578063a75fe8e114610262578063c5c03699146102bd578063efeb5f1f14610314578063f2fde38b1461036f575b600080fd5b34801561009f57600080fd5b50610117600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001908201803590602001908080602002602001604051908101604052809392919081815260200183836020028082843782019150505050505091929192905050506103b2565b604051808215151515815260200191505060405180910390f35b34801561013d57600080fd5b5061014661086a565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561019457600080fd5b506101c9600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610890565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561021757600080fd5b506102206108c3565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561026e57600080fd5b506102a3600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506108e8565b604051808215151515815260200191505060405180910390f35b3480156102c957600080fd5b506102d2610a26565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561032057600080fd5b50610355600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610a4c565b604051808215151515815260200191505060405180910390f35b34801561037b57600080fd5b506103b0600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610b8a565b005b6000606060008073ffffffffffffffffffffffffffffffffffffffff16600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16141561060a57600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16633d5291a230846040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200180602001828103825283818151815260200191508051906020019060200280838360005b8381101561052b578082015181840152602081019050610510565b505050509050019350505050602060405180830381600087803b15801561055157600080fd5b505af1158015610565573d6000803e3d6000fd5b505050506040513d602081101561057b57600080fd5b8101908080519060200190929190505050600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505b8473ffffffffffffffffffffffffffffffffffffffff16631a244e7c33866040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200180602001828103825283818151815260200191508051906020019060200280838360005b838110156106c85780820151818401526020810190506106ad565b505050509050019350505050602060405180830381600087803b1580156106ee57600080fd5b505af1158015610702573d6000803e3d6000fd5b505050506040513d602081101561071857600080fd5b81019080805190602001909291905050509050600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16630a3b0a4f826040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b15801561082557600080fd5b505af1158015610839573d6000803e3d6000fd5b505050506040513d602081101561084f57600080fd5b81019080805190602001909291905050509250505092915050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60036020528060005260406000206000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166329092d0e836040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b1580156109e457600080fd5b505af11580156109f8573d6000803e3d6000fd5b505050506040513d6020811015610a0e57600080fd5b81019080805190602001909291905050509050919050565b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000600360003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16630a3b0a4f836040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b158015610b4857600080fd5b505af1158015610b5c573d6000803e3d6000fd5b505050506040513d6020811015610b7257600080fd5b81019080805190602001909291905050509050919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610be557600080fd5b806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820f3613dfd4144050445c4f9eb6ebba514f5d5fd9bb265b41c74fd941397934eca0029",
+  "sourceMap": "118:1129:8:-;;;324:203;8:9:-1;5:2;;;30:1;27;20:12;5:2;324:203:8;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;119:10:15;111:5;;:18;;;;;;;;;;;;;;;;;;466:12:8;452:11;;:26;;;;;;;;;;;;;;;;;;505:14;489:13;;:30;;;;;;;;;;;;;;;;;;324:203;;118:1129;;;;;;",
+  "deployedSourceMap": "118:1129:8:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;535:419;;8:9:-1;5:2;;;30:1;27;20:12;5:2;535:419:8;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;172:37;;8:9:-1;5:2;;;30:1;27;20:12;5:2;172:37:8;;;;;;;;;;;;;;;;;;;;;;;;;;;268:47;;8:9:-1;5:2;;;30:1;27;20:12;5:2;268:47:8;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;50:20:15;;8:9:-1;5:2;;;30:1;27;20:12;5:2;50:20:15;;;;;;;;;;;;;;;;;;;;;;;;;;;1101:137:8;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1101:137:8;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;216:43;;8:9:-1;5:2;;;30:1;27;20:12;5:2;216:43:8;;;;;;;;;;;;;;;;;;;;;;;;;;;962:131;;8:9:-1;5:2;;;30:1;27;20:12;5:2;962:131:8;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;149:100:15;;8:9:-1;5:2;;;30:1;27;20:12;5:2;149:100:15;;;;;;;;;;;;;;;;;;;;;;;;;;;;535:419:8;630:12;655:26;826:22;726:3;695:35;;:7;:19;703:10;695:19;;;;;;;;;;;;;;;;;;;;;;;;;:35;;;692:121;;;767:11;;;;;;;;;;;:29;;;797:4;803:9;767:46;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;767:46:8;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;767:46:8;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;767:46:8;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;767:46:8;;;;;;;;;;;;;;;;745:7;:19;753:10;745:19;;;;;;;;;;;;;;;;:68;;;;;;;;;;;;;;;;;;692:121;851:7;:20;;;872:10;884:12;851:46;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;851:46:8;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;851:46:8;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;851:46:8;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;851:46:8;;;;;;;;;;;;;;;;826:71;;915:7;:19;923:10;915:19;;;;;;;;;;;;;;;;;;;;;;;;;:23;;;939:6;915:31;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;915:31:8;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;915:31:8;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;915:31:8;;;;;;;;;;;;;;;;908:38;;535:419;;;;;;:::o;172:37::-;;;;;;;;;;;;;:::o;268:47::-;;;;;;;;;;;;;;;;;;;;;;:::o;50:20:15:-;;;;;;;;;;;;;:::o;1101:137:8:-;1164:12;1196:7;:19;1204:10;1196:19;;;;;;;;;;;;;;;;;;;;;;;;;:26;;;1223:6;1196:34;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1196:34:8;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1196:34:8;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1196:34:8;;;;;;;;;;;;;;;;1189:41;;1101:137;;;:::o;216:43::-;;;;;;;;;;;;;:::o;962:131::-;1022:12;1054:7;:19;1062:10;1054:19;;;;;;;;;;;;;;;;;;;;;;;;;:23;;;1078:6;1054:31;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1054:31:8;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1054:31:8;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1054:31:8;;;;;;;;;;;;;;;;1047:38;;962:131;;;:::o;149:100:15:-;315:5;;;;;;;;;;;301:19;;:10;:19;;;293:28;;;;;;;;232:9;224:5;;:17;;;;;;;;;;;;;;;;;;149:100;:::o",
+  "source": "pragma solidity ^0.4.23;\r\n\r\nimport \"../../utility/AddressListFactory.sol\";\r\nimport \"./DelegatedWalletFactory.sol\";\r\n\r\ncontract DelegatedWalletManager is Owned {\r\n    \r\n    AddressListFactory public listFactory;\r\n    DelegatedWalletFactory public walletFactory;\r\n\r\n    mapping (address => AddressList) public wallets;\r\n\r\n    constructor (\r\n        AddressListFactory _listFactory,\r\n        DelegatedWalletFactory _walletFactory\r\n    ) public {\r\n        listFactory = _listFactory;\r\n        walletFactory = _walletFactory;\r\n    }\r\n\r\n    function createWallet (DelegatedWalletFactory factory, address[] delegateList) public returns (bool success) {\r\n        address[] memory emptyList;\r\n        if(wallets[msg.sender] == address(0x0))\r\n            wallets[msg.sender] = listFactory.createAddressList(this, emptyList);\r\n\r\n        DelegatedWallet wallet = factory.createWallet(msg.sender, delegateList);\r\n        return wallets[msg.sender].add(wallet);\r\n    }\r\n\r\n    function addWallet (DelegatedWallet wallet) public returns (bool success) {\r\n        return wallets[msg.sender].add(wallet);\r\n    }\r\n\r\n    function removeWallet (DelegatedWallet wallet) public returns (bool success) {\r\n        return wallets[msg.sender].remove(wallet);\r\n    }\r\n    \r\n}\r\n",
+  "sourcePath": "C:\\Users\\My\\Documents\\GitHub\\everchain-project\\recurring-alarm-clock\\contracts\\examples\\delegated-wallet\\DelegatedWalletManager.sol",
+  "ast": {
+    "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/examples/delegated-wallet/DelegatedWalletManager.sol",
+    "exportedSymbols": {
+      "DelegatedWalletManager": [
+        1319
+      ]
+    },
+    "id": 1320,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1205,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:8"
+      },
+      {
+        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/utility/AddressListFactory.sol",
+        "file": "../../utility/AddressListFactory.sol",
+        "id": 1206,
+        "nodeType": "ImportDirective",
+        "scope": 1320,
+        "sourceUnit": 3716,
+        "src": "28:46:8",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/examples/delegated-wallet/DelegatedWalletFactory.sol",
+        "file": "./DelegatedWalletFactory.sol",
+        "id": 1207,
+        "nodeType": "ImportDirective",
+        "scope": 1320,
+        "sourceUnit": 1204,
+        "src": "76:38:8",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 1208,
+              "name": "Owned",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3086,
+              "src": "153:5:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Owned_$3086",
+                "typeString": "contract Owned"
+              }
+            },
+            "id": 1209,
+            "nodeType": "InheritanceSpecifier",
+            "src": "153:5:8"
+          }
+        ],
+        "contractDependencies": [
+          3086
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1319,
+        "linearizedBaseContracts": [
+          1319,
+          3086
+        ],
+        "name": "DelegatedWalletManager",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 1211,
+            "name": "listFactory",
+            "nodeType": "VariableDeclaration",
+            "scope": 1319,
+            "src": "172:37:8",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+              "typeString": "contract AddressListFactory"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1210,
+              "name": "AddressListFactory",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3715,
+              "src": "172:18:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+                "typeString": "contract AddressListFactory"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 1213,
+            "name": "walletFactory",
+            "nodeType": "VariableDeclaration",
+            "scope": 1319,
+            "src": "216:43:8",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+              "typeString": "contract DelegatedWalletFactory"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1212,
+              "name": "DelegatedWalletFactory",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1203,
+              "src": "216:22:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                "typeString": "contract DelegatedWalletFactory"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 1217,
+            "name": "wallets",
+            "nodeType": "VariableDeclaration",
+            "scope": 1319,
+            "src": "268:47:8",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_contract$_AddressList_$3653_$",
+              "typeString": "mapping(address => contract AddressList)"
+            },
+            "typeName": {
+              "id": 1216,
+              "keyType": {
+                "id": 1214,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "277:7:8",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "268:32:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_contract$_AddressList_$3653_$",
+                "typeString": "mapping(address => contract AddressList)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 1215,
+                "name": "AddressList",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 3653,
+                "src": "288:11:8",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_AddressList_$3653",
+                  "typeString": "contract AddressList"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1232,
+              "nodeType": "Block",
+              "src": "441:86:8",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1226,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1224,
+                      "name": "listFactory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1211,
+                      "src": "452:11:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+                        "typeString": "contract AddressListFactory"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1225,
+                      "name": "_listFactory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1219,
+                      "src": "466:12:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+                        "typeString": "contract AddressListFactory"
+                      }
+                    },
+                    "src": "452:26:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+                      "typeString": "contract AddressListFactory"
+                    }
+                  },
+                  "id": 1227,
+                  "nodeType": "ExpressionStatement",
+                  "src": "452:26:8"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1230,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1228,
+                      "name": "walletFactory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1213,
+                      "src": "489:13:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                        "typeString": "contract DelegatedWalletFactory"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1229,
+                      "name": "_walletFactory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1221,
+                      "src": "505:14:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                        "typeString": "contract DelegatedWalletFactory"
+                      }
+                    },
+                    "src": "489:30:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                      "typeString": "contract DelegatedWalletFactory"
+                    }
+                  },
+                  "id": 1231,
+                  "nodeType": "ExpressionStatement",
+                  "src": "489:30:8"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1233,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1222,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1219,
+                  "name": "_listFactory",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1233,
+                  "src": "347:31:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+                    "typeString": "contract AddressListFactory"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1218,
+                    "name": "AddressListFactory",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 3715,
+                    "src": "347:18:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+                      "typeString": "contract AddressListFactory"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1221,
+                  "name": "_walletFactory",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1233,
+                  "src": "389:37:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                    "typeString": "contract DelegatedWalletFactory"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1220,
+                    "name": "DelegatedWalletFactory",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1203,
+                    "src": "389:22:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                      "typeString": "contract DelegatedWalletFactory"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "336:97:8"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1223,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "441:0:8"
+            },
+            "scope": 1319,
+            "src": "324:203:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1285,
+              "nodeType": "Block",
+              "src": "644:310:8",
+              "statements": [
+                {
+                  "assignments": [],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1246,
+                      "name": "emptyList",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1286,
+                      "src": "655:26:8",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                        "typeString": "address[]"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "id": 1244,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "655:7:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "id": 1245,
+                        "length": null,
+                        "nodeType": "ArrayTypeName",
+                        "src": "655:9:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                          "typeString": "address[]"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1247,
+                  "initialValue": null,
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "655:26:8"
+                },
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "id": 1255,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 1248,
+                        "name": "wallets",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1217,
+                        "src": "695:7:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_contract$_AddressList_$3653_$",
+                          "typeString": "mapping(address => contract AddressList)"
+                        }
+                      },
+                      "id": 1251,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1249,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3897,
+                          "src": "703:3:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 1250,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "703:10:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "695:19:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AddressList_$3653",
+                        "typeString": "contract AddressList"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "307830",
+                          "id": 1253,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "726:3:8",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0x0"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          }
+                        ],
+                        "id": 1252,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "718:7:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": "address"
+                      },
+                      "id": 1254,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "718:12:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "695:35:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 1267,
+                  "nodeType": "IfStatement",
+                  "src": "692:121:8",
+                  "trueBody": {
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 1265,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftHandSide": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1256,
+                          "name": "wallets",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1217,
+                          "src": "745:7:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_contract$_AddressList_$3653_$",
+                            "typeString": "mapping(address => contract AddressList)"
+                          }
+                        },
+                        "id": 1259,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1257,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3897,
+                            "src": "753:3:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 1258,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "753:10:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": true,
+                        "nodeType": "IndexAccess",
+                        "src": "745:19:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_AddressList_$3653",
+                          "typeString": "contract AddressList"
+                        }
+                      },
+                      "nodeType": "Assignment",
+                      "operator": "=",
+                      "rightHandSide": {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 1262,
+                            "name": "this",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3960,
+                            "src": "797:4:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_DelegatedWalletManager_$1319",
+                              "typeString": "contract DelegatedWalletManager"
+                            }
+                          },
+                          {
+                            "argumentTypes": null,
+                            "id": 1263,
+                            "name": "emptyList",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1246,
+                            "src": "803:9:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                              "typeString": "address[] memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_DelegatedWalletManager_$1319",
+                              "typeString": "contract DelegatedWalletManager"
+                            },
+                            {
+                              "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                              "typeString": "address[] memory"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1260,
+                            "name": "listFactory",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1211,
+                            "src": "767:11:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+                              "typeString": "contract AddressListFactory"
+                            }
+                          },
+                          "id": 1261,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "createAddressList",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 3706,
+                          "src": "767:29:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_array$_t_address_$dyn_memory_ptr_$returns$_t_contract$_AddressList_$3653_$",
+                            "typeString": "function (address,address[] memory) external returns (contract AddressList)"
+                          }
+                        },
+                        "id": 1264,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "767:46:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_AddressList_$3653",
+                          "typeString": "contract AddressList"
+                        }
+                      },
+                      "src": "745:68:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AddressList_$3653",
+                        "typeString": "contract AddressList"
+                      }
+                    },
+                    "id": 1266,
+                    "nodeType": "ExpressionStatement",
+                    "src": "745:68:8"
+                  }
+                },
+                {
+                  "assignments": [
+                    1269
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1269,
+                      "name": "wallet",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1286,
+                      "src": "826:22:8",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                        "typeString": "contract DelegatedWallet"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 1268,
+                        "name": "DelegatedWallet",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 1100,
+                        "src": "826:15:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                          "typeString": "contract DelegatedWallet"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1276,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1272,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3897,
+                          "src": "872:3:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 1273,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "872:10:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 1274,
+                        "name": "delegateList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1238,
+                        "src": "884:12:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                          "typeString": "address[] memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                          "typeString": "address[] memory"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1270,
+                        "name": "factory",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1235,
+                        "src": "851:7:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                          "typeString": "contract DelegatedWalletFactory"
+                        }
+                      },
+                      "id": 1271,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "createWallet",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1194,
+                      "src": "851:20:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_array$_t_address_$dyn_memory_ptr_$returns$_t_contract$_DelegatedWallet_$1100_$",
+                        "typeString": "function (address,address[] memory) external returns (contract DelegatedWallet)"
+                      }
+                    },
+                    "id": 1275,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "851:46:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                      "typeString": "contract DelegatedWallet"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "826:71:8"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1282,
+                        "name": "wallet",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1269,
+                        "src": "939:6:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                          "typeString": "contract DelegatedWallet"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                          "typeString": "contract DelegatedWallet"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1277,
+                          "name": "wallets",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1217,
+                          "src": "915:7:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_contract$_AddressList_$3653_$",
+                            "typeString": "mapping(address => contract AddressList)"
+                          }
+                        },
+                        "id": 1280,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1278,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3897,
+                            "src": "923:3:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 1279,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "923:10:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "915:19:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_AddressList_$3653",
+                          "typeString": "contract AddressList"
+                        }
+                      },
+                      "id": 1281,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "add",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3637,
+                      "src": "915:23:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
+                        "typeString": "function (address) external returns (bool)"
+                      }
+                    },
+                    "id": 1283,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "915:31:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 1242,
+                  "id": 1284,
+                  "nodeType": "Return",
+                  "src": "908:38:8"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1286,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "createWallet",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1239,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1235,
+                  "name": "factory",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1286,
+                  "src": "558:30:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                    "typeString": "contract DelegatedWalletFactory"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1234,
+                    "name": "DelegatedWalletFactory",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1203,
+                    "src": "558:22:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                      "typeString": "contract DelegatedWalletFactory"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1238,
+                  "name": "delegateList",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1286,
+                  "src": "590:22:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 1236,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "590:7:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 1237,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "590:9:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "557:56:8"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1242,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1241,
+                  "name": "success",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1286,
+                  "src": "630:12:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1240,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "630:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "629:14:8"
+            },
+            "scope": 1319,
+            "src": "535:419:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1301,
+              "nodeType": "Block",
+              "src": "1036:57:8",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1298,
+                        "name": "wallet",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1288,
+                        "src": "1078:6:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                          "typeString": "contract DelegatedWallet"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                          "typeString": "contract DelegatedWallet"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1293,
+                          "name": "wallets",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1217,
+                          "src": "1054:7:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_contract$_AddressList_$3653_$",
+                            "typeString": "mapping(address => contract AddressList)"
+                          }
+                        },
+                        "id": 1296,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1294,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3897,
+                            "src": "1062:3:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 1295,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1062:10:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1054:19:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_AddressList_$3653",
+                          "typeString": "contract AddressList"
+                        }
+                      },
+                      "id": 1297,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "add",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3637,
+                      "src": "1054:23:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
+                        "typeString": "function (address) external returns (bool)"
+                      }
+                    },
+                    "id": 1299,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1054:31:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 1292,
+                  "id": 1300,
+                  "nodeType": "Return",
+                  "src": "1047:38:8"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1302,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "addWallet",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1289,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1288,
+                  "name": "wallet",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1302,
+                  "src": "982:22:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                    "typeString": "contract DelegatedWallet"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1287,
+                    "name": "DelegatedWallet",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1100,
+                    "src": "982:15:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                      "typeString": "contract DelegatedWallet"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "981:24:8"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1292,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1291,
+                  "name": "success",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1302,
+                  "src": "1022:12:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1290,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1022:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1021:14:8"
+            },
+            "scope": 1319,
+            "src": "962:131:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1317,
+              "nodeType": "Block",
+              "src": "1178:60:8",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1314,
+                        "name": "wallet",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1304,
+                        "src": "1223:6:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                          "typeString": "contract DelegatedWallet"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                          "typeString": "contract DelegatedWallet"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1309,
+                          "name": "wallets",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1217,
+                          "src": "1196:7:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_contract$_AddressList_$3653_$",
+                            "typeString": "mapping(address => contract AddressList)"
+                          }
+                        },
+                        "id": 1312,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1310,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3897,
+                            "src": "1204:3:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 1311,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1204:10:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1196:19:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_AddressList_$3653",
+                          "typeString": "contract AddressList"
+                        }
+                      },
+                      "id": 1313,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "remove",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3652,
+                      "src": "1196:26:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
+                        "typeString": "function (address) external returns (bool)"
+                      }
+                    },
+                    "id": 1315,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1196:34:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 1308,
+                  "id": 1316,
+                  "nodeType": "Return",
+                  "src": "1189:41:8"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1318,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "removeWallet",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1305,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1304,
+                  "name": "wallet",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1318,
+                  "src": "1124:22:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                    "typeString": "contract DelegatedWallet"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1303,
+                    "name": "DelegatedWallet",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1100,
+                    "src": "1124:15:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                      "typeString": "contract DelegatedWallet"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1123:24:8"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1308,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1307,
+                  "name": "success",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1318,
+                  "src": "1164:12:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1306,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1164:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1163:14:8"
+            },
+            "scope": 1319,
+            "src": "1101:137:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1320,
+        "src": "118:1129:8"
+      }
+    ],
+    "src": "0:1249:8"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/examples/delegated-wallet/DelegatedWalletManager.sol",
+    "exportedSymbols": {
+      "DelegatedWalletManager": [
+        1319
+      ]
+    },
+    "id": 1320,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1205,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:8"
+      },
+      {
+        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/utility/AddressListFactory.sol",
+        "file": "../../utility/AddressListFactory.sol",
+        "id": 1206,
+        "nodeType": "ImportDirective",
+        "scope": 1320,
+        "sourceUnit": 3716,
+        "src": "28:46:8",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/examples/delegated-wallet/DelegatedWalletFactory.sol",
+        "file": "./DelegatedWalletFactory.sol",
+        "id": 1207,
+        "nodeType": "ImportDirective",
+        "scope": 1320,
+        "sourceUnit": 1204,
+        "src": "76:38:8",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 1208,
+              "name": "Owned",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3086,
+              "src": "153:5:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Owned_$3086",
+                "typeString": "contract Owned"
+              }
+            },
+            "id": 1209,
+            "nodeType": "InheritanceSpecifier",
+            "src": "153:5:8"
+          }
+        ],
+        "contractDependencies": [
+          3086
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1319,
+        "linearizedBaseContracts": [
+          1319,
+          3086
+        ],
+        "name": "DelegatedWalletManager",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 1211,
+            "name": "listFactory",
+            "nodeType": "VariableDeclaration",
+            "scope": 1319,
+            "src": "172:37:8",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+              "typeString": "contract AddressListFactory"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1210,
+              "name": "AddressListFactory",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3715,
+              "src": "172:18:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+                "typeString": "contract AddressListFactory"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 1213,
+            "name": "walletFactory",
+            "nodeType": "VariableDeclaration",
+            "scope": 1319,
+            "src": "216:43:8",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+              "typeString": "contract DelegatedWalletFactory"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1212,
+              "name": "DelegatedWalletFactory",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1203,
+              "src": "216:22:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                "typeString": "contract DelegatedWalletFactory"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 1217,
+            "name": "wallets",
+            "nodeType": "VariableDeclaration",
+            "scope": 1319,
+            "src": "268:47:8",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_contract$_AddressList_$3653_$",
+              "typeString": "mapping(address => contract AddressList)"
+            },
+            "typeName": {
+              "id": 1216,
+              "keyType": {
+                "id": 1214,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "277:7:8",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "268:32:8",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_contract$_AddressList_$3653_$",
+                "typeString": "mapping(address => contract AddressList)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 1215,
+                "name": "AddressList",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 3653,
+                "src": "288:11:8",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_AddressList_$3653",
+                  "typeString": "contract AddressList"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1232,
+              "nodeType": "Block",
+              "src": "441:86:8",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1226,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1224,
+                      "name": "listFactory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1211,
+                      "src": "452:11:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+                        "typeString": "contract AddressListFactory"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1225,
+                      "name": "_listFactory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1219,
+                      "src": "466:12:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+                        "typeString": "contract AddressListFactory"
+                      }
+                    },
+                    "src": "452:26:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+                      "typeString": "contract AddressListFactory"
+                    }
+                  },
+                  "id": 1227,
+                  "nodeType": "ExpressionStatement",
+                  "src": "452:26:8"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 1230,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 1228,
+                      "name": "walletFactory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1213,
+                      "src": "489:13:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                        "typeString": "contract DelegatedWalletFactory"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 1229,
+                      "name": "_walletFactory",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1221,
+                      "src": "505:14:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                        "typeString": "contract DelegatedWalletFactory"
+                      }
+                    },
+                    "src": "489:30:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                      "typeString": "contract DelegatedWalletFactory"
+                    }
+                  },
+                  "id": 1231,
+                  "nodeType": "ExpressionStatement",
+                  "src": "489:30:8"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1233,
+            "implemented": true,
+            "isConstructor": true,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1222,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1219,
+                  "name": "_listFactory",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1233,
+                  "src": "347:31:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+                    "typeString": "contract AddressListFactory"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1218,
+                    "name": "AddressListFactory",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 3715,
+                    "src": "347:18:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+                      "typeString": "contract AddressListFactory"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1221,
+                  "name": "_walletFactory",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1233,
+                  "src": "389:37:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                    "typeString": "contract DelegatedWalletFactory"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1220,
+                    "name": "DelegatedWalletFactory",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1203,
+                    "src": "389:22:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                      "typeString": "contract DelegatedWalletFactory"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "336:97:8"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1223,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "441:0:8"
+            },
+            "scope": 1319,
+            "src": "324:203:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1285,
+              "nodeType": "Block",
+              "src": "644:310:8",
+              "statements": [
+                {
+                  "assignments": [],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1246,
+                      "name": "emptyList",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1286,
+                      "src": "655:26:8",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                        "typeString": "address[]"
+                      },
+                      "typeName": {
+                        "baseType": {
+                          "id": 1244,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "655:7:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "id": 1245,
+                        "length": null,
+                        "nodeType": "ArrayTypeName",
+                        "src": "655:9:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                          "typeString": "address[]"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1247,
+                  "initialValue": null,
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "655:26:8"
+                },
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "id": 1255,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 1248,
+                        "name": "wallets",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1217,
+                        "src": "695:7:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_contract$_AddressList_$3653_$",
+                          "typeString": "mapping(address => contract AddressList)"
+                        }
+                      },
+                      "id": 1251,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1249,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3897,
+                          "src": "703:3:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 1250,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "703:10:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "695:19:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AddressList_$3653",
+                        "typeString": "contract AddressList"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "307830",
+                          "id": 1253,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "726:3:8",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0x0"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          }
+                        ],
+                        "id": 1252,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "718:7:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": "address"
+                      },
+                      "id": 1254,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "718:12:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "695:35:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 1267,
+                  "nodeType": "IfStatement",
+                  "src": "692:121:8",
+                  "trueBody": {
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 1265,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftHandSide": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1256,
+                          "name": "wallets",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1217,
+                          "src": "745:7:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_contract$_AddressList_$3653_$",
+                            "typeString": "mapping(address => contract AddressList)"
+                          }
+                        },
+                        "id": 1259,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1257,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3897,
+                            "src": "753:3:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 1258,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "753:10:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": true,
+                        "nodeType": "IndexAccess",
+                        "src": "745:19:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_AddressList_$3653",
+                          "typeString": "contract AddressList"
+                        }
+                      },
+                      "nodeType": "Assignment",
+                      "operator": "=",
+                      "rightHandSide": {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 1262,
+                            "name": "this",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3960,
+                            "src": "797:4:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_DelegatedWalletManager_$1319",
+                              "typeString": "contract DelegatedWalletManager"
+                            }
+                          },
+                          {
+                            "argumentTypes": null,
+                            "id": 1263,
+                            "name": "emptyList",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1246,
+                            "src": "803:9:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                              "typeString": "address[] memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_DelegatedWalletManager_$1319",
+                              "typeString": "contract DelegatedWalletManager"
+                            },
+                            {
+                              "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                              "typeString": "address[] memory"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1260,
+                            "name": "listFactory",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1211,
+                            "src": "767:11:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_AddressListFactory_$3715",
+                              "typeString": "contract AddressListFactory"
+                            }
+                          },
+                          "id": 1261,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "createAddressList",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 3706,
+                          "src": "767:29:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_array$_t_address_$dyn_memory_ptr_$returns$_t_contract$_AddressList_$3653_$",
+                            "typeString": "function (address,address[] memory) external returns (contract AddressList)"
+                          }
+                        },
+                        "id": 1264,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "767:46:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_AddressList_$3653",
+                          "typeString": "contract AddressList"
+                        }
+                      },
+                      "src": "745:68:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AddressList_$3653",
+                        "typeString": "contract AddressList"
+                      }
+                    },
+                    "id": 1266,
+                    "nodeType": "ExpressionStatement",
+                    "src": "745:68:8"
+                  }
+                },
+                {
+                  "assignments": [
+                    1269
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 1269,
+                      "name": "wallet",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 1286,
+                      "src": "826:22:8",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                        "typeString": "contract DelegatedWallet"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 1268,
+                        "name": "DelegatedWallet",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 1100,
+                        "src": "826:15:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                          "typeString": "contract DelegatedWallet"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 1276,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1272,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3897,
+                          "src": "872:3:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 1273,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "872:10:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 1274,
+                        "name": "delegateList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1238,
+                        "src": "884:12:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                          "typeString": "address[] memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                          "typeString": "address[] memory"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1270,
+                        "name": "factory",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1235,
+                        "src": "851:7:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                          "typeString": "contract DelegatedWalletFactory"
+                        }
+                      },
+                      "id": 1271,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "createWallet",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1194,
+                      "src": "851:20:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_array$_t_address_$dyn_memory_ptr_$returns$_t_contract$_DelegatedWallet_$1100_$",
+                        "typeString": "function (address,address[] memory) external returns (contract DelegatedWallet)"
+                      }
+                    },
+                    "id": 1275,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "851:46:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                      "typeString": "contract DelegatedWallet"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "826:71:8"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1282,
+                        "name": "wallet",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1269,
+                        "src": "939:6:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                          "typeString": "contract DelegatedWallet"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                          "typeString": "contract DelegatedWallet"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1277,
+                          "name": "wallets",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1217,
+                          "src": "915:7:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_contract$_AddressList_$3653_$",
+                            "typeString": "mapping(address => contract AddressList)"
+                          }
+                        },
+                        "id": 1280,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1278,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3897,
+                            "src": "923:3:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 1279,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "923:10:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "915:19:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_AddressList_$3653",
+                          "typeString": "contract AddressList"
+                        }
+                      },
+                      "id": 1281,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "add",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3637,
+                      "src": "915:23:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
+                        "typeString": "function (address) external returns (bool)"
+                      }
+                    },
+                    "id": 1283,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "915:31:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 1242,
+                  "id": 1284,
+                  "nodeType": "Return",
+                  "src": "908:38:8"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1286,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "createWallet",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1239,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1235,
+                  "name": "factory",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1286,
+                  "src": "558:30:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                    "typeString": "contract DelegatedWalletFactory"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1234,
+                    "name": "DelegatedWalletFactory",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1203,
+                    "src": "558:22:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_DelegatedWalletFactory_$1203",
+                      "typeString": "contract DelegatedWalletFactory"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1238,
+                  "name": "delegateList",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1286,
+                  "src": "590:22:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 1236,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "590:7:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 1237,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "590:9:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "557:56:8"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1242,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1241,
+                  "name": "success",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1286,
+                  "src": "630:12:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1240,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "630:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "629:14:8"
+            },
+            "scope": 1319,
+            "src": "535:419:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1301,
+              "nodeType": "Block",
+              "src": "1036:57:8",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1298,
+                        "name": "wallet",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1288,
+                        "src": "1078:6:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                          "typeString": "contract DelegatedWallet"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                          "typeString": "contract DelegatedWallet"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1293,
+                          "name": "wallets",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1217,
+                          "src": "1054:7:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_contract$_AddressList_$3653_$",
+                            "typeString": "mapping(address => contract AddressList)"
+                          }
+                        },
+                        "id": 1296,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1294,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3897,
+                            "src": "1062:3:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 1295,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1062:10:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1054:19:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_AddressList_$3653",
+                          "typeString": "contract AddressList"
+                        }
+                      },
+                      "id": 1297,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "add",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3637,
+                      "src": "1054:23:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
+                        "typeString": "function (address) external returns (bool)"
+                      }
+                    },
+                    "id": 1299,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1054:31:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 1292,
+                  "id": 1300,
+                  "nodeType": "Return",
+                  "src": "1047:38:8"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1302,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "addWallet",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1289,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1288,
+                  "name": "wallet",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1302,
+                  "src": "982:22:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                    "typeString": "contract DelegatedWallet"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1287,
+                    "name": "DelegatedWallet",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1100,
+                    "src": "982:15:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                      "typeString": "contract DelegatedWallet"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "981:24:8"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1292,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1291,
+                  "name": "success",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1302,
+                  "src": "1022:12:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1290,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1022:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1021:14:8"
+            },
+            "scope": 1319,
+            "src": "962:131:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1317,
+              "nodeType": "Block",
+              "src": "1178:60:8",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1314,
+                        "name": "wallet",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1304,
+                        "src": "1223:6:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                          "typeString": "contract DelegatedWallet"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                          "typeString": "contract DelegatedWallet"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 1309,
+                          "name": "wallets",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1217,
+                          "src": "1196:7:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_contract$_AddressList_$3653_$",
+                            "typeString": "mapping(address => contract AddressList)"
+                          }
+                        },
+                        "id": 1312,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 1310,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3897,
+                            "src": "1204:3:8",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 1311,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1204:10:8",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1196:19:8",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_AddressList_$3653",
+                          "typeString": "contract AddressList"
+                        }
+                      },
+                      "id": 1313,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "remove",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3652,
+                      "src": "1196:26:8",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
+                        "typeString": "function (address) external returns (bool)"
+                      }
+                    },
+                    "id": 1315,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1196:34:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 1308,
+                  "id": 1316,
+                  "nodeType": "Return",
+                  "src": "1189:41:8"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1318,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "removeWallet",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1305,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1304,
+                  "name": "wallet",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1318,
+                  "src": "1124:22:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                    "typeString": "contract DelegatedWallet"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 1303,
+                    "name": "DelegatedWallet",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1100,
+                    "src": "1124:15:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_DelegatedWallet_$1100",
+                      "typeString": "contract DelegatedWallet"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1123:24:8"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1308,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1307,
+                  "name": "success",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1318,
+                  "src": "1164:12:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1306,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1164:4:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1163:14:8"
+            },
+            "scope": 1319,
+            "src": "1101:137:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1320,
+        "src": "118:1129:8"
+      }
+    ],
+    "src": "0:1249:8"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {
+    "4447": {
+      "events": {},
+      "links": {},
+      "address": "0xb9b7e0cb2edf5ea031c8b297a5a1fa20379b6a0a",
+      "transactionHash": "0x71552d523b6e8901aaab91402503820e4f38e958263eb7cd10397d646484ddd9"
+    }
+  },
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-09-30T19:37:48.641Z"
+}
