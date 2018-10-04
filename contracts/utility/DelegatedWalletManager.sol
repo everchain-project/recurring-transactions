@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import "../../utility/AddressListFactory.sol";
+import "../utility/AddressListFactory.sol";
 import "./DelegatedWalletFactory.sol";
 
 contract DelegatedWalletManager is Owned {

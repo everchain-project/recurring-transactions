@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 
-import "./external/CloneFactory.sol";
-import "./RecurringAlarmClock.sol";
+import "../external/CloneFactory.sol";
+import "../RecurringAlarmClock.sol";
 
 contract RecurringAlarmClockFactory is CloneFactory {
 

@@ -1,25 +1,21 @@
 pragma solidity ^0.4.23;
 
-import "../../external/Owned.sol";
-import "../../Interfaces.sol";
-import "../../RecurringAlarmClockWizard.sol";
+import "../external/Owned.sol";
+import "../Interfaces.sol";
+import "../utility/RecurringAlarmClockScheduler.sol";
 import "./RecurringPayment.sol";
 
 contract RecurringPaymentFactory is Owned, CloneFactory {
 
-    RecurringAlarmClockWizard public wizard;
+    RecurringAlarmClockScheduler public scheduler;
     RecurringPayment public blueprint;
 
-    uint public gas;
-
     constructor (
-        RecurringAlarmClockWizard _wizard,
-        RecurringPayment _blueprint,
-        uint _initialGas
+        RecurringAlarmClockScheduler _scheduler,
+        RecurringPayment _blueprint
     ) public {
-        wizard = _wizard;
+        scheduler = _scheduler;
         blueprint = _blueprint;
-        gas = _initialGas;
     }
 
     function createRecurringPayment (
@@ -30,12 +26,13 @@ contract RecurringPaymentFactory is Owned, CloneFactory {
         uint paymentAmount,
         uint startTimestamp,
         uint totalPayments,
-        uint period
+        uint period,
+        uint gas
     ) public returns (RecurringPayment paymentTask) {
         require(wallet.isDelegate(delegate), "future payment delegate is not a delegate for the provided wallet");
         require(wallet.isDelegate(msg.sender), "msg.sender is not a delegate for the provided wallet");
         
-        RecurringAlarmClock alarmClock = wizard.createRecurringAlarmClock(
+        RecurringAlarmClock alarmClock = scheduler.createRecurringAlarmClock(
             delegate,       
             wallet,         
             startTimestamp,
@@ -60,10 +57,6 @@ contract RecurringPaymentFactory is Owned, CloneFactory {
         alarmClock.start(paymentTask);
 
         emit CreatePayment_event(msg.sender, delegate, paymentTask);
-    }
-
-    function setGas (uint newGas) public onlyOwner {
-        gas = newGas;
     }
 
     event CreatePayment_event (

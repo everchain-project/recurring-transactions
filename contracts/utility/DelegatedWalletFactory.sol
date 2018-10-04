@@ -1,8 +1,8 @@
 pragma solidity ^0.4.23;
 
-import "../../external/CloneFactory.sol";
-import "../../utility/AddressListFactory.sol";
-import "./DelegatedWallet.sol";
+import "../external/CloneFactory.sol";
+import "../utility/AddressListFactory.sol";
+import "../DelegatedWallet.sol";
 
 contract DelegatedWalletFactory is CloneFactory {
     

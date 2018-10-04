@@ -1,9 +1,9 @@
 pragma solidity ^0.4.23;
 
-import "../../external/Owned.sol";
-import "../../external/ERC20.sol";
-import "../../utility/AddressList.sol";
-import "../../Interfaces.sol";
+import "./external/Owned.sol";
+import "./external/ERC20.sol";
+import "./utility/AddressList.sol";
+import "./Interfaces.sol";
 
 contract DelegatedWallet is Owned, IDelegated, ITokenSender, ITokenReceiver {
 

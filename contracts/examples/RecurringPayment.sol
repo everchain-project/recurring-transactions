@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import "../../Interfaces.sol";
+import "../Interfaces.sol";
 
 contract RecurringPayment is IFuturePayment, ITask {
     
