@@ -18,23 +18,26 @@ contract IDelegatedWallet is IDelegated, ITokenSender, ITokenReceiver {
 
 contract IFuturePayment {
     IFuturePaymentDelegate public delegate;
+    IDelegatedWallet public wallet;
+    address public recipient;
+    address public token;
     function amount () public view returns (uint);
     function cancel () public;
 }
 
 contract IFuturePaymentDelegate is ITokenSender {
-    function schedule (IFuturePayment payment, IDelegatedWallet wallet) public returns (bool);
+    function schedule (IFuturePayment payment) public returns (bool);
     function unschedule (IFuturePayment payment) public returns (bool);
     function unschedule() public returns (bool);
 }
 
 // The recurring alarm clock can easily be updated to perform any customized
 // task and does not have to follow this particular interface
-contract ITask {
-    function execute(uint, uint) public returns (bool success);
+contract IRecurringTask {
+    function execute(uint currentInterval, uint maxIntervals) public returns (bool success);
     function cancel() public;
 }
 
 contract IRecurringAlarmClock is IFuturePayment {
-    ITask public task;
+    IRecurringTask public task;
 }

@@ -2,7 +2,7 @@ pragma solidity ^0.4.23;
 
 import "../Interfaces.sol";
 
-contract RecurringPayment is IFuturePayment, ITask {
+contract RecurringPayment is IFuturePayment, IRecurringTask {
     
     uint public blockCreated;
 

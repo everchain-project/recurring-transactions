@@ -2,21 +2,24 @@ pragma solidity ^0.4.23;
 
 import "../external/Owned.sol";
 import "../Interfaces.sol";
+import "../utility/AddressListFactory.sol";
 import "../utility/RecurringAlarmClockScheduler.sol";
 import "./RecurringPaymentFactory.sol";
 import "./RecurringPayment.sol";
 
 contract RecurringPaymentScheduler is Owned, CloneFactory {
 
-    RecurringAlarmClockScheduler public scheduler;
-    RecurringPaymentFactory public factory;
+    address[] emptyList;
 
+    RecurringAlarmClockScheduler public scheduler;
+    RecurringPaymentFactory public paymentFactory;
+    
     constructor (
         RecurringAlarmClockScheduler _scheduler,
-        RecurringPaymentFactory _factory
+        RecurringPaymentFactory _paymentFactory
     ) public {
         scheduler = _scheduler;
-        factory = _factory;
+        paymentFactory = _paymentFactory;
     }
 
     function createRecurringPayment (
@@ -42,7 +45,7 @@ contract RecurringPaymentScheduler is Owned, CloneFactory {
             gas
         );
 
-        paymentTask = factory.createRecurringPayment(
+        paymentTask = paymentFactory.createRecurringPayment(
             alarmClock,     // the owner of the recurring payment
             delegate,       // the wallet that executes the payment
             wallet,         // supplies delegates that can cancel the task
@@ -51,9 +54,8 @@ contract RecurringPaymentScheduler is Owned, CloneFactory {
             paymentAmount   // how much of the token to send each payment
         );
 
-        delegate.schedule(alarmClock, wallet);
-        delegate.schedule(paymentTask, wallet);
-        
+        delegate.schedule(alarmClock);
+        delegate.schedule(paymentTask);
         alarmClock.start(paymentTask);
 
         emit CreatePayment_event(msg.sender, paymentTask);

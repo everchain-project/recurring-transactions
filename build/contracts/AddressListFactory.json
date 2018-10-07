@@ -89,8 +89,8 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b5060405160208061052483398101806040528101908080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506104a1806100836000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633d5291a214610051578063c05efa1514610117575b600080fd5b34801561005d57600080fd5b506100d5600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019082018035906020019080806020026020016040519081016040528093929190818152602001838360200280828437820191505050505050919291929050505061016e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561012357600080fd5b5061012c610334565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008061019b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16610359565b90508073ffffffffffffffffffffffffffffffffffffffff1663946d920485856040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200180602001828103825283818151815260200191508051906020019060200280838360005b8381101561025b578082015181840152602081019050610240565b505050509050019350505050600060405180830381600087803b15801561028157600080fd5b505af1158015610295573d6000803e3d6000fd5b505050508373ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f0c524cecefd11c8299db25168a27e296d4074a14f7e8dc139f6662eb009c8d6b83604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a38091505092915050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006060600080606060405190810160405280603f81526020017f600034603b57603080600f833981f36000368180378080368173bebebebebebe81526020017fbebebebebebebebebebebebebebe5af43d82803e15602c573d90f35b3d90fd008152509250846c01000000000000000000000000029150600090505b601481101561045e5781816014811015156103ed57fe5b1a7f0100000000000000000000000000000000000000000000000000000000000000028382601a0181518110151561042157fe5b9060200101907effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916908160001a90535080806001019150506103d6565b82516020840181816000f0955050505050509190505600a165627a7a72305820c1b1ca80d94972627d20278ed0c3020dcf41960706ee34bf3ac6649c3a6ccb890029",
-  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633d5291a214610051578063c05efa1514610117575b600080fd5b34801561005d57600080fd5b506100d5600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019082018035906020019080806020026020016040519081016040528093929190818152602001838360200280828437820191505050505050919291929050505061016e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561012357600080fd5b5061012c610334565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008061019b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16610359565b90508073ffffffffffffffffffffffffffffffffffffffff1663946d920485856040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200180602001828103825283818151815260200191508051906020019060200280838360005b8381101561025b578082015181840152602081019050610240565b505050509050019350505050600060405180830381600087803b15801561028157600080fd5b505af1158015610295573d6000803e3d6000fd5b505050508373ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f0c524cecefd11c8299db25168a27e296d4074a14f7e8dc139f6662eb009c8d6b83604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a38091505092915050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006060600080606060405190810160405280603f81526020017f600034603b57603080600f833981f36000368180378080368173bebebebebebe81526020017fbebebebebebebebebebebebebebe5af43d82803e15602c573d90f35b3d90fd008152509250846c01000000000000000000000000029150600090505b601481101561045e5781816014811015156103ed57fe5b1a7f0100000000000000000000000000000000000000000000000000000000000000028382601a0181518110151561042157fe5b9060200101907effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916908160001a90535080806001019150506103d6565b82516020840181816000f0955050505050509190505600a165627a7a72305820c1b1ca80d94972627d20278ed0c3020dcf41960706ee34bf3ac6649c3a6ccb890029",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405160208061052483398101806040528101908080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506104a1806100836000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633d5291a214610051578063c05efa1514610117575b600080fd5b34801561005d57600080fd5b506100d5600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019082018035906020019080806020026020016040519081016040528093929190818152602001838360200280828437820191505050505050919291929050505061016e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561012357600080fd5b5061012c610334565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008061019b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16610359565b90508073ffffffffffffffffffffffffffffffffffffffff1663946d920485856040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200180602001828103825283818151815260200191508051906020019060200280838360005b8381101561025b578082015181840152602081019050610240565b505050509050019350505050600060405180830381600087803b15801561028157600080fd5b505af1158015610295573d6000803e3d6000fd5b505050508373ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f0c524cecefd11c8299db25168a27e296d4074a14f7e8dc139f6662eb009c8d6b83604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a38091505092915050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006060600080606060405190810160405280603f81526020017f600034603b57603080600f833981f36000368180378080368173bebebebebebe81526020017fbebebebebebebebebebebebebebe5af43d82803e15602c573d90f35b3d90fd008152509250846c01000000000000000000000000029150600090505b601481101561045e5781816014811015156103ed57fe5b1a7f0100000000000000000000000000000000000000000000000000000000000000028382601a0181518110151561042157fe5b9060200101907effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916908160001a90535080806001019150506103d6565b82516020840181816000f0955050505050509190505600a165627a7a723058204b94656f88e0b71d350bfadf77370aeb8db030305c13fa3028f8b25f0e95b6b60029",
+  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633d5291a214610051578063c05efa1514610117575b600080fd5b34801561005d57600080fd5b506100d5600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019082018035906020019080806020026020016040519081016040528093929190818152602001838360200280828437820191505050505050919291929050505061016e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561012357600080fd5b5061012c610334565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008061019b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16610359565b90508073ffffffffffffffffffffffffffffffffffffffff1663946d920485856040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200180602001828103825283818151815260200191508051906020019060200280838360005b8381101561025b578082015181840152602081019050610240565b505050509050019350505050600060405180830381600087803b15801561028157600080fd5b505af1158015610295573d6000803e3d6000fd5b505050508373ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f0c524cecefd11c8299db25168a27e296d4074a14f7e8dc139f6662eb009c8d6b83604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a38091505092915050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006060600080606060405190810160405280603f81526020017f600034603b57603080600f833981f36000368180378080368173bebebebebebe81526020017fbebebebebebebebebebebebebebe5af43d82803e15602c573d90f35b3d90fd008152509250846c01000000000000000000000000029150600090505b601481101561045e5781816014811015156103ed57fe5b1a7f0100000000000000000000000000000000000000000000000000000000000000028382601a0181518110151561042157fe5b9060200101907effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916908160001a90535080806001019150506103d6565b82516020840181816000f0955050505050509190505600a165627a7a723058204b94656f88e0b71d350bfadf77370aeb8db030305c13fa3028f8b25f0e95b6b60029",
   "sourceMap": "99:640:14:-;;;189:85;8:9:-1;5:2;;;30:1;27;20:12;5:2;189:85:14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;256:10;244:9;;:22;;;;;;;;;;;;;;;;;;189:85;99:640;;;;;;",
   "deployedSourceMap": "99:640:14:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;282:340;;8:9:-1;5:2;;;30:1;27;20:12;5:2;282:340:14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;152:28;;8:9:-1;5:2;;;30:1;27;20:12;5:2;152:28:14;;;;;;;;;;;;;;;;;;;;;;;;;;;282:340;365:11;389:23;427:22;439:9;;;;;;;;;;;427:11;:22::i;:::-;389:61;;461:11;:22;;;484:5;491:12;461:43;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;461:43:14;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;461:43:14;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;461:43:14;;;;556:5;520:55;;544:10;520:55;;;563:11;520:55;;;;;;;;;;;;;;;;;;;;;;603:11;596:18;;282:340;;;;;:::o;152:28::-;;;;;;;;;;;;;:::o;1306:491:8:-;1361:14;1384:18;1543:19;1592:6;1384:152;;;;;;;;;;;;;;;;;;;;;;;;;1573:6;1565:15;;1543:37;;1601:1;1592:10;;1587:77;1608:2;1604:1;:6;1587:77;;;1642:11;1654:1;1642:14;;;;;;;;;;;;1626:5;1637:1;1632:2;:6;1626:13;;;;;;;;;;;;;;:30;;;;;;;;;;;1612:3;;;;;;;1587:77;;;1705:5;1699:12;1742:4;1735:5;1731:16;1781:3;1775:4;1772:1;1765:20;1755:30;;1679:113;;;;;;;;:::o",
   "source": "pragma solidity ^0.4.23;\r\n\r\nimport \"../external/CloneFactory.sol\";\r\nimport \"./AddressList.sol\";\r\n\r\ncontract AddressListFactory is CloneFactory {\r\n\r\n    AddressList public blueprint;\r\n\r\n    constructor (AddressList _blueprint) public {\r\n        blueprint = _blueprint;\r\n    }\r\n\r\n    function createAddressList (address owner, address[] delegateList) public returns (AddressList) {\r\n        AddressList addressList = AddressList(createClone(blueprint));\r\n        addressList.initialize(owner, delegateList);\r\n        emit CreateAddressList_event(msg.sender, owner, addressList);\r\n        \r\n        return addressList;\r\n    }\r\n    \r\n    event CreateAddressList_event(address indexed caller, address indexed owner, AddressList addressList);\r\n}\r\n",
@@ -99,14 +99,14 @@
     "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/utility/AddressListFactory.sol",
     "exportedSymbols": {
       "AddressListFactory": [
-        2219
+        2266
       ]
     },
-    "id": 2220,
+    "id": 2267,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2159,
+        "id": 2206,
         "literals": [
           "solidity",
           "^",
@@ -119,10 +119,10 @@
       {
         "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/external/CloneFactory.sol",
         "file": "../external/CloneFactory.sol",
-        "id": 2160,
+        "id": 2207,
         "nodeType": "ImportDirective",
-        "scope": 2220,
-        "sourceUnit": 1625,
+        "scope": 2267,
+        "sourceUnit": 1672,
         "src": "28:38:14",
         "symbolAliases": [],
         "unitAlias": ""
@@ -130,10 +130,10 @@
       {
         "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/utility/AddressList.sol",
         "file": "./AddressList.sol",
-        "id": 2161,
+        "id": 2208,
         "nodeType": "ImportDirective",
-        "scope": 2220,
-        "sourceUnit": 2158,
+        "scope": 2267,
+        "sourceUnit": 2205,
         "src": "68:27:14",
         "symbolAliases": [],
         "unitAlias": ""
@@ -144,57 +144,57 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 2162,
+              "id": 2209,
               "name": "CloneFactory",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1624,
+              "referencedDeclaration": 1671,
               "src": "130:12:14",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_CloneFactory_$1624",
+                "typeIdentifier": "t_contract$_CloneFactory_$1671",
                 "typeString": "contract CloneFactory"
               }
             },
-            "id": 2163,
+            "id": 2210,
             "nodeType": "InheritanceSpecifier",
             "src": "130:12:14"
           }
         ],
         "contractDependencies": [
-          1624
+          1671
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2219,
+        "id": 2266,
         "linearizedBaseContracts": [
-          2219,
-          1624
+          2266,
+          1671
         ],
         "name": "AddressListFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2165,
+            "id": 2212,
             "name": "blueprint",
             "nodeType": "VariableDeclaration",
-            "scope": 2219,
+            "scope": 2266,
             "src": "152:28:14",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_AddressList_$2157",
+              "typeIdentifier": "t_contract$_AddressList_$2204",
               "typeString": "contract AddressList"
             },
             "typeName": {
               "contractScope": null,
-              "id": 2164,
+              "id": 2211,
               "name": "AddressList",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2157,
+              "referencedDeclaration": 2204,
               "src": "152:11:14",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_AddressList_$2157",
+                "typeIdentifier": "t_contract$_AddressList_$2204",
                 "typeString": "contract AddressList"
               }
             },
@@ -203,28 +203,28 @@
           },
           {
             "body": {
-              "id": 2174,
+              "id": 2221,
               "nodeType": "Block",
               "src": "233:41:14",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2172,
+                    "id": 2219,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2170,
+                      "id": 2217,
                       "name": "blueprint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2165,
+                      "referencedDeclaration": 2212,
                       "src": "244:9:14",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AddressList_$2157",
+                        "typeIdentifier": "t_contract$_AddressList_$2204",
                         "typeString": "contract AddressList"
                       }
                     },
@@ -232,31 +232,31 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2171,
+                      "id": 2218,
                       "name": "_blueprint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2167,
+                      "referencedDeclaration": 2214,
                       "src": "256:10:14",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AddressList_$2157",
+                        "typeIdentifier": "t_contract$_AddressList_$2204",
                         "typeString": "contract AddressList"
                       }
                     },
                     "src": "244:22:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AddressList_$2157",
+                      "typeIdentifier": "t_contract$_AddressList_$2204",
                       "typeString": "contract AddressList"
                     }
                   },
-                  "id": 2173,
+                  "id": 2220,
                   "nodeType": "ExpressionStatement",
                   "src": "244:22:14"
                 }
               ]
             },
             "documentation": null,
-            "id": 2175,
+            "id": 2222,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -264,31 +264,31 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2168,
+              "id": 2215,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2167,
+                  "id": 2214,
                   "name": "_blueprint",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2175,
+                  "scope": 2222,
                   "src": "202:22:14",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_AddressList_$2157",
+                    "typeIdentifier": "t_contract$_AddressList_$2204",
                     "typeString": "contract AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2166,
+                    "id": 2213,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2157,
+                    "referencedDeclaration": 2204,
                     "src": "202:11:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AddressList_$2157",
+                      "typeIdentifier": "t_contract$_AddressList_$2204",
                       "typeString": "contract AddressList"
                     }
                   },
@@ -300,12 +300,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2169,
+              "id": 2216,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "233:0:14"
             },
-            "scope": 2219,
+            "scope": 2266,
             "src": "189:85:14",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -313,37 +313,37 @@
           },
           {
             "body": {
-              "id": 2209,
+              "id": 2256,
               "nodeType": "Block",
               "src": "378:244:14",
               "statements": [
                 {
                   "assignments": [
-                    2186
+                    2233
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2186,
+                      "id": 2233,
                       "name": "addressList",
                       "nodeType": "VariableDeclaration",
-                      "scope": 2210,
+                      "scope": 2257,
                       "src": "389:23:14",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AddressList_$2157",
+                        "typeIdentifier": "t_contract$_AddressList_$2204",
                         "typeString": "contract AddressList"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 2185,
+                        "id": 2232,
                         "name": "AddressList",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 2157,
+                        "referencedDeclaration": 2204,
                         "src": "389:11:14",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_AddressList_$2157",
+                          "typeIdentifier": "t_contract$_AddressList_$2204",
                           "typeString": "contract AddressList"
                         }
                       },
@@ -351,7 +351,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2192,
+                  "id": 2239,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -360,14 +360,14 @@
                         "arguments": [
                           {
                             "argumentTypes": null,
-                            "id": 2189,
+                            "id": 2236,
                             "name": "blueprint",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2165,
+                            "referencedDeclaration": 2212,
                             "src": "439:9:14",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_AddressList_$2157",
+                              "typeIdentifier": "t_contract$_AddressList_$2204",
                               "typeString": "contract AddressList"
                             }
                           }
@@ -375,22 +375,22 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_AddressList_$2157",
+                              "typeIdentifier": "t_contract$_AddressList_$2204",
                               "typeString": "contract AddressList"
                             }
                           ],
-                          "id": 2188,
+                          "id": 2235,
                           "name": "createClone",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1623,
+                          "referencedDeclaration": 1670,
                           "src": "427:11:14",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_address_$",
                             "typeString": "function (address) returns (address)"
                           }
                         },
-                        "id": 2190,
+                        "id": 2237,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -412,18 +412,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 2187,
+                      "id": 2234,
                       "name": "AddressList",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2157,
+                      "referencedDeclaration": 2204,
                       "src": "415:11:14",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_contract$_AddressList_$2157_$",
+                        "typeIdentifier": "t_type$_t_contract$_AddressList_$2204_$",
                         "typeString": "type(contract AddressList)"
                       }
                     },
-                    "id": 2191,
+                    "id": 2238,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -433,7 +433,7 @@
                     "nodeType": "FunctionCall",
                     "src": "415:35:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AddressList_$2157",
+                      "typeIdentifier": "t_contract$_AddressList_$2204",
                       "typeString": "contract AddressList"
                     }
                   },
@@ -446,11 +446,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2196,
+                        "id": 2243,
                         "name": "owner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2177,
+                        "referencedDeclaration": 2224,
                         "src": "484:5:14",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -459,11 +459,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2197,
+                        "id": 2244,
                         "name": "delegateList",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2180,
+                        "referencedDeclaration": 2227,
                         "src": "491:12:14",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
@@ -484,32 +484,32 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2193,
+                        "id": 2240,
                         "name": "addressList",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2186,
+                        "referencedDeclaration": 2233,
                         "src": "461:11:14",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_AddressList_$2157",
+                          "typeIdentifier": "t_contract$_AddressList_$2204",
                           "typeString": "contract AddressList"
                         }
                       },
-                      "id": 2195,
+                      "id": 2242,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "initialize",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2066,
+                      "referencedDeclaration": 2113,
                       "src": "461:22:14",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_array$_t_address_$dyn_memory_ptr_$returns$__$",
                         "typeString": "function (address,address[] memory) external"
                       }
                     },
-                    "id": 2198,
+                    "id": 2245,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -523,7 +523,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2199,
+                  "id": 2246,
                   "nodeType": "ExpressionStatement",
                   "src": "461:43:14"
                 },
@@ -535,18 +535,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2201,
+                          "id": 2248,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2586,
+                          "referencedDeclaration": 2633,
                           "src": "544:3:14",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2202,
+                        "id": 2249,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -562,11 +562,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2203,
+                        "id": 2250,
                         "name": "owner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2177,
+                        "referencedDeclaration": 2224,
                         "src": "556:5:14",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -575,14 +575,14 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2204,
+                        "id": 2251,
                         "name": "addressList",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2186,
+                        "referencedDeclaration": 2233,
                         "src": "563:11:14",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_AddressList_$2157",
+                          "typeIdentifier": "t_contract$_AddressList_$2204",
                           "typeString": "contract AddressList"
                         }
                       }
@@ -598,22 +598,22 @@
                           "typeString": "address"
                         },
                         {
-                          "typeIdentifier": "t_contract$_AddressList_$2157",
+                          "typeIdentifier": "t_contract$_AddressList_$2204",
                           "typeString": "contract AddressList"
                         }
                       ],
-                      "id": 2200,
+                      "id": 2247,
                       "name": "CreateAddressList_event",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2218,
+                      "referencedDeclaration": 2265,
                       "src": "520:23:14",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_contract$_AddressList_$2157_$returns$__$",
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_contract$_AddressList_$2204_$returns$__$",
                         "typeString": "function (address,address,contract AddressList)"
                       }
                     },
-                    "id": 2205,
+                    "id": 2252,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -627,33 +627,33 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2206,
+                  "id": 2253,
                   "nodeType": "EmitStatement",
                   "src": "515:60:14"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2207,
+                    "id": 2254,
                     "name": "addressList",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2186,
+                    "referencedDeclaration": 2233,
                     "src": "603:11:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AddressList_$2157",
+                      "typeIdentifier": "t_contract$_AddressList_$2204",
                       "typeString": "contract AddressList"
                     }
                   },
-                  "functionReturnParameters": 2184,
-                  "id": 2208,
+                  "functionReturnParameters": 2231,
+                  "id": 2255,
                   "nodeType": "Return",
                   "src": "596:18:14"
                 }
               ]
             },
             "documentation": null,
-            "id": 2210,
+            "id": 2257,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -661,15 +661,15 @@
             "name": "createAddressList",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2181,
+              "id": 2228,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2177,
+                  "id": 2224,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2210,
+                  "scope": 2257,
                   "src": "310:13:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -678,7 +678,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2176,
+                    "id": 2223,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "310:7:14",
@@ -692,10 +692,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2180,
+                  "id": 2227,
                   "name": "delegateList",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2210,
+                  "scope": 2257,
                   "src": "325:22:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -705,7 +705,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2178,
+                      "id": 2225,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "325:7:14",
@@ -714,7 +714,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2179,
+                    "id": 2226,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "325:9:14",
@@ -731,31 +731,31 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2184,
+              "id": 2231,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2183,
+                  "id": 2230,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2210,
+                  "scope": 2257,
                   "src": "365:11:14",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_AddressList_$2157",
+                    "typeIdentifier": "t_contract$_AddressList_$2204",
                     "typeString": "contract AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2182,
+                    "id": 2229,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2157,
+                    "referencedDeclaration": 2204,
                     "src": "365:11:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AddressList_$2157",
+                      "typeIdentifier": "t_contract$_AddressList_$2204",
                       "typeString": "contract AddressList"
                     }
                   },
@@ -765,7 +765,7 @@
               ],
               "src": "364:13:14"
             },
-            "scope": 2219,
+            "scope": 2266,
             "src": "282:340:14",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -774,20 +774,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2218,
+            "id": 2265,
             "name": "CreateAddressList_event",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2217,
+              "id": 2264,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2212,
+                  "id": 2259,
                   "indexed": true,
                   "name": "caller",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2218,
+                  "scope": 2265,
                   "src": "664:22:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -796,7 +796,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2211,
+                    "id": 2258,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "664:7:14",
@@ -810,11 +810,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2214,
+                  "id": 2261,
                   "indexed": true,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2218,
+                  "scope": 2265,
                   "src": "688:21:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -823,7 +823,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2213,
+                    "id": 2260,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "688:7:14",
@@ -837,27 +837,27 @@
                 },
                 {
                   "constant": false,
-                  "id": 2216,
+                  "id": 2263,
                   "indexed": false,
                   "name": "addressList",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2218,
+                  "scope": 2265,
                   "src": "711:23:14",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_AddressList_$2157",
+                    "typeIdentifier": "t_contract$_AddressList_$2204",
                     "typeString": "contract AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2215,
+                    "id": 2262,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2157,
+                    "referencedDeclaration": 2204,
                     "src": "711:11:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AddressList_$2157",
+                      "typeIdentifier": "t_contract$_AddressList_$2204",
                       "typeString": "contract AddressList"
                     }
                   },
@@ -870,7 +870,7 @@
             "src": "634:102:14"
           }
         ],
-        "scope": 2220,
+        "scope": 2267,
         "src": "99:640:14"
       }
     ],
@@ -880,14 +880,14 @@
     "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/utility/AddressListFactory.sol",
     "exportedSymbols": {
       "AddressListFactory": [
-        2219
+        2266
       ]
     },
-    "id": 2220,
+    "id": 2267,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2159,
+        "id": 2206,
         "literals": [
           "solidity",
           "^",
@@ -900,10 +900,10 @@
       {
         "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/external/CloneFactory.sol",
         "file": "../external/CloneFactory.sol",
-        "id": 2160,
+        "id": 2207,
         "nodeType": "ImportDirective",
-        "scope": 2220,
-        "sourceUnit": 1625,
+        "scope": 2267,
+        "sourceUnit": 1672,
         "src": "28:38:14",
         "symbolAliases": [],
         "unitAlias": ""
@@ -911,10 +911,10 @@
       {
         "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/utility/AddressList.sol",
         "file": "./AddressList.sol",
-        "id": 2161,
+        "id": 2208,
         "nodeType": "ImportDirective",
-        "scope": 2220,
-        "sourceUnit": 2158,
+        "scope": 2267,
+        "sourceUnit": 2205,
         "src": "68:27:14",
         "symbolAliases": [],
         "unitAlias": ""
@@ -925,57 +925,57 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 2162,
+              "id": 2209,
               "name": "CloneFactory",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1624,
+              "referencedDeclaration": 1671,
               "src": "130:12:14",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_CloneFactory_$1624",
+                "typeIdentifier": "t_contract$_CloneFactory_$1671",
                 "typeString": "contract CloneFactory"
               }
             },
-            "id": 2163,
+            "id": 2210,
             "nodeType": "InheritanceSpecifier",
             "src": "130:12:14"
           }
         ],
         "contractDependencies": [
-          1624
+          1671
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2219,
+        "id": 2266,
         "linearizedBaseContracts": [
-          2219,
-          1624
+          2266,
+          1671
         ],
         "name": "AddressListFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2165,
+            "id": 2212,
             "name": "blueprint",
             "nodeType": "VariableDeclaration",
-            "scope": 2219,
+            "scope": 2266,
             "src": "152:28:14",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_AddressList_$2157",
+              "typeIdentifier": "t_contract$_AddressList_$2204",
               "typeString": "contract AddressList"
             },
             "typeName": {
               "contractScope": null,
-              "id": 2164,
+              "id": 2211,
               "name": "AddressList",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2157,
+              "referencedDeclaration": 2204,
               "src": "152:11:14",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_AddressList_$2157",
+                "typeIdentifier": "t_contract$_AddressList_$2204",
                 "typeString": "contract AddressList"
               }
             },
@@ -984,28 +984,28 @@
           },
           {
             "body": {
-              "id": 2174,
+              "id": 2221,
               "nodeType": "Block",
               "src": "233:41:14",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2172,
+                    "id": 2219,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 2170,
+                      "id": 2217,
                       "name": "blueprint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2165,
+                      "referencedDeclaration": 2212,
                       "src": "244:9:14",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AddressList_$2157",
+                        "typeIdentifier": "t_contract$_AddressList_$2204",
                         "typeString": "contract AddressList"
                       }
                     },
@@ -1013,31 +1013,31 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2171,
+                      "id": 2218,
                       "name": "_blueprint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2167,
+                      "referencedDeclaration": 2214,
                       "src": "256:10:14",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AddressList_$2157",
+                        "typeIdentifier": "t_contract$_AddressList_$2204",
                         "typeString": "contract AddressList"
                       }
                     },
                     "src": "244:22:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AddressList_$2157",
+                      "typeIdentifier": "t_contract$_AddressList_$2204",
                       "typeString": "contract AddressList"
                     }
                   },
-                  "id": 2173,
+                  "id": 2220,
                   "nodeType": "ExpressionStatement",
                   "src": "244:22:14"
                 }
               ]
             },
             "documentation": null,
-            "id": 2175,
+            "id": 2222,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -1045,31 +1045,31 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2168,
+              "id": 2215,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2167,
+                  "id": 2214,
                   "name": "_blueprint",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2175,
+                  "scope": 2222,
                   "src": "202:22:14",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_AddressList_$2157",
+                    "typeIdentifier": "t_contract$_AddressList_$2204",
                     "typeString": "contract AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2166,
+                    "id": 2213,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2157,
+                    "referencedDeclaration": 2204,
                     "src": "202:11:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AddressList_$2157",
+                      "typeIdentifier": "t_contract$_AddressList_$2204",
                       "typeString": "contract AddressList"
                     }
                   },
@@ -1081,12 +1081,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2169,
+              "id": 2216,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "233:0:14"
             },
-            "scope": 2219,
+            "scope": 2266,
             "src": "189:85:14",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1094,37 +1094,37 @@
           },
           {
             "body": {
-              "id": 2209,
+              "id": 2256,
               "nodeType": "Block",
               "src": "378:244:14",
               "statements": [
                 {
                   "assignments": [
-                    2186
+                    2233
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2186,
+                      "id": 2233,
                       "name": "addressList",
                       "nodeType": "VariableDeclaration",
-                      "scope": 2210,
+                      "scope": 2257,
                       "src": "389:23:14",
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_AddressList_$2157",
+                        "typeIdentifier": "t_contract$_AddressList_$2204",
                         "typeString": "contract AddressList"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 2185,
+                        "id": 2232,
                         "name": "AddressList",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 2157,
+                        "referencedDeclaration": 2204,
                         "src": "389:11:14",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_AddressList_$2157",
+                          "typeIdentifier": "t_contract$_AddressList_$2204",
                           "typeString": "contract AddressList"
                         }
                       },
@@ -1132,7 +1132,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2192,
+                  "id": 2239,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -1141,14 +1141,14 @@
                         "arguments": [
                           {
                             "argumentTypes": null,
-                            "id": 2189,
+                            "id": 2236,
                             "name": "blueprint",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2165,
+                            "referencedDeclaration": 2212,
                             "src": "439:9:14",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_AddressList_$2157",
+                              "typeIdentifier": "t_contract$_AddressList_$2204",
                               "typeString": "contract AddressList"
                             }
                           }
@@ -1156,22 +1156,22 @@
                         "expression": {
                           "argumentTypes": [
                             {
-                              "typeIdentifier": "t_contract$_AddressList_$2157",
+                              "typeIdentifier": "t_contract$_AddressList_$2204",
                               "typeString": "contract AddressList"
                             }
                           ],
-                          "id": 2188,
+                          "id": 2235,
                           "name": "createClone",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1623,
+                          "referencedDeclaration": 1670,
                           "src": "427:11:14",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_address_$",
                             "typeString": "function (address) returns (address)"
                           }
                         },
-                        "id": 2190,
+                        "id": 2237,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1193,18 +1193,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 2187,
+                      "id": 2234,
                       "name": "AddressList",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2157,
+                      "referencedDeclaration": 2204,
                       "src": "415:11:14",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_contract$_AddressList_$2157_$",
+                        "typeIdentifier": "t_type$_t_contract$_AddressList_$2204_$",
                         "typeString": "type(contract AddressList)"
                       }
                     },
-                    "id": 2191,
+                    "id": 2238,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1214,7 +1214,7 @@
                     "nodeType": "FunctionCall",
                     "src": "415:35:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AddressList_$2157",
+                      "typeIdentifier": "t_contract$_AddressList_$2204",
                       "typeString": "contract AddressList"
                     }
                   },
@@ -1227,11 +1227,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2196,
+                        "id": 2243,
                         "name": "owner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2177,
+                        "referencedDeclaration": 2224,
                         "src": "484:5:14",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -1240,11 +1240,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2197,
+                        "id": 2244,
                         "name": "delegateList",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2180,
+                        "referencedDeclaration": 2227,
                         "src": "491:12:14",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
@@ -1265,32 +1265,32 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2193,
+                        "id": 2240,
                         "name": "addressList",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2186,
+                        "referencedDeclaration": 2233,
                         "src": "461:11:14",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_AddressList_$2157",
+                          "typeIdentifier": "t_contract$_AddressList_$2204",
                           "typeString": "contract AddressList"
                         }
                       },
-                      "id": 2195,
+                      "id": 2242,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "initialize",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2066,
+                      "referencedDeclaration": 2113,
                       "src": "461:22:14",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_array$_t_address_$dyn_memory_ptr_$returns$__$",
                         "typeString": "function (address,address[] memory) external"
                       }
                     },
-                    "id": 2198,
+                    "id": 2245,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1304,7 +1304,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2199,
+                  "id": 2246,
                   "nodeType": "ExpressionStatement",
                   "src": "461:43:14"
                 },
@@ -1316,18 +1316,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2201,
+                          "id": 2248,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2586,
+                          "referencedDeclaration": 2633,
                           "src": "544:3:14",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 2202,
+                        "id": 2249,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1343,11 +1343,11 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2203,
+                        "id": 2250,
                         "name": "owner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2177,
+                        "referencedDeclaration": 2224,
                         "src": "556:5:14",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -1356,14 +1356,14 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 2204,
+                        "id": 2251,
                         "name": "addressList",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2186,
+                        "referencedDeclaration": 2233,
                         "src": "563:11:14",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_AddressList_$2157",
+                          "typeIdentifier": "t_contract$_AddressList_$2204",
                           "typeString": "contract AddressList"
                         }
                       }
@@ -1379,22 +1379,22 @@
                           "typeString": "address"
                         },
                         {
-                          "typeIdentifier": "t_contract$_AddressList_$2157",
+                          "typeIdentifier": "t_contract$_AddressList_$2204",
                           "typeString": "contract AddressList"
                         }
                       ],
-                      "id": 2200,
+                      "id": 2247,
                       "name": "CreateAddressList_event",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2218,
+                      "referencedDeclaration": 2265,
                       "src": "520:23:14",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_contract$_AddressList_$2157_$returns$__$",
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_contract$_AddressList_$2204_$returns$__$",
                         "typeString": "function (address,address,contract AddressList)"
                       }
                     },
-                    "id": 2205,
+                    "id": 2252,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1408,33 +1408,33 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2206,
+                  "id": 2253,
                   "nodeType": "EmitStatement",
                   "src": "515:60:14"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2207,
+                    "id": 2254,
                     "name": "addressList",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 2186,
+                    "referencedDeclaration": 2233,
                     "src": "603:11:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AddressList_$2157",
+                      "typeIdentifier": "t_contract$_AddressList_$2204",
                       "typeString": "contract AddressList"
                     }
                   },
-                  "functionReturnParameters": 2184,
-                  "id": 2208,
+                  "functionReturnParameters": 2231,
+                  "id": 2255,
                   "nodeType": "Return",
                   "src": "596:18:14"
                 }
               ]
             },
             "documentation": null,
-            "id": 2210,
+            "id": 2257,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1442,15 +1442,15 @@
             "name": "createAddressList",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2181,
+              "id": 2228,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2177,
+                  "id": 2224,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2210,
+                  "scope": 2257,
                   "src": "310:13:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1459,7 +1459,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2176,
+                    "id": 2223,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "310:7:14",
@@ -1473,10 +1473,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2180,
+                  "id": 2227,
                   "name": "delegateList",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2210,
+                  "scope": 2257,
                   "src": "325:22:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1486,7 +1486,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2178,
+                      "id": 2225,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "325:7:14",
@@ -1495,7 +1495,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2179,
+                    "id": 2226,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "325:9:14",
@@ -1512,31 +1512,31 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2184,
+              "id": 2231,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2183,
+                  "id": 2230,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2210,
+                  "scope": 2257,
                   "src": "365:11:14",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_AddressList_$2157",
+                    "typeIdentifier": "t_contract$_AddressList_$2204",
                     "typeString": "contract AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2182,
+                    "id": 2229,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2157,
+                    "referencedDeclaration": 2204,
                     "src": "365:11:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AddressList_$2157",
+                      "typeIdentifier": "t_contract$_AddressList_$2204",
                       "typeString": "contract AddressList"
                     }
                   },
@@ -1546,7 +1546,7 @@
               ],
               "src": "364:13:14"
             },
-            "scope": 2219,
+            "scope": 2266,
             "src": "282:340:14",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1555,20 +1555,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2218,
+            "id": 2265,
             "name": "CreateAddressList_event",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2217,
+              "id": 2264,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2212,
+                  "id": 2259,
                   "indexed": true,
                   "name": "caller",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2218,
+                  "scope": 2265,
                   "src": "664:22:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1577,7 +1577,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2211,
+                    "id": 2258,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "664:7:14",
@@ -1591,11 +1591,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2214,
+                  "id": 2261,
                   "indexed": true,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2218,
+                  "scope": 2265,
                   "src": "688:21:14",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1604,7 +1604,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2213,
+                    "id": 2260,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "688:7:14",
@@ -1618,27 +1618,27 @@
                 },
                 {
                   "constant": false,
-                  "id": 2216,
+                  "id": 2263,
                   "indexed": false,
                   "name": "addressList",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2218,
+                  "scope": 2265,
                   "src": "711:23:14",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_AddressList_$2157",
+                    "typeIdentifier": "t_contract$_AddressList_$2204",
                     "typeString": "contract AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2215,
+                    "id": 2262,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2157,
+                    "referencedDeclaration": 2204,
                     "src": "711:11:14",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_AddressList_$2157",
+                      "typeIdentifier": "t_contract$_AddressList_$2204",
                       "typeString": "contract AddressList"
                     }
                   },
@@ -1651,7 +1651,7 @@
             "src": "634:102:14"
           }
         ],
-        "scope": 2220,
+        "scope": 2267,
         "src": "99:640:14"
       }
     ],
@@ -1665,10 +1665,10 @@
     "42": {
       "events": {},
       "links": {},
-      "address": "0x2fa75d8bb72430c0af91bf631fd634365425e8f8",
-      "transactionHash": "0x8423550de7bf79659995af9fe4eb1b3de976eea9e28baaf46875a127c2bfe0a4"
+      "address": "0x37ac2cd858bc120eae1b8751645f57e3610e4570",
+      "transactionHash": "0xc385dd459747cd1e499cad73ee42a004d6c1b009d4fb385cbd78e5e30805c507"
     }
   },
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-10-07T00:40:00.759Z"
+  "updatedAt": "2018-10-07T04:51:18.041Z"
 }

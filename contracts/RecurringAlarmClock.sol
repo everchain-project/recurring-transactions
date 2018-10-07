@@ -8,7 +8,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
     uint public blockStarted;               // The block the alarm clock was started
     address constant ETHER = address(0x0);  // Used for code readability
     
-    ITask public task;                      // The task to execute when the alarm is triggered
+    IRecurringTask public task;             // The task to execute when the alarm is triggered
     RequestFactoryInterface public eac;     // Interface provided by the Ethereum Alarm Clock
     IFuturePaymentDelegate public delegate; // The delegate that pulls funds for each alarm
     address public wallet;                  // The address which owns the alarm and collects any leftover funds
@@ -45,7 +45,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         blockStarted = block.number;
     }
 
-    function start (ITask _task) public {
+    function start (IRecurringTask _task) public {
         require(task == address(0x0), "contract can only be started when the alarm is empty");
         
         task = _task;
