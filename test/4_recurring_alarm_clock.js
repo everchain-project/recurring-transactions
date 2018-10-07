@@ -16,18 +16,21 @@ contract('Recurring Alarm Clock Blueprint', function(accounts) {
     
     var PaymentDelegate;
     var ListFactory;
-    var TrustedFactories;
+    var TrustedSchedulers;
     var Wallet;
     var Payment;
     var AlarmClock;
     var EthereumAlarmClock;
     var Alarm;
 
+    var initialWalletBalance;
+    var initialRecipientBalance;
+    var initialGasCost = 0;
+
     var owner = accounts[0];
     var recipient = accounts[5];
     var priorityCaller = accounts[9];
 
-    var startTimestamp;
     var periodInMinutes = 5;
     var period = minutes(periodInMinutes);
     var totalPayments = 5;
@@ -39,21 +42,34 @@ contract('Recurring Alarm Clock Blueprint', function(accounts) {
             RequestFactory.deployed(),
             RecurringAlarmClock.deployed(),
         ])
-        .then(instance => {
-            PaymentDelegate = instance[0];
-            EthereumAlarmClock = instance[1];
-            AlarmClock = instance[2];
+        .then(instances => {
+            PaymentDelegate = instances[0];
+            EthereumAlarmClock = instances[1];
+            AlarmClock = instances[2];
             
             return setupDelegatedWallet();
         })
         .then(instance => {
             Wallet = instance;
+            return getBalance(recipient);
+        })
+        .then(recipientBalance => web3.eth.sendTransaction({
+            from: recipient,
+            to: accounts[6],
+            value: recipientBalance,
+            gasPrice: 0
+        }))
+        .then(tx => q.all([
+            getBalance(Wallet.address),
+            getBalance(recipient),
+        ]))
+        .then(balances => {
+            initialWalletBalance = balances[0];
+            initialRecipientBalance = balances[1];
 
             var safetyMultiplier = ether(3);
-            
-            var gas = 2000000;
-            
-            startTimestamp = now() + period;
+            var gas = 1000000;
+            var startTimestamp = now() + period;
 
             return AlarmClock.initialize(
                 EthereumAlarmClock.address,
@@ -80,7 +96,10 @@ contract('Recurring Alarm Clock Blueprint', function(accounts) {
                 {from: owner}
             );
         })
-        .then(tx => RecurringPayment.deployed())
+        .then(tx => {
+            initialGasCost += tx.receipt.gasUsed;
+            return RecurringPayment.deployed();
+        })
         .then(instance => {
             Payment = instance;
             return Payment.initialize(
@@ -89,17 +108,22 @@ contract('Recurring Alarm Clock Blueprint', function(accounts) {
                 Wallet.address,
                 ETHER,
                 recipient,
-                ether(.5),
+                ether(1),
                 {from: owner}
             );
         })
         .then(tx => {
+            initialGasCost += tx.receipt.gasUsed;
             return q.all([
                 PaymentDelegate.schedule(Payment.address, Wallet.address, {from: owner}),
                 PaymentDelegate.schedule(AlarmClock.address, Wallet.address, {from: owner}),
             ]);
         })
-        .then(tx => AlarmClock.start(Payment.address, {from: owner}))
+        .then(txs => {
+            initialGasCost += txs[0].receipt.gasUsed;
+            initialGasCost += txs[1].receipt.gasUsed;
+            return AlarmClock.start(Payment.address, {from: owner, gasPrice: web3.toWei(10, 'gwei')});
+        })
     });
 
     it("attempt and fail to execute the alarm early", () => {
@@ -125,63 +149,173 @@ contract('Recurring Alarm Clock Blueprint', function(accounts) {
         })
     });
 
+    /*
     it("check execution of the alarm clock", () => {
-        var executeTx;
         console.log("    ? check execution of the alarm clock");
-        
+        var lastTx;
+
+        console.log("");
+        console.log("             wallet balance: " + web3.fromWei(initialWalletBalance, 'ether') + " ether");
+        console.log("          recipient balance: " + web3.fromWei(initialRecipientBalance, 'ether') + " ether");
+
         return getCurrentAlarm()
         .then(alarm => {
             Alarm = alarm;
-            console.log("      0/5 alarms called. waiting " + periodInMinutes + " minutes for alarm " + Alarm.address);
+            return q.all([
+                getBalance(Wallet.address),
+                getBalance(Alarm.address),
+                getBalance(recipient),
+            ]);
+        })
+        .then(balances => {
+            var walletBalance = balances[0];
+            var alarmBalance = balances[1];
+            var recipientBalance = balances[2];
+            console.log("");
+            console.log("      1/5 alarms scheduled - waiting " + periodInMinutes + " minutes for alarm " + Alarm.address);
+            console.log("");
+            console.log("                   gas used: " + initialGasCost);
+            console.log("              alarm balance: " + web3.fromWei(alarmBalance, 'ether') + " ether");
+            console.log("             wallet balance: " + web3.fromWei(walletBalance, 'ether') + " ether");
+            console.log("          recipient balance: " + web3.fromWei(recipientBalance, 'ether') + " ether");
             return q.delay(untilAlarmIsCallable);
         })
         .then(() => updateBlockchainTimestamp())
-        .then(tx => Alarm.execute({from: owner, gas: 3000000, gasPrice: web3.toWei(10, 'gwei')}))
-        .then(tx => getCurrentAlarm())
+        .then(tx => Alarm.execute({from: owner, gas: 1500000, gasPrice: web3.toWei(10, 'gwei')}))
+        .then(tx => {
+            lastTx = tx;
+            return getCurrentAlarm();
+        })
         .then(alarm => {
             Alarm = alarm;
-            console.log("      1/5 alarms called. waiting " + periodInMinutes + " minutes for alarm " + Alarm.address);
+            return q.all([
+                getBalance(Wallet.address),
+                getBalance(Alarm.address),
+                getBalance(recipient),
+            ]);
+        })
+        .then(balances => {
+            var walletBalance = balances[0];
+            var alarmBalance = balances[1];
+            var recipientBalance = balances[2];
+            console.log("");
+            console.log("      2/5 alarms scheduled - waiting " + periodInMinutes + " minutes for alarm " + Alarm.address);
+            console.log("");
+            console.log("                   gas used: " + lastTx.receipt.gasUsed);
+            console.log("              alarm balance: " + web3.fromWei(alarmBalance, 'ether') + " ether");
+            console.log("             wallet balance: " + web3.fromWei(walletBalance, 'ether') + " ether");
+            console.log("          recipient balance: " + web3.fromWei(recipientBalance, 'ether') + " ether");
             return q.delay(untilAlarmIsCallable);
         })
         .then(() => updateBlockchainTimestamp())
+        .then(tx => Alarm.execute({from: owner, gas: 1500000, gasPrice: web3.toWei(10, 'gwei')}))
         .then(tx => {
-            return Alarm.execute({from: owner, gas: 3000000, gasPrice: web3.toWei(10, 'gwei')});
+            lastTx = tx;
+            return getCurrentAlarm();
         })
-        .then(tx => getCurrentAlarm())
         .then(alarm => {
             Alarm = alarm;
-            console.log("      2/5 alarms called. waiting " + periodInMinutes + " minutes for alarm " + Alarm.address);
+            return q.all([
+                getBalance(Wallet.address),
+                getBalance(Alarm.address),
+                getBalance(recipient),
+            ]);
+        })
+        .then(balances => {
+            var walletBalance = balances[0];
+            var alarmBalance = balances[1];
+            var recipientBalance = balances[2];
+            console.log("");
+            console.log("      3/5 alarms scheduled - waiting " + periodInMinutes + " minutes for alarm " + Alarm.address);
+            console.log("");
+            console.log("                   gas used: " + lastTx.receipt.gasUsed);
+            console.log("              alarm balance: " + web3.fromWei(alarmBalance, 'ether') + " ether");
+            console.log("             wallet balance: " + web3.fromWei(walletBalance, 'ether') + " ether");
+            console.log("          recipient balance: " + web3.fromWei(recipientBalance, 'ether') + " ether");
             return q.delay(untilAlarmIsCallable);
         })
         .then(() => updateBlockchainTimestamp())
+        .then(tx => Alarm.execute({from: owner, gas: 1500000, gasPrice: web3.toWei(10, 'gwei')}))
         .then(tx => {
-            return Alarm.execute({from: owner, gas: 3000000, gasPrice: web3.toWei(10, 'gwei')});
+            lastTx = tx;
+            return getCurrentAlarm();
         })
-        .then(tx => getCurrentAlarm())
         .then(alarm => {
             Alarm = alarm;
-            console.log("      3/5 alarms called. waiting " + periodInMinutes + " minutes for alarm " + Alarm.address);
+            return q.all([
+                getBalance(Wallet.address),
+                getBalance(Alarm.address),
+                getBalance(recipient),
+            ]);
+        })
+        .then(balances => {
+            var walletBalance = balances[0];
+            var alarmBalance = balances[1];
+            var recipientBalance = balances[2];
+            console.log("");
+            console.log("      4/5 alarms scheduled - waiting " + periodInMinutes + " minutes for alarm " + Alarm.address);
+            console.log("");
+            console.log("                   gas used: " + lastTx.receipt.gasUsed);
+            console.log("              alarm balance: " + web3.fromWei(alarmBalance, 'ether') + " ether");
+            console.log("             wallet balance: " + web3.fromWei(walletBalance, 'ether') + " ether");
+            console.log("          recipient balance: " + web3.fromWei(recipientBalance, 'ether') + " ether");
+            console.log("");
             return q.delay(untilAlarmIsCallable);
         })
         .then(() => updateBlockchainTimestamp())
+        .then(tx => Alarm.execute({from: owner, gas: 1500000, gasPrice: web3.toWei(10, 'gwei')}))
         .then(tx => {
-            return Alarm.execute({from: owner, gas: 3000000, gasPrice: web3.toWei(10, 'gwei')});
+            lastTx = tx;
+            return getCurrentAlarm();
         })
-        .then(tx => getCurrentAlarm())
         .then(alarm => {
             Alarm = alarm;
-            console.log("      4/5 alarms called. waiting " + periodInMinutes + " minutes for alarm " + Alarm.address);
+            return q.all([
+                getBalance(Wallet.address),
+                getBalance(Alarm.address),
+                getBalance(recipient),
+            ]);
+        })
+        .then(balances => {
+            var walletBalance = balances[0];
+            var alarmBalance = balances[1];
+            var recipientBalance = balances[2];
+            console.log("");
+            console.log("      5/5 alarms scheduled - waiting " + periodInMinutes + " minutes for alarm " + Alarm.address);
+            console.log("");
+            console.log("                   gas used: " + lastTx.receipt.gasUsed);
+            console.log("              alarm balance: " + web3.fromWei(alarmBalance, 'ether') + " ether");
+            console.log("             wallet balance: " + web3.fromWei(walletBalance, 'ether') + " ether");
+            console.log("          recipient balance: " + web3.fromWei(recipientBalance, 'ether') + " ether");
+            console.log("");
             return q.delay(untilAlarmIsCallable);
         })
         .then(() => updateBlockchainTimestamp())
+        .then(tx => Alarm.execute({from: owner, gas: 1500000, gasPrice: web3.toWei(10, 'gwei')}))
         .then(tx => {
-            return Alarm.execute({from: owner, gas: 3000000, gasPrice: web3.toWei(10, 'gwei')});
+            lastTx = tx;
+            return q.all([
+                AlarmClock.alarm(),
+                getBalance(Wallet.address),
+                getBalance(recipient),
+            ])
         })
-        .then(tx => AlarmClock.alarm())
-        .then(alarmAddress => {
-            console.log("      5/5 alarms called. alarm has been reset to " + alarmAddress);
+        .then(promises => {
+            var alarmAddress = promises[0];
+            var walletBalance = promises[1];
+            var recipientBalance = promises[2];
+            console.log("");
+            console.log("      -/- all alarms called - alarm has been set to " + alarmAddress);
+            console.log("");
+            console.log("                   gas used: " + lastTx.receipt.gasUsed);
+            console.log("             wallet balance: " + web3.fromWei(walletBalance, 'ether') + " ether (9.95 ether expected)");
+            console.log("          recipient balance: " + web3.fromWei(recipientBalance, 'ether') + " ether (5 ether expected)");
+            console.log("");
+            assert(walletBalance == ether(9.95), "wallet balance should equal 9.95 ether");
+            assert(recipientBalance == ether(5), "recipient balance should equal 5 ether");
         })
     })
+    */
 
     function minutes(toSeconds) {
         return Math.floor(60 * toSeconds);
@@ -197,7 +331,7 @@ contract('Recurring Alarm Clock Blueprint', function(accounts) {
 
     function updateBlockchainTimestamp(){
         return web3.eth.sendTransaction({
-            from: accounts[5],
+            from: accounts[7],
             to: accounts[6],
             value: 1
         })
@@ -234,12 +368,12 @@ contract('Recurring Alarm Clock Blueprint', function(accounts) {
         .then(instance => {
             PaymentDelegate = instance[0];
             ListFactory = instance[1];
-            TrustedFactories = instance[2];
+            TrustedSchedulers = instance[2];
 
-            return TrustedFactories.initialize(owner, [owner], {from: owner});
+            return TrustedSchedulers.initialize(owner, [owner], {from: owner});
         })
         .then(tx => {
-            return PaymentDelegate.initialize(ListFactory.address, TrustedFactories.address, {from: owner}); 
+            return PaymentDelegate.initialize(ListFactory.address, TrustedSchedulers.address, {from: owner}); 
         })
         .then(tx => {
             return PaymentDelegate;

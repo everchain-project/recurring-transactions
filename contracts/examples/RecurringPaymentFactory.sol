@@ -1,46 +1,25 @@
 pragma solidity ^0.4.23;
 
-import "../external/Owned.sol";
+import "../external/CloneFactory.sol";
 import "../Interfaces.sol";
-import "../utility/RecurringAlarmClockScheduler.sol";
 import "./RecurringPayment.sol";
 
-contract RecurringPaymentFactory is Owned, CloneFactory {
+contract RecurringPaymentFactory is CloneFactory {
 
-    RecurringAlarmClockScheduler public scheduler;
     RecurringPayment public blueprint;
 
-    constructor (
-        RecurringAlarmClockScheduler _scheduler,
-        RecurringPayment _blueprint
-    ) public {
-        scheduler = _scheduler;
+    constructor (RecurringPayment _blueprint) public {
         blueprint = _blueprint;
     }
 
     function createRecurringPayment (
+        IRecurringAlarmClock alarmClock,
         IFuturePaymentDelegate delegate,
         IDelegatedWallet wallet,
         address token,
         address recipient,
-        uint paymentAmount,
-        uint startTimestamp,
-        uint totalPayments,
-        uint period,
-        uint gas
+        uint paymentAmount
     ) public returns (RecurringPayment paymentTask) {
-        require(wallet.isDelegate(delegate), "future payment delegate is not a delegate for the provided wallet");
-        require(wallet.isDelegate(msg.sender), "msg.sender is not a delegate for the provided wallet");
-        
-        RecurringAlarmClock alarmClock = scheduler.createRecurringAlarmClock(
-            delegate,       
-            wallet,         
-            startTimestamp,
-            totalPayments,
-            period,
-            gas
-        );
-
         paymentTask = RecurringPayment(createClone(blueprint));
         paymentTask.initialize(
             alarmClock,     // the owner of the recurring payment
@@ -51,18 +30,9 @@ contract RecurringPaymentFactory is Owned, CloneFactory {
             paymentAmount   // how much of the token to send each payment
         );
 
-        delegate.schedule(alarmClock, wallet);
-        delegate.schedule(paymentTask, wallet);
-        
-        alarmClock.start(paymentTask);
-
-        emit CreatePayment_event(msg.sender, delegate, paymentTask);
+        emit CreatePayment_event(msg.sender, paymentTask);
     }
 
-    event CreatePayment_event (
-        address indexed owner,
-        IFuturePaymentDelegate indexed delegate,
-        RecurringPayment recurringPayment
-    );
+    event CreatePayment_event (address indexed creator, RecurringPayment recurringPayment);
     
 }

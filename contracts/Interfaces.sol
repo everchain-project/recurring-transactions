@@ -25,13 +25,13 @@ contract IFuturePayment {
 contract IFuturePaymentDelegate is ITokenSender {
     function schedule (IFuturePayment payment, IDelegatedWallet wallet) public returns (bool);
     function unschedule (IFuturePayment payment) public returns (bool);
-    function finished () public returns (bool);
+    function unschedule() public returns (bool);
 }
 
 // The recurring alarm clock can easily be updated to perform any customized
 // task and does not have to follow this particular interface
 contract ITask {
-    function execute(bool) public returns (bool success);
+    function execute(uint, uint) public returns (bool success);
     function cancel() public;
 }
 

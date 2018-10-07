@@ -9,19 +9,19 @@ contract FuturePaymentDelegate is IFuturePaymentDelegate {
     uint public blockCreated;
     
     AddressListFactory public listFactory;
-    AddressList public trustedFactories;
+    AddressList public trustedSchedulers;
 
     mapping (address => IDelegatedWallet) public walletLookup;
     mapping (address => AddressList) public payments;
 
     function initialize (
         AddressListFactory _listFactory,
-        AddressList _trustedFactories
+        AddressList _trustedSchedulers
     ) public {
         require(blockCreated == 0, "contract can only be initialized once");
 
         listFactory = _listFactory;
-        trustedFactories = _trustedFactories;
+        trustedSchedulers = _trustedSchedulers;
 
         blockCreated = block.number;
     }
@@ -32,7 +32,7 @@ contract FuturePaymentDelegate is IFuturePaymentDelegate {
         return wallet.transfer(token, recipient, amount);
     }
 
-    function schedule (IFuturePayment payment, IDelegatedWallet wallet) public onlyTrustedFactories returns (bool success) {
+    function schedule (IFuturePayment payment, IDelegatedWallet wallet) public onlyTrustedSchedulers returns (bool success) {
         if(payments[wallet] == address(0x0)) {
             address[] memory emptyList;
             payments[wallet] = listFactory.createAddressList(this, emptyList);
@@ -56,7 +56,7 @@ contract FuturePaymentDelegate is IFuturePaymentDelegate {
         }
     }
 
-    function finished () public returns (bool success) {
+    function unschedule () public returns (bool success) {
         IFuturePayment payment = IFuturePayment(msg.sender);
         IDelegatedWallet wallet = walletLookup[payment];
         
@@ -67,8 +67,8 @@ contract FuturePaymentDelegate is IFuturePaymentDelegate {
         }
     }
 
-    modifier onlyTrustedFactories () {
-        require(trustedFactories.contains(msg.sender), "only a trusted payment factory can schedule a payment");
+    modifier onlyTrustedSchedulers () {
+        require(trustedSchedulers.contains(msg.sender), "only a trusted payment factory can schedule a payment");
         _;
     }
 

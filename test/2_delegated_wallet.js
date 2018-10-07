@@ -37,7 +37,6 @@ contract('Delegated Wallet Blueprint', function(accounts) {
             delegates = instance;
 
             return wallet.initialize(
-                accounts[0], 
                 delegates.address,
                 {from: accounts[0]}
             );
@@ -70,49 +69,31 @@ contract('Delegated Wallet Blueprint', function(accounts) {
 
     it("attempt to re-initialize the delegated wallet", function(){
         return wallet.initialize(
-            accounts[2], 
-            delegates.address,
+            accounts[3],
             {from: accounts[2]}
         )
         .then(() => {
             assert(false, "the delegated wallet should only be able to be initialized once");
         })
-        .catch(() => wallet.owner())
-        .then(owner => {
-            assert(owner == accounts[0], "the owner should still be set to accounts[0]");
+        .catch(() => wallet.delegates())
+        .then(delegatesAddress => {
+            assert(delegatesAddress == delegates.address, "the owner should still be set to accounts[0]");
         })
     });
 
     it("check correctness of the initialization", function() {
         return q.all([
             wallet.blockCreated(),
-            wallet.owner(),
             wallet.delegates(),
         ])
         .then(promises => {
             var blockCreated = promises[0];
-            var owner = promises[1];
-            var delegatesAddress = promises[2];
+            var delegatesAddress = promises[1];
 
             assert(initTx.receipt.blockNumber == blockCreated, "delegated wallet should be initialized");
-            assert(owner == accounts[0], "delegated wallet owner should be set to accounts[0]");
             assert(delegatesAddress == delegates.address, "delegated wallet delegates address list not set correctly");
         })
     });
-
-    it("have the owner transfer ownership of the delegated wallet", function() {
-        return wallet.transferOwnership(accounts[1], {from: accounts[0]})
-        .then(() => wallet.owner())
-        .then(owner => {
-            assert(owner == accounts[1], "owner should be set to accounts[1]");
-            return wallet.transferOwnership(accounts[0], {from: accounts[1]});
-        })
-        .then(() => wallet.owner())
-        .then(owner => {
-            assert(owner == accounts[0], "owner should be set to accounts[0]");
-        })
-    });
-
 
     it("have a delegate transfer ether from the wallet", function() {
         return wallet.isDelegate(accounts[1])
@@ -163,14 +144,6 @@ contract('Delegated Wallet Blueprint', function(accounts) {
         .catch(err => ERC20Token.balanceOf(wallet.address))
         .then(function(tokenBalance){
             assert(tokenBalance == halfEther, "wallet token balance should equal half an ether");
-        })
-    });
-
-    it("have a non-owner attempt to claim ownership the delegated wallet", function() {
-        return wallet.transferOwnership(accounts[2], {from: accounts[2]})
-        .catch(() => wallet.owner())
-        .then(owner => {
-            assert(owner == accounts[0], "owner should be set to accounts[0]");
         })
     });
 

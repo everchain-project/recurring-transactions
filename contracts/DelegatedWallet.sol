@@ -1,20 +1,18 @@
 pragma solidity ^0.4.23;
 
-import "./external/Owned.sol";
 import "./external/ERC20.sol";
 import "./utility/AddressList.sol";
 import "./Interfaces.sol";
 
-contract DelegatedWallet is Owned, IDelegated, ITokenSender, ITokenReceiver {
+contract DelegatedWallet is IDelegated, ITokenSender, ITokenReceiver {
 
     uint public blockCreated;
 
     AddressList public delegates;
 
-    function initialize (address _owner, AddressList _delegates) public {
+    function initialize (AddressList _delegates) public {
         require(blockCreated == 0, "contract already initialized");
-        
-        owner = _owner;
+
         delegates = _delegates;
 
         blockCreated = block.number;
@@ -27,10 +25,6 @@ contract DelegatedWallet is Owned, IDelegated, ITokenSender, ITokenReceiver {
             success = ERC20(token).transfer(recipient, amount);
         
         emit Transfer_event(msg.sender, token, recipient, amount, success);
-    }
-
-    function replaceDelegates (AddressList newDelegates) public onlyOwner {
-        delegates = newDelegates;
     }
 
     function isDelegate (address _address) public view returns (bool) {

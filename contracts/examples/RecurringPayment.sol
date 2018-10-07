@@ -33,20 +33,33 @@ contract RecurringPayment is IFuturePayment, ITask {
         blockCreated = block.number;
     }
 
+    function getOptions () public view returns (address[5], uint) {
+        return (
+            [
+                address(alarmClock),
+                delegate,
+                wallet,
+                token,
+                recipient
+            ],
+            paymentAmount
+        );
+    }
+
     function amount () public view returns (uint) {
         return paymentAmount;
     }
     
-    function execute(bool lastAlarm) public onlyAlarmClock returns (bool success){
+    function execute(uint currentInterval, uint maxIntervals) public onlyAlarmClock returns (bool success){
         success = delegate.transfer(token, recipient, amount());
         
-        if(lastAlarm)
-            delegate.finished();
+        if(currentInterval == maxIntervals)
+            delegate.unschedule();
     }
 
     function cancel () public onlyDelegates {
         alarmClock.cancel();
-        delegate.finished();
+        delegate.unschedule();
     }
 
     modifier onlyAlarmClock () {

@@ -24,15 +24,19 @@ contract AddressList is Owned {
     }
 
     function get () public view returns (address[]) {
-        return addresses.array;
+        return addresses.get();
     }
 
     function index (uint i) public view returns (address) {
-        return addresses.array[i];
+        return addresses.index(i);
+    }
+    
+    function indexOf (address account) public view returns (uint) {
+        return addresses.getIndexOf(account);
     }
     
     function length () public view returns (uint) {
-        return addresses.getLength();
+        return addresses.array.length;
     }
     
     function contains (address account) public view returns (bool) {

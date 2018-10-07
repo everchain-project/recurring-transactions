@@ -1,24 +1,10 @@
 {
-  "contractName": "IDelegated",
+  "contractName": "ITokenReceiver",
   "abi": [
     {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_address",
-          "type": "address"
-        }
-      ],
-      "name": "isDelegate",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "fallback"
     }
   ],
   "bytecode": "0x",
@@ -2165,5 +2151,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-10-06T23:12:51.274Z"
+  "updatedAt": "2018-10-06T23:12:51.290Z"
 }

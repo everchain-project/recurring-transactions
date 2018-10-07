@@ -5,21 +5,21 @@ import "./Interfaces.sol";
 
 contract RecurringAlarmClock is IRecurringAlarmClock {
 
-    uint public blockStarted;
-    address constant ETHER = address(0x0);
+    uint public blockStarted;               // The block the alarm clock was started
+    address constant ETHER = address(0x0);  // Used for code readability
     
-    ITask public task;                          // The task to execute when the alarm is triggered
-    RequestFactoryInterface public eac;         // Interface provided by the Ethereum Alarm Clock
-    IFuturePaymentDelegate public delegate;     // The delegate that pulls funds for each alarm
-    address public wallet;                      // The address which owns the alarm and collects any leftover funds
-    address public priorityCaller;              // The priority recipient of part of the alarm deposit
-    address public alarm;                       // The next scheduled alarm contract
+    ITask public task;                      // The task to execute when the alarm is triggered
+    RequestFactoryInterface public eac;     // Interface provided by the Ethereum Alarm Clock
+    IFuturePaymentDelegate public delegate; // The delegate that pulls funds for each alarm
+    address public wallet;                  // The address which owns the alarm and collects any leftover funds
+    address public priorityCaller;          // The priority recipient of part of the alarm deposit
+    address public alarm;                   // The next scheduled alarm contract
 
-    uint[10] public eacOptions;                 // The options used when setting an alarm using the Ethereum Alarm Clock
-    uint public safetyMultiplier;               // The multiplier to use when calculating the alarm cost
-    uint public period;                         // The amount of time between each alarm
-    uint public maxIntervals;                   // The number of times this alarm will go off
-    uint public currentInterval;                // Keeps track of how many alarms have been called
+    uint[10] public eacOptions;             // The options used when setting an alarm using the Ethereum Alarm Clock
+    uint public safetyMultiplier;           // The multiplier to use when calculating the alarm cost
+    uint public period;                     // The amount of time between each alarm
+    uint public maxIntervals;               // The number of times this alarm will go off
+    uint public currentInterval;            // Keeps track of how many alarms have been called
 
     function initialize (
         RequestFactoryInterface _eac,
@@ -53,16 +53,13 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         scheduleAlarm();
     }
 
-    function cancel () public {
-        require(msg.sender == address(task));
-
-        delegate.finished();
+    function cancel () public onlyTask {
+        delegate.unschedule();
     }
 
     function amount () public view returns (uint) {
-        // uint gas = eacOptions[6];
-        // return tx.gasprice * gas * safetyMultiplier / 10^18;
-        return 1 ether;
+        uint gas = eacOptions[6];
+        return tx.gasprice * gas; // return tx.gasprice * gas * safetyMultiplier / 10^18;
     }
 
     function () public payable {
@@ -76,10 +73,10 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         require(msg.sender == address(alarm));
         
         bool finished = currentInterval == maxIntervals;
-        task.execute(finished); // ignore success or failure
+        task.execute(currentInterval, maxIntervals); // ignore success or failure
 
         if(finished){
-            delegate.finished();
+            delegate.unschedule();
             alarm = address(0x0);
         } else {
             currentInterval++;
@@ -129,6 +126,11 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         } else {
             emit InvalidRequest_event(params);
         }
+    }
+
+    modifier onlyTask () {
+        require(msg.sender == address(task));
+        _;
     }
     
     event Deposit_event (address indexed sender, uint amount);

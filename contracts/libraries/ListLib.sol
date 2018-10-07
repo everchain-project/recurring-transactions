@@ -6,7 +6,7 @@ library ListLib {
     struct AddressList {
         address[] array; // An unordered list of unique values
         mapping (address => bool) exists; // Tracks if a value exists in the list
-        mapping (address => uint) index; // Tracks the index location of a value
+        mapping (address => uint) getIndex; // Tracks the index location of a value
     }
     
     /// @notice Called when a address value is added to 'list'
@@ -18,7 +18,7 @@ library ListLib {
         if(list.exists[value])
             return false;
         
-        list.index[value] = list.array.length;
+        list.getIndex[value] = list.array.length;
         list.exists[value] = true;
         list.array.push(value);
             
@@ -34,17 +34,17 @@ library ListLib {
         if(!list.exists[value])
             return false;
     
-        uint indexBeingRemoved = list.index[value]; // The index of 'value'
+        uint indexBeingRemoved = list.getIndex[value]; // The index of 'value'
         address replacementValue = list.array[list.array.length-1]; // The last value in the list
         
         // Move the replacement value to the index of 'value'
         list.array[indexBeingRemoved] = replacementValue;
-        list.index[replacementValue] = indexBeingRemoved;
+        list.getIndex[replacementValue] = indexBeingRemoved;
         list.array.length--;
         
         // clean up 
         delete(list.exists[value]);
-        delete(list.index[value]);
+        delete(list.getIndex[value]);
         
         return true;
     }
@@ -57,6 +57,18 @@ library ListLib {
     
      function contains (AddressList storage list, address value) public view returns (bool) {
         return list.exists[value];
+    }
+
+    function index (AddressList storage list, uint i) public view returns (address) {
+        return list.array[i];
+    }
+
+    function getIndexOf (AddressList storage list, address value) public view returns (uint) {
+        return list.getIndex[value];
+    }
+
+    function get (AddressList storage list) public view returns (address[]) {
+        return list.array;
     }
     
 }

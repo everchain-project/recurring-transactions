@@ -4,7 +4,7 @@ const DelegatedWallet = artifacts.require("DelegatedWallet");
 const DelegatedWalletFactory = artifacts.require("DelegatedWalletFactory");
 const FuturePaymentDelegate = artifacts.require("FuturePaymentDelegate");
 const RecurringPayment = artifacts.require("RecurringPayment");
-const RecurringPaymentFactory = artifacts.require("RecurringPaymentFactory");
+const RecurringPaymentScheduler = artifacts.require("RecurringPaymentScheduler");
 const RecurringAlarmClock = artifacts.require("RecurringAlarmClock");
 const TransactionRequestInterface = artifacts.require("TransactionRequestInterface");
 
@@ -19,9 +19,12 @@ contract('Future Payment Delegate Blueprint', function(accounts) {
     var recipient = accounts[7];
 
     var PaymentDelegate;
-    var TrustedFactories;
-    var PaymentFactory;
+    var ListFactory;
+    var WalletFactory;
+    var TrustedSchedulers;
+    var PaymentScheduler;
     var AlarmClock;
+    var Delegates;
 
     var wallet;
     var payment;
@@ -36,34 +39,34 @@ contract('Future Payment Delegate Blueprint', function(accounts) {
     
     it("initialize the future payment delegate", () => {
         return q.all([
-            AddressListFactory.deployed(),
             FuturePaymentDelegate.new({from: accounts[0]}),
-            RecurringPaymentFactory.deployed(),
+            RecurringPaymentScheduler.deployed(),
+            AddressListFactory.deployed(),
         ])
         .then(instances => {
-            PaymentDelegate = instances[1];
-            PaymentFactory = instances[2];
+            PaymentDelegate = instances[0];
+            PaymentScheduler = instances[1];
             return AddressList.new({from: accounts[0]});
         })
-        .then(trustedFactories => {
-            TrustedFactories = trustedFactories;
-            return TrustedFactories.initialize(accounts[0], [PaymentFactory.address], {from: accounts[0]});
+        .then(instance => {
+            TrustedSchedulers = instance;
+            return TrustedSchedulers.initialize(accounts[0], [PaymentScheduler.address], {from: accounts[0]});
         })
         .then(tx => {
-            return PaymentDelegate.initialize(AddressListFactory.address, TrustedFactories.address, {from: accounts[0]});
+            return PaymentDelegate.initialize(AddressListFactory.address, TrustedSchedulers.address, {from: accounts[0]});
         })
     });
 
     it("check correctness of future payment delegate", () => {
-        return PaymentDelegate.trustedFactories()
+        return PaymentDelegate.trustedSchedulers()
         .then(trustedFactoryAddress => {
-            assert(trustedFactoryAddress == TrustedFactories.address, "the trusted factories list was not set correctly");
+            assert(trustedFactoryAddress == TrustedSchedulers.address, "the trusted factories list was not set correctly");
             return AddressList.at(trustedFactoryAddress);
         })
-        .then(trustedFactories => trustedFactories.get())
+        .then(trustedSchedulers => trustedSchedulers.get())
         .then(factoryList => {
             assert(
-                factoryList[0] == PaymentFactory.address
+                factoryList[0] == PaymentScheduler.address
                 && factoryList.length == 1, 
                 "the recurring payment factory should be the only trusted factory"
             );
@@ -76,7 +79,13 @@ contract('Future Payment Delegate Blueprint', function(accounts) {
 
     it("have a delegate schedule a payment", () => {
         return DelegatedWalletFactory.deployed()
-        .then(walletFactory => walletFactory.createWallet(accounts[0], [accounts[1], PaymentDelegate.address], {from: accounts[0]}))
+        .then(instance => {
+            WalletFactory = instance;
+            return WalletFactory.createWallet(
+                accounts[0],
+                [accounts[1], PaymentDelegate.address]
+            );
+        })
         .then(tx => DelegatedWallet.at(tx.logs[0].args.walletAddress))
         .then(instance => {
             wallet = instance;
@@ -91,7 +100,7 @@ contract('Future Payment Delegate Blueprint', function(accounts) {
             var intervals = 1;
             var period = 0;
             
-            return PaymentFactory.createRecurringPayment(
+            return PaymentScheduler.createRecurringPayment(
                 PaymentDelegate.address,
                 wallet.address,
                 ETHER,
@@ -100,6 +109,7 @@ contract('Future Payment Delegate Blueprint', function(accounts) {
                 startTimestamp,
                 intervals,
                 period,
+                200000,
                 {from: accounts[1]}
             );
         })
@@ -180,7 +190,7 @@ contract('Future Payment Delegate Blueprint', function(accounts) {
         var intervals = 1;
         var period = 0;
 
-        return PaymentFactory.createRecurringPayment(
+        return PaymentScheduler.createRecurringPayment(
             PaymentDelegate.address,
             wallet.address,
             ETHER,

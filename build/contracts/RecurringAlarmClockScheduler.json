@@ -1,5 +1,5 @@
 {
-  "contractName": "RecurringAlarmClockWizard",
+  "contractName": "RecurringAlarmClockScheduler",
   "abi": [
     {
       "constant": true,
@@ -115,24 +115,24 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x6080604052601860025534801561001557600080fd5b50604051604080610619833981018060405281019080805190602001909291908051906020019092919050505081600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505050610545806100d46000396000f300608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631fd3ea5214610067578063c45a0155146100be578063d57f1d9b14610115578063ea7dca3d14610140575b600080fd5b34801561007357600080fd5b5061007c61020b565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100ca57600080fd5b506100d3610231565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561012157600080fd5b5061012a610256565b6040518082815260200191505060405180910390f35b34801561014c57600080fd5b506101c9600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919080359060200190929190803590602001909291908035906020019092919050505061025c565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60025481565b60006102666104d2565b61026e6104f5565b606060405190810160405280600254815260200186815260200187815250915061014060405190810160405280610e10815260200160b4815260200161012c8152602001600281526020016201518081526020018881526020018581526020016000815260200160008152602001600081525090506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663919a57ad8a8a600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1686866040518663ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183600360200280838360005b83811015610433578082015181840152602081019050610418565b5050505090500182600a60200280838360005b83811015610461578082015181840152602081019050610446565b5050505090500195505050505050602060405180830381600087803b15801561048957600080fd5b505af115801561049d573d6000803e3d6000fd5b505050506040513d60208110156104b357600080fd5b8101908080519060200190929190505050925050509695505050505050565b606060405190810160405280600390602082028038833980820191505090505090565b61014060405190810160405280600a906020820280388339808201915050905050905600a165627a7a7230582054e84b2328dd42259f5827ce1b7f71bdeded92d71f1d312b8ed713ae5b85f2a30029",
-  "deployedBytecode": "0x608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631fd3ea5214610067578063c45a0155146100be578063d57f1d9b14610115578063ea7dca3d14610140575b600080fd5b34801561007357600080fd5b5061007c61020b565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100ca57600080fd5b506100d3610231565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561012157600080fd5b5061012a610256565b6040518082815260200191505060405180910390f35b34801561014c57600080fd5b506101c9600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919080359060200190929190803590602001909291908035906020019092919050505061025c565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60025481565b60006102666104d2565b61026e6104f5565b606060405190810160405280600254815260200186815260200187815250915061014060405190810160405280610e10815260200160b4815260200161012c8152602001600281526020016201518081526020018881526020018581526020016000815260200160008152602001600081525090506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663919a57ad8a8a600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1686866040518663ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183600360200280838360005b83811015610433578082015181840152602081019050610418565b5050505090500182600a60200280838360005b83811015610461578082015181840152602081019050610446565b5050505090500195505050505050602060405180830381600087803b15801561048957600080fd5b505af115801561049d573d6000803e3d6000fd5b505050506040513d60208110156104b357600080fd5b8101908080519060200190929190505050925050509695505050505050565b606060405190810160405280600390602082028038833980820191505090505090565b61014060405190810160405280600a906020820280388339808201915050905050905600a165627a7a7230582054e84b2328dd42259f5827ce1b7f71bdeded92d71f1d312b8ed713ae5b85f2a30029",
-  "sourceMap": "113:1715:3:-;;;292:5;261:36;;306:152;8:9:-1;5:2;;;30:1;27;20:12;5:2;306:152:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;411:10;394:14;;:27;;;;;;;;;;;;;;;;;;442:8;432:7;;:18;;;;;;;;;;;;;;;;;;306:152;;113:1715;;;;;;",
-  "deployedSourceMap": "113:1715:3:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;225:29;;8:9:-1;5:2;;;30:1;27;20:12;5:2;225:29:3;;;;;;;;;;;;;;;;;;;;;;;;;;;177:41;;8:9:-1;5:2;;;30:1;27;20:12;5:2;177:41:3;;;;;;;;;;;;;;;;;;;;;;;;;;;261:36;;8:9:-1;5:2;;;30:1;27;20:12;5:2;261:36:3;;;;;;;;;;;;;;;;;;;;;;;466:1357;;8:9:-1;5:2;;;30:1;27;20:12;5:2;466:1357:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;225:29;;;;;;;;;;;;;:::o;177:41::-;;;;;;;;;;;;;:::o;261:36::-;;;;:::o;466:1357::-;700:19;732:41;;:::i;:::-;880;;:::i;:::-;732:135;;;;;;;;;791:16;;732:135;;;;822:6;732:135;;;;843:13;732:135;;;;;880:709;;;;;;;;;939:10;880:709;;;;987:9;880:709;;;;1032:9;880:709;;;;1083:1;880:709;;;;1168:8;880:709;;;;1233:14;880:709;;;;1299:3;880:709;;;;1381:1;880:709;;;;1444:1;880:709;;;;1524:1;880:709;;;;;1617:7;;;;;;;;;;;:33;;;1665:8;1688:6;1709:14;;;;;;;;;;;1738:26;1779:25;1617:198;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1617:198:3;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1617:198:3;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1617:198:3;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1617:198:3;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1617:198:3;;;;;;;;;;;;;;;;1610:205;;466:1357;;;;;;;;;;:::o;113:1715::-;;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;148:4;140:6;136:17;126:27;;0:157;113:1715:3;;;;:::o;:::-;;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;148:4;140:6;136:17;126:27;;0:157;113:1715:3;;;;:::o",
-  "source": "pragma solidity ^0.4.23;\r\n\r\nimport \"./external/CloneFactory.sol\";\r\nimport \"./RecurringAlarmClockFactory.sol\";\r\n\r\ncontract RecurringAlarmClockWizard is CloneFactory {\r\n    \r\n    RecurringAlarmClockFactory public factory;\r\n    address public priorityCaller;\r\n    uint public safetyMultiplier = 10^18;\r\n\r\n    constructor (address _everchain, RecurringAlarmClockFactory _factory) public {\r\n        priorityCaller = _everchain;\r\n        factory = _factory;\r\n    }\r\n\r\n    function createRecurringAlarmClock(\r\n        IFuturePaymentDelegate delegate,\r\n        IDelegatedWallet wallet,\r\n        uint startTimestamp,\r\n        uint totalPayments,\r\n        uint period,\r\n        uint gas\r\n    ) public returns (RecurringAlarmClock) {\r\n        uint[3] memory recurringAlarmClockOptions = [\r\n            safetyMultiplier,\r\n            period,\r\n            totalPayments\r\n        ];\r\n\r\n        uint[10] memory ethereumAlarmClockOptions = [\r\n            60 minutes,     // claimWindowSize\r\n            3 minutes,      // freezePeriod\r\n            5 minutes,      // reservedWindowSize\r\n            2,              // 2 = Use timestamp based scheduling instead of blocks\r\n            24 hours,       // The size of the execution window\r\n            startTimestamp, // The start of the execution window\r\n            gas,            // The amount of gas to be sent with the transaction\r\n            0,              // The amount of ether to be sent\r\n            0,              // The minimum gas price for the alarm when called\r\n            0               // The required deposit by the claimer\r\n        ];\r\n        \r\n        return factory.createRecurringAlarmClock(\r\n            delegate,\r\n            wallet,\r\n            priorityCaller,\r\n            recurringAlarmClockOptions,\r\n            ethereumAlarmClockOptions\r\n        );\r\n    }\r\n\r\n}\r\n",
-  "sourcePath": "C:\\Users\\My\\Documents\\GitHub\\everchain-project\\recurring-alarm-clock\\contracts\\RecurringAlarmClockWizard.sol",
+  "bytecode": "0x6080604052601860025534801561001557600080fd5b50604051604080610619833981018060405281019080805190602001909291908051906020019092919050505081600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505050610545806100d46000396000f300608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631fd3ea5214610067578063c45a0155146100be578063d57f1d9b14610115578063ea7dca3d14610140575b600080fd5b34801561007357600080fd5b5061007c61020b565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100ca57600080fd5b506100d3610231565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561012157600080fd5b5061012a610256565b6040518082815260200191505060405180910390f35b34801561014c57600080fd5b506101c9600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919080359060200190929190803590602001909291908035906020019092919050505061025c565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60025481565b60006102666104d2565b61026e6104f5565b606060405190810160405280600254815260200186815260200187815250915061014060405190810160405280610e10815260200160b4815260200161012c8152602001600281526020016201518081526020018881526020018581526020016000815260200160008152602001600081525090506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663919a57ad8a8a600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1686866040518663ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183600360200280838360005b83811015610433578082015181840152602081019050610418565b5050505090500182600a60200280838360005b83811015610461578082015181840152602081019050610446565b5050505090500195505050505050602060405180830381600087803b15801561048957600080fd5b505af115801561049d573d6000803e3d6000fd5b505050506040513d60208110156104b357600080fd5b8101908080519060200190929190505050925050509695505050505050565b606060405190810160405280600390602082028038833980820191505090505090565b61014060405190810160405280600a906020820280388339808201915050905050905600a165627a7a7230582018ed3637cc7feb4920bef489844ff333120578193544a1efa1bbb609d02daff00029",
+  "deployedBytecode": "0x608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631fd3ea5214610067578063c45a0155146100be578063d57f1d9b14610115578063ea7dca3d14610140575b600080fd5b34801561007357600080fd5b5061007c61020b565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100ca57600080fd5b506100d3610231565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561012157600080fd5b5061012a610256565b6040518082815260200191505060405180910390f35b34801561014c57600080fd5b506101c9600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919080359060200190929190803590602001909291908035906020019092919050505061025c565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60025481565b60006102666104d2565b61026e6104f5565b606060405190810160405280600254815260200186815260200187815250915061014060405190810160405280610e10815260200160b4815260200161012c8152602001600281526020016201518081526020018881526020018581526020016000815260200160008152602001600081525090506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663919a57ad8a8a600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1686866040518663ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183600360200280838360005b83811015610433578082015181840152602081019050610418565b5050505090500182600a60200280838360005b83811015610461578082015181840152602081019050610446565b5050505090500195505050505050602060405180830381600087803b15801561048957600080fd5b505af115801561049d573d6000803e3d6000fd5b505050506040513d60208110156104b357600080fd5b8101908080519060200190929190505050925050509695505050505050565b606060405190810160405280600390602082028038833980820191505090505090565b61014060405190810160405280600a906020820280388339808201915050905050905600a165627a7a7230582018ed3637cc7feb4920bef489844ff333120578193544a1efa1bbb609d02daff00029",
+  "sourceMap": "114:1718:18:-;;;296:5;265:36;;310:152;8:9:-1;5:2;;;30:1;27;20:12;5:2;310:152:18;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;415:10;398:14;;:27;;;;;;;;;;;;;;;;;;446:8;436:7;;:18;;;;;;;;;;;;;;;;;;310:152;;114:1718;;;;;;",
+  "deployedSourceMap": "114:1718:18:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;229:29;;8:9:-1;5:2;;;30:1;27;20:12;5:2;229:29:18;;;;;;;;;;;;;;;;;;;;;;;;;;;181:41;;8:9:-1;5:2;;;30:1;27;20:12;5:2;181:41:18;;;;;;;;;;;;;;;;;;;;;;;;;;;265:36;;8:9:-1;5:2;;;30:1;27;20:12;5:2;265:36:18;;;;;;;;;;;;;;;;;;;;;;;470:1357;;8:9:-1;5:2;;;30:1;27;20:12;5:2;470:1357:18;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;229:29;;;;;;;;;;;;;:::o;181:41::-;;;;;;;;;;;;;:::o;265:36::-;;;;:::o;470:1357::-;704:19;736:41;;:::i;:::-;884;;:::i;:::-;736:135;;;;;;;;;795:16;;736:135;;;;826:6;736:135;;;;847:13;736:135;;;;;884:709;;;;;;;;;943:10;884:709;;;;991:9;884:709;;;;1036:9;884:709;;;;1087:1;884:709;;;;1172:8;884:709;;;;1237:14;884:709;;;;1303:3;884:709;;;;1385:1;884:709;;;;1448:1;884:709;;;;1528:1;884:709;;;;;1621:7;;;;;;;;;;;:33;;;1669:8;1692:6;1713:14;;;;;;;;;;;1742:26;1783:25;1621:198;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1621:198:18;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1621:198:18;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1621:198:18;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1621:198:18;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1621:198:18;;;;;;;;;;;;;;;;1614:205;;470:1357;;;;;;;;;;:::o;114:1718::-;;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;148:4;140:6;136:17;126:27;;0:157;114:1718:18;;;;:::o;:::-;;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;148:4;140:6;136:17;126:27;;0:157;114:1718:18;;;;:::o",
+  "source": "pragma solidity ^0.4.23;\r\n\r\nimport \"../external/CloneFactory.sol\";\r\nimport \"./RecurringAlarmClockFactory.sol\";\r\n\r\ncontract RecurringAlarmClockScheduler is CloneFactory {\r\n    \r\n    RecurringAlarmClockFactory public factory;\r\n    address public priorityCaller;\r\n    uint public safetyMultiplier = 10^18;\r\n\r\n    constructor (address _everchain, RecurringAlarmClockFactory _factory) public {\r\n        priorityCaller = _everchain;\r\n        factory = _factory;\r\n    }\r\n\r\n    function createRecurringAlarmClock(\r\n        IFuturePaymentDelegate delegate,\r\n        IDelegatedWallet wallet,\r\n        uint startTimestamp,\r\n        uint totalPayments,\r\n        uint period,\r\n        uint gas\r\n    ) public returns (RecurringAlarmClock) {\r\n        uint[3] memory recurringAlarmClockOptions = [\r\n            safetyMultiplier,\r\n            period,\r\n            totalPayments\r\n        ];\r\n\r\n        uint[10] memory ethereumAlarmClockOptions = [\r\n            60 minutes,     // claimWindowSize\r\n            3 minutes,      // freezePeriod\r\n            5 minutes,      // reservedWindowSize\r\n            2,              // 2 = Use timestamp based scheduling instead of blocks\r\n            24 hours,       // The size of the execution window\r\n            startTimestamp, // The start of the execution window\r\n            gas,            // The amount of gas to be sent with the transaction\r\n            0,              // The amount of ether to be sent\r\n            0,              // The minimum gas price for the alarm when called\r\n            0               // The required deposit by the claimer\r\n        ];\r\n        \r\n        return factory.createRecurringAlarmClock(\r\n            delegate,\r\n            wallet,\r\n            priorityCaller,\r\n            recurringAlarmClockOptions,\r\n            ethereumAlarmClockOptions\r\n        );\r\n    }\r\n\r\n}\r\n",
+  "sourcePath": "C:\\Users\\My\\Documents\\GitHub\\everchain-project\\recurring-alarm-clock\\contracts\\utility\\RecurringAlarmClockScheduler.sol",
   "ast": {
-    "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/RecurringAlarmClockWizard.sol",
+    "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/utility/RecurringAlarmClockScheduler.sol",
     "exportedSymbols": {
-      "RecurringAlarmClockWizard": [
-        643
+      "RecurringAlarmClockScheduler": [
+        2571
       ]
     },
-    "id": 644,
+    "id": 2572,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 559,
+        "id": 2487,
         "literals": [
           "solidity",
           "^",
@@ -140,27 +140,27 @@
           ".23"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:3"
+        "src": "0:24:18"
       },
       {
         "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/external/CloneFactory.sol",
-        "file": "./external/CloneFactory.sol",
-        "id": 560,
+        "file": "../external/CloneFactory.sol",
+        "id": 2488,
         "nodeType": "ImportDirective",
-        "scope": 644,
-        "sourceUnit": 983,
-        "src": "28:37:3",
+        "scope": 2572,
+        "sourceUnit": 1625,
+        "src": "28:38:18",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/RecurringAlarmClockFactory.sol",
+        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/utility/RecurringAlarmClockFactory.sol",
         "file": "./RecurringAlarmClockFactory.sol",
-        "id": 561,
+        "id": 2489,
         "nodeType": "ImportDirective",
-        "scope": 644,
-        "sourceUnit": 558,
-        "src": "67:42:3",
+        "scope": 2572,
+        "sourceUnit": 2486,
+        "src": "68:42:18",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -170,57 +170,57 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 562,
+              "id": 2490,
               "name": "CloneFactory",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 982,
-              "src": "151:12:3",
+              "referencedDeclaration": 1624,
+              "src": "155:12:18",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_CloneFactory_$982",
+                "typeIdentifier": "t_contract$_CloneFactory_$1624",
                 "typeString": "contract CloneFactory"
               }
             },
-            "id": 563,
+            "id": 2491,
             "nodeType": "InheritanceSpecifier",
-            "src": "151:12:3"
+            "src": "155:12:18"
           }
         ],
         "contractDependencies": [
-          982
+          1624
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 643,
+        "id": 2571,
         "linearizedBaseContracts": [
-          643,
-          982
+          2571,
+          1624
         ],
-        "name": "RecurringAlarmClockWizard",
+        "name": "RecurringAlarmClockScheduler",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 565,
+            "id": 2493,
             "name": "factory",
             "nodeType": "VariableDeclaration",
-            "scope": 643,
-            "src": "177:41:3",
+            "scope": 2571,
+            "src": "181:41:18",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+              "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
               "typeString": "contract RecurringAlarmClockFactory"
             },
             "typeName": {
               "contractScope": null,
-              "id": 564,
+              "id": 2492,
               "name": "RecurringAlarmClockFactory",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 557,
-              "src": "177:26:3",
+              "referencedDeclaration": 2485,
+              "src": "181:26:18",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+                "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
                 "typeString": "contract RecurringAlarmClockFactory"
               }
             },
@@ -229,11 +229,11 @@
           },
           {
             "constant": false,
-            "id": 567,
+            "id": 2495,
             "name": "priorityCaller",
             "nodeType": "VariableDeclaration",
-            "scope": 643,
-            "src": "225:29:3",
+            "scope": 2571,
+            "src": "229:29:18",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -241,10 +241,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 566,
+              "id": 2494,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "225:7:3",
+              "src": "229:7:18",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -255,11 +255,11 @@
           },
           {
             "constant": false,
-            "id": 572,
+            "id": 2500,
             "name": "safetyMultiplier",
             "nodeType": "VariableDeclaration",
-            "scope": 643,
-            "src": "261:36:3",
+            "scope": 2571,
+            "src": "265:36:18",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -267,10 +267,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 568,
+              "id": 2496,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "261:4:3",
+              "src": "265:4:18",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -282,7 +282,7 @@
                 "typeIdentifier": "t_rational_24_by_1",
                 "typeString": "int_const 24"
               },
-              "id": 571,
+              "id": 2499,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -290,14 +290,14 @@
               "leftExpression": {
                 "argumentTypes": null,
                 "hexValue": "3130",
-                "id": 569,
+                "id": 2497,
                 "isConstant": false,
                 "isLValue": false,
                 "isPure": true,
                 "kind": "number",
                 "lValueRequested": false,
                 "nodeType": "Literal",
-                "src": "292:2:3",
+                "src": "296:2:18",
                 "subdenomination": null,
                 "typeDescriptions": {
                   "typeIdentifier": "t_rational_10_by_1",
@@ -310,14 +310,14 @@
               "rightExpression": {
                 "argumentTypes": null,
                 "hexValue": "3138",
-                "id": 570,
+                "id": 2498,
                 "isConstant": false,
                 "isLValue": false,
                 "isPure": true,
                 "kind": "number",
                 "lValueRequested": false,
                 "nodeType": "Literal",
-                "src": "295:2:3",
+                "src": "299:2:18",
                 "subdenomination": null,
                 "typeDescriptions": {
                   "typeIdentifier": "t_rational_18_by_1",
@@ -325,7 +325,7 @@
                 },
                 "value": "18"
               },
-              "src": "292:5:3",
+              "src": "296:5:18",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_24_by_1",
                 "typeString": "int_const 24"
@@ -335,26 +335,26 @@
           },
           {
             "body": {
-              "id": 587,
+              "id": 2515,
               "nodeType": "Block",
-              "src": "383:75:3",
+              "src": "387:75:18",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 581,
+                    "id": 2509,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 579,
+                      "id": 2507,
                       "name": "priorityCaller",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 567,
-                      "src": "394:14:3",
+                      "referencedDeclaration": 2495,
+                      "src": "398:14:18",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -364,45 +364,45 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 580,
+                      "id": 2508,
                       "name": "_everchain",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 574,
-                      "src": "411:10:3",
+                      "referencedDeclaration": 2502,
+                      "src": "415:10:18",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "src": "394:27:3",
+                    "src": "398:27:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-                  "id": 582,
+                  "id": 2510,
                   "nodeType": "ExpressionStatement",
-                  "src": "394:27:3"
+                  "src": "398:27:18"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 585,
+                    "id": 2513,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 583,
+                      "id": 2511,
                       "name": "factory",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 565,
-                      "src": "432:7:3",
+                      "referencedDeclaration": 2493,
+                      "src": "436:7:18",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+                        "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
                         "typeString": "contract RecurringAlarmClockFactory"
                       }
                     },
@@ -410,31 +410,31 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 584,
+                      "id": 2512,
                       "name": "_factory",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 576,
-                      "src": "442:8:3",
+                      "referencedDeclaration": 2504,
+                      "src": "446:8:18",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+                        "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
                         "typeString": "contract RecurringAlarmClockFactory"
                       }
                     },
-                    "src": "432:18:3",
+                    "src": "436:18:18",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+                      "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
                       "typeString": "contract RecurringAlarmClockFactory"
                     }
                   },
-                  "id": 586,
+                  "id": 2514,
                   "nodeType": "ExpressionStatement",
-                  "src": "432:18:3"
+                  "src": "436:18:18"
                 }
               ]
             },
             "documentation": null,
-            "id": 588,
+            "id": 2516,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -442,16 +442,16 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 577,
+              "id": 2505,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 574,
+                  "id": 2502,
                   "name": "_everchain",
                   "nodeType": "VariableDeclaration",
-                  "scope": 588,
-                  "src": "319:18:3",
+                  "scope": 2516,
+                  "src": "323:18:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -459,10 +459,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 573,
+                    "id": 2501,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "319:7:3",
+                    "src": "323:7:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -473,26 +473,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 576,
+                  "id": 2504,
                   "name": "_factory",
                   "nodeType": "VariableDeclaration",
-                  "scope": 588,
-                  "src": "339:35:3",
+                  "scope": 2516,
+                  "src": "343:35:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+                    "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
                     "typeString": "contract RecurringAlarmClockFactory"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 575,
+                    "id": 2503,
                     "name": "RecurringAlarmClockFactory",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 557,
-                    "src": "339:26:3",
+                    "referencedDeclaration": 2485,
+                    "src": "343:26:18",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+                      "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
                       "typeString": "contract RecurringAlarmClockFactory"
                     }
                   },
@@ -500,39 +500,39 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "318:57:3"
+              "src": "322:57:18"
             },
             "payable": false,
             "returnParameters": {
-              "id": 578,
+              "id": 2506,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "383:0:3"
+              "src": "387:0:18"
             },
-            "scope": 643,
-            "src": "306:152:3",
+            "scope": 2571,
+            "src": "310:152:18",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 641,
+              "id": 2569,
               "nodeType": "Block",
-              "src": "721:1102:3",
+              "src": "725:1102:18",
               "statements": [
                 {
                   "assignments": [
-                    609
+                    2537
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 609,
+                      "id": 2537,
                       "name": "recurringAlarmClockOptions",
                       "nodeType": "VariableDeclaration",
-                      "scope": 642,
-                      "src": "732:41:3",
+                      "scope": 2570,
+                      "src": "736:41:18",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
@@ -541,27 +541,27 @@
                       },
                       "typeName": {
                         "baseType": {
-                          "id": 607,
+                          "id": 2535,
                           "name": "uint",
                           "nodeType": "ElementaryTypeName",
-                          "src": "732:4:3",
+                          "src": "736:4:18",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "id": 608,
+                        "id": 2536,
                         "length": {
                           "argumentTypes": null,
                           "hexValue": "33",
-                          "id": 606,
+                          "id": 2534,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "kind": "number",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "737:1:3",
+                          "src": "741:1:18",
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": null,
@@ -570,7 +570,7 @@
                           "value": "3"
                         },
                         "nodeType": "ArrayTypeName",
-                        "src": "732:7:3",
+                        "src": "736:7:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$3_storage_ptr",
                           "typeString": "uint256[3]"
@@ -580,18 +580,18 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 614,
+                  "id": 2542,
                   "initialValue": {
                     "argumentTypes": null,
                     "components": [
                       {
                         "argumentTypes": null,
-                        "id": 610,
+                        "id": 2538,
                         "name": "safetyMultiplier",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 572,
-                        "src": "791:16:3",
+                        "referencedDeclaration": 2500,
+                        "src": "795:16:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -599,12 +599,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 611,
+                        "id": 2539,
                         "name": "period",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 598,
-                        "src": "822:6:3",
+                        "referencedDeclaration": 2526,
+                        "src": "826:6:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -612,46 +612,46 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 612,
+                        "id": 2540,
                         "name": "totalPayments",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 596,
-                        "src": "843:13:3",
+                        "referencedDeclaration": 2524,
+                        "src": "847:13:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         }
                       }
                     ],
-                    "id": 613,
+                    "id": 2541,
                     "isConstant": false,
                     "isInlineArray": true,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "TupleExpression",
-                    "src": "776:91:3",
+                    "src": "780:91:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_uint256_$3_memory_ptr",
                       "typeString": "uint256[3] memory"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "732:135:3"
+                  "src": "736:135:18"
                 },
                 {
                   "assignments": [
-                    619
+                    2547
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 619,
+                      "id": 2547,
                       "name": "ethereumAlarmClockOptions",
                       "nodeType": "VariableDeclaration",
-                      "scope": 642,
-                      "src": "880:41:3",
+                      "scope": 2570,
+                      "src": "884:41:18",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
@@ -660,27 +660,27 @@
                       },
                       "typeName": {
                         "baseType": {
-                          "id": 617,
+                          "id": 2545,
                           "name": "uint",
                           "nodeType": "ElementaryTypeName",
-                          "src": "880:4:3",
+                          "src": "884:4:18",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "id": 618,
+                        "id": 2546,
                         "length": {
                           "argumentTypes": null,
                           "hexValue": "3130",
-                          "id": 616,
+                          "id": 2544,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "kind": "number",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "885:2:3",
+                          "src": "889:2:18",
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": null,
@@ -689,7 +689,7 @@
                           "value": "10"
                         },
                         "nodeType": "ArrayTypeName",
-                        "src": "880:8:3",
+                        "src": "884:8:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$10_storage_ptr",
                           "typeString": "uint256[10]"
@@ -699,21 +699,21 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 631,
+                  "id": 2559,
                   "initialValue": {
                     "argumentTypes": null,
                     "components": [
                       {
                         "argumentTypes": null,
                         "hexValue": "3630",
-                        "id": 620,
+                        "id": 2548,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "939:10:3",
+                        "src": "943:10:18",
                         "subdenomination": "minutes",
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_3600_by_1",
@@ -724,14 +724,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "33",
-                        "id": 621,
+                        "id": 2549,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "987:9:3",
+                        "src": "991:9:18",
                         "subdenomination": "minutes",
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_180_by_1",
@@ -742,14 +742,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "35",
-                        "id": 622,
+                        "id": 2550,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1032:9:3",
+                        "src": "1036:9:18",
                         "subdenomination": "minutes",
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_300_by_1",
@@ -760,14 +760,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "32",
-                        "id": 623,
+                        "id": 2551,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1083:1:3",
+                        "src": "1087:1:18",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_2_by_1",
@@ -778,14 +778,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "3234",
-                        "id": 624,
+                        "id": 2552,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1168:8:3",
+                        "src": "1172:8:18",
                         "subdenomination": "hours",
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_86400_by_1",
@@ -795,12 +795,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 625,
+                        "id": 2553,
                         "name": "startTimestamp",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 594,
-                        "src": "1233:14:3",
+                        "referencedDeclaration": 2522,
+                        "src": "1237:14:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -808,12 +808,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 626,
+                        "id": 2554,
                         "name": "gas",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 600,
-                        "src": "1299:3:3",
+                        "referencedDeclaration": 2528,
+                        "src": "1303:3:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -822,14 +822,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "30",
-                        "id": 627,
+                        "id": 2555,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1381:1:3",
+                        "src": "1385:1:18",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_0_by_1",
@@ -840,14 +840,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "30",
-                        "id": 628,
+                        "id": 2556,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1444:1:3",
+                        "src": "1448:1:18",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_0_by_1",
@@ -858,14 +858,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "30",
-                        "id": 629,
+                        "id": 2557,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1524:1:3",
+                        "src": "1528:1:18",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_0_by_1",
@@ -874,21 +874,21 @@
                         "value": "0"
                       }
                     ],
-                    "id": 630,
+                    "id": 2558,
                     "isConstant": false,
                     "isInlineArray": true,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "TupleExpression",
-                    "src": "924:665:3",
+                    "src": "928:665:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_uint256_$10_memory_ptr",
                       "typeString": "uint256[10] memory"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "880:709:3"
+                  "src": "884:709:18"
                 },
                 {
                   "expression": {
@@ -896,38 +896,38 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 634,
+                        "id": 2562,
                         "name": "delegate",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 590,
-                        "src": "1665:8:3",
+                        "referencedDeclaration": 2518,
+                        "src": "1669:8:18",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$56",
+                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$465",
                           "typeString": "contract IFuturePaymentDelegate"
                         }
                       },
                       {
                         "argumentTypes": null,
-                        "id": 635,
+                        "id": 2563,
                         "name": "wallet",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 592,
-                        "src": "1688:6:3",
+                        "referencedDeclaration": 2520,
+                        "src": "1692:6:18",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IDelegatedWallet_$26",
+                          "typeIdentifier": "t_contract$_IDelegatedWallet_$430",
                           "typeString": "contract IDelegatedWallet"
                         }
                       },
                       {
                         "argumentTypes": null,
-                        "id": 636,
+                        "id": 2564,
                         "name": "priorityCaller",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 567,
-                        "src": "1709:14:3",
+                        "referencedDeclaration": 2495,
+                        "src": "1713:14:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -935,12 +935,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 637,
+                        "id": 2565,
                         "name": "recurringAlarmClockOptions",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 609,
-                        "src": "1738:26:3",
+                        "referencedDeclaration": 2537,
+                        "src": "1742:26:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$3_memory_ptr",
                           "typeString": "uint256[3] memory"
@@ -948,12 +948,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 638,
+                        "id": 2566,
                         "name": "ethereumAlarmClockOptions",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 619,
-                        "src": "1779:25:3",
+                        "referencedDeclaration": 2547,
+                        "src": "1783:25:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$10_memory_ptr",
                           "typeString": "uint256[10] memory"
@@ -963,11 +963,11 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$56",
+                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$465",
                           "typeString": "contract IFuturePaymentDelegate"
                         },
                         {
-                          "typeIdentifier": "t_contract$_IDelegatedWallet_$26",
+                          "typeIdentifier": "t_contract$_IDelegatedWallet_$430",
                           "typeString": "contract IDelegatedWallet"
                         },
                         {
@@ -985,32 +985,32 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 632,
+                        "id": 2560,
                         "name": "factory",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 565,
-                        "src": "1617:7:3",
+                        "referencedDeclaration": 2493,
+                        "src": "1621:7:18",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+                          "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
                           "typeString": "contract RecurringAlarmClockFactory"
                         }
                       },
-                      "id": 633,
+                      "id": 2561,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "createRecurringAlarmClock",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 556,
-                      "src": "1617:33:3",
+                      "referencedDeclaration": 2484,
+                      "src": "1621:33:18",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_nonpayable$_t_contract$_IFuturePaymentDelegate_$56_$_t_contract$_IDelegatedWallet_$26_$_t_address_$_t_array$_t_uint256_$3_memory_ptr_$_t_array$_t_uint256_$10_memory_ptr_$returns$_t_contract$_RecurringAlarmClock_$480_$",
-                        "typeString": "function (contract IFuturePaymentDelegate,contract IDelegatedWallet,address,uint256[3] memory,uint256[10] memory) external returns (contract RecurringAlarmClock)"
+                        "typeIdentifier": "t_function_external_nonpayable$_t_contract$_IFuturePaymentDelegate_$465_$_t_address_$_t_address_$_t_array$_t_uint256_$3_memory_ptr_$_t_array$_t_uint256_$10_memory_ptr_$returns$_t_contract$_RecurringAlarmClock_$889_$",
+                        "typeString": "function (contract IFuturePaymentDelegate,address,address,uint256[3] memory,uint256[10] memory) external returns (contract RecurringAlarmClock)"
                       }
                     },
-                    "id": 639,
+                    "id": 2567,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1018,21 +1018,21 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1617:198:3",
+                    "src": "1621:198:18",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringAlarmClock_$480",
+                      "typeIdentifier": "t_contract$_RecurringAlarmClock_$889",
                       "typeString": "contract RecurringAlarmClock"
                     }
                   },
-                  "functionReturnParameters": 604,
-                  "id": 640,
+                  "functionReturnParameters": 2532,
+                  "id": 2568,
                   "nodeType": "Return",
-                  "src": "1610:205:3"
+                  "src": "1614:205:18"
                 }
               ]
             },
             "documentation": null,
-            "id": 642,
+            "id": 2570,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1040,31 +1040,31 @@
             "name": "createRecurringAlarmClock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 601,
+              "id": 2529,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 590,
+                  "id": 2518,
                   "name": "delegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 642,
-                  "src": "511:31:3",
+                  "scope": 2570,
+                  "src": "515:31:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$56",
+                    "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$465",
                     "typeString": "contract IFuturePaymentDelegate"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 589,
+                    "id": 2517,
                     "name": "IFuturePaymentDelegate",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 56,
-                    "src": "511:22:3",
+                    "referencedDeclaration": 465,
+                    "src": "515:22:18",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$56",
+                      "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$465",
                       "typeString": "contract IFuturePaymentDelegate"
                     }
                   },
@@ -1073,26 +1073,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 592,
+                  "id": 2520,
                   "name": "wallet",
                   "nodeType": "VariableDeclaration",
-                  "scope": 642,
-                  "src": "553:23:3",
+                  "scope": 2570,
+                  "src": "557:23:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IDelegatedWallet_$26",
+                    "typeIdentifier": "t_contract$_IDelegatedWallet_$430",
                     "typeString": "contract IDelegatedWallet"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 591,
+                    "id": 2519,
                     "name": "IDelegatedWallet",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 26,
-                    "src": "553:16:3",
+                    "referencedDeclaration": 430,
+                    "src": "557:16:18",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IDelegatedWallet_$26",
+                      "typeIdentifier": "t_contract$_IDelegatedWallet_$430",
                       "typeString": "contract IDelegatedWallet"
                     }
                   },
@@ -1101,11 +1101,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 594,
+                  "id": 2522,
                   "name": "startTimestamp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 642,
-                  "src": "587:19:3",
+                  "scope": 2570,
+                  "src": "591:19:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1113,10 +1113,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 593,
+                    "id": 2521,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "587:4:3",
+                    "src": "591:4:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1127,11 +1127,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 596,
+                  "id": 2524,
                   "name": "totalPayments",
                   "nodeType": "VariableDeclaration",
-                  "scope": 642,
-                  "src": "617:18:3",
+                  "scope": 2570,
+                  "src": "621:18:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1139,10 +1139,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 595,
+                    "id": 2523,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "617:4:3",
+                    "src": "621:4:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1153,11 +1153,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 598,
+                  "id": 2526,
                   "name": "period",
                   "nodeType": "VariableDeclaration",
-                  "scope": 642,
-                  "src": "646:11:3",
+                  "scope": 2570,
+                  "src": "650:11:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1165,10 +1165,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 597,
+                    "id": 2525,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "646:4:3",
+                    "src": "650:4:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1179,11 +1179,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 600,
+                  "id": 2528,
                   "name": "gas",
                   "nodeType": "VariableDeclaration",
-                  "scope": 642,
-                  "src": "668:8:3",
+                  "scope": 2570,
+                  "src": "672:8:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1191,10 +1191,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 599,
+                    "id": 2527,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "668:4:3",
+                    "src": "672:4:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1204,35 +1204,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "500:183:3"
+              "src": "504:183:18"
             },
             "payable": false,
             "returnParameters": {
-              "id": 604,
+              "id": 2532,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 603,
+                  "id": 2531,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 642,
-                  "src": "700:19:3",
+                  "scope": 2570,
+                  "src": "704:19:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_RecurringAlarmClock_$480",
+                    "typeIdentifier": "t_contract$_RecurringAlarmClock_$889",
                     "typeString": "contract RecurringAlarmClock"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 602,
+                    "id": 2530,
                     "name": "RecurringAlarmClock",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 480,
-                    "src": "700:19:3",
+                    "referencedDeclaration": 889,
+                    "src": "704:19:18",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringAlarmClock_$480",
+                      "typeIdentifier": "t_contract$_RecurringAlarmClock_$889",
                       "typeString": "contract RecurringAlarmClock"
                     }
                   },
@@ -1240,33 +1240,33 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "699:21:3"
+              "src": "703:21:18"
             },
-            "scope": 643,
-            "src": "466:1357:3",
+            "scope": 2571,
+            "src": "470:1357:18",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 644,
-        "src": "113:1715:3"
+        "scope": 2572,
+        "src": "114:1718:18"
       }
     ],
-    "src": "0:1830:3"
+    "src": "0:1834:18"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/RecurringAlarmClockWizard.sol",
+    "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/utility/RecurringAlarmClockScheduler.sol",
     "exportedSymbols": {
-      "RecurringAlarmClockWizard": [
-        643
+      "RecurringAlarmClockScheduler": [
+        2571
       ]
     },
-    "id": 644,
+    "id": 2572,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 559,
+        "id": 2487,
         "literals": [
           "solidity",
           "^",
@@ -1274,27 +1274,27 @@
           ".23"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:3"
+        "src": "0:24:18"
       },
       {
         "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/external/CloneFactory.sol",
-        "file": "./external/CloneFactory.sol",
-        "id": 560,
+        "file": "../external/CloneFactory.sol",
+        "id": 2488,
         "nodeType": "ImportDirective",
-        "scope": 644,
-        "sourceUnit": 983,
-        "src": "28:37:3",
+        "scope": 2572,
+        "sourceUnit": 1625,
+        "src": "28:38:18",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/RecurringAlarmClockFactory.sol",
+        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/utility/RecurringAlarmClockFactory.sol",
         "file": "./RecurringAlarmClockFactory.sol",
-        "id": 561,
+        "id": 2489,
         "nodeType": "ImportDirective",
-        "scope": 644,
-        "sourceUnit": 558,
-        "src": "67:42:3",
+        "scope": 2572,
+        "sourceUnit": 2486,
+        "src": "68:42:18",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -1304,57 +1304,57 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 562,
+              "id": 2490,
               "name": "CloneFactory",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 982,
-              "src": "151:12:3",
+              "referencedDeclaration": 1624,
+              "src": "155:12:18",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_CloneFactory_$982",
+                "typeIdentifier": "t_contract$_CloneFactory_$1624",
                 "typeString": "contract CloneFactory"
               }
             },
-            "id": 563,
+            "id": 2491,
             "nodeType": "InheritanceSpecifier",
-            "src": "151:12:3"
+            "src": "155:12:18"
           }
         ],
         "contractDependencies": [
-          982
+          1624
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 643,
+        "id": 2571,
         "linearizedBaseContracts": [
-          643,
-          982
+          2571,
+          1624
         ],
-        "name": "RecurringAlarmClockWizard",
+        "name": "RecurringAlarmClockScheduler",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 565,
+            "id": 2493,
             "name": "factory",
             "nodeType": "VariableDeclaration",
-            "scope": 643,
-            "src": "177:41:3",
+            "scope": 2571,
+            "src": "181:41:18",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+              "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
               "typeString": "contract RecurringAlarmClockFactory"
             },
             "typeName": {
               "contractScope": null,
-              "id": 564,
+              "id": 2492,
               "name": "RecurringAlarmClockFactory",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 557,
-              "src": "177:26:3",
+              "referencedDeclaration": 2485,
+              "src": "181:26:18",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+                "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
                 "typeString": "contract RecurringAlarmClockFactory"
               }
             },
@@ -1363,11 +1363,11 @@
           },
           {
             "constant": false,
-            "id": 567,
+            "id": 2495,
             "name": "priorityCaller",
             "nodeType": "VariableDeclaration",
-            "scope": 643,
-            "src": "225:29:3",
+            "scope": 2571,
+            "src": "229:29:18",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1375,10 +1375,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 566,
+              "id": 2494,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "225:7:3",
+              "src": "229:7:18",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -1389,11 +1389,11 @@
           },
           {
             "constant": false,
-            "id": 572,
+            "id": 2500,
             "name": "safetyMultiplier",
             "nodeType": "VariableDeclaration",
-            "scope": 643,
-            "src": "261:36:3",
+            "scope": 2571,
+            "src": "265:36:18",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1401,10 +1401,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 568,
+              "id": 2496,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "261:4:3",
+              "src": "265:4:18",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1416,7 +1416,7 @@
                 "typeIdentifier": "t_rational_24_by_1",
                 "typeString": "int_const 24"
               },
-              "id": 571,
+              "id": 2499,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -1424,14 +1424,14 @@
               "leftExpression": {
                 "argumentTypes": null,
                 "hexValue": "3130",
-                "id": 569,
+                "id": 2497,
                 "isConstant": false,
                 "isLValue": false,
                 "isPure": true,
                 "kind": "number",
                 "lValueRequested": false,
                 "nodeType": "Literal",
-                "src": "292:2:3",
+                "src": "296:2:18",
                 "subdenomination": null,
                 "typeDescriptions": {
                   "typeIdentifier": "t_rational_10_by_1",
@@ -1444,14 +1444,14 @@
               "rightExpression": {
                 "argumentTypes": null,
                 "hexValue": "3138",
-                "id": 570,
+                "id": 2498,
                 "isConstant": false,
                 "isLValue": false,
                 "isPure": true,
                 "kind": "number",
                 "lValueRequested": false,
                 "nodeType": "Literal",
-                "src": "295:2:3",
+                "src": "299:2:18",
                 "subdenomination": null,
                 "typeDescriptions": {
                   "typeIdentifier": "t_rational_18_by_1",
@@ -1459,7 +1459,7 @@
                 },
                 "value": "18"
               },
-              "src": "292:5:3",
+              "src": "296:5:18",
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_24_by_1",
                 "typeString": "int_const 24"
@@ -1469,26 +1469,26 @@
           },
           {
             "body": {
-              "id": 587,
+              "id": 2515,
               "nodeType": "Block",
-              "src": "383:75:3",
+              "src": "387:75:18",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 581,
+                    "id": 2509,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 579,
+                      "id": 2507,
                       "name": "priorityCaller",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 567,
-                      "src": "394:14:3",
+                      "referencedDeclaration": 2495,
+                      "src": "398:14:18",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -1498,45 +1498,45 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 580,
+                      "id": 2508,
                       "name": "_everchain",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 574,
-                      "src": "411:10:3",
+                      "referencedDeclaration": 2502,
+                      "src": "415:10:18",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "src": "394:27:3",
+                    "src": "398:27:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-                  "id": 582,
+                  "id": 2510,
                   "nodeType": "ExpressionStatement",
-                  "src": "394:27:3"
+                  "src": "398:27:18"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 585,
+                    "id": 2513,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 583,
+                      "id": 2511,
                       "name": "factory",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 565,
-                      "src": "432:7:3",
+                      "referencedDeclaration": 2493,
+                      "src": "436:7:18",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+                        "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
                         "typeString": "contract RecurringAlarmClockFactory"
                       }
                     },
@@ -1544,31 +1544,31 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 584,
+                      "id": 2512,
                       "name": "_factory",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 576,
-                      "src": "442:8:3",
+                      "referencedDeclaration": 2504,
+                      "src": "446:8:18",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+                        "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
                         "typeString": "contract RecurringAlarmClockFactory"
                       }
                     },
-                    "src": "432:18:3",
+                    "src": "436:18:18",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+                      "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
                       "typeString": "contract RecurringAlarmClockFactory"
                     }
                   },
-                  "id": 586,
+                  "id": 2514,
                   "nodeType": "ExpressionStatement",
-                  "src": "432:18:3"
+                  "src": "436:18:18"
                 }
               ]
             },
             "documentation": null,
-            "id": 588,
+            "id": 2516,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -1576,16 +1576,16 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 577,
+              "id": 2505,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 574,
+                  "id": 2502,
                   "name": "_everchain",
                   "nodeType": "VariableDeclaration",
-                  "scope": 588,
-                  "src": "319:18:3",
+                  "scope": 2516,
+                  "src": "323:18:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1593,10 +1593,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 573,
+                    "id": 2501,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "319:7:3",
+                    "src": "323:7:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1607,26 +1607,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 576,
+                  "id": 2504,
                   "name": "_factory",
                   "nodeType": "VariableDeclaration",
-                  "scope": 588,
-                  "src": "339:35:3",
+                  "scope": 2516,
+                  "src": "343:35:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+                    "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
                     "typeString": "contract RecurringAlarmClockFactory"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 575,
+                    "id": 2503,
                     "name": "RecurringAlarmClockFactory",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 557,
-                    "src": "339:26:3",
+                    "referencedDeclaration": 2485,
+                    "src": "343:26:18",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+                      "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
                       "typeString": "contract RecurringAlarmClockFactory"
                     }
                   },
@@ -1634,39 +1634,39 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "318:57:3"
+              "src": "322:57:18"
             },
             "payable": false,
             "returnParameters": {
-              "id": 578,
+              "id": 2506,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "383:0:3"
+              "src": "387:0:18"
             },
-            "scope": 643,
-            "src": "306:152:3",
+            "scope": 2571,
+            "src": "310:152:18",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 641,
+              "id": 2569,
               "nodeType": "Block",
-              "src": "721:1102:3",
+              "src": "725:1102:18",
               "statements": [
                 {
                   "assignments": [
-                    609
+                    2537
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 609,
+                      "id": 2537,
                       "name": "recurringAlarmClockOptions",
                       "nodeType": "VariableDeclaration",
-                      "scope": 642,
-                      "src": "732:41:3",
+                      "scope": 2570,
+                      "src": "736:41:18",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
@@ -1675,27 +1675,27 @@
                       },
                       "typeName": {
                         "baseType": {
-                          "id": 607,
+                          "id": 2535,
                           "name": "uint",
                           "nodeType": "ElementaryTypeName",
-                          "src": "732:4:3",
+                          "src": "736:4:18",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "id": 608,
+                        "id": 2536,
                         "length": {
                           "argumentTypes": null,
                           "hexValue": "33",
-                          "id": 606,
+                          "id": 2534,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "kind": "number",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "737:1:3",
+                          "src": "741:1:18",
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": null,
@@ -1704,7 +1704,7 @@
                           "value": "3"
                         },
                         "nodeType": "ArrayTypeName",
-                        "src": "732:7:3",
+                        "src": "736:7:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$3_storage_ptr",
                           "typeString": "uint256[3]"
@@ -1714,18 +1714,18 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 614,
+                  "id": 2542,
                   "initialValue": {
                     "argumentTypes": null,
                     "components": [
                       {
                         "argumentTypes": null,
-                        "id": 610,
+                        "id": 2538,
                         "name": "safetyMultiplier",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 572,
-                        "src": "791:16:3",
+                        "referencedDeclaration": 2500,
+                        "src": "795:16:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1733,12 +1733,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 611,
+                        "id": 2539,
                         "name": "period",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 598,
-                        "src": "822:6:3",
+                        "referencedDeclaration": 2526,
+                        "src": "826:6:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1746,46 +1746,46 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 612,
+                        "id": 2540,
                         "name": "totalPayments",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 596,
-                        "src": "843:13:3",
+                        "referencedDeclaration": 2524,
+                        "src": "847:13:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         }
                       }
                     ],
-                    "id": 613,
+                    "id": 2541,
                     "isConstant": false,
                     "isInlineArray": true,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "TupleExpression",
-                    "src": "776:91:3",
+                    "src": "780:91:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_uint256_$3_memory_ptr",
                       "typeString": "uint256[3] memory"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "732:135:3"
+                  "src": "736:135:18"
                 },
                 {
                   "assignments": [
-                    619
+                    2547
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 619,
+                      "id": 2547,
                       "name": "ethereumAlarmClockOptions",
                       "nodeType": "VariableDeclaration",
-                      "scope": 642,
-                      "src": "880:41:3",
+                      "scope": 2570,
+                      "src": "884:41:18",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
@@ -1794,27 +1794,27 @@
                       },
                       "typeName": {
                         "baseType": {
-                          "id": 617,
+                          "id": 2545,
                           "name": "uint",
                           "nodeType": "ElementaryTypeName",
-                          "src": "880:4:3",
+                          "src": "884:4:18",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "id": 618,
+                        "id": 2546,
                         "length": {
                           "argumentTypes": null,
                           "hexValue": "3130",
-                          "id": 616,
+                          "id": 2544,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "kind": "number",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "885:2:3",
+                          "src": "889:2:18",
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": null,
@@ -1823,7 +1823,7 @@
                           "value": "10"
                         },
                         "nodeType": "ArrayTypeName",
-                        "src": "880:8:3",
+                        "src": "884:8:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$10_storage_ptr",
                           "typeString": "uint256[10]"
@@ -1833,21 +1833,21 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 631,
+                  "id": 2559,
                   "initialValue": {
                     "argumentTypes": null,
                     "components": [
                       {
                         "argumentTypes": null,
                         "hexValue": "3630",
-                        "id": 620,
+                        "id": 2548,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "939:10:3",
+                        "src": "943:10:18",
                         "subdenomination": "minutes",
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_3600_by_1",
@@ -1858,14 +1858,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "33",
-                        "id": 621,
+                        "id": 2549,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "987:9:3",
+                        "src": "991:9:18",
                         "subdenomination": "minutes",
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_180_by_1",
@@ -1876,14 +1876,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "35",
-                        "id": 622,
+                        "id": 2550,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1032:9:3",
+                        "src": "1036:9:18",
                         "subdenomination": "minutes",
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_300_by_1",
@@ -1894,14 +1894,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "32",
-                        "id": 623,
+                        "id": 2551,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1083:1:3",
+                        "src": "1087:1:18",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_2_by_1",
@@ -1912,14 +1912,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "3234",
-                        "id": 624,
+                        "id": 2552,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1168:8:3",
+                        "src": "1172:8:18",
                         "subdenomination": "hours",
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_86400_by_1",
@@ -1929,12 +1929,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 625,
+                        "id": 2553,
                         "name": "startTimestamp",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 594,
-                        "src": "1233:14:3",
+                        "referencedDeclaration": 2522,
+                        "src": "1237:14:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1942,12 +1942,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 626,
+                        "id": 2554,
                         "name": "gas",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 600,
-                        "src": "1299:3:3",
+                        "referencedDeclaration": 2528,
+                        "src": "1303:3:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1956,14 +1956,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "30",
-                        "id": 627,
+                        "id": 2555,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1381:1:3",
+                        "src": "1385:1:18",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_0_by_1",
@@ -1974,14 +1974,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "30",
-                        "id": 628,
+                        "id": 2556,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1444:1:3",
+                        "src": "1448:1:18",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_0_by_1",
@@ -1992,14 +1992,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "30",
-                        "id": 629,
+                        "id": 2557,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1524:1:3",
+                        "src": "1528:1:18",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_0_by_1",
@@ -2008,21 +2008,21 @@
                         "value": "0"
                       }
                     ],
-                    "id": 630,
+                    "id": 2558,
                     "isConstant": false,
                     "isInlineArray": true,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "TupleExpression",
-                    "src": "924:665:3",
+                    "src": "928:665:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_uint256_$10_memory_ptr",
                       "typeString": "uint256[10] memory"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "880:709:3"
+                  "src": "884:709:18"
                 },
                 {
                   "expression": {
@@ -2030,38 +2030,38 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 634,
+                        "id": 2562,
                         "name": "delegate",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 590,
-                        "src": "1665:8:3",
+                        "referencedDeclaration": 2518,
+                        "src": "1669:8:18",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$56",
+                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$465",
                           "typeString": "contract IFuturePaymentDelegate"
                         }
                       },
                       {
                         "argumentTypes": null,
-                        "id": 635,
+                        "id": 2563,
                         "name": "wallet",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 592,
-                        "src": "1688:6:3",
+                        "referencedDeclaration": 2520,
+                        "src": "1692:6:18",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IDelegatedWallet_$26",
+                          "typeIdentifier": "t_contract$_IDelegatedWallet_$430",
                           "typeString": "contract IDelegatedWallet"
                         }
                       },
                       {
                         "argumentTypes": null,
-                        "id": 636,
+                        "id": 2564,
                         "name": "priorityCaller",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 567,
-                        "src": "1709:14:3",
+                        "referencedDeclaration": 2495,
+                        "src": "1713:14:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -2069,12 +2069,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 637,
+                        "id": 2565,
                         "name": "recurringAlarmClockOptions",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 609,
-                        "src": "1738:26:3",
+                        "referencedDeclaration": 2537,
+                        "src": "1742:26:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$3_memory_ptr",
                           "typeString": "uint256[3] memory"
@@ -2082,12 +2082,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 638,
+                        "id": 2566,
                         "name": "ethereumAlarmClockOptions",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 619,
-                        "src": "1779:25:3",
+                        "referencedDeclaration": 2547,
+                        "src": "1783:25:18",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_uint256_$10_memory_ptr",
                           "typeString": "uint256[10] memory"
@@ -2097,11 +2097,11 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$56",
+                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$465",
                           "typeString": "contract IFuturePaymentDelegate"
                         },
                         {
-                          "typeIdentifier": "t_contract$_IDelegatedWallet_$26",
+                          "typeIdentifier": "t_contract$_IDelegatedWallet_$430",
                           "typeString": "contract IDelegatedWallet"
                         },
                         {
@@ -2119,32 +2119,32 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 632,
+                        "id": 2560,
                         "name": "factory",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 565,
-                        "src": "1617:7:3",
+                        "referencedDeclaration": 2493,
+                        "src": "1621:7:18",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$557",
+                          "typeIdentifier": "t_contract$_RecurringAlarmClockFactory_$2485",
                           "typeString": "contract RecurringAlarmClockFactory"
                         }
                       },
-                      "id": 633,
+                      "id": 2561,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "createRecurringAlarmClock",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 556,
-                      "src": "1617:33:3",
+                      "referencedDeclaration": 2484,
+                      "src": "1621:33:18",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_nonpayable$_t_contract$_IFuturePaymentDelegate_$56_$_t_contract$_IDelegatedWallet_$26_$_t_address_$_t_array$_t_uint256_$3_memory_ptr_$_t_array$_t_uint256_$10_memory_ptr_$returns$_t_contract$_RecurringAlarmClock_$480_$",
-                        "typeString": "function (contract IFuturePaymentDelegate,contract IDelegatedWallet,address,uint256[3] memory,uint256[10] memory) external returns (contract RecurringAlarmClock)"
+                        "typeIdentifier": "t_function_external_nonpayable$_t_contract$_IFuturePaymentDelegate_$465_$_t_address_$_t_address_$_t_array$_t_uint256_$3_memory_ptr_$_t_array$_t_uint256_$10_memory_ptr_$returns$_t_contract$_RecurringAlarmClock_$889_$",
+                        "typeString": "function (contract IFuturePaymentDelegate,address,address,uint256[3] memory,uint256[10] memory) external returns (contract RecurringAlarmClock)"
                       }
                     },
-                    "id": 639,
+                    "id": 2567,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2152,21 +2152,21 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1617:198:3",
+                    "src": "1621:198:18",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringAlarmClock_$480",
+                      "typeIdentifier": "t_contract$_RecurringAlarmClock_$889",
                       "typeString": "contract RecurringAlarmClock"
                     }
                   },
-                  "functionReturnParameters": 604,
-                  "id": 640,
+                  "functionReturnParameters": 2532,
+                  "id": 2568,
                   "nodeType": "Return",
-                  "src": "1610:205:3"
+                  "src": "1614:205:18"
                 }
               ]
             },
             "documentation": null,
-            "id": 642,
+            "id": 2570,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -2174,31 +2174,31 @@
             "name": "createRecurringAlarmClock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 601,
+              "id": 2529,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 590,
+                  "id": 2518,
                   "name": "delegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 642,
-                  "src": "511:31:3",
+                  "scope": 2570,
+                  "src": "515:31:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$56",
+                    "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$465",
                     "typeString": "contract IFuturePaymentDelegate"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 589,
+                    "id": 2517,
                     "name": "IFuturePaymentDelegate",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 56,
-                    "src": "511:22:3",
+                    "referencedDeclaration": 465,
+                    "src": "515:22:18",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$56",
+                      "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$465",
                       "typeString": "contract IFuturePaymentDelegate"
                     }
                   },
@@ -2207,26 +2207,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 592,
+                  "id": 2520,
                   "name": "wallet",
                   "nodeType": "VariableDeclaration",
-                  "scope": 642,
-                  "src": "553:23:3",
+                  "scope": 2570,
+                  "src": "557:23:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IDelegatedWallet_$26",
+                    "typeIdentifier": "t_contract$_IDelegatedWallet_$430",
                     "typeString": "contract IDelegatedWallet"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 591,
+                    "id": 2519,
                     "name": "IDelegatedWallet",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 26,
-                    "src": "553:16:3",
+                    "referencedDeclaration": 430,
+                    "src": "557:16:18",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IDelegatedWallet_$26",
+                      "typeIdentifier": "t_contract$_IDelegatedWallet_$430",
                       "typeString": "contract IDelegatedWallet"
                     }
                   },
@@ -2235,11 +2235,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 594,
+                  "id": 2522,
                   "name": "startTimestamp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 642,
-                  "src": "587:19:3",
+                  "scope": 2570,
+                  "src": "591:19:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2247,10 +2247,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 593,
+                    "id": 2521,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "587:4:3",
+                    "src": "591:4:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2261,11 +2261,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 596,
+                  "id": 2524,
                   "name": "totalPayments",
                   "nodeType": "VariableDeclaration",
-                  "scope": 642,
-                  "src": "617:18:3",
+                  "scope": 2570,
+                  "src": "621:18:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2273,10 +2273,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 595,
+                    "id": 2523,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "617:4:3",
+                    "src": "621:4:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2287,11 +2287,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 598,
+                  "id": 2526,
                   "name": "period",
                   "nodeType": "VariableDeclaration",
-                  "scope": 642,
-                  "src": "646:11:3",
+                  "scope": 2570,
+                  "src": "650:11:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2299,10 +2299,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 597,
+                    "id": 2525,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "646:4:3",
+                    "src": "650:4:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2313,11 +2313,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 600,
+                  "id": 2528,
                   "name": "gas",
                   "nodeType": "VariableDeclaration",
-                  "scope": 642,
-                  "src": "668:8:3",
+                  "scope": 2570,
+                  "src": "672:8:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2325,10 +2325,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 599,
+                    "id": 2527,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "668:4:3",
+                    "src": "672:4:18",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2338,35 +2338,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "500:183:3"
+              "src": "504:183:18"
             },
             "payable": false,
             "returnParameters": {
-              "id": 604,
+              "id": 2532,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 603,
+                  "id": 2531,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 642,
-                  "src": "700:19:3",
+                  "scope": 2570,
+                  "src": "704:19:18",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_RecurringAlarmClock_$480",
+                    "typeIdentifier": "t_contract$_RecurringAlarmClock_$889",
                     "typeString": "contract RecurringAlarmClock"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 602,
+                    "id": 2530,
                     "name": "RecurringAlarmClock",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 480,
-                    "src": "700:19:3",
+                    "referencedDeclaration": 889,
+                    "src": "704:19:18",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringAlarmClock_$480",
+                      "typeIdentifier": "t_contract$_RecurringAlarmClock_$889",
                       "typeString": "contract RecurringAlarmClock"
                     }
                   },
@@ -2374,33 +2374,26 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "699:21:3"
+              "src": "703:21:18"
             },
-            "scope": 643,
-            "src": "466:1357:3",
+            "scope": 2571,
+            "src": "470:1357:18",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 644,
-        "src": "113:1715:3"
+        "scope": 2572,
+        "src": "114:1718:18"
       }
     ],
-    "src": "0:1830:3"
+    "src": "0:1834:18"
   },
   "compiler": {
     "name": "solc",
     "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
-  "networks": {
-    "4447": {
-      "events": {},
-      "links": {},
-      "address": "0x9f544a3fc3d1045e6ec49d4ecef6dcd700457165",
-      "transactionHash": "0x6077487905ac3ee99760affbc6c97775a1ecef9e0351ec5c72a61c6edca12bd4"
-    }
-  },
+  "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-10-01T21:52:34.996Z"
+  "updatedAt": "2018-10-06T23:12:51.337Z"
 }
