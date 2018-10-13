@@ -1,0 +1,36 @@
+<div id="wallet" *ngIf="initialized" fxFlexFill fxLayout="column">
+    <div class="padding" fxLayout="row" fxLayoutAlign="start center">
+        <h4>{{getWalletName(wallet.address)}}</h4>
+        <span fxFlex="30px"></span>
+        <button mat-icon-button style="margin-right: 8px;" (click)="editWalletName = !editWalletName">
+            <mat-icon style="font-size: 20px;">edit</mat-icon>
+        </button>
+        <button mat-icon-button style="margin-right: 8px;" routerLink="delegates" (click)="editWalletName = false;">
+            <mat-icon style="font-size: 20px;">extension</mat-icon>
+        </button>
+        <button mat-icon-button style="margin-right: 8px;" routerLink="token" (click)="editWalletName = false;">
+            <mat-icon style="font-size: 20px;">account_balance_wallet</mat-icon>
+        </button>
+    </div>
+    <div class="padding" style="height: 60px;">
+        <div *ngIf="editWalletName" fxLayout="row" fxLayoutAlign="start center">
+            <form fxFlex="50" (keydown)="keyPress($event, newWalletName.value)">
+                <mat-form-field class="full-width">
+                    <input matInput #newWalletName placeholder="Enter a descriptive wallet name">
+                </mat-form-field>
+            </form> 
+            <span fxFlex="5"></span>
+            <div>
+                <button mat-button (click)="setWalletName(newWalletName.value)">
+                    set wallet name
+                </button>
+            </div>
+        </div>
+        <div *ngIf="!editWalletName" style="color: gray; margin-top: 9px;">
+            <small>Wallet Address: {{wallet.address}}</small>
+        </div>
+    </div>
+    <div fxFlex>
+        <router-outlet></router-outlet>
+    </div>
+</div>

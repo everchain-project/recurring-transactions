@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+.scrollable {
+    overflow: auto;
+}
+
+.cursor {
+    cursor: hand;
+    cursor: pointer;
+    outline: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.padding {
+    padding: 0px 16px;
+}
+
+.margin {
+    margin: 16px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.centered {
+    text-align: center !important;
+}
