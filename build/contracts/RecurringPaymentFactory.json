@@ -64,10 +64,6 @@
       "constant": false,
       "inputs": [
         {
-          "name": "alarmClock",
-          "type": "address"
-        },
-        {
           "name": "delegate",
           "type": "address"
         },
@@ -100,24 +96,24 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b506040516020806105e283398101806040528101908080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505061055f806100836000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634fb55a7614610051578063c05efa151461015e575b600080fd5b34801561005d57600080fd5b5061011c600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506101b5565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561016a57600080fd5b506101736103f2565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60006101e16000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16610417565b90508073ffffffffffffffffffffffffffffffffffffffff166395b6ef0c8888888888886040518763ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808773ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018281526020019650505050505050600060405180830381600087803b15801561035657600080fd5b505af115801561036a573d6000803e3d6000fd5b505050503373ffffffffffffffffffffffffffffffffffffffff167f56febe278ca3b7ac6ad996f92d3a5effe19a9d86540d85080990552f2aa8bb1382604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a29695505050505050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006060600080606060405190810160405280603f81526020017f600034603b57603080600f833981f36000368180378080368173bebebebebebe81526020017fbebebebebebebebebebebebebebe5af43d82803e15602c573d90f35b3d90fd008152509250846c01000000000000000000000000029150600090505b601481101561051c5781816014811015156104ab57fe5b1a7f0100000000000000000000000000000000000000000000000000000000000000028382601a018151811015156104df57fe5b9060200101907effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916908160001a9053508080600101915050610494565b82516020840181816000f0955050505050509190505600a165627a7a72305820629d6224f831b9db7d27e3b47ee1603027f711dfb97a2a349769cb9be85d659a0029",
-  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634fb55a7614610051578063c05efa151461015e575b600080fd5b34801561005d57600080fd5b5061011c600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506101b5565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561016a57600080fd5b506101736103f2565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60006101e16000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16610417565b90508073ffffffffffffffffffffffffffffffffffffffff166395b6ef0c8888888888886040518763ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808773ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018281526020019650505050505050600060405180830381600087803b15801561035657600080fd5b505af115801561036a573d6000803e3d6000fd5b505050503373ffffffffffffffffffffffffffffffffffffffff167f56febe278ca3b7ac6ad996f92d3a5effe19a9d86540d85080990552f2aa8bb1382604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a29695505050505050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006060600080606060405190810160405280603f81526020017f600034603b57603080600f833981f36000368180378080368173bebebebebebe81526020017fbebebebebebebebebebebebebebe5af43d82803e15602c573d90f35b3d90fd008152509250846c01000000000000000000000000029150600090505b601481101561051c5781816014811015156104ab57fe5b1a7f0100000000000000000000000000000000000000000000000000000000000000028382601a018151811015156104df57fe5b9060200101907effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916908160001a9053508080600101915050610494565b82516020840181816000f0955050505050509190505600a165627a7a72305820629d6224f831b9db7d27e3b47ee1603027f711dfb97a2a349769cb9be85d659a0029",
-  "sourceMap": "133:1186:6:-;;;233:90;8:9:-1;5:2;;;30:1;27;20:12;5:2;233:90:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;305:10;293:9;;:22;;;;;;;;;;;;;;;;;;233:90;133:1186;;;;;;",
-  "deployedSourceMap": "133:1186:6:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;331:884;;8:9:-1;5:2;;;30:1;27;20:12;5:2;331:884:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;191:33;;8:9:-1;5:2;;;30:1;27;20:12;5:2;191:33:6;;;;;;;;;;;;;;;;;;;;;;;;;;;331:884;586:28;658:22;670:9;;;;;;;;;;;658:11;:22::i;:::-;627:54;;692:11;:22;;;729:10;796:8;865:6;941:5;1012:9;1073:13;692:453;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;692:453:6;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;692:453:6;;;;1183:10;1163:44;;;1195:11;1163:44;;;;;;;;;;;;;;;;;;;;;;331:884;;;;;;;;:::o;191:33::-;;;;;;;;;;;;;:::o;1306:491:8:-;1361:14;1384:18;1543:19;1592:6;1384:152;;;;;;;;;;;;;;;;;;;;;;;;;1573:6;1565:15;;1543:37;;1601:1;1592:10;;1587:77;1608:2;1604:1;:6;1587:77;;;1642:11;1654:1;1642:14;;;;;;;;;;;;1626:5;1637:1;1632:2;:6;1626:13;;;;;;;;;;;;;;:30;;;;;;;;;;;1612:3;;;;;;;1587:77;;;1705:5;1699:12;1742:4;1735:5;1731:16;1781:3;1775:4;1772:1;1765:20;1755:30;;1679:113;;;;;;;;:::o",
-  "source": "pragma solidity ^0.4.23;\r\n\r\nimport \"../external/CloneFactory.sol\";\r\nimport \"../Interfaces.sol\";\r\nimport \"./RecurringPayment.sol\";\r\n\r\ncontract RecurringPaymentFactory is CloneFactory {\r\n\r\n    RecurringPayment public blueprint;\r\n\r\n    constructor (RecurringPayment _blueprint) public {\r\n        blueprint = _blueprint;\r\n    }\r\n\r\n    function createRecurringPayment (\r\n        IRecurringAlarmClock alarmClock,\r\n        IFuturePaymentDelegate delegate,\r\n        IDelegatedWallet wallet,\r\n        address token,\r\n        address recipient,\r\n        uint paymentAmount\r\n    ) public returns (RecurringPayment paymentTask) {\r\n        paymentTask = RecurringPayment(createClone(blueprint));\r\n        paymentTask.initialize(\r\n            alarmClock,     // the owner of the recurring payment\r\n            delegate,       // the wallet that executes the payment\r\n            wallet,         // supplies delegates that can cancel the task\r\n            token,          // the token to use when making a payment\r\n            recipient,      // the recipient of the payment\r\n            paymentAmount   // how much of the token to send each payment\r\n        );\r\n\r\n        emit CreatePayment_event(msg.sender, paymentTask);\r\n    }\r\n\r\n    event CreatePayment_event (address indexed creator, RecurringPayment recurringPayment);\r\n    \r\n}\r\n",
-  "sourcePath": "C:\\Users\\My\\Documents\\GitHub\\everchain-project\\recurring-alarm-clock\\contracts\\examples\\RecurringPaymentFactory.sol",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405160208061058d83398101806040528101908080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505061050a806100836000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806387a3fefd14610051578063c05efa151461013e575b600080fd5b34801561005d57600080fd5b506100fc600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190505050610195565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561014a57600080fd5b5061015361039d565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60006101c16000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff166103c2565b90508073ffffffffffffffffffffffffffffffffffffffff1663f7013ef687878787876040518663ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200195505050505050600060405180830381600087803b15801561030257600080fd5b505af1158015610316573d6000803e3d6000fd5b505050503373ffffffffffffffffffffffffffffffffffffffff167f56febe278ca3b7ac6ad996f92d3a5effe19a9d86540d85080990552f2aa8bb1382604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a295945050505050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006060600080606060405190810160405280603f81526020017f600034603b57603080600f833981f36000368180378080368173bebebebebebe81526020017fbebebebebebebebebebebebebebe5af43d82803e15602c573d90f35b3d90fd008152509250846c01000000000000000000000000029150600090505b60148110156104c757818160148110151561045657fe5b1a7f0100000000000000000000000000000000000000000000000000000000000000028382601a0181518110151561048a57fe5b9060200101907effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916908160001a905350808060010191505061043f565b82516020840181816000f0955050505050509190505600a165627a7a723058204d30fac1a51a9e98cd2c5eb45dc08d3f35616034abc75b50187f660b2e13e9970029",
+  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806387a3fefd14610051578063c05efa151461013e575b600080fd5b34801561005d57600080fd5b506100fc600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190505050610195565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561014a57600080fd5b5061015361039d565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60006101c16000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff166103c2565b90508073ffffffffffffffffffffffffffffffffffffffff1663f7013ef687878787876040518663ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200195505050505050600060405180830381600087803b15801561030257600080fd5b505af1158015610316573d6000803e3d6000fd5b505050503373ffffffffffffffffffffffffffffffffffffffff167f56febe278ca3b7ac6ad996f92d3a5effe19a9d86540d85080990552f2aa8bb1382604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a295945050505050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006060600080606060405190810160405280603f81526020017f600034603b57603080600f833981f36000368180378080368173bebebebebebe81526020017fbebebebebebebebebebebebebebe5af43d82803e15602c573d90f35b3d90fd008152509250846c01000000000000000000000000029150600090505b60148110156104c757818160148110151561045657fe5b1a7f0100000000000000000000000000000000000000000000000000000000000000028382601a0181518110151561048a57fe5b9060200101907effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916908160001a905350808060010191505061043f565b82516020840181816000f0955050505050509190505600a165627a7a723058204d30fac1a51a9e98cd2c5eb45dc08d3f35616034abc75b50187f660b2e13e9970029",
+  "sourceMap": "139:1077:11:-;;;239:90;8:9:-1;5:2;;;30:1;27;20:12;5:2;239:90:11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;311:10;299:9;;:22;;;;;;;;;;;;;;;;;;239:90;139:1077;;;;;;",
+  "deployedSourceMap": "139:1077:11:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;337:775;;8:9:-1;5:2;;;30:1;27;20:12;5:2;337:775:11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;197:33;;8:9:-1;5:2;;;30:1;27;20:12;5:2;197:33:11;;;;;;;;;;;;;;;;;;;;;;;;;;;337:775;550:28;622:22;634:9;;;;;;;;;;;622:11;:22::i;:::-;591:54;;656:11;:22;;;693:8;762:6;838:5;909:9;970:13;656:386;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;656:386:11;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;656:386:11;;;;1080:10;1060:44;;;1092:11;1060:44;;;;;;;;;;;;;;;;;;;;;;337:775;;;;;;;:::o;197:33::-;;;;;;;;;;;;;:::o;1306:491:13:-;1361:14;1384:18;1543:19;1592:6;1384:152;;;;;;;;;;;;;;;;;;;;;;;;;1573:6;1565:15;;1543:37;;1601:1;1592:10;;1587:77;1608:2;1604:1;:6;1587:77;;;1642:11;1654:1;1642:14;;;;;;;;;;;;1626:5;1637:1;1632:2;:6;1626:13;;;;;;;;;;;;;;:30;;;;;;;;;;;1612:3;;;;;;;1587:77;;;1705:5;1699:12;1742:4;1735:5;1731:16;1781:3;1775:4;1772:1;1765:20;1755:30;;1679:113;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.23;\r\n\r\nimport \"../../external/CloneFactory.sol\";\r\nimport \"../../Interfaces.sol\";\r\nimport \"./RecurringPayment.sol\";\r\n\r\ncontract RecurringPaymentFactory is CloneFactory {\r\n\r\n    RecurringPayment public blueprint;\r\n\r\n    constructor (RecurringPayment _blueprint) public {\r\n        blueprint = _blueprint;\r\n    }\r\n\r\n    function createRecurringPayment (\r\n        IFuturePaymentDelegate delegate,\r\n        IDelegatedWallet wallet,\r\n        address token,\r\n        address recipient,\r\n        uint paymentAmount\r\n    ) public returns (RecurringPayment paymentTask) {\r\n        paymentTask = RecurringPayment(createClone(blueprint));\r\n        paymentTask.initialize(\r\n            delegate,       // the wallet that executes the payment\r\n            wallet,         // supplies delegates that can cancel the task\r\n            token,          // the token to use when making a payment\r\n            recipient,      // the recipient of the payment\r\n            paymentAmount   // how much of the token to send each payment\r\n        );\r\n\r\n        emit CreatePayment_event(msg.sender, paymentTask);\r\n    }\r\n\r\n    event CreatePayment_event (address indexed creator, RecurringPayment recurringPayment);\r\n    \r\n}\r\n",
+  "sourcePath": "C:\\Users\\My\\Documents\\GitHub\\everchain-project\\recurring-alarm-clock\\contracts\\examples\\recurring-payment\\RecurringPaymentFactory.sol",
   "ast": {
-    "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/examples/RecurringPaymentFactory.sol",
+    "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/examples/recurring-payment/RecurringPaymentFactory.sol",
     "exportedSymbols": {
       "RecurringPaymentFactory": [
-        1490
+        2026
       ]
     },
-    "id": 1491,
+    "id": 2027,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1423,
+        "id": 1962,
         "literals": [
           "solidity",
           "^",
@@ -125,38 +121,38 @@
           ".23"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:6"
+        "src": "0:24:11"
       },
       {
         "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/external/CloneFactory.sol",
-        "file": "../external/CloneFactory.sol",
-        "id": 1424,
+        "file": "../../external/CloneFactory.sol",
+        "id": 1963,
         "nodeType": "ImportDirective",
-        "scope": 1491,
-        "sourceUnit": 1672,
-        "src": "28:38:6",
+        "scope": 2027,
+        "sourceUnit": 2198,
+        "src": "28:41:11",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/Interfaces.sol",
-        "file": "../Interfaces.sol",
-        "id": 1425,
+        "file": "../../Interfaces.sol",
+        "id": 1964,
         "nodeType": "ImportDirective",
-        "scope": 1491,
-        "sourceUnit": 529,
-        "src": "68:27:6",
+        "scope": 2027,
+        "sourceUnit": 72,
+        "src": "71:30:11",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/examples/RecurringPayment.sol",
+        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/examples/recurring-payment/RecurringPayment.sol",
         "file": "./RecurringPayment.sol",
-        "id": 1426,
+        "id": 1965,
         "nodeType": "ImportDirective",
-        "scope": 1491,
-        "sourceUnit": 1422,
-        "src": "97:32:6",
+        "scope": 2027,
+        "sourceUnit": 1961,
+        "src": "103:32:11",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -166,57 +162,57 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1427,
+              "id": 1966,
               "name": "CloneFactory",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1671,
-              "src": "169:12:6",
+              "referencedDeclaration": 2197,
+              "src": "175:12:11",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_CloneFactory_$1671",
+                "typeIdentifier": "t_contract$_CloneFactory_$2197",
                 "typeString": "contract CloneFactory"
               }
             },
-            "id": 1428,
+            "id": 1967,
             "nodeType": "InheritanceSpecifier",
-            "src": "169:12:6"
+            "src": "175:12:11"
           }
         ],
         "contractDependencies": [
-          1671
+          2197
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1490,
+        "id": 2026,
         "linearizedBaseContracts": [
-          1490,
-          1671
+          2026,
+          2197
         ],
         "name": "RecurringPaymentFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 1430,
+            "id": 1969,
             "name": "blueprint",
             "nodeType": "VariableDeclaration",
-            "scope": 1490,
-            "src": "191:33:6",
+            "scope": 2026,
+            "src": "197:33:11",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+              "typeIdentifier": "t_contract$_RecurringPayment_$1960",
               "typeString": "contract RecurringPayment"
             },
             "typeName": {
               "contractScope": null,
-              "id": 1429,
+              "id": 1968,
               "name": "RecurringPayment",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1421,
-              "src": "191:16:6",
+              "referencedDeclaration": 1960,
+              "src": "197:16:11",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                 "typeString": "contract RecurringPayment"
               }
             },
@@ -225,28 +221,28 @@
           },
           {
             "body": {
-              "id": 1439,
+              "id": 1978,
               "nodeType": "Block",
-              "src": "282:41:6",
+              "src": "288:41:11",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1437,
+                    "id": 1976,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 1435,
+                      "id": 1974,
                       "name": "blueprint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1430,
-                      "src": "293:9:6",
+                      "referencedDeclaration": 1969,
+                      "src": "299:9:11",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                        "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                         "typeString": "contract RecurringPayment"
                       }
                     },
@@ -254,31 +250,31 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 1436,
+                      "id": 1975,
                       "name": "_blueprint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1432,
-                      "src": "305:10:6",
+                      "referencedDeclaration": 1971,
+                      "src": "311:10:11",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                        "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                         "typeString": "contract RecurringPayment"
                       }
                     },
-                    "src": "293:22:6",
+                    "src": "299:22:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                      "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                       "typeString": "contract RecurringPayment"
                     }
                   },
-                  "id": 1438,
+                  "id": 1977,
                   "nodeType": "ExpressionStatement",
-                  "src": "293:22:6"
+                  "src": "299:22:11"
                 }
               ]
             },
             "documentation": null,
-            "id": 1440,
+            "id": 1979,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -286,31 +282,31 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1433,
+              "id": 1972,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1432,
+                  "id": 1971,
                   "name": "_blueprint",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1440,
-                  "src": "246:27:6",
+                  "scope": 1979,
+                  "src": "252:27:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                    "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                     "typeString": "contract RecurringPayment"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1431,
+                    "id": 1970,
                     "name": "RecurringPayment",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1421,
-                    "src": "246:16:6",
+                    "referencedDeclaration": 1960,
+                    "src": "252:16:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                      "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                       "typeString": "contract RecurringPayment"
                     }
                   },
@@ -318,45 +314,45 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "245:29:6"
+              "src": "251:29:11"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1434,
+              "id": 1973,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "282:0:6"
+              "src": "288:0:11"
             },
-            "scope": 1490,
-            "src": "233:90:6",
+            "scope": 2026,
+            "src": "239:90:11",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 1482,
+              "id": 2018,
               "nodeType": "Block",
-              "src": "616:599:6",
+              "src": "580:532:11",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1463,
+                    "id": 2000,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 1457,
+                      "id": 1994,
                       "name": "paymentTask",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1455,
-                      "src": "627:11:6",
+                      "referencedDeclaration": 1992,
+                      "src": "591:11:11",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                        "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                         "typeString": "contract RecurringPayment"
                       }
                     },
@@ -370,14 +366,14 @@
                           "arguments": [
                             {
                               "argumentTypes": null,
-                              "id": 1460,
+                              "id": 1997,
                               "name": "blueprint",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1430,
-                              "src": "670:9:6",
+                              "referencedDeclaration": 1969,
+                              "src": "634:9:11",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                                "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                                 "typeString": "contract RecurringPayment"
                               }
                             }
@@ -385,22 +381,22 @@
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                                "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                                 "typeString": "contract RecurringPayment"
                               }
                             ],
-                            "id": 1459,
+                            "id": 1996,
                             "name": "createClone",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1670,
-                            "src": "658:11:6",
+                            "referencedDeclaration": 2196,
+                            "src": "622:11:11",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_address_$",
                               "typeString": "function (address) returns (address)"
                             }
                           },
-                          "id": 1461,
+                          "id": 1998,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -408,7 +404,7 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "658:22:6",
+                          "src": "622:22:11",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -422,18 +418,18 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 1458,
+                        "id": 1995,
                         "name": "RecurringPayment",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1421,
-                        "src": "641:16:6",
+                        "referencedDeclaration": 1960,
+                        "src": "605:16:11",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_RecurringPayment_$1421_$",
+                          "typeIdentifier": "t_type$_t_contract$_RecurringPayment_$1960_$",
                           "typeString": "type(contract RecurringPayment)"
                         }
                       },
-                      "id": 1462,
+                      "id": 1999,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -441,21 +437,21 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "641:40:6",
+                      "src": "605:40:11",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                        "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                         "typeString": "contract RecurringPayment"
                       }
                     },
-                    "src": "627:54:6",
+                    "src": "591:54:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                      "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                       "typeString": "contract RecurringPayment"
                     }
                   },
-                  "id": 1464,
+                  "id": 2001,
                   "nodeType": "ExpressionStatement",
-                  "src": "627:54:6"
+                  "src": "591:54:11"
                 },
                 {
                   "expression": {
@@ -463,51 +459,38 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 1468,
-                        "name": "alarmClock",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 1442,
-                        "src": "729:10:6",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IRecurringAlarmClock_$528",
-                          "typeString": "contract IRecurringAlarmClock"
-                        }
-                      },
-                      {
-                        "argumentTypes": null,
-                        "id": 1469,
+                        "id": 2005,
                         "name": "delegate",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1444,
-                        "src": "796:8:6",
+                        "referencedDeclaration": 1981,
+                        "src": "693:8:11",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$510",
+                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$71",
                           "typeString": "contract IFuturePaymentDelegate"
                         }
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1470,
+                        "id": 2006,
                         "name": "wallet",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1446,
-                        "src": "865:6:6",
+                        "referencedDeclaration": 1983,
+                        "src": "762:6:11",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IDelegatedWallet_$471",
+                          "typeIdentifier": "t_contract$_IDelegatedWallet_$32",
                           "typeString": "contract IDelegatedWallet"
                         }
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1471,
+                        "id": 2007,
                         "name": "token",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1448,
-                        "src": "941:5:6",
+                        "referencedDeclaration": 1985,
+                        "src": "838:5:11",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -515,12 +498,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1472,
+                        "id": 2008,
                         "name": "recipient",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1450,
-                        "src": "1012:9:6",
+                        "referencedDeclaration": 1987,
+                        "src": "909:9:11",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -528,12 +511,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1473,
+                        "id": 2009,
                         "name": "paymentAmount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1452,
-                        "src": "1073:13:6",
+                        "referencedDeclaration": 1989,
+                        "src": "970:13:11",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -543,15 +526,11 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_IRecurringAlarmClock_$528",
-                          "typeString": "contract IRecurringAlarmClock"
-                        },
-                        {
-                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$510",
+                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$71",
                           "typeString": "contract IFuturePaymentDelegate"
                         },
                         {
-                          "typeIdentifier": "t_contract$_IDelegatedWallet_$471",
+                          "typeIdentifier": "t_contract$_IDelegatedWallet_$32",
                           "typeString": "contract IDelegatedWallet"
                         },
                         {
@@ -569,32 +548,32 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 1465,
+                        "id": 2002,
                         "name": "paymentTask",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1455,
-                        "src": "692:11:6",
+                        "referencedDeclaration": 1992,
+                        "src": "656:11:11",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                          "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                           "typeString": "contract RecurringPayment"
                         }
                       },
-                      "id": 1467,
+                      "id": 2004,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "initialize",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1317,
-                      "src": "692:22:6",
+                      "referencedDeclaration": 1876,
+                      "src": "656:22:11",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_nonpayable$_t_contract$_IRecurringAlarmClock_$528_$_t_contract$_IFuturePaymentDelegate_$510_$_t_contract$_IDelegatedWallet_$471_$_t_address_$_t_address_$_t_uint256_$returns$__$",
-                        "typeString": "function (contract IRecurringAlarmClock,contract IFuturePaymentDelegate,contract IDelegatedWallet,address,address,uint256) external"
+                        "typeIdentifier": "t_function_external_nonpayable$_t_contract$_IFuturePaymentDelegate_$71_$_t_contract$_IDelegatedWallet_$32_$_t_address_$_t_address_$_t_uint256_$returns$__$",
+                        "typeString": "function (contract IFuturePaymentDelegate,contract IDelegatedWallet,address,address,uint256) external"
                       }
                     },
-                    "id": 1474,
+                    "id": 2010,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -602,15 +581,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "692:453:6",
+                    "src": "656:386:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1475,
+                  "id": 2011,
                   "nodeType": "ExpressionStatement",
-                  "src": "692:453:6"
+                  "src": "656:386:11"
                 },
                 {
                   "eventCall": {
@@ -620,18 +599,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1477,
+                          "id": 2013,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2633,
-                          "src": "1183:3:6",
+                          "referencedDeclaration": 4108,
+                          "src": "1080:3:11",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1478,
+                        "id": 2014,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -639,7 +618,7 @@
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "1183:10:6",
+                        "src": "1080:10:11",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -647,14 +626,14 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1479,
+                        "id": 2015,
                         "name": "paymentTask",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1455,
-                        "src": "1195:11:6",
+                        "referencedDeclaration": 1992,
+                        "src": "1092:11:11",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                          "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                           "typeString": "contract RecurringPayment"
                         }
                       }
@@ -666,22 +645,22 @@
                           "typeString": "address"
                         },
                         {
-                          "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                          "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                           "typeString": "contract RecurringPayment"
                         }
                       ],
-                      "id": 1476,
+                      "id": 2012,
                       "name": "CreatePayment_event",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1489,
-                      "src": "1163:19:6",
+                      "referencedDeclaration": 2025,
+                      "src": "1060:19:11",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_contract$_RecurringPayment_$1421_$returns$__$",
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_contract$_RecurringPayment_$1960_$returns$__$",
                         "typeString": "function (address,contract RecurringPayment)"
                       }
                     },
-                    "id": 1480,
+                    "id": 2016,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -689,20 +668,20 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1163:44:6",
+                    "src": "1060:44:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1481,
+                  "id": 2017,
                   "nodeType": "EmitStatement",
-                  "src": "1158:49:6"
+                  "src": "1055:49:11"
                 }
               ]
             },
             "documentation": null,
-            "id": 1483,
+            "id": 2019,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -710,59 +689,31 @@
             "name": "createRecurringPayment",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1453,
+              "id": 1990,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1442,
-                  "name": "alarmClock",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1483,
-                  "src": "374:31:6",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IRecurringAlarmClock_$528",
-                    "typeString": "contract IRecurringAlarmClock"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 1441,
-                    "name": "IRecurringAlarmClock",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 528,
-                    "src": "374:20:6",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IRecurringAlarmClock_$528",
-                      "typeString": "contract IRecurringAlarmClock"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 1444,
+                  "id": 1981,
                   "name": "delegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1483,
-                  "src": "416:31:6",
+                  "scope": 2019,
+                  "src": "380:31:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$510",
+                    "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$71",
                     "typeString": "contract IFuturePaymentDelegate"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1443,
+                    "id": 1980,
                     "name": "IFuturePaymentDelegate",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 510,
-                    "src": "416:22:6",
+                    "referencedDeclaration": 71,
+                    "src": "380:22:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$510",
+                      "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$71",
                       "typeString": "contract IFuturePaymentDelegate"
                     }
                   },
@@ -771,26 +722,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 1446,
+                  "id": 1983,
                   "name": "wallet",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1483,
-                  "src": "458:23:6",
+                  "scope": 2019,
+                  "src": "422:23:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IDelegatedWallet_$471",
+                    "typeIdentifier": "t_contract$_IDelegatedWallet_$32",
                     "typeString": "contract IDelegatedWallet"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1445,
+                    "id": 1982,
                     "name": "IDelegatedWallet",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 471,
-                    "src": "458:16:6",
+                    "referencedDeclaration": 32,
+                    "src": "422:16:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IDelegatedWallet_$471",
+                      "typeIdentifier": "t_contract$_IDelegatedWallet_$32",
                       "typeString": "contract IDelegatedWallet"
                     }
                   },
@@ -799,11 +750,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1448,
+                  "id": 1985,
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1483,
-                  "src": "492:13:6",
+                  "scope": 2019,
+                  "src": "456:13:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -811,10 +762,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1447,
+                    "id": 1984,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "492:7:6",
+                    "src": "456:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -825,11 +776,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1450,
+                  "id": 1987,
                   "name": "recipient",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1483,
-                  "src": "516:17:6",
+                  "scope": 2019,
+                  "src": "480:17:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -837,10 +788,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1449,
+                    "id": 1986,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "516:7:6",
+                    "src": "480:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -851,11 +802,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1452,
+                  "id": 1989,
                   "name": "paymentAmount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1483,
-                  "src": "544:18:6",
+                  "scope": 2019,
+                  "src": "508:18:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -863,10 +814,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1451,
+                    "id": 1988,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "544:4:6",
+                    "src": "508:4:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -876,35 +827,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "363:206:6"
+              "src": "369:164:11"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1456,
+              "id": 1993,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1455,
+                  "id": 1992,
                   "name": "paymentTask",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1483,
-                  "src": "586:28:6",
+                  "scope": 2019,
+                  "src": "550:28:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                    "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                     "typeString": "contract RecurringPayment"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1454,
+                    "id": 1991,
                     "name": "RecurringPayment",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1421,
-                    "src": "586:16:6",
+                    "referencedDeclaration": 1960,
+                    "src": "550:16:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                      "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                       "typeString": "contract RecurringPayment"
                     }
                   },
@@ -912,10 +863,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "585:30:6"
+              "src": "549:30:11"
             },
-            "scope": 1490,
-            "src": "331:884:6",
+            "scope": 2026,
+            "src": "337:775:11",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -923,21 +874,21 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 1489,
+            "id": 2025,
             "name": "CreatePayment_event",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1488,
+              "id": 2024,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1485,
+                  "id": 2021,
                   "indexed": true,
                   "name": "creator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1489,
-                  "src": "1250:23:6",
+                  "scope": 2025,
+                  "src": "1147:23:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -945,10 +896,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1484,
+                    "id": 2020,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1250:7:6",
+                    "src": "1147:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -959,27 +910,27 @@
                 },
                 {
                   "constant": false,
-                  "id": 1487,
+                  "id": 2023,
                   "indexed": false,
                   "name": "recurringPayment",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1489,
-                  "src": "1275:33:6",
+                  "scope": 2025,
+                  "src": "1172:33:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                    "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                     "typeString": "contract RecurringPayment"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1486,
+                    "id": 2022,
                     "name": "RecurringPayment",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1421,
-                    "src": "1275:16:6",
+                    "referencedDeclaration": 1960,
+                    "src": "1172:16:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                      "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                       "typeString": "contract RecurringPayment"
                     }
                   },
@@ -987,29 +938,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1249:60:6"
+              "src": "1146:60:11"
             },
-            "src": "1223:87:6"
+            "src": "1120:87:11"
           }
         ],
-        "scope": 1491,
-        "src": "133:1186:6"
+        "scope": 2027,
+        "src": "139:1077:11"
       }
     ],
-    "src": "0:1321:6"
+    "src": "0:1218:11"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/examples/RecurringPaymentFactory.sol",
+    "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/examples/recurring-payment/RecurringPaymentFactory.sol",
     "exportedSymbols": {
       "RecurringPaymentFactory": [
-        1490
+        2026
       ]
     },
-    "id": 1491,
+    "id": 2027,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1423,
+        "id": 1962,
         "literals": [
           "solidity",
           "^",
@@ -1017,38 +968,38 @@
           ".23"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:6"
+        "src": "0:24:11"
       },
       {
         "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/external/CloneFactory.sol",
-        "file": "../external/CloneFactory.sol",
-        "id": 1424,
+        "file": "../../external/CloneFactory.sol",
+        "id": 1963,
         "nodeType": "ImportDirective",
-        "scope": 1491,
-        "sourceUnit": 1672,
-        "src": "28:38:6",
+        "scope": 2027,
+        "sourceUnit": 2198,
+        "src": "28:41:11",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/Interfaces.sol",
-        "file": "../Interfaces.sol",
-        "id": 1425,
+        "file": "../../Interfaces.sol",
+        "id": 1964,
         "nodeType": "ImportDirective",
-        "scope": 1491,
-        "sourceUnit": 529,
-        "src": "68:27:6",
+        "scope": 2027,
+        "sourceUnit": 72,
+        "src": "71:30:11",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/examples/RecurringPayment.sol",
+        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/examples/recurring-payment/RecurringPayment.sol",
         "file": "./RecurringPayment.sol",
-        "id": 1426,
+        "id": 1965,
         "nodeType": "ImportDirective",
-        "scope": 1491,
-        "sourceUnit": 1422,
-        "src": "97:32:6",
+        "scope": 2027,
+        "sourceUnit": 1961,
+        "src": "103:32:11",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -1058,57 +1009,57 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1427,
+              "id": 1966,
               "name": "CloneFactory",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1671,
-              "src": "169:12:6",
+              "referencedDeclaration": 2197,
+              "src": "175:12:11",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_CloneFactory_$1671",
+                "typeIdentifier": "t_contract$_CloneFactory_$2197",
                 "typeString": "contract CloneFactory"
               }
             },
-            "id": 1428,
+            "id": 1967,
             "nodeType": "InheritanceSpecifier",
-            "src": "169:12:6"
+            "src": "175:12:11"
           }
         ],
         "contractDependencies": [
-          1671
+          2197
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1490,
+        "id": 2026,
         "linearizedBaseContracts": [
-          1490,
-          1671
+          2026,
+          2197
         ],
         "name": "RecurringPaymentFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 1430,
+            "id": 1969,
             "name": "blueprint",
             "nodeType": "VariableDeclaration",
-            "scope": 1490,
-            "src": "191:33:6",
+            "scope": 2026,
+            "src": "197:33:11",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+              "typeIdentifier": "t_contract$_RecurringPayment_$1960",
               "typeString": "contract RecurringPayment"
             },
             "typeName": {
               "contractScope": null,
-              "id": 1429,
+              "id": 1968,
               "name": "RecurringPayment",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1421,
-              "src": "191:16:6",
+              "referencedDeclaration": 1960,
+              "src": "197:16:11",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                 "typeString": "contract RecurringPayment"
               }
             },
@@ -1117,28 +1068,28 @@
           },
           {
             "body": {
-              "id": 1439,
+              "id": 1978,
               "nodeType": "Block",
-              "src": "282:41:6",
+              "src": "288:41:11",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1437,
+                    "id": 1976,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 1435,
+                      "id": 1974,
                       "name": "blueprint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1430,
-                      "src": "293:9:6",
+                      "referencedDeclaration": 1969,
+                      "src": "299:9:11",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                        "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                         "typeString": "contract RecurringPayment"
                       }
                     },
@@ -1146,31 +1097,31 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 1436,
+                      "id": 1975,
                       "name": "_blueprint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1432,
-                      "src": "305:10:6",
+                      "referencedDeclaration": 1971,
+                      "src": "311:10:11",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                        "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                         "typeString": "contract RecurringPayment"
                       }
                     },
-                    "src": "293:22:6",
+                    "src": "299:22:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                      "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                       "typeString": "contract RecurringPayment"
                     }
                   },
-                  "id": 1438,
+                  "id": 1977,
                   "nodeType": "ExpressionStatement",
-                  "src": "293:22:6"
+                  "src": "299:22:11"
                 }
               ]
             },
             "documentation": null,
-            "id": 1440,
+            "id": 1979,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -1178,31 +1129,31 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1433,
+              "id": 1972,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1432,
+                  "id": 1971,
                   "name": "_blueprint",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1440,
-                  "src": "246:27:6",
+                  "scope": 1979,
+                  "src": "252:27:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                    "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                     "typeString": "contract RecurringPayment"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1431,
+                    "id": 1970,
                     "name": "RecurringPayment",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1421,
-                    "src": "246:16:6",
+                    "referencedDeclaration": 1960,
+                    "src": "252:16:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                      "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                       "typeString": "contract RecurringPayment"
                     }
                   },
@@ -1210,45 +1161,45 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "245:29:6"
+              "src": "251:29:11"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1434,
+              "id": 1973,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "282:0:6"
+              "src": "288:0:11"
             },
-            "scope": 1490,
-            "src": "233:90:6",
+            "scope": 2026,
+            "src": "239:90:11",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 1482,
+              "id": 2018,
               "nodeType": "Block",
-              "src": "616:599:6",
+              "src": "580:532:11",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1463,
+                    "id": 2000,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 1457,
+                      "id": 1994,
                       "name": "paymentTask",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1455,
-                      "src": "627:11:6",
+                      "referencedDeclaration": 1992,
+                      "src": "591:11:11",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                        "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                         "typeString": "contract RecurringPayment"
                       }
                     },
@@ -1262,14 +1213,14 @@
                           "arguments": [
                             {
                               "argumentTypes": null,
-                              "id": 1460,
+                              "id": 1997,
                               "name": "blueprint",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1430,
-                              "src": "670:9:6",
+                              "referencedDeclaration": 1969,
+                              "src": "634:9:11",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                                "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                                 "typeString": "contract RecurringPayment"
                               }
                             }
@@ -1277,22 +1228,22 @@
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                                "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                                 "typeString": "contract RecurringPayment"
                               }
                             ],
-                            "id": 1459,
+                            "id": 1996,
                             "name": "createClone",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1670,
-                            "src": "658:11:6",
+                            "referencedDeclaration": 2196,
+                            "src": "622:11:11",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_address_$",
                               "typeString": "function (address) returns (address)"
                             }
                           },
-                          "id": 1461,
+                          "id": 1998,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1300,7 +1251,7 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "658:22:6",
+                          "src": "622:22:11",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -1314,18 +1265,18 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 1458,
+                        "id": 1995,
                         "name": "RecurringPayment",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1421,
-                        "src": "641:16:6",
+                        "referencedDeclaration": 1960,
+                        "src": "605:16:11",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_RecurringPayment_$1421_$",
+                          "typeIdentifier": "t_type$_t_contract$_RecurringPayment_$1960_$",
                           "typeString": "type(contract RecurringPayment)"
                         }
                       },
-                      "id": 1462,
+                      "id": 1999,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1333,21 +1284,21 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "641:40:6",
+                      "src": "605:40:11",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                        "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                         "typeString": "contract RecurringPayment"
                       }
                     },
-                    "src": "627:54:6",
+                    "src": "591:54:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                      "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                       "typeString": "contract RecurringPayment"
                     }
                   },
-                  "id": 1464,
+                  "id": 2001,
                   "nodeType": "ExpressionStatement",
-                  "src": "627:54:6"
+                  "src": "591:54:11"
                 },
                 {
                   "expression": {
@@ -1355,51 +1306,38 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 1468,
-                        "name": "alarmClock",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 1442,
-                        "src": "729:10:6",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IRecurringAlarmClock_$528",
-                          "typeString": "contract IRecurringAlarmClock"
-                        }
-                      },
-                      {
-                        "argumentTypes": null,
-                        "id": 1469,
+                        "id": 2005,
                         "name": "delegate",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1444,
-                        "src": "796:8:6",
+                        "referencedDeclaration": 1981,
+                        "src": "693:8:11",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$510",
+                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$71",
                           "typeString": "contract IFuturePaymentDelegate"
                         }
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1470,
+                        "id": 2006,
                         "name": "wallet",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1446,
-                        "src": "865:6:6",
+                        "referencedDeclaration": 1983,
+                        "src": "762:6:11",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IDelegatedWallet_$471",
+                          "typeIdentifier": "t_contract$_IDelegatedWallet_$32",
                           "typeString": "contract IDelegatedWallet"
                         }
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1471,
+                        "id": 2007,
                         "name": "token",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1448,
-                        "src": "941:5:6",
+                        "referencedDeclaration": 1985,
+                        "src": "838:5:11",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1407,12 +1345,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1472,
+                        "id": 2008,
                         "name": "recipient",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1450,
-                        "src": "1012:9:6",
+                        "referencedDeclaration": 1987,
+                        "src": "909:9:11",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1420,12 +1358,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1473,
+                        "id": 2009,
                         "name": "paymentAmount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1452,
-                        "src": "1073:13:6",
+                        "referencedDeclaration": 1989,
+                        "src": "970:13:11",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1435,15 +1373,11 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_contract$_IRecurringAlarmClock_$528",
-                          "typeString": "contract IRecurringAlarmClock"
-                        },
-                        {
-                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$510",
+                          "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$71",
                           "typeString": "contract IFuturePaymentDelegate"
                         },
                         {
-                          "typeIdentifier": "t_contract$_IDelegatedWallet_$471",
+                          "typeIdentifier": "t_contract$_IDelegatedWallet_$32",
                           "typeString": "contract IDelegatedWallet"
                         },
                         {
@@ -1461,32 +1395,32 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 1465,
+                        "id": 2002,
                         "name": "paymentTask",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1455,
-                        "src": "692:11:6",
+                        "referencedDeclaration": 1992,
+                        "src": "656:11:11",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                          "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                           "typeString": "contract RecurringPayment"
                         }
                       },
-                      "id": 1467,
+                      "id": 2004,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "initialize",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1317,
-                      "src": "692:22:6",
+                      "referencedDeclaration": 1876,
+                      "src": "656:22:11",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_nonpayable$_t_contract$_IRecurringAlarmClock_$528_$_t_contract$_IFuturePaymentDelegate_$510_$_t_contract$_IDelegatedWallet_$471_$_t_address_$_t_address_$_t_uint256_$returns$__$",
-                        "typeString": "function (contract IRecurringAlarmClock,contract IFuturePaymentDelegate,contract IDelegatedWallet,address,address,uint256) external"
+                        "typeIdentifier": "t_function_external_nonpayable$_t_contract$_IFuturePaymentDelegate_$71_$_t_contract$_IDelegatedWallet_$32_$_t_address_$_t_address_$_t_uint256_$returns$__$",
+                        "typeString": "function (contract IFuturePaymentDelegate,contract IDelegatedWallet,address,address,uint256) external"
                       }
                     },
-                    "id": 1474,
+                    "id": 2010,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1494,15 +1428,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "692:453:6",
+                    "src": "656:386:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1475,
+                  "id": 2011,
                   "nodeType": "ExpressionStatement",
-                  "src": "692:453:6"
+                  "src": "656:386:11"
                 },
                 {
                   "eventCall": {
@@ -1512,18 +1446,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1477,
+                          "id": 2013,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2633,
-                          "src": "1183:3:6",
+                          "referencedDeclaration": 4108,
+                          "src": "1080:3:11",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1478,
+                        "id": 2014,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1531,7 +1465,7 @@
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "1183:10:6",
+                        "src": "1080:10:11",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1539,14 +1473,14 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1479,
+                        "id": 2015,
                         "name": "paymentTask",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1455,
-                        "src": "1195:11:6",
+                        "referencedDeclaration": 1992,
+                        "src": "1092:11:11",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                          "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                           "typeString": "contract RecurringPayment"
                         }
                       }
@@ -1558,22 +1492,22 @@
                           "typeString": "address"
                         },
                         {
-                          "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                          "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                           "typeString": "contract RecurringPayment"
                         }
                       ],
-                      "id": 1476,
+                      "id": 2012,
                       "name": "CreatePayment_event",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1489,
-                      "src": "1163:19:6",
+                      "referencedDeclaration": 2025,
+                      "src": "1060:19:11",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_contract$_RecurringPayment_$1421_$returns$__$",
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_contract$_RecurringPayment_$1960_$returns$__$",
                         "typeString": "function (address,contract RecurringPayment)"
                       }
                     },
-                    "id": 1480,
+                    "id": 2016,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1581,20 +1515,20 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1163:44:6",
+                    "src": "1060:44:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1481,
+                  "id": 2017,
                   "nodeType": "EmitStatement",
-                  "src": "1158:49:6"
+                  "src": "1055:49:11"
                 }
               ]
             },
             "documentation": null,
-            "id": 1483,
+            "id": 2019,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1602,59 +1536,31 @@
             "name": "createRecurringPayment",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1453,
+              "id": 1990,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1442,
-                  "name": "alarmClock",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 1483,
-                  "src": "374:31:6",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IRecurringAlarmClock_$528",
-                    "typeString": "contract IRecurringAlarmClock"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 1441,
-                    "name": "IRecurringAlarmClock",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 528,
-                    "src": "374:20:6",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IRecurringAlarmClock_$528",
-                      "typeString": "contract IRecurringAlarmClock"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 1444,
+                  "id": 1981,
                   "name": "delegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1483,
-                  "src": "416:31:6",
+                  "scope": 2019,
+                  "src": "380:31:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$510",
+                    "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$71",
                     "typeString": "contract IFuturePaymentDelegate"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1443,
+                    "id": 1980,
                     "name": "IFuturePaymentDelegate",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 510,
-                    "src": "416:22:6",
+                    "referencedDeclaration": 71,
+                    "src": "380:22:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$510",
+                      "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$71",
                       "typeString": "contract IFuturePaymentDelegate"
                     }
                   },
@@ -1663,26 +1569,26 @@
                 },
                 {
                   "constant": false,
-                  "id": 1446,
+                  "id": 1983,
                   "name": "wallet",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1483,
-                  "src": "458:23:6",
+                  "scope": 2019,
+                  "src": "422:23:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IDelegatedWallet_$471",
+                    "typeIdentifier": "t_contract$_IDelegatedWallet_$32",
                     "typeString": "contract IDelegatedWallet"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1445,
+                    "id": 1982,
                     "name": "IDelegatedWallet",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 471,
-                    "src": "458:16:6",
+                    "referencedDeclaration": 32,
+                    "src": "422:16:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IDelegatedWallet_$471",
+                      "typeIdentifier": "t_contract$_IDelegatedWallet_$32",
                       "typeString": "contract IDelegatedWallet"
                     }
                   },
@@ -1691,11 +1597,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1448,
+                  "id": 1985,
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1483,
-                  "src": "492:13:6",
+                  "scope": 2019,
+                  "src": "456:13:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1703,10 +1609,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1447,
+                    "id": 1984,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "492:7:6",
+                    "src": "456:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1717,11 +1623,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1450,
+                  "id": 1987,
                   "name": "recipient",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1483,
-                  "src": "516:17:6",
+                  "scope": 2019,
+                  "src": "480:17:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1729,10 +1635,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1449,
+                    "id": 1986,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "516:7:6",
+                    "src": "480:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1743,11 +1649,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1452,
+                  "id": 1989,
                   "name": "paymentAmount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1483,
-                  "src": "544:18:6",
+                  "scope": 2019,
+                  "src": "508:18:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1755,10 +1661,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1451,
+                    "id": 1988,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "544:4:6",
+                    "src": "508:4:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1768,35 +1674,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "363:206:6"
+              "src": "369:164:11"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1456,
+              "id": 1993,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1455,
+                  "id": 1992,
                   "name": "paymentTask",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1483,
-                  "src": "586:28:6",
+                  "scope": 2019,
+                  "src": "550:28:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                    "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                     "typeString": "contract RecurringPayment"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1454,
+                    "id": 1991,
                     "name": "RecurringPayment",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1421,
-                    "src": "586:16:6",
+                    "referencedDeclaration": 1960,
+                    "src": "550:16:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                      "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                       "typeString": "contract RecurringPayment"
                     }
                   },
@@ -1804,10 +1710,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "585:30:6"
+              "src": "549:30:11"
             },
-            "scope": 1490,
-            "src": "331:884:6",
+            "scope": 2026,
+            "src": "337:775:11",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -1815,21 +1721,21 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 1489,
+            "id": 2025,
             "name": "CreatePayment_event",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1488,
+              "id": 2024,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1485,
+                  "id": 2021,
                   "indexed": true,
                   "name": "creator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1489,
-                  "src": "1250:23:6",
+                  "scope": 2025,
+                  "src": "1147:23:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1837,10 +1743,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1484,
+                    "id": 2020,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1250:7:6",
+                    "src": "1147:7:11",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1851,27 +1757,27 @@
                 },
                 {
                   "constant": false,
-                  "id": 1487,
+                  "id": 2023,
                   "indexed": false,
                   "name": "recurringPayment",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1489,
-                  "src": "1275:33:6",
+                  "scope": 2025,
+                  "src": "1172:33:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                    "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                     "typeString": "contract RecurringPayment"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1486,
+                    "id": 2022,
                     "name": "RecurringPayment",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1421,
-                    "src": "1275:16:6",
+                    "referencedDeclaration": 1960,
+                    "src": "1172:16:11",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_RecurringPayment_$1421",
+                      "typeIdentifier": "t_contract$_RecurringPayment_$1960",
                       "typeString": "contract RecurringPayment"
                     }
                   },
@@ -1879,29 +1785,22 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1249:60:6"
+              "src": "1146:60:11"
             },
-            "src": "1223:87:6"
+            "src": "1120:87:11"
           }
         ],
-        "scope": 1491,
-        "src": "133:1186:6"
+        "scope": 2027,
+        "src": "139:1077:11"
       }
     ],
-    "src": "0:1321:6"
+    "src": "0:1218:11"
   },
   "compiler": {
     "name": "solc",
     "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
-  "networks": {
-    "42": {
-      "events": {},
-      "links": {},
-      "address": "0x8d9d785e678096cf6bc1de93fce10712ecc60895",
-      "transactionHash": "0x734ffffea20d49385435b42417e96e89e9c0dfe5d1d99d21898d9604915c547f"
-    }
-  },
+  "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-10-07T04:51:18.104Z"
+  "updatedAt": "2018-10-13T04:35:07.886Z"
 }

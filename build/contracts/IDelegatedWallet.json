@@ -57,41 +57,38 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.4.23;\r\n\r\ncontract ITokenReceiver {\r\n    function () public payable;\r\n}\r\n\r\ncontract ITokenSender {\r\n    function transfer (address token, address recipient, uint amount) public returns (bool);\r\n}\r\n\r\ncontract IDelegated {\r\n    function isDelegate (address _address) public view returns (bool);\r\n}\r\n\r\ncontract IDelegatedWallet is IDelegated, ITokenSender, ITokenReceiver {\r\n    // implements a transfer function only callable by delegates\r\n}\r\n\r\ncontract IFuturePayment {\r\n    IFuturePaymentDelegate public delegate;\r\n    IDelegatedWallet public wallet;\r\n    address public recipient;\r\n    address public token;\r\n    function amount () public view returns (uint);\r\n    function cancel () public;\r\n}\r\n\r\ncontract IFuturePaymentDelegate is ITokenSender {\r\n    function schedule (IFuturePayment payment) public returns (bool);\r\n    function unschedule (IFuturePayment payment) public returns (bool);\r\n    function unschedule() public returns (bool);\r\n}\r\n\r\n// The recurring alarm clock can easily be updated to perform any customized\r\n// task and does not have to follow this particular interface\r\ncontract IRecurringTask {\r\n    function execute(uint currentInterval, uint maxIntervals) public returns (bool success);\r\n    function cancel() public;\r\n}\r\n\r\ncontract IRecurringAlarmClock is IFuturePayment {\r\n    IRecurringTask public task;\r\n}\r\n",
+  "source": "pragma solidity ^0.4.23;\r\n\r\ncontract ITokenReceiver {\r\n    function () public payable;\r\n}\r\n\r\ncontract ITokenSender {\r\n    function transfer (address token, address recipient, uint amount) public returns (bool);\r\n}\r\n\r\ncontract IDelegated {\r\n    function isDelegate (address _address) public view returns (bool);\r\n}\r\n\r\ncontract IDelegatedWallet is IDelegated, ITokenSender, ITokenReceiver {\r\n    // implements a transfer function only callable by delegates\r\n}\r\n\r\ncontract ITask {\r\n    function cancel() public;\r\n}\r\n\r\ncontract IFuturePayment is ITask {\r\n    IFuturePaymentDelegate public delegate;\r\n    IDelegatedWallet public wallet;\r\n    address public recipient;\r\n    address public token;\r\n    function amount () public view returns (uint);\r\n}\r\n\r\ncontract IFuturePaymentDelegate {\r\n    function execute () public returns (bool);\r\n    function schedule (IFuturePayment payment) public;\r\n    function unschedule (IFuturePayment payment) public;\r\n    function unschedule() public;\r\n}\r\n",
   "sourcePath": "C:\\Users\\My\\Documents\\GitHub\\everchain-project\\recurring-alarm-clock\\contracts\\Interfaces.sol",
   "ast": {
     "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/Interfaces.sol",
     "exportedSymbols": {
       "IDelegated": [
-        464
+        25
       ],
       "IDelegatedWallet": [
-        471
+        32
       ],
       "IFuturePayment": [
-        488
+        52
       ],
       "IFuturePaymentDelegate": [
-        510
+        71
       ],
-      "IRecurringAlarmClock": [
-        528
-      ],
-      "IRecurringTask": [
-        523
+      "ITask": [
+        36
       ],
       "ITokenReceiver": [
-        444
+        5
       ],
       "ITokenSender": [
-        456
+        17
       ]
     },
-    "id": 529,
+    "id": 72,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 440,
+        "id": 1,
         "literals": [
           "solidity",
           "^",
@@ -99,7 +96,7 @@
           ".23"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:2"
+        "src": "0:24:0"
       },
       {
         "baseContracts": [],
@@ -107,9 +104,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 444,
+        "id": 5,
         "linearizedBaseContracts": [
-          444
+          5
         ],
         "name": "ITokenReceiver",
         "nodeType": "ContractDefinition",
@@ -117,7 +114,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 443,
+            "id": 4,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -125,27 +122,27 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 441,
+              "id": 2,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "68:2:2"
+              "src": "68:2:0"
             },
             "payable": true,
             "returnParameters": {
-              "id": 442,
+              "id": 3,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "85:0:2"
+              "src": "85:0:0"
             },
-            "scope": 444,
-            "src": "59:27:2",
+            "scope": 5,
+            "src": "59:27:0",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 529,
-        "src": "28:61:2"
+        "scope": 72,
+        "src": "28:61:0"
       },
       {
         "baseContracts": [],
@@ -153,9 +150,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 456,
+        "id": 17,
         "linearizedBaseContracts": [
-          456
+          17
         ],
         "name": "ITokenSender",
         "nodeType": "ContractDefinition",
@@ -163,7 +160,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 455,
+            "id": 16,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -171,16 +168,16 @@
             "name": "transfer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 451,
+              "id": 12,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 446,
+                  "id": 7,
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 455,
-                  "src": "141:13:2",
+                  "scope": 16,
+                  "src": "141:13:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -188,10 +185,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 445,
+                    "id": 6,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "141:7:2",
+                    "src": "141:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -202,11 +199,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 448,
+                  "id": 9,
                   "name": "recipient",
                   "nodeType": "VariableDeclaration",
-                  "scope": 455,
-                  "src": "156:17:2",
+                  "scope": 16,
+                  "src": "156:17:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -214,10 +211,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 447,
+                    "id": 8,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "156:7:2",
+                    "src": "156:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -228,11 +225,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 450,
+                  "id": 11,
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 455,
-                  "src": "175:11:2",
+                  "scope": 16,
+                  "src": "175:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -240,10 +237,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 449,
+                    "id": 10,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "175:4:2",
+                    "src": "175:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -253,20 +250,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "140:47:2"
+              "src": "140:47:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 454,
+              "id": 15,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 453,
+                  "id": 14,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 455,
-                  "src": "204:4:2",
+                  "scope": 16,
+                  "src": "204:4:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -274,10 +271,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 452,
+                    "id": 13,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "204:4:2",
+                    "src": "204:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -287,17 +284,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "203:6:2"
+              "src": "203:6:0"
             },
-            "scope": 456,
-            "src": "122:88:2",
+            "scope": 17,
+            "src": "122:88:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 529,
-        "src": "93:120:2"
+        "scope": 72,
+        "src": "93:120:0"
       },
       {
         "baseContracts": [],
@@ -305,9 +302,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 464,
+        "id": 25,
         "linearizedBaseContracts": [
-          464
+          25
         ],
         "name": "IDelegated",
         "nodeType": "ContractDefinition",
@@ -315,7 +312,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 463,
+            "id": 24,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -323,16 +320,16 @@
             "name": "isDelegate",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 459,
+              "id": 20,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 458,
+                  "id": 19,
                   "name": "_address",
                   "nodeType": "VariableDeclaration",
-                  "scope": 463,
-                  "src": "265:16:2",
+                  "scope": 24,
+                  "src": "265:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -340,10 +337,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 457,
+                    "id": 18,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "265:7:2",
+                    "src": "265:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -353,20 +350,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "264:18:2"
+              "src": "264:18:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 462,
+              "id": 23,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 461,
+                  "id": 22,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 463,
-                  "src": "304:4:2",
+                  "scope": 24,
+                  "src": "304:4:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -374,10 +371,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 460,
+                    "id": 21,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "304:4:2",
+                    "src": "304:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -387,17 +384,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "303:6:2"
+              "src": "303:6:0"
             },
-            "scope": 464,
-            "src": "244:66:2",
+            "scope": 25,
+            "src": "244:66:0",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 529,
-        "src": "217:96:2"
+        "scope": 72,
+        "src": "217:96:0"
       },
       {
         "baseContracts": [
@@ -405,77 +402,77 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 465,
+              "id": 26,
               "name": "IDelegated",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 464,
-              "src": "346:10:2",
+              "referencedDeclaration": 25,
+              "src": "346:10:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IDelegated_$464",
+                "typeIdentifier": "t_contract$_IDelegated_$25",
                 "typeString": "contract IDelegated"
               }
             },
-            "id": 466,
+            "id": 27,
             "nodeType": "InheritanceSpecifier",
-            "src": "346:10:2"
+            "src": "346:10:0"
           },
           {
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 467,
+              "id": 28,
               "name": "ITokenSender",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 456,
-              "src": "358:12:2",
+              "referencedDeclaration": 17,
+              "src": "358:12:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ITokenSender_$456",
+                "typeIdentifier": "t_contract$_ITokenSender_$17",
                 "typeString": "contract ITokenSender"
               }
             },
-            "id": 468,
+            "id": 29,
             "nodeType": "InheritanceSpecifier",
-            "src": "358:12:2"
+            "src": "358:12:0"
           },
           {
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 469,
+              "id": 30,
               "name": "ITokenReceiver",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 444,
-              "src": "372:14:2",
+              "referencedDeclaration": 5,
+              "src": "372:14:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ITokenReceiver_$444",
+                "typeIdentifier": "t_contract$_ITokenReceiver_$5",
                 "typeString": "contract ITokenReceiver"
               }
             },
-            "id": 470,
+            "id": 31,
             "nodeType": "InheritanceSpecifier",
-            "src": "372:14:2"
+            "src": "372:14:0"
           }
         ],
         "contractDependencies": [
-          444,
-          456,
-          464
+          25,
+          5,
+          17
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 471,
+        "id": 32,
         "linearizedBaseContracts": [
-          471,
-          444,
-          456,
-          464
+          32,
+          5,
+          17,
+          25
         ],
         "name": "IDelegatedWallet",
         "nodeType": "ContractDefinition",
         "nodes": [],
-        "scope": 529,
-        "src": "317:140:2"
+        "scope": 72,
+        "src": "317:140:0"
       },
       {
         "baseContracts": [],
@@ -483,35 +480,103 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 488,
+        "id": 36,
         "linearizedBaseContracts": [
-          488
+          36
+        ],
+        "name": "ITask",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 35,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "cancel",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 33,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "498:2:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 34,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "507:0:0"
+            },
+            "scope": 36,
+            "src": "483:25:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 72,
+        "src": "461:50:0"
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 37,
+              "name": "ITask",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 36,
+              "src": "542:5:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ITask_$36",
+                "typeString": "contract ITask"
+              }
+            },
+            "id": 38,
+            "nodeType": "InheritanceSpecifier",
+            "src": "542:5:0"
+          }
+        ],
+        "contractDependencies": [
+          36
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 52,
+        "linearizedBaseContracts": [
+          52,
+          36
         ],
         "name": "IFuturePayment",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 473,
+            "id": 40,
             "name": "delegate",
             "nodeType": "VariableDeclaration",
-            "scope": 488,
-            "src": "492:38:2",
+            "scope": 52,
+            "src": "555:38:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$510",
+              "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$71",
               "typeString": "contract IFuturePaymentDelegate"
             },
             "typeName": {
               "contractScope": null,
-              "id": 472,
+              "id": 39,
               "name": "IFuturePaymentDelegate",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 510,
-              "src": "492:22:2",
+              "referencedDeclaration": 71,
+              "src": "555:22:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$510",
+                "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$71",
                 "typeString": "contract IFuturePaymentDelegate"
               }
             },
@@ -520,26 +585,26 @@
           },
           {
             "constant": false,
-            "id": 475,
+            "id": 42,
             "name": "wallet",
             "nodeType": "VariableDeclaration",
-            "scope": 488,
-            "src": "537:30:2",
+            "scope": 52,
+            "src": "600:30:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IDelegatedWallet_$471",
+              "typeIdentifier": "t_contract$_IDelegatedWallet_$32",
               "typeString": "contract IDelegatedWallet"
             },
             "typeName": {
               "contractScope": null,
-              "id": 474,
+              "id": 41,
               "name": "IDelegatedWallet",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 471,
-              "src": "537:16:2",
+              "referencedDeclaration": 32,
+              "src": "600:16:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IDelegatedWallet_$471",
+                "typeIdentifier": "t_contract$_IDelegatedWallet_$32",
                 "typeString": "contract IDelegatedWallet"
               }
             },
@@ -548,11 +613,11 @@
           },
           {
             "constant": false,
-            "id": 477,
+            "id": 44,
             "name": "recipient",
             "nodeType": "VariableDeclaration",
-            "scope": 488,
-            "src": "574:24:2",
+            "scope": 52,
+            "src": "637:24:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -560,10 +625,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 476,
+              "id": 43,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "574:7:2",
+              "src": "637:7:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -574,11 +639,11 @@
           },
           {
             "constant": false,
-            "id": 479,
+            "id": 46,
             "name": "token",
             "nodeType": "VariableDeclaration",
-            "scope": 488,
-            "src": "605:20:2",
+            "scope": 52,
+            "src": "668:20:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -586,10 +651,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 478,
+              "id": 45,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "605:7:2",
+              "src": "668:7:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -601,7 +666,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 484,
+            "id": 51,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -609,23 +674,23 @@
             "name": "amount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 480,
+              "id": 47,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "648:2:2"
+              "src": "711:2:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 483,
+              "id": 50,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 482,
+                  "id": 49,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 484,
-                  "src": "672:4:2",
+                  "scope": 51,
+                  "src": "735:4:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -633,10 +698,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 481,
+                    "id": 48,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "672:4:2",
+                    "src": "735:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -646,311 +711,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "671:6:2"
+              "src": "734:6:0"
             },
-            "scope": 488,
-            "src": "632:46:2",
+            "scope": 52,
+            "src": "695:46:0",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "id": 487,
-            "implemented": false,
-            "isConstructor": false,
-            "isDeclaredConst": false,
-            "modifiers": [],
-            "name": "cancel",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 485,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "700:2:2"
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 486,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "709:0:2"
-            },
-            "scope": 488,
-            "src": "684:26:2",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "public"
           }
         ],
-        "scope": 529,
-        "src": "461:252:2"
-      },
-      {
-        "baseContracts": [
-          {
-            "arguments": null,
-            "baseName": {
-              "contractScope": null,
-              "id": 489,
-              "name": "ITokenSender",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 456,
-              "src": "752:12:2",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ITokenSender_$456",
-                "typeString": "contract ITokenSender"
-              }
-            },
-            "id": 490,
-            "nodeType": "InheritanceSpecifier",
-            "src": "752:12:2"
-          }
-        ],
-        "contractDependencies": [
-          456
-        ],
-        "contractKind": "contract",
-        "documentation": null,
-        "fullyImplemented": false,
-        "id": 510,
-        "linearizedBaseContracts": [
-          510,
-          456
-        ],
-        "name": "IFuturePaymentDelegate",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "body": null,
-            "documentation": null,
-            "id": 497,
-            "implemented": false,
-            "isConstructor": false,
-            "isDeclaredConst": false,
-            "modifiers": [],
-            "name": "schedule",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 493,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 492,
-                  "name": "payment",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 497,
-                  "src": "791:22:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IFuturePayment_$488",
-                    "typeString": "contract IFuturePayment"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 491,
-                    "name": "IFuturePayment",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 488,
-                    "src": "791:14:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IFuturePayment_$488",
-                      "typeString": "contract IFuturePayment"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "790:24:2"
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 496,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 495,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 497,
-                  "src": "831:4:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
-                  },
-                  "typeName": {
-                    "id": 494,
-                    "name": "bool",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "831:4:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bool",
-                      "typeString": "bool"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "830:6:2"
-            },
-            "scope": 510,
-            "src": "772:65:2",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "public"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "id": 504,
-            "implemented": false,
-            "isConstructor": false,
-            "isDeclaredConst": false,
-            "modifiers": [],
-            "name": "unschedule",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 500,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 499,
-                  "name": "payment",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 504,
-                  "src": "864:22:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IFuturePayment_$488",
-                    "typeString": "contract IFuturePayment"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 498,
-                    "name": "IFuturePayment",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 488,
-                    "src": "864:14:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IFuturePayment_$488",
-                      "typeString": "contract IFuturePayment"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "863:24:2"
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 503,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 502,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 504,
-                  "src": "904:4:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
-                  },
-                  "typeName": {
-                    "id": 501,
-                    "name": "bool",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "904:4:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bool",
-                      "typeString": "bool"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "903:6:2"
-            },
-            "scope": 510,
-            "src": "843:67:2",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "public"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "id": 509,
-            "implemented": false,
-            "isConstructor": false,
-            "isDeclaredConst": false,
-            "modifiers": [],
-            "name": "unschedule",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 505,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "935:2:2"
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 508,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 507,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 509,
-                  "src": "954:4:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
-                  },
-                  "typeName": {
-                    "id": 506,
-                    "name": "bool",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "954:4:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bool",
-                      "typeString": "bool"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "953:6:2"
-            },
-            "scope": 510,
-            "src": "916:44:2",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "public"
-          }
-        ],
-        "scope": 529,
-        "src": "717:246:2"
+        "scope": 72,
+        "src": "515:229:0"
       },
       {
         "baseContracts": [],
@@ -958,17 +729,17 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 523,
+        "id": 71,
         "linearizedBaseContracts": [
-          523
+          71
         ],
-        "name": "IRecurringTask",
+        "name": "IFuturePaymentDelegate",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": null,
             "documentation": null,
-            "id": 519,
+            "id": 57,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -976,76 +747,23 @@
             "name": "execute",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 515,
+              "id": 53,
               "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 512,
-                  "name": "currentInterval",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 519,
-                  "src": "1156:20:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 511,
-                    "name": "uint",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1156:4:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 514,
-                  "name": "maxIntervals",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 519,
-                  "src": "1178:17:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 513,
-                    "name": "uint",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1178:4:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1155:41:2"
+              "parameters": [],
+              "src": "804:2:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 518,
+              "id": 56,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 517,
-                  "name": "success",
+                  "id": 55,
+                  "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 519,
-                  "src": "1213:12:2",
+                  "scope": 57,
+                  "src": "823:4:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1053,10 +771,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 516,
+                    "id": 54,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1213:4:2",
+                    "src": "823:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1066,10 +784,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1212:14:2"
+              "src": "822:6:0"
             },
-            "scope": 523,
-            "src": "1139:88:2",
+            "scope": 71,
+            "src": "787:42:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -1077,139 +795,185 @@
           {
             "body": null,
             "documentation": null,
-            "id": 522,
+            "id": 62,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [],
-            "name": "cancel",
+            "name": "schedule",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 520,
+              "id": 60,
               "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1248:2:2"
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 59,
+                  "name": "payment",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 62,
+                  "src": "854:22:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IFuturePayment_$52",
+                    "typeString": "contract IFuturePayment"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 58,
+                    "name": "IFuturePayment",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 52,
+                    "src": "854:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IFuturePayment_$52",
+                      "typeString": "contract IFuturePayment"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "853:24:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 521,
+              "id": 61,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1257:0:2"
+              "src": "884:0:0"
             },
-            "scope": 523,
-            "src": "1233:25:2",
+            "scope": 71,
+            "src": "835:50:0",
             "stateMutability": "nonpayable",
-            "superFunction": 487,
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 67,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "unschedule",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 65,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 64,
+                  "name": "payment",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 67,
+                  "src": "912:22:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IFuturePayment_$52",
+                    "typeString": "contract IFuturePayment"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 63,
+                    "name": "IFuturePayment",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 52,
+                    "src": "912:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IFuturePayment_$52",
+                      "typeString": "contract IFuturePayment"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "911:24:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 66,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "942:0:0"
+            },
+            "scope": 71,
+            "src": "891:52:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 70,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "unschedule",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 68,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "968:2:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 69,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "977:0:0"
+            },
+            "scope": 71,
+            "src": "949:29:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 529,
-        "src": "1108:153:2"
-      },
-      {
-        "baseContracts": [
-          {
-            "arguments": null,
-            "baseName": {
-              "contractScope": null,
-              "id": 524,
-              "name": "IFuturePayment",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 488,
-              "src": "1298:14:2",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IFuturePayment_$488",
-                "typeString": "contract IFuturePayment"
-              }
-            },
-            "id": 525,
-            "nodeType": "InheritanceSpecifier",
-            "src": "1298:14:2"
-          }
-        ],
-        "contractDependencies": [
-          488
-        ],
-        "contractKind": "contract",
-        "documentation": null,
-        "fullyImplemented": false,
-        "id": 528,
-        "linearizedBaseContracts": [
-          528,
-          488
-        ],
-        "name": "IRecurringAlarmClock",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "constant": false,
-            "id": 527,
-            "name": "task",
-            "nodeType": "VariableDeclaration",
-            "scope": 528,
-            "src": "1320:26:2",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IRecurringTask_$523",
-              "typeString": "contract IRecurringTask"
-            },
-            "typeName": {
-              "contractScope": null,
-              "id": 526,
-              "name": "IRecurringTask",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 523,
-              "src": "1320:14:2",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IRecurringTask_$523",
-                "typeString": "contract IRecurringTask"
-              }
-            },
-            "value": null,
-            "visibility": "public"
-          }
-        ],
-        "scope": 529,
-        "src": "1265:85:2"
+        "scope": 72,
+        "src": "748:233:0"
       }
     ],
-    "src": "0:1352:2"
+    "src": "0:983:0"
   },
   "legacyAST": {
     "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/Interfaces.sol",
     "exportedSymbols": {
       "IDelegated": [
-        464
+        25
       ],
       "IDelegatedWallet": [
-        471
+        32
       ],
       "IFuturePayment": [
-        488
+        52
       ],
       "IFuturePaymentDelegate": [
-        510
+        71
       ],
-      "IRecurringAlarmClock": [
-        528
-      ],
-      "IRecurringTask": [
-        523
+      "ITask": [
+        36
       ],
       "ITokenReceiver": [
-        444
+        5
       ],
       "ITokenSender": [
-        456
+        17
       ]
     },
-    "id": 529,
+    "id": 72,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 440,
+        "id": 1,
         "literals": [
           "solidity",
           "^",
@@ -1217,7 +981,7 @@
           ".23"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:2"
+        "src": "0:24:0"
       },
       {
         "baseContracts": [],
@@ -1225,9 +989,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 444,
+        "id": 5,
         "linearizedBaseContracts": [
-          444
+          5
         ],
         "name": "ITokenReceiver",
         "nodeType": "ContractDefinition",
@@ -1235,7 +999,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 443,
+            "id": 4,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1243,27 +1007,27 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 441,
+              "id": 2,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "68:2:2"
+              "src": "68:2:0"
             },
             "payable": true,
             "returnParameters": {
-              "id": 442,
+              "id": 3,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "85:0:2"
+              "src": "85:0:0"
             },
-            "scope": 444,
-            "src": "59:27:2",
+            "scope": 5,
+            "src": "59:27:0",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 529,
-        "src": "28:61:2"
+        "scope": 72,
+        "src": "28:61:0"
       },
       {
         "baseContracts": [],
@@ -1271,9 +1035,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 456,
+        "id": 17,
         "linearizedBaseContracts": [
-          456
+          17
         ],
         "name": "ITokenSender",
         "nodeType": "ContractDefinition",
@@ -1281,7 +1045,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 455,
+            "id": 16,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1289,16 +1053,16 @@
             "name": "transfer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 451,
+              "id": 12,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 446,
+                  "id": 7,
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 455,
-                  "src": "141:13:2",
+                  "scope": 16,
+                  "src": "141:13:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1306,10 +1070,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 445,
+                    "id": 6,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "141:7:2",
+                    "src": "141:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1320,11 +1084,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 448,
+                  "id": 9,
                   "name": "recipient",
                   "nodeType": "VariableDeclaration",
-                  "scope": 455,
-                  "src": "156:17:2",
+                  "scope": 16,
+                  "src": "156:17:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1332,10 +1096,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 447,
+                    "id": 8,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "156:7:2",
+                    "src": "156:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1346,11 +1110,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 450,
+                  "id": 11,
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 455,
-                  "src": "175:11:2",
+                  "scope": 16,
+                  "src": "175:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1358,10 +1122,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 449,
+                    "id": 10,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "175:4:2",
+                    "src": "175:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1371,20 +1135,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "140:47:2"
+              "src": "140:47:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 454,
+              "id": 15,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 453,
+                  "id": 14,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 455,
-                  "src": "204:4:2",
+                  "scope": 16,
+                  "src": "204:4:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1392,10 +1156,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 452,
+                    "id": 13,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "204:4:2",
+                    "src": "204:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1405,17 +1169,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "203:6:2"
+              "src": "203:6:0"
             },
-            "scope": 456,
-            "src": "122:88:2",
+            "scope": 17,
+            "src": "122:88:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 529,
-        "src": "93:120:2"
+        "scope": 72,
+        "src": "93:120:0"
       },
       {
         "baseContracts": [],
@@ -1423,9 +1187,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 464,
+        "id": 25,
         "linearizedBaseContracts": [
-          464
+          25
         ],
         "name": "IDelegated",
         "nodeType": "ContractDefinition",
@@ -1433,7 +1197,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 463,
+            "id": 24,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1441,16 +1205,16 @@
             "name": "isDelegate",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 459,
+              "id": 20,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 458,
+                  "id": 19,
                   "name": "_address",
                   "nodeType": "VariableDeclaration",
-                  "scope": 463,
-                  "src": "265:16:2",
+                  "scope": 24,
+                  "src": "265:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1458,10 +1222,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 457,
+                    "id": 18,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "265:7:2",
+                    "src": "265:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1471,20 +1235,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "264:18:2"
+              "src": "264:18:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 462,
+              "id": 23,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 461,
+                  "id": 22,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 463,
-                  "src": "304:4:2",
+                  "scope": 24,
+                  "src": "304:4:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1492,10 +1256,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 460,
+                    "id": 21,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "304:4:2",
+                    "src": "304:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1505,17 +1269,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "303:6:2"
+              "src": "303:6:0"
             },
-            "scope": 464,
-            "src": "244:66:2",
+            "scope": 25,
+            "src": "244:66:0",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 529,
-        "src": "217:96:2"
+        "scope": 72,
+        "src": "217:96:0"
       },
       {
         "baseContracts": [
@@ -1523,77 +1287,77 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 465,
+              "id": 26,
               "name": "IDelegated",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 464,
-              "src": "346:10:2",
+              "referencedDeclaration": 25,
+              "src": "346:10:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IDelegated_$464",
+                "typeIdentifier": "t_contract$_IDelegated_$25",
                 "typeString": "contract IDelegated"
               }
             },
-            "id": 466,
+            "id": 27,
             "nodeType": "InheritanceSpecifier",
-            "src": "346:10:2"
+            "src": "346:10:0"
           },
           {
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 467,
+              "id": 28,
               "name": "ITokenSender",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 456,
-              "src": "358:12:2",
+              "referencedDeclaration": 17,
+              "src": "358:12:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ITokenSender_$456",
+                "typeIdentifier": "t_contract$_ITokenSender_$17",
                 "typeString": "contract ITokenSender"
               }
             },
-            "id": 468,
+            "id": 29,
             "nodeType": "InheritanceSpecifier",
-            "src": "358:12:2"
+            "src": "358:12:0"
           },
           {
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 469,
+              "id": 30,
               "name": "ITokenReceiver",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 444,
-              "src": "372:14:2",
+              "referencedDeclaration": 5,
+              "src": "372:14:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ITokenReceiver_$444",
+                "typeIdentifier": "t_contract$_ITokenReceiver_$5",
                 "typeString": "contract ITokenReceiver"
               }
             },
-            "id": 470,
+            "id": 31,
             "nodeType": "InheritanceSpecifier",
-            "src": "372:14:2"
+            "src": "372:14:0"
           }
         ],
         "contractDependencies": [
-          444,
-          456,
-          464
+          25,
+          5,
+          17
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 471,
+        "id": 32,
         "linearizedBaseContracts": [
-          471,
-          444,
-          456,
-          464
+          32,
+          5,
+          17,
+          25
         ],
         "name": "IDelegatedWallet",
         "nodeType": "ContractDefinition",
         "nodes": [],
-        "scope": 529,
-        "src": "317:140:2"
+        "scope": 72,
+        "src": "317:140:0"
       },
       {
         "baseContracts": [],
@@ -1601,35 +1365,103 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 488,
+        "id": 36,
         "linearizedBaseContracts": [
-          488
+          36
+        ],
+        "name": "ITask",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 35,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "cancel",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 33,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "498:2:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 34,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "507:0:0"
+            },
+            "scope": 36,
+            "src": "483:25:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 72,
+        "src": "461:50:0"
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 37,
+              "name": "ITask",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 36,
+              "src": "542:5:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ITask_$36",
+                "typeString": "contract ITask"
+              }
+            },
+            "id": 38,
+            "nodeType": "InheritanceSpecifier",
+            "src": "542:5:0"
+          }
+        ],
+        "contractDependencies": [
+          36
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 52,
+        "linearizedBaseContracts": [
+          52,
+          36
         ],
         "name": "IFuturePayment",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 473,
+            "id": 40,
             "name": "delegate",
             "nodeType": "VariableDeclaration",
-            "scope": 488,
-            "src": "492:38:2",
+            "scope": 52,
+            "src": "555:38:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$510",
+              "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$71",
               "typeString": "contract IFuturePaymentDelegate"
             },
             "typeName": {
               "contractScope": null,
-              "id": 472,
+              "id": 39,
               "name": "IFuturePaymentDelegate",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 510,
-              "src": "492:22:2",
+              "referencedDeclaration": 71,
+              "src": "555:22:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$510",
+                "typeIdentifier": "t_contract$_IFuturePaymentDelegate_$71",
                 "typeString": "contract IFuturePaymentDelegate"
               }
             },
@@ -1638,26 +1470,26 @@
           },
           {
             "constant": false,
-            "id": 475,
+            "id": 42,
             "name": "wallet",
             "nodeType": "VariableDeclaration",
-            "scope": 488,
-            "src": "537:30:2",
+            "scope": 52,
+            "src": "600:30:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IDelegatedWallet_$471",
+              "typeIdentifier": "t_contract$_IDelegatedWallet_$32",
               "typeString": "contract IDelegatedWallet"
             },
             "typeName": {
               "contractScope": null,
-              "id": 474,
+              "id": 41,
               "name": "IDelegatedWallet",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 471,
-              "src": "537:16:2",
+              "referencedDeclaration": 32,
+              "src": "600:16:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IDelegatedWallet_$471",
+                "typeIdentifier": "t_contract$_IDelegatedWallet_$32",
                 "typeString": "contract IDelegatedWallet"
               }
             },
@@ -1666,11 +1498,11 @@
           },
           {
             "constant": false,
-            "id": 477,
+            "id": 44,
             "name": "recipient",
             "nodeType": "VariableDeclaration",
-            "scope": 488,
-            "src": "574:24:2",
+            "scope": 52,
+            "src": "637:24:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1678,10 +1510,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 476,
+              "id": 43,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "574:7:2",
+              "src": "637:7:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -1692,11 +1524,11 @@
           },
           {
             "constant": false,
-            "id": 479,
+            "id": 46,
             "name": "token",
             "nodeType": "VariableDeclaration",
-            "scope": 488,
-            "src": "605:20:2",
+            "scope": 52,
+            "src": "668:20:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1704,10 +1536,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 478,
+              "id": 45,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "605:7:2",
+              "src": "668:7:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -1719,7 +1551,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 484,
+            "id": 51,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1727,23 +1559,23 @@
             "name": "amount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 480,
+              "id": 47,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "648:2:2"
+              "src": "711:2:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 483,
+              "id": 50,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 482,
+                  "id": 49,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 484,
-                  "src": "672:4:2",
+                  "scope": 51,
+                  "src": "735:4:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1751,10 +1583,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 481,
+                    "id": 48,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "672:4:2",
+                    "src": "735:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1764,311 +1596,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "671:6:2"
+              "src": "734:6:0"
             },
-            "scope": 488,
-            "src": "632:46:2",
+            "scope": 52,
+            "src": "695:46:0",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "id": 487,
-            "implemented": false,
-            "isConstructor": false,
-            "isDeclaredConst": false,
-            "modifiers": [],
-            "name": "cancel",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 485,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "700:2:2"
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 486,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "709:0:2"
-            },
-            "scope": 488,
-            "src": "684:26:2",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "public"
           }
         ],
-        "scope": 529,
-        "src": "461:252:2"
-      },
-      {
-        "baseContracts": [
-          {
-            "arguments": null,
-            "baseName": {
-              "contractScope": null,
-              "id": 489,
-              "name": "ITokenSender",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 456,
-              "src": "752:12:2",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ITokenSender_$456",
-                "typeString": "contract ITokenSender"
-              }
-            },
-            "id": 490,
-            "nodeType": "InheritanceSpecifier",
-            "src": "752:12:2"
-          }
-        ],
-        "contractDependencies": [
-          456
-        ],
-        "contractKind": "contract",
-        "documentation": null,
-        "fullyImplemented": false,
-        "id": 510,
-        "linearizedBaseContracts": [
-          510,
-          456
-        ],
-        "name": "IFuturePaymentDelegate",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "body": null,
-            "documentation": null,
-            "id": 497,
-            "implemented": false,
-            "isConstructor": false,
-            "isDeclaredConst": false,
-            "modifiers": [],
-            "name": "schedule",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 493,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 492,
-                  "name": "payment",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 497,
-                  "src": "791:22:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IFuturePayment_$488",
-                    "typeString": "contract IFuturePayment"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 491,
-                    "name": "IFuturePayment",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 488,
-                    "src": "791:14:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IFuturePayment_$488",
-                      "typeString": "contract IFuturePayment"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "790:24:2"
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 496,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 495,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 497,
-                  "src": "831:4:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
-                  },
-                  "typeName": {
-                    "id": 494,
-                    "name": "bool",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "831:4:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bool",
-                      "typeString": "bool"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "830:6:2"
-            },
-            "scope": 510,
-            "src": "772:65:2",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "public"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "id": 504,
-            "implemented": false,
-            "isConstructor": false,
-            "isDeclaredConst": false,
-            "modifiers": [],
-            "name": "unschedule",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 500,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 499,
-                  "name": "payment",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 504,
-                  "src": "864:22:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IFuturePayment_$488",
-                    "typeString": "contract IFuturePayment"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 498,
-                    "name": "IFuturePayment",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 488,
-                    "src": "864:14:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IFuturePayment_$488",
-                      "typeString": "contract IFuturePayment"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "863:24:2"
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 503,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 502,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 504,
-                  "src": "904:4:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
-                  },
-                  "typeName": {
-                    "id": 501,
-                    "name": "bool",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "904:4:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bool",
-                      "typeString": "bool"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "903:6:2"
-            },
-            "scope": 510,
-            "src": "843:67:2",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "public"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "id": 509,
-            "implemented": false,
-            "isConstructor": false,
-            "isDeclaredConst": false,
-            "modifiers": [],
-            "name": "unschedule",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 505,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "935:2:2"
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 508,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 507,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 509,
-                  "src": "954:4:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
-                  },
-                  "typeName": {
-                    "id": 506,
-                    "name": "bool",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "954:4:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_bool",
-                      "typeString": "bool"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "953:6:2"
-            },
-            "scope": 510,
-            "src": "916:44:2",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "public"
-          }
-        ],
-        "scope": 529,
-        "src": "717:246:2"
+        "scope": 72,
+        "src": "515:229:0"
       },
       {
         "baseContracts": [],
@@ -2076,17 +1614,17 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 523,
+        "id": 71,
         "linearizedBaseContracts": [
-          523
+          71
         ],
-        "name": "IRecurringTask",
+        "name": "IFuturePaymentDelegate",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": null,
             "documentation": null,
-            "id": 519,
+            "id": 57,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -2094,76 +1632,23 @@
             "name": "execute",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 515,
+              "id": 53,
               "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 512,
-                  "name": "currentInterval",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 519,
-                  "src": "1156:20:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 511,
-                    "name": "uint",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1156:4:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 514,
-                  "name": "maxIntervals",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 519,
-                  "src": "1178:17:2",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 513,
-                    "name": "uint",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "1178:4:2",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "1155:41:2"
+              "parameters": [],
+              "src": "804:2:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 518,
+              "id": 56,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 517,
-                  "name": "success",
+                  "id": 55,
+                  "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 519,
-                  "src": "1213:12:2",
+                  "scope": 57,
+                  "src": "823:4:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2171,10 +1656,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 516,
+                    "id": 54,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1213:4:2",
+                    "src": "823:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2184,10 +1669,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1212:14:2"
+              "src": "822:6:0"
             },
-            "scope": 523,
-            "src": "1139:88:2",
+            "scope": 71,
+            "src": "787:42:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -2195,105 +1680,154 @@
           {
             "body": null,
             "documentation": null,
-            "id": 522,
+            "id": 62,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [],
-            "name": "cancel",
+            "name": "schedule",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 520,
+              "id": 60,
               "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1248:2:2"
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 59,
+                  "name": "payment",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 62,
+                  "src": "854:22:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IFuturePayment_$52",
+                    "typeString": "contract IFuturePayment"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 58,
+                    "name": "IFuturePayment",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 52,
+                    "src": "854:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IFuturePayment_$52",
+                      "typeString": "contract IFuturePayment"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "853:24:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 521,
+              "id": 61,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1257:0:2"
+              "src": "884:0:0"
             },
-            "scope": 523,
-            "src": "1233:25:2",
+            "scope": 71,
+            "src": "835:50:0",
             "stateMutability": "nonpayable",
-            "superFunction": 487,
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 67,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "unschedule",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 65,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 64,
+                  "name": "payment",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 67,
+                  "src": "912:22:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IFuturePayment_$52",
+                    "typeString": "contract IFuturePayment"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 63,
+                    "name": "IFuturePayment",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 52,
+                    "src": "912:14:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IFuturePayment_$52",
+                      "typeString": "contract IFuturePayment"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "911:24:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 66,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "942:0:0"
+            },
+            "scope": 71,
+            "src": "891:52:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 70,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "unschedule",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 68,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "968:2:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 69,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "977:0:0"
+            },
+            "scope": 71,
+            "src": "949:29:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 529,
-        "src": "1108:153:2"
-      },
-      {
-        "baseContracts": [
-          {
-            "arguments": null,
-            "baseName": {
-              "contractScope": null,
-              "id": 524,
-              "name": "IFuturePayment",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 488,
-              "src": "1298:14:2",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IFuturePayment_$488",
-                "typeString": "contract IFuturePayment"
-              }
-            },
-            "id": 525,
-            "nodeType": "InheritanceSpecifier",
-            "src": "1298:14:2"
-          }
-        ],
-        "contractDependencies": [
-          488
-        ],
-        "contractKind": "contract",
-        "documentation": null,
-        "fullyImplemented": false,
-        "id": 528,
-        "linearizedBaseContracts": [
-          528,
-          488
-        ],
-        "name": "IRecurringAlarmClock",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "constant": false,
-            "id": 527,
-            "name": "task",
-            "nodeType": "VariableDeclaration",
-            "scope": 528,
-            "src": "1320:26:2",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IRecurringTask_$523",
-              "typeString": "contract IRecurringTask"
-            },
-            "typeName": {
-              "contractScope": null,
-              "id": 526,
-              "name": "IRecurringTask",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 523,
-              "src": "1320:14:2",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IRecurringTask_$523",
-                "typeString": "contract IRecurringTask"
-              }
-            },
-            "value": null,
-            "visibility": "public"
-          }
-        ],
-        "scope": 529,
-        "src": "1265:85:2"
+        "scope": 72,
+        "src": "748:233:0"
       }
     ],
-    "src": "0:1352:2"
+    "src": "0:983:0"
   },
   "compiler": {
     "name": "solc",
@@ -2301,5 +1835,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-10-07T04:47:48.297Z"
+  "updatedAt": "2018-10-13T04:35:07.870Z"
 }

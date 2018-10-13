@@ -63,7 +63,7 @@ library ListLib {
         return list.array[i];
     }
 
-    function getIndexOf (AddressList storage list, address value) public view returns (uint) {
+    function indexOf (AddressList storage list, address value) public view returns (uint) {
         return list.getIndex[value];
     }
 

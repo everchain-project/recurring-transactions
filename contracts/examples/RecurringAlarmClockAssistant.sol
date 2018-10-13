@@ -1,17 +1,19 @@
 pragma solidity ^0.4.23;
 
-import "../external/CloneFactory.sol";
-import "./RecurringAlarmClockFactory.sol";
+import "../components/recurring-alarm-clock/RecurringAlarmClockFactory.sol";
 
-contract RecurringAlarmClockScheduler is CloneFactory {
+contract RecurringAlarmClockAssistant {
     
-    RecurringAlarmClockFactory public factory;
+    RecurringAlarmClockFactory public Factory;
     address public priorityCaller;
     uint public safetyMultiplier = 10^18;
 
-    constructor (address _everchain, RecurringAlarmClockFactory _factory) public {
-        priorityCaller = _everchain;
-        factory = _factory;
+    constructor (
+        address everchain, 
+        RecurringAlarmClockFactory factory
+    ) public {
+        priorityCaller = everchain;
+        Factory = factory;
     }
 
     function createRecurringAlarmClock(
@@ -41,10 +43,11 @@ contract RecurringAlarmClockScheduler is CloneFactory {
             0               // The required deposit by the claimer
         ];
         
-        return factory.createRecurringAlarmClock(
+        return Factory.createRecurringAlarmClock(
             delegate,
             wallet,
             priorityCaller,
+            "",
             recurringAlarmClockOptions,
             ethereumAlarmClockOptions
         );

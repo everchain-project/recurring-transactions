@@ -1,7 +1,8 @@
 pragma solidity ^0.4.23;
 
-import "../external/CloneFactory.sol";
-import "../RecurringAlarmClock.sol";
+import "../../external/CloneFactory.sol";
+import "../../Interfaces.sol";
+import "./RecurringAlarmClock.sol";
 
 contract RecurringAlarmClockFactory is CloneFactory {
 
@@ -18,22 +19,23 @@ contract RecurringAlarmClockFactory is CloneFactory {
 
     function createRecurringAlarmClock(
         IFuturePaymentDelegate delegate,
-        address wallet,
+        IDelegatedWallet wallet,
         address priorityCaller,
+        bytes callData,
         uint[3] recurringAlarmClockOptions,
         uint[10] ethereumAlarmClockOptions
-    ) public returns (RecurringAlarmClock) {
-        RecurringAlarmClock recurringAlarmClock = RecurringAlarmClock(createClone(alarmClockBlueprint));
+    ) public returns (RecurringAlarmClock recurringAlarmClock) {
+        recurringAlarmClock = RecurringAlarmClock(createClone(alarmClockBlueprint));
+        delegate.schedule(recurringAlarmClock);
         recurringAlarmClock.initialize(
             ethereumAlarmClock,
             delegate,
             wallet,
             priorityCaller,
+            callData,
             recurringAlarmClockOptions,
             ethereumAlarmClockOptions
         );
-
-        return recurringAlarmClock;
     }
 
 }

@@ -1,12 +1,13 @@
 pragma solidity ^0.4.23;
 
-import "../Interfaces.sol";
+import "../../external/Owned.sol";
+import "../../Interfaces.sol";
 
-contract RecurringPayment is IFuturePayment, IRecurringTask {
+contract RecurringPayment is IFuturePayment {
     
     uint public blockCreated;
 
-    IRecurringAlarmClock public alarmClock;
+    ITask alarmClock;
     IFuturePaymentDelegate public delegate;
     IDelegatedWallet public wallet;
     address public token;
@@ -14,7 +15,6 @@ contract RecurringPayment is IFuturePayment, IRecurringTask {
     uint public paymentAmount;
     
     function initialize (
-        IRecurringAlarmClock _alarmClock,
         IFuturePaymentDelegate _delegate,
         IDelegatedWallet _wallet,
         address _token,
@@ -23,7 +23,6 @@ contract RecurringPayment is IFuturePayment, IRecurringTask {
     ) public {
         require(blockCreated == 0, "contract can only be initialized once");
 
-        alarmClock = _alarmClock;
         delegate = _delegate;
         wallet = _wallet;
         token = _token;
@@ -50,11 +49,8 @@ contract RecurringPayment is IFuturePayment, IRecurringTask {
         return paymentAmount;
     }
     
-    function execute(uint currentInterval, uint maxIntervals) public onlyAlarmClock returns (bool success){
-        success = delegate.transfer(token, recipient, amount());
-        
-        if(currentInterval == maxIntervals)
-            delegate.unschedule();
+    function () public onlyAlarmClock {
+        delegate.execute();
     }
 
     function cancel () public onlyDelegates {
@@ -63,12 +59,12 @@ contract RecurringPayment is IFuturePayment, IRecurringTask {
     }
 
     modifier onlyAlarmClock () {
-        require(msg.sender == address(alarmClock), "only the alarm can call this function");
+        require(msg.sender == address(alarmClock), "msg.sender is not the alarm clock");
         _;
     }
 
     modifier onlyDelegates () {
-        require(wallet.isDelegate(msg.sender), "only a delegate can call this function");
+        require(wallet.isDelegate(msg.sender), "msg.sender is not a delegate");
         _;
     }
     

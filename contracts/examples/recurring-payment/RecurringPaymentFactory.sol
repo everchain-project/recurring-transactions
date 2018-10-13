@@ -1,7 +1,7 @@
 pragma solidity ^0.4.23;
 
-import "../external/CloneFactory.sol";
-import "../Interfaces.sol";
+import "../../external/CloneFactory.sol";
+import "../../Interfaces.sol";
 import "./RecurringPayment.sol";
 
 contract RecurringPaymentFactory is CloneFactory {
@@ -13,7 +13,6 @@ contract RecurringPaymentFactory is CloneFactory {
     }
 
     function createRecurringPayment (
-        IRecurringAlarmClock alarmClock,
         IFuturePaymentDelegate delegate,
         IDelegatedWallet wallet,
         address token,
@@ -22,7 +21,6 @@ contract RecurringPaymentFactory is CloneFactory {
     ) public returns (RecurringPayment paymentTask) {
         paymentTask = RecurringPayment(createClone(blueprint));
         paymentTask.initialize(
-            alarmClock,     // the owner of the recurring payment
             delegate,       // the wallet that executes the payment
             wallet,         // supplies delegates that can cancel the task
             token,          // the token to use when making a payment
