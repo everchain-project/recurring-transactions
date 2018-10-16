@@ -3,26 +3,24 @@ var MiniMeToken = artifacts.require("MiniMeToken");
 
 var ListLib = artifacts.require("ListLib");
 var ListLibTests = artifacts.require("ListLibTests");
-var AddressList = artifacts.require("AddressList");
-var AddressListFactory = artifacts.require("AddressListFactory");
 
 var DelegatedWallet = artifacts.require("DelegatedWallet");
 var DelegatedWalletFactory = artifacts.require("DelegatedWalletFactory");
-var FuturePaymentDelegate = artifacts.require("FuturePaymentDelegate");
-var FuturePaymentDelegateFactory = artifacts.require("FuturePaymentDelegateFactory");
+var DelegatedWalletManager = artifacts.require("DelegatedWalletManager");
 
+var PaymentDelegate = artifacts.require("PaymentDelegate");
+var PaymentDelegateFactory = artifacts.require("PaymentDelegateFactory");
+
+var SimpleTask = artifacts.require("SimpleTask");
+var SimplePayment = artifacts.require("SimplePayment");
 var RequestFactory = artifacts.require("RequestFactory");
 var RecurringAlarmClock = artifacts.require("RecurringAlarmClock");
 var RecurringAlarmClockFactory = artifacts.require("RecurringAlarmClockFactory");
-var RecurringAlarmClockScheduler = artifacts.require("RecurringAlarmClockScheduler");
+var RecurringAlarmClockAssistant = artifacts.require("RecurringAlarmClockAssistant");
 
 var RecurringPayment = artifacts.require("RecurringPayment");
 var RecurringPaymentFactory = artifacts.require("RecurringPaymentFactory");
 var RecurringPaymentScheduler = artifacts.require("RecurringPaymentScheduler");
-
-var EverchainWalletManager = artifacts.require("EverchainWalletManager");
-
-var q = require("q");
 
 var EAC_KOVAN = {
     baseScheduler: "0xf9d49fcc9a9c3bf792fcee05cdbcc09188700db5",
@@ -64,58 +62,25 @@ module.exports = function(deployer, network, accounts) {
     ))
     .then(() => deployer.deploy(ListLib, {overwrite: false}))
     .then(() => {
-        deployer.link(ListLib, ListLibTests, {overwrite: false});
-        deployer.link(ListLib, AddressList, {overwrite: false});
+        deployer.link(ListLib, ListLibTests);
+        deployer.link(ListLib, DelegatedWallet);
+        deployer.link(ListLib, DelegatedWalletManager);
+        deployer.link(ListLib, PaymentDelegate);
 
-        return q.all([
-            deployer.deploy(ListLibTests, {overwrite: false}),
-            deployer.deploy(AddressList, {overwrite: false})
-        ]);
+        return deployer.deploy(ListLibTests, {overwrite: false});
     })
-    .then(() => deployer.deploy(AddressListFactory, AddressList.address, {overwrite: false}))
     .then(() => deployer.deploy(DelegatedWallet, {overwrite: false}))
-    .then(() => deployer.deploy(
-        DelegatedWalletFactory, 
-        DelegatedWallet.address,
-        AddressListFactory.address, 
-        {overwrite: false}
-    ))
-    .then(() => deployer.deploy(FuturePaymentDelegate, {overwrite: false}))
-    .then(() => deployer.deploy(
-        FuturePaymentDelegateFactory, 
-        FuturePaymentDelegate.address, 
-        AddressListFactory.address, 
-        {overwrite: false}
-    ))
+    .then(() => deployer.deploy(DelegatedWalletFactory, DelegatedWallet.address, {overwrite: false}))
+    .then(() => deployer.deploy(PaymentDelegate, {overwrite: false}))
+    .then(() => deployer.deploy(PaymentDelegateFactory, PaymentDelegate.address, {overwrite: false}))
+    .then(() => deployer.deploy(SimpleTask, {overwrite: false}))
+    .then(() => deployer.deploy(SimplePayment, {overwrite: false}))
     .then(() => deployer.deploy(RecurringAlarmClock, {overwrite: false}))
-    .then(() => deployer.deploy(
-        RecurringAlarmClockFactory, 
-        EthereumAlarmClock, 
-        RecurringAlarmClock.address,
-        {overwrite: false}
-    ))
-    .then(() => deployer.deploy(
-        RecurringAlarmClockScheduler, 
-        accounts[9], 
-        RecurringAlarmClockFactory.address, 
-        {overwrite: false}
-    ))
+    .then(() => deployer.deploy(RecurringAlarmClockFactory, EthereumAlarmClock, RecurringAlarmClock.address,{overwrite: false}))
+    .then(() => deployer.deploy(RecurringAlarmClockAssistant, accounts[9], RecurringAlarmClockFactory.address, {overwrite: false}))
     .then(() => deployer.deploy(RecurringPayment, {overwrite: false}))
     .then(() => deployer.deploy(RecurringPaymentFactory, RecurringPayment.address, {overwrite: false}))
-    .then(() => deployer.deploy(
-        RecurringPaymentScheduler, 
-        RecurringAlarmClockScheduler.address, 
-        RecurringPaymentFactory.address,
-        {overwrite: false}
-    ))
-    .then(() => deployer.deploy(
-        EverchainWalletManager, 
-        AddressListFactory.address, 
-        DelegatedWalletFactory.address, 
-        FuturePaymentDelegateFactory.address,
-        RecurringPaymentScheduler.address,
-        {overwrite: false}
-    ))
+    .then(() => deployer.deploy(RecurringPaymentScheduler, RecurringAlarmClockAssistant.address, RecurringPaymentFactory.address,{overwrite: false}))
     .then(function(){
         console.log("Finished deploying contracts");
     });

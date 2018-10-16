@@ -8,6 +8,7 @@ import "../../Interfaces.sol";
 contract DelegatedWallet is Owned, IDelegatedWallet {
 
     uint public blockCreated;
+    address public factory;
 
     using ListLib for ListLib.AddressList;
 
@@ -16,9 +17,10 @@ contract DelegatedWallet is Owned, IDelegatedWallet {
     function initialize (address _owner) public {
         require(blockCreated == 0, "block created can only be set once");
 
-        owner = _owner;
-
         blockCreated = block.number;
+        factory = msg.sender;
+
+        owner = _owner;
     }
 
     function transfer (address token, address recipient, uint amount) public onlyDelegates returns (bool success) {

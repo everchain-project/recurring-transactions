@@ -1,25 +1,27 @@
 pragma solidity ^0.4.23;
 
 import "../../external/CloneFactory.sol";
-import "./FuturePaymentDelegate.sol";
+import "./PaymentDelegate.sol";
 
-contract FuturePaymentDelegateFactory is CloneFactory {
+contract PaymentDelegateFactory is CloneFactory {
     
     uint public blockCreated;
     
-    FuturePaymentDelegate public blueprint;
+    PaymentDelegate public blueprint;
     
-    constructor (FuturePaymentDelegate _blueprint) public {
+    constructor (PaymentDelegate _blueprint) public {
         blockCreated = block.number;
         blueprint = _blueprint;
     }
     
-    function createDelegate (address owner, address[] schedulerList) public returns (FuturePaymentDelegate delegate) {
-        delegate = FuturePaymentDelegate(createClone(blueprint));
-        delegate.initialize();
+    function createDelegate (address owner, address[] schedulerList) public returns (PaymentDelegate delegate) {
+        delegate = PaymentDelegate(createClone(blueprint));
+        delegate.initialize(this);
 
         for(uint i = 0; i < schedulerList.length; i++)
             delegate.addScheduler(schedulerList[i]);
+        
+        delegate.transferOwnership(owner);
         
         emit CreateDelegate_event(msg.sender, owner, delegate);
     }

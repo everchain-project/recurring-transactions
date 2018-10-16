@@ -3,17 +3,20 @@ pragma solidity ^0.4.23;
 import "../../external/RequestFactoryInterface.sol";
 import "../../Interfaces.sol";
 
-contract RecurringAlarmClock is IFuturePayment {
+contract RecurringAlarmClock is IRecurringAlarmClock {
 
     uint public blockCreated;               // The block the alarm clock was started
-    
-    RequestFactoryInterface public eac;     // Interface provided by the Ethereum Alarm Clock
-    IFuturePaymentDelegate public delegate; // The delegate that pulls funds for each alarm
-    IDelegatedWallet public wallet;         // The address which owns the alarm and collects any leftover funds
+    address public factory;                 // The factory that created this contract
+
     ITask public task;                      // The address of the task contract
+    RequestFactoryInterface public eac;     // Interface provided by the Ethereum Alarm Clock
+    IPaymentDelegate public delegate;       // The delegate that pulls funds for each alarm
+    IDelegatedWallet public wallet;         // The address which owns the alarm and collects any leftover funds
+    address public token;                   // The token to pull when funding an alarm. default of 0x0 represents native ether
+    address public recipient;               // The recipient to send pulled funds to. set to 'this' at initialization
     address public priorityCaller;          // The priority recipient of part of the alarm deposit
     address public alarm;                   // The next scheduled alarm contract
-
+    
     bytes public callData;                  // The data for the task to execute when the alarm is triggered
 
     uint[10] public eacOptions;             // The options used when setting an alarm using the Ethereum Alarm Clock
@@ -21,10 +24,11 @@ contract RecurringAlarmClock is IFuturePayment {
     uint public intervalDuration;           // The amount of time between each alarm
     uint public maximumIntervals;           // The number of times this alarm will go off
     uint public currentInterval;            // Keeps track of how many alarms have been called
+    uint public maxGasPrice;                // placeholder for a gas price oracle
 
     function initialize (
         RequestFactoryInterface _eac,
-        IFuturePaymentDelegate _delegate,
+        IPaymentDelegate _delegate,
         IDelegatedWallet _wallet,
         address _priorityCaller,
         bytes _callData,
@@ -33,9 +37,15 @@ contract RecurringAlarmClock is IFuturePayment {
     ) public {
         require(blockCreated == 0, "contract can only be initialized once");
 
+        blockCreated = block.number;
+        factory = msg.sender;
+        maxGasPrice = 10000000;
+
         eac = _eac;
         delegate = _delegate;
         wallet = _wallet;
+        token = address(0x0);
+        recipient = this;
         priorityCaller = _priorityCaller;
 
         callData = _callData;
@@ -44,14 +54,12 @@ contract RecurringAlarmClock is IFuturePayment {
         safetyMultiplier = _recurringAlarmClockOptions[0];
         intervalDuration = _recurringAlarmClockOptions[1];
         maximumIntervals = _recurringAlarmClockOptions[2];
-        currentInterval = 1;
-
-        blockCreated = block.number;
     }
 
     function start (ITask _task) public {
         require(task == address(0x0), "task must not be set to start a task");
 
+        currentInterval = 1;
         task = _task;
         
         scheduleAlarm();
@@ -66,7 +74,7 @@ contract RecurringAlarmClock is IFuturePayment {
 
     function amount () public view returns (uint) {
         uint gas = eacOptions[6];
-        return tx.gasprice * gas * safetyMultiplier / 10^18;
+        return maxGasPrice * gas * safetyMultiplier;
     }
 
     function cancel () public onlyTask {
@@ -75,11 +83,11 @@ contract RecurringAlarmClock is IFuturePayment {
 
     function handleAlarmCall () internal {
         require(msg.sender == alarm);
-        
-        bool success = address(task).call.gas(gasleft())(callData);
-        emit Task_event(msg.sender, currentInterval, success);
 
-        if(currentInterval <= maximumIntervals){
+        bool success = address(task).call.gas(gasleft())(callData);
+        emit Execute_event(currentInterval, success);
+
+        if(currentInterval < maximumIntervals){
             currentInterval++;
             eacOptions[5] += intervalDuration;
             scheduleAlarm();
@@ -137,7 +145,7 @@ contract RecurringAlarmClock is IFuturePayment {
         _;
     }
     
-    event Task_event(address alarm, uint currentInterval, bool success);
+    event Execute_event(uint indexed currentInterval, bool success);
     event Deposit_event (address indexed sender, uint amount);
     event ValidRequest_event (address indexed sender, address alarm);
     event InvalidRequest_event (bool[6] params);

@@ -1,23 +1,10 @@
 {
-  "contractName": "IDelegatedWallet",
+  "contractName": "IPaymentDelegate",
   "abi": [
     {
       "constant": false,
-      "inputs": [
-        {
-          "name": "token",
-          "type": "address"
-        },
-        {
-          "name": "recipient",
-          "type": "address"
-        },
-        {
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "transfer",
+      "inputs": [],
+      "name": "execute",
       "outputs": [
         {
           "name": "",
@@ -29,27 +16,40 @@
       "type": "function"
     },
     {
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "fallback"
-    },
-    {
-      "constant": true,
+      "constant": false,
       "inputs": [
         {
-          "name": "_address",
+          "name": "payment",
           "type": "address"
         }
       ],
-      "name": "isDelegate",
-      "outputs": [
+      "name": "schedule",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "unschedule",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
         {
-          "name": "",
-          "type": "bool"
+          "name": "payment",
+          "type": "address"
         }
       ],
+      "name": "unschedule",
+      "outputs": [],
       "payable": false,
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
       "type": "function"
     }
   ],
@@ -2149,5 +2149,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-10-16T21:26:29.825Z"
+  "updatedAt": "2018-10-16T21:26:29.827Z"
 }

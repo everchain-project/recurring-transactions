@@ -1,5 +1,5 @@
 {
-  "contractName": "FuturePaymentDelegateFactory",
+  "contractName": "PaymentDelegateFactory",
   "abi": [
     {
       "constant": true,
@@ -103,24 +103,24 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b506040516020806105f0833981018060405281019080805190602001909291905050504360008190555080600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506105658061008b6000396000f300608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634e989a4c1461005c57806366961ce514610087578063c05efa151461014d575b600080fd5b34801561006857600080fd5b506100716101a4565b6040518082815260200191505060405180910390f35b34801561009357600080fd5b5061010b600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001908201803590602001908080602002602001604051908101604052809392919081815260200183836020028082843782019150505050505091929192905050506101aa565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561015957600080fd5b506101626103f7565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60005481565b6000806101d8600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1661041d565b91508173ffffffffffffffffffffffffffffffffffffffff16638129fc1c6040518163ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401600060405180830381600087803b15801561023e57600080fd5b505af1158015610252573d6000803e3d6000fd5b50505050600090505b825181101561035f578173ffffffffffffffffffffffffffffffffffffffff1663306b1022848381518110151561028e57fe5b906020019060200201516040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b15801561031657600080fd5b505af115801561032a573d6000803e3d6000fd5b505050506040513d602081101561034057600080fd5b810190808051906020019092919050505050808060010191505061025b565b8373ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f9f4954af1de0362b3841b6671d467350bd8beab60f53d2019a2eea97ca8b925d84604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a35092915050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006060600080606060405190810160405280603f81526020017f600034603b57603080600f833981f36000368180378080368173bebebebebebe81526020017fbebebebebebebebebebebebebebe5af43d82803e15602c573d90f35b3d90fd008152509250846c01000000000000000000000000029150600090505b60148110156105225781816014811015156104b157fe5b1a7f0100000000000000000000000000000000000000000000000000000000000000028382601a018151811015156104e557fe5b9060200101907effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916908160001a905350808060010191505061049a565b82516020840181816000f0955050505050509190505600a165627a7a723058205d780f5902229e8a21b15fbec13d9bbc45b40a98320fdee54356730ddc4f3b020029",
-  "deployedBytecode": "0x608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634e989a4c1461005c57806366961ce514610087578063c05efa151461014d575b600080fd5b34801561006857600080fd5b506100716101a4565b6040518082815260200191505060405180910390f35b34801561009357600080fd5b5061010b600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001908201803590602001908080602002602001604051908101604052809392919081815260200183836020028082843782019150505050505091929192905050506101aa565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561015957600080fd5b506101626103f7565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60005481565b6000806101d8600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1661041d565b91508173ffffffffffffffffffffffffffffffffffffffff16638129fc1c6040518163ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401600060405180830381600087803b15801561023e57600080fd5b505af1158015610252573d6000803e3d6000fd5b50505050600090505b825181101561035f578173ffffffffffffffffffffffffffffffffffffffff1663306b1022848381518110151561028e57fe5b906020019060200201516040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b15801561031657600080fd5b505af115801561032a573d6000803e3d6000fd5b505050506040513d602081101561034057600080fd5b810190808051906020019092919050505050808060010191505061025b565b8373ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f9f4954af1de0362b3841b6671d467350bd8beab60f53d2019a2eea97ca8b925d84604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a35092915050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006060600080606060405190810160405280603f81526020017f600034603b57603080600f833981f36000368180378080368173bebebebebebe81526020017fbebebebebebebebebebebebebebe5af43d82803e15602c573d90f35b3d90fd008152509250846c01000000000000000000000000029150600090505b60148110156105225781816014811015156104b157fe5b1a7f0100000000000000000000000000000000000000000000000000000000000000028382601a018151811015156104e557fe5b9060200101907effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916908160001a905350808060010191505061049a565b82516020840181816000f0955050505050509190505600a165627a7a723058205d780f5902229e8a21b15fbec13d9bbc45b40a98320fdee54356730ddc4f3b020029",
-  "sourceMap": "112:864:6:-;;;267:133;8:9:-1;5:2;;;30:1;27;20:12;5:2;267:133:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;347:12;332;:27;;;;382:10;370:9;;:22;;;;;;;;;;;;;;;;;;267:133;112:864;;;;;;",
-  "deployedSourceMap": "112:864:6:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;179:24;;8:9:-1;5:2;;;30:1;27;20:12;5:2;179:24:6;;;;;;;;;;;;;;;;;;;;;;;412:407;;8:9:-1;5:2;;;30:1;27;20:12;5:2;412:407:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;216:38;;8:9:-1;5:2;;;30:1;27;20:12;5:2;216:38:6;;;;;;;;;;;;;;;;;;;;;;;;;;;179:24;;;;:::o;412:407::-;493:30;641:6;569:22;581:9;;;;;;;;;;;569:11;:22::i;:::-;536:56;;603:8;:19;;;:21;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;603:21:6;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;603:21:6;;;;650:1;641:10;;637:99;657:13;:20;653:1;:24;637:99;;;697:8;:21;;;719:13;733:1;719:16;;;;;;;;;;;;;;;;;;697:39;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;697:39:6;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;697:39:6;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;697:39:6;;;;;;;;;;;;;;;;;679:3;;;;;;;637:99;;;795:5;762:49;;783:10;762:49;;;802:8;762:49;;;;;;;;;;;;;;;;;;;;;;412:407;;;;;:::o;216:38::-;;;;;;;;;;;;;:::o;1306:491:13:-;1361:14;1384:18;1543:19;1592:6;1384:152;;;;;;;;;;;;;;;;;;;;;;;;;1573:6;1565:15;;1543:37;;1601:1;1592:10;;1587:77;1608:2;1604:1;:6;1587:77;;;1642:11;1654:1;1642:14;;;;;;;;;;;;1626:5;1637:1;1632:2;:6;1626:13;;;;;;;;;;;;;;:30;;;;;;;;;;;1612:3;;;;;;;1587:77;;;1705:5;1699:12;1742:4;1735:5;1731:16;1781:3;1775:4;1772:1;1765:20;1755:30;;1679:113;;;;;;;;:::o",
-  "source": "pragma solidity ^0.4.23;\r\n\r\nimport \"../../external/CloneFactory.sol\";\r\nimport \"./FuturePaymentDelegate.sol\";\r\n\r\ncontract FuturePaymentDelegateFactory is CloneFactory {\r\n    \r\n    uint public blockCreated;\r\n    \r\n    FuturePaymentDelegate public blueprint;\r\n    \r\n    constructor (FuturePaymentDelegate _blueprint) public {\r\n        blockCreated = block.number;\r\n        blueprint = _blueprint;\r\n    }\r\n    \r\n    function createDelegate (address owner, address[] schedulerList) public returns (FuturePaymentDelegate delegate) {\r\n        delegate = FuturePaymentDelegate(createClone(blueprint));\r\n        delegate.initialize();\r\n\r\n        for(uint i = 0; i < schedulerList.length; i++)\r\n            delegate.addScheduler(schedulerList[i]);\r\n        \r\n        emit CreateDelegate_event(msg.sender, owner, delegate);\r\n    }\r\n    \r\n    event CreateDelegate_event (\r\n        address indexed caller, \r\n        address indexed owner, \r\n        address delegateAddress\r\n    );\r\n    \r\n}\r\n",
-  "sourcePath": "C:\\Users\\My\\Documents\\GitHub\\everchain-project\\recurring-alarm-clock\\contracts\\components\\future-payment-delegate\\FuturePaymentDelegateFactory.sol",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516020806106da833981018060405281019080805190602001909291905050504360008190555080600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505061064f8061008b6000396000f300608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634e989a4c1461005c57806366961ce514610087578063c05efa151461014d575b600080fd5b34801561006857600080fd5b506100716101a4565b6040518082815260200191505060405180910390f35b34801561009357600080fd5b5061010b600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001908201803590602001908080602002602001604051908101604052809392919081815260200183836020028082843782019150505050505091929192905050506101aa565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561015957600080fd5b506101626104e1565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60005481565b6000806101d8600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16610507565b91508173ffffffffffffffffffffffffffffffffffffffff1663c4d66de8306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050600060405180830381600087803b15801561027557600080fd5b505af1158015610289573d6000803e3d6000fd5b50505050600090505b8251811015610396578173ffffffffffffffffffffffffffffffffffffffff1663306b102284838151811015156102c557fe5b906020019060200201516040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b15801561034d57600080fd5b505af1158015610361573d6000803e3d6000fd5b505050506040513d602081101561037757600080fd5b8101908080519060200190929190505050508080600101915050610292565b8173ffffffffffffffffffffffffffffffffffffffff1663f2fde38b856040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050600060405180830381600087803b15801561043157600080fd5b505af1158015610445573d6000803e3d6000fd5b505050508373ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f9f4954af1de0362b3841b6671d467350bd8beab60f53d2019a2eea97ca8b925d84604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a35092915050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006060600080606060405190810160405280603f81526020017f600034603b57603080600f833981f36000368180378080368173bebebebebebe81526020017fbebebebebebebebebebebebebebe5af43d82803e15602c573d90f35b3d90fd008152509250846c01000000000000000000000000029150600090505b601481101561060c57818160148110151561059b57fe5b1a7f0100000000000000000000000000000000000000000000000000000000000000028382601a018151811015156105cf57fe5b9060200101907effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916908160001a9053508080600101915050610584565b82516020840181816000f0955050505050509190505600a165627a7a7230582050e00de906ce97b2c83a397291b24ae08cc47c6c2aca6f3b586d944d885ba79e0029",
+  "deployedBytecode": "0x608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680634e989a4c1461005c57806366961ce514610087578063c05efa151461014d575b600080fd5b34801561006857600080fd5b506100716101a4565b6040518082815260200191505060405180910390f35b34801561009357600080fd5b5061010b600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001908201803590602001908080602002602001604051908101604052809392919081815260200183836020028082843782019150505050505091929192905050506101aa565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561015957600080fd5b506101626104e1565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60005481565b6000806101d8600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16610507565b91508173ffffffffffffffffffffffffffffffffffffffff1663c4d66de8306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050600060405180830381600087803b15801561027557600080fd5b505af1158015610289573d6000803e3d6000fd5b50505050600090505b8251811015610396578173ffffffffffffffffffffffffffffffffffffffff1663306b102284838151811015156102c557fe5b906020019060200201516040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b15801561034d57600080fd5b505af1158015610361573d6000803e3d6000fd5b505050506040513d602081101561037757600080fd5b8101908080519060200190929190505050508080600101915050610292565b8173ffffffffffffffffffffffffffffffffffffffff1663f2fde38b856040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050600060405180830381600087803b15801561043157600080fd5b505af1158015610445573d6000803e3d6000fd5b505050508373ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167f9f4954af1de0362b3841b6671d467350bd8beab60f53d2019a2eea97ca8b925d84604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a35092915050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006060600080606060405190810160405280603f81526020017f600034603b57603080600f833981f36000368180378080368173bebebebebebe81526020017fbebebebebebebebebebebebebebe5af43d82803e15602c573d90f35b3d90fd008152509250846c01000000000000000000000000029150600090505b601481101561060c57818160148110151561059b57fe5b1a7f0100000000000000000000000000000000000000000000000000000000000000028382601a018151811015156105cf57fe5b9060200101907effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916908160001a9053508080600101915050610584565b82516020840181816000f0955050505050509190505600a165627a7a7230582050e00de906ce97b2c83a397291b24ae08cc47c6c2aca6f3b586d944d885ba79e0029",
+  "sourceMap": "106:892:6:-;;;249:127;8:9:-1;5:2;;;30:1;27;20:12;5:2;249:127:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;323:12;308;:27;;;;358:10;346:9;;:22;;;;;;;;;;;;;;;;;;249:127;106:892;;;;;;",
+  "deployedSourceMap": "106:892:6:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;167:24;;8:9:-1;5:2;;;30:1;27;20:12;5:2;167:24:6;;;;;;;;;;;;;;;;;;;;;;;388:453;;8:9:-1;5:2;;;30:1;27;20:12;5:2;388:453:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;204:32;;8:9:-1;5:2;;;30:1;27;20:12;5:2;204:32:6;;;;;;;;;;;;;;;;;;;;;;;;;;;167:24;;;;:::o;388:453::-;469:24;609:6;533:22;545:9;;;;;;;;;;;533:11;:22::i;:::-;506:50;;567:8;:19;;;587:4;567:25;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;567:25:6;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;567:25:6;;;;618:1;609:10;;605:99;625:13;:20;621:1;:24;605:99;;;665:8;:21;;;687:13;701:1;687:16;;;;;;;;;;;;;;;;;;665:39;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;665:39:6;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;665:39:6;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;665:39:6;;;;;;;;;;;;;;;;;647:3;;;;;;;605:99;;;725:8;:26;;;752:5;725:33;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;725:33:6;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;725:33:6;;;;817:5;784:49;;805:10;784:49;;;824:8;784:49;;;;;;;;;;;;;;;;;;;;;;388:453;;;;;:::o;204:32::-;;;;;;;;;;;;;:::o;1306:491:13:-;1361:14;1384:18;1543:19;1592:6;1384:152;;;;;;;;;;;;;;;;;;;;;;;;;1573:6;1565:15;;1543:37;;1601:1;1592:10;;1587:77;1608:2;1604:1;:6;1587:77;;;1642:11;1654:1;1642:14;;;;;;;;;;;;1626:5;1637:1;1632:2;:6;1626:13;;;;;;;;;;;;;;:30;;;;;;;;;;;1612:3;;;;;;;1587:77;;;1705:5;1699:12;1742:4;1735:5;1731:16;1781:3;1775:4;1772:1;1765:20;1755:30;;1679:113;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.23;\r\n\r\nimport \"../../external/CloneFactory.sol\";\r\nimport \"./PaymentDelegate.sol\";\r\n\r\ncontract PaymentDelegateFactory is CloneFactory {\r\n    \r\n    uint public blockCreated;\r\n    \r\n    PaymentDelegate public blueprint;\r\n    \r\n    constructor (PaymentDelegate _blueprint) public {\r\n        blockCreated = block.number;\r\n        blueprint = _blueprint;\r\n    }\r\n    \r\n    function createDelegate (address owner, address[] schedulerList) public returns (PaymentDelegate delegate) {\r\n        delegate = PaymentDelegate(createClone(blueprint));\r\n        delegate.initialize(this);\r\n\r\n        for(uint i = 0; i < schedulerList.length; i++)\r\n            delegate.addScheduler(schedulerList[i]);\r\n        \r\n        delegate.transferOwnership(owner);\r\n        \r\n        emit CreateDelegate_event(msg.sender, owner, delegate);\r\n    }\r\n    \r\n    event CreateDelegate_event (\r\n        address indexed caller, \r\n        address indexed owner, \r\n        address delegateAddress\r\n    );\r\n    \r\n}\r\n",
+  "sourcePath": "C:\\Users\\My\\Documents\\GitHub\\everchain-project\\recurring-alarm-clock\\contracts\\components\\payment-delegate\\PaymentDelegateFactory.sol",
   "ast": {
-    "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/components/future-payment-delegate/FuturePaymentDelegateFactory.sol",
+    "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/components/payment-delegate/PaymentDelegateFactory.sol",
     "exportedSymbols": {
-      "FuturePaymentDelegateFactory": [
-        1223
+      "PaymentDelegateFactory": [
+        1270
       ]
     },
-    "id": 1224,
+    "id": 1271,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1140,
+        "id": 1180,
         "literals": [
           "solidity",
           "^",
@@ -133,22 +133,22 @@
       {
         "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/external/CloneFactory.sol",
         "file": "../../external/CloneFactory.sol",
-        "id": 1141,
+        "id": 1181,
         "nodeType": "ImportDirective",
-        "scope": 1224,
-        "sourceUnit": 2198,
+        "scope": 1271,
+        "sourceUnit": 2291,
         "src": "28:41:6",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/components/future-payment-delegate/FuturePaymentDelegate.sol",
-        "file": "./FuturePaymentDelegate.sol",
-        "id": 1142,
+        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/components/payment-delegate/PaymentDelegate.sol",
+        "file": "./PaymentDelegate.sol",
+        "id": 1182,
         "nodeType": "ImportDirective",
-        "scope": 1224,
-        "sourceUnit": 1139,
-        "src": "71:37:6",
+        "scope": 1271,
+        "sourceUnit": 1179,
+        "src": "71:31:6",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -158,42 +158,42 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1143,
+              "id": 1183,
               "name": "CloneFactory",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2197,
-              "src": "153:12:6",
+              "referencedDeclaration": 2290,
+              "src": "141:12:6",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_CloneFactory_$2197",
+                "typeIdentifier": "t_contract$_CloneFactory_$2290",
                 "typeString": "contract CloneFactory"
               }
             },
-            "id": 1144,
+            "id": 1184,
             "nodeType": "InheritanceSpecifier",
-            "src": "153:12:6"
+            "src": "141:12:6"
           }
         ],
         "contractDependencies": [
-          2197
+          2290
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1223,
+        "id": 1270,
         "linearizedBaseContracts": [
-          1223,
-          2197
+          1270,
+          2290
         ],
-        "name": "FuturePaymentDelegateFactory",
+        "name": "PaymentDelegateFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 1146,
+            "id": 1186,
             "name": "blockCreated",
             "nodeType": "VariableDeclaration",
-            "scope": 1223,
-            "src": "179:24:6",
+            "scope": 1270,
+            "src": "167:24:6",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -201,10 +201,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 1145,
+              "id": 1185,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "179:4:6",
+              "src": "167:4:6",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -215,27 +215,27 @@
           },
           {
             "constant": false,
-            "id": 1148,
+            "id": 1188,
             "name": "blueprint",
             "nodeType": "VariableDeclaration",
-            "scope": 1223,
-            "src": "216:38:6",
+            "scope": 1270,
+            "src": "204:32:6",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-              "typeString": "contract FuturePaymentDelegate"
+              "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+              "typeString": "contract PaymentDelegate"
             },
             "typeName": {
               "contractScope": null,
-              "id": 1147,
-              "name": "FuturePaymentDelegate",
+              "id": 1187,
+              "name": "PaymentDelegate",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1138,
-              "src": "216:21:6",
+              "referencedDeclaration": 1178,
+              "src": "204:15:6",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                "typeString": "contract FuturePaymentDelegate"
+                "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                "typeString": "contract PaymentDelegate"
               }
             },
             "value": null,
@@ -243,26 +243,26 @@
           },
           {
             "body": {
-              "id": 1162,
+              "id": 1202,
               "nodeType": "Block",
-              "src": "321:79:6",
+              "src": "297:79:6",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1156,
+                    "id": 1196,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 1153,
+                      "id": 1193,
                       "name": "blockCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1146,
-                      "src": "332:12:6",
+                      "referencedDeclaration": 1186,
+                      "src": "308:12:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -274,18 +274,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 1154,
+                        "id": 1194,
                         "name": "block",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 4098,
-                        "src": "347:5:6",
+                        "referencedDeclaration": 4385,
+                        "src": "323:5:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_block",
                           "typeString": "block"
                         }
                       },
-                      "id": 1155,
+                      "id": 1195,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -293,72 +293,72 @@
                       "memberName": "number",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "347:12:6",
+                      "src": "323:12:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "332:27:6",
+                    "src": "308:27:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1157,
+                  "id": 1197,
                   "nodeType": "ExpressionStatement",
-                  "src": "332:27:6"
+                  "src": "308:27:6"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1160,
+                    "id": 1200,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 1158,
+                      "id": 1198,
                       "name": "blueprint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1148,
-                      "src": "370:9:6",
+                      "referencedDeclaration": 1188,
+                      "src": "346:9:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                        "typeString": "contract FuturePaymentDelegate"
+                        "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                        "typeString": "contract PaymentDelegate"
                       }
                     },
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 1159,
+                      "id": 1199,
                       "name": "_blueprint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1150,
-                      "src": "382:10:6",
+                      "referencedDeclaration": 1190,
+                      "src": "358:10:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                        "typeString": "contract FuturePaymentDelegate"
+                        "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                        "typeString": "contract PaymentDelegate"
                       }
                     },
-                    "src": "370:22:6",
+                    "src": "346:22:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                      "typeString": "contract FuturePaymentDelegate"
+                      "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                      "typeString": "contract PaymentDelegate"
                     }
                   },
-                  "id": 1161,
+                  "id": 1201,
                   "nodeType": "ExpressionStatement",
-                  "src": "370:22:6"
+                  "src": "346:22:6"
                 }
               ]
             },
             "documentation": null,
-            "id": 1163,
+            "id": 1203,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -366,78 +366,78 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1151,
+              "id": 1191,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1150,
+                  "id": 1190,
                   "name": "_blueprint",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1163,
-                  "src": "280:32:6",
+                  "scope": 1203,
+                  "src": "262:26:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                    "typeString": "contract FuturePaymentDelegate"
+                    "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                    "typeString": "contract PaymentDelegate"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1149,
-                    "name": "FuturePaymentDelegate",
+                    "id": 1189,
+                    "name": "PaymentDelegate",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1138,
-                    "src": "280:21:6",
+                    "referencedDeclaration": 1178,
+                    "src": "262:15:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                      "typeString": "contract FuturePaymentDelegate"
+                      "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                      "typeString": "contract PaymentDelegate"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "279:34:6"
+              "src": "261:28:6"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1152,
+              "id": 1192,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "321:0:6"
+              "src": "297:0:6"
             },
-            "scope": 1223,
-            "src": "267:133:6",
+            "scope": 1270,
+            "src": "249:127:6",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 1213,
+              "id": 1260,
               "nodeType": "Block",
-              "src": "525:294:6",
+              "src": "495:346:6",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1179,
+                    "id": 1219,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 1173,
+                      "id": 1213,
                       "name": "delegate",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1171,
-                      "src": "536:8:6",
+                      "referencedDeclaration": 1211,
+                      "src": "506:8:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                        "typeString": "contract FuturePaymentDelegate"
+                        "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                        "typeString": "contract PaymentDelegate"
                       }
                     },
                     "nodeType": "Assignment",
@@ -450,37 +450,37 @@
                           "arguments": [
                             {
                               "argumentTypes": null,
-                              "id": 1176,
+                              "id": 1216,
                               "name": "blueprint",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1148,
-                              "src": "581:9:6",
+                              "referencedDeclaration": 1188,
+                              "src": "545:9:6",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                                "typeString": "contract FuturePaymentDelegate"
+                                "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                                "typeString": "contract PaymentDelegate"
                               }
                             }
                           ],
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                                "typeString": "contract FuturePaymentDelegate"
+                                "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                                "typeString": "contract PaymentDelegate"
                               }
                             ],
-                            "id": 1175,
+                            "id": 1215,
                             "name": "createClone",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2196,
-                            "src": "569:11:6",
+                            "referencedDeclaration": 2289,
+                            "src": "533:11:6",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_address_$",
                               "typeString": "function (address) returns (address)"
                             }
                           },
-                          "id": 1177,
+                          "id": 1217,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -488,7 +488,7 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "569:22:6",
+                          "src": "533:22:6",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -502,18 +502,18 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 1174,
-                        "name": "FuturePaymentDelegate",
+                        "id": 1214,
+                        "name": "PaymentDelegate",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1138,
-                        "src": "547:21:6",
+                        "referencedDeclaration": 1178,
+                        "src": "517:15:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_FuturePaymentDelegate_$1138_$",
-                          "typeString": "type(contract FuturePaymentDelegate)"
+                          "typeIdentifier": "t_type$_t_contract$_PaymentDelegate_$1178_$",
+                          "typeString": "type(contract PaymentDelegate)"
                         }
                       },
-                      "id": 1178,
+                      "id": 1218,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -521,56 +521,75 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "547:45:6",
+                      "src": "517:39:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                        "typeString": "contract FuturePaymentDelegate"
+                        "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                        "typeString": "contract PaymentDelegate"
                       }
                     },
-                    "src": "536:56:6",
+                    "src": "506:50:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                      "typeString": "contract FuturePaymentDelegate"
+                      "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                      "typeString": "contract PaymentDelegate"
                     }
                   },
-                  "id": 1180,
+                  "id": 1220,
                   "nodeType": "ExpressionStatement",
-                  "src": "536:56:6"
+                  "src": "506:50:6"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "arguments": [],
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1224,
+                        "name": "this",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4442,
+                        "src": "587:4:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_PaymentDelegateFactory_$1270",
+                          "typeString": "contract PaymentDelegateFactory"
+                        }
+                      }
+                    ],
                     "expression": {
-                      "argumentTypes": [],
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_PaymentDelegateFactory_$1270",
+                          "typeString": "contract PaymentDelegateFactory"
+                        }
+                      ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 1181,
+                        "id": 1221,
                         "name": "delegate",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1171,
-                        "src": "603:8:6",
+                        "referencedDeclaration": 1211,
+                        "src": "567:8:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                          "typeString": "contract FuturePaymentDelegate"
+                          "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                          "typeString": "contract PaymentDelegate"
                         }
                       },
-                      "id": 1183,
+                      "id": 1223,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "initialize",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 860,
-                      "src": "603:19:6",
+                      "referencedDeclaration": 734,
+                      "src": "567:19:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_nonpayable$__$returns$__$",
-                        "typeString": "function () external"
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address) external"
                       }
                     },
-                    "id": 1184,
+                    "id": 1225,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -578,15 +597,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "603:21:6",
+                    "src": "567:25:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1185,
+                  "id": 1226,
                   "nodeType": "ExpressionStatement",
-                  "src": "603:21:6"
+                  "src": "567:25:6"
                 },
                 {
                   "body": {
@@ -597,26 +616,26 @@
                           "argumentTypes": null,
                           "baseExpression": {
                             "argumentTypes": null,
-                            "id": 1200,
+                            "id": 1241,
                             "name": "schedulerList",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1168,
-                            "src": "719:13:6",
+                            "referencedDeclaration": 1208,
+                            "src": "687:13:6",
                             "typeDescriptions": {
                               "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                               "typeString": "address[] memory"
                             }
                           },
-                          "id": 1202,
+                          "id": 1243,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 1201,
+                            "id": 1242,
                             "name": "i",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1187,
-                            "src": "733:1:6",
+                            "referencedDeclaration": 1228,
+                            "src": "701:1:6",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -627,7 +646,7 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "nodeType": "IndexAccess",
-                          "src": "719:16:6",
+                          "src": "687:16:6",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -643,32 +662,32 @@
                         ],
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1197,
+                          "id": 1238,
                           "name": "delegate",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1171,
-                          "src": "697:8:6",
+                          "referencedDeclaration": 1211,
+                          "src": "665:8:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                            "typeString": "contract FuturePaymentDelegate"
+                            "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                            "typeString": "contract PaymentDelegate"
                           }
                         },
-                        "id": 1199,
+                        "id": 1240,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "addScheduler",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1051,
-                        "src": "697:21:6",
+                        "referencedDeclaration": 1084,
+                        "src": "665:21:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
                           "typeString": "function (address) external returns (bool)"
                         }
                       },
-                      "id": 1203,
+                      "id": 1244,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -676,15 +695,15 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "697:39:6",
+                      "src": "665:39:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
                       }
                     },
-                    "id": 1204,
+                    "id": 1245,
                     "nodeType": "ExpressionStatement",
-                    "src": "697:39:6"
+                    "src": "665:39:6"
                   },
                   "condition": {
                     "argumentTypes": null,
@@ -692,19 +711,19 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 1193,
+                    "id": 1234,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
-                      "id": 1190,
+                      "id": 1231,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1187,
-                      "src": "653:1:6",
+                      "referencedDeclaration": 1228,
+                      "src": "621:1:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -716,18 +735,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 1191,
+                        "id": 1232,
                         "name": "schedulerList",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1168,
-                        "src": "657:13:6",
+                        "referencedDeclaration": 1208,
+                        "src": "625:13:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                           "typeString": "address[] memory"
                         }
                       },
-                      "id": 1192,
+                      "id": 1233,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -735,31 +754,31 @@
                       "memberName": "length",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "657:20:6",
+                      "src": "625:20:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "653:24:6",
+                    "src": "621:24:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 1205,
+                  "id": 1246,
                   "initializationExpression": {
                     "assignments": [
-                      1187
+                      1228
                     ],
                     "declarations": [
                       {
                         "constant": false,
-                        "id": 1187,
+                        "id": 1228,
                         "name": "i",
                         "nodeType": "VariableDeclaration",
-                        "scope": 1214,
-                        "src": "641:6:6",
+                        "scope": 1261,
+                        "src": "609:6:6",
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
@@ -767,10 +786,10 @@
                           "typeString": "uint256"
                         },
                         "typeName": {
-                          "id": 1186,
+                          "id": 1227,
                           "name": "uint",
                           "nodeType": "ElementaryTypeName",
-                          "src": "641:4:6",
+                          "src": "609:4:6",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -780,18 +799,18 @@
                         "visibility": "internal"
                       }
                     ],
-                    "id": 1189,
+                    "id": 1230,
                     "initialValue": {
                       "argumentTypes": null,
                       "hexValue": "30",
-                      "id": 1188,
+                      "id": 1229,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "650:1:6",
+                      "src": "618:1:6",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
@@ -800,12 +819,12 @@
                       "value": "0"
                     },
                     "nodeType": "VariableDeclarationStatement",
-                    "src": "641:10:6"
+                    "src": "609:10:6"
                   },
                   "loopExpression": {
                     "expression": {
                       "argumentTypes": null,
-                      "id": 1195,
+                      "id": 1236,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -813,15 +832,15 @@
                       "nodeType": "UnaryOperation",
                       "operator": "++",
                       "prefix": false,
-                      "src": "679:3:6",
+                      "src": "647:3:6",
                       "subExpression": {
                         "argumentTypes": null,
-                        "id": 1194,
+                        "id": 1235,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1187,
-                        "src": "679:1:6",
+                        "referencedDeclaration": 1228,
+                        "src": "647:1:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -832,12 +851,82 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 1196,
+                    "id": 1237,
                     "nodeType": "ExpressionStatement",
-                    "src": "679:3:6"
+                    "src": "647:3:6"
                   },
                   "nodeType": "ForStatement",
-                  "src": "637:99:6"
+                  "src": "605:99:6"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1250,
+                        "name": "owner",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1205,
+                        "src": "752:5:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1247,
+                        "name": "delegate",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1211,
+                        "src": "725:8:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                          "typeString": "contract PaymentDelegate"
+                        }
+                      },
+                      "id": 1249,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "transferOwnership",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3532,
+                      "src": "725:26:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address) external"
+                      }
+                    },
+                    "id": 1251,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "725:33:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1252,
+                  "nodeType": "ExpressionStatement",
+                  "src": "725:33:6"
                 },
                 {
                   "eventCall": {
@@ -847,18 +936,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1207,
+                          "id": 1254,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4108,
-                          "src": "783:3:6",
+                          "referencedDeclaration": 4395,
+                          "src": "805:3:6",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1208,
+                        "id": 1255,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -866,7 +955,7 @@
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "783:10:6",
+                        "src": "805:10:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -874,12 +963,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1209,
+                        "id": 1256,
                         "name": "owner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1165,
-                        "src": "795:5:6",
+                        "referencedDeclaration": 1205,
+                        "src": "817:5:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -887,15 +976,15 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1210,
+                        "id": 1257,
                         "name": "delegate",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1171,
-                        "src": "802:8:6",
+                        "referencedDeclaration": 1211,
+                        "src": "824:8:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                          "typeString": "contract FuturePaymentDelegate"
+                          "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                          "typeString": "contract PaymentDelegate"
                         }
                       }
                     ],
@@ -910,22 +999,22 @@
                           "typeString": "address"
                         },
                         {
-                          "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                          "typeString": "contract FuturePaymentDelegate"
+                          "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                          "typeString": "contract PaymentDelegate"
                         }
                       ],
-                      "id": 1206,
+                      "id": 1253,
                       "name": "CreateDelegate_event",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1222,
-                      "src": "762:20:6",
+                      "referencedDeclaration": 1269,
+                      "src": "784:20:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_address_$returns$__$",
                         "typeString": "function (address,address,address)"
                       }
                     },
-                    "id": 1211,
+                    "id": 1258,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -933,20 +1022,20 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "762:49:6",
+                    "src": "784:49:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1212,
+                  "id": 1259,
                   "nodeType": "EmitStatement",
-                  "src": "757:54:6"
+                  "src": "779:54:6"
                 }
               ]
             },
             "documentation": null,
-            "id": 1214,
+            "id": 1261,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -954,16 +1043,16 @@
             "name": "createDelegate",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1169,
+              "id": 1209,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1165,
+                  "id": 1205,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1214,
-                  "src": "437:13:6",
+                  "scope": 1261,
+                  "src": "413:13:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -971,10 +1060,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1164,
+                    "id": 1204,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "437:7:6",
+                    "src": "413:7:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -985,11 +1074,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1168,
+                  "id": 1208,
                   "name": "schedulerList",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1214,
-                  "src": "452:23:6",
+                  "scope": 1261,
+                  "src": "428:23:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -998,19 +1087,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1166,
+                      "id": 1206,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "452:7:6",
+                      "src": "428:7:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 1167,
+                    "id": 1207,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "452:9:6",
+                    "src": "428:9:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -1020,46 +1109,46 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "436:40:6"
+              "src": "412:40:6"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1172,
+              "id": 1212,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1171,
+                  "id": 1211,
                   "name": "delegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1214,
-                  "src": "493:30:6",
+                  "scope": 1261,
+                  "src": "469:24:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                    "typeString": "contract FuturePaymentDelegate"
+                    "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                    "typeString": "contract PaymentDelegate"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1170,
-                    "name": "FuturePaymentDelegate",
+                    "id": 1210,
+                    "name": "PaymentDelegate",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1138,
-                    "src": "493:21:6",
+                    "referencedDeclaration": 1178,
+                    "src": "469:15:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                      "typeString": "contract FuturePaymentDelegate"
+                      "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                      "typeString": "contract PaymentDelegate"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "492:32:6"
+              "src": "468:26:6"
             },
-            "scope": 1223,
-            "src": "412:407:6",
+            "scope": 1270,
+            "src": "388:453:6",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -1067,21 +1156,21 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 1222,
+            "id": 1269,
             "name": "CreateDelegate_event",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1221,
+              "id": 1268,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1216,
+                  "id": 1263,
                   "indexed": true,
                   "name": "caller",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1222,
-                  "src": "869:22:6",
+                  "scope": 1269,
+                  "src": "891:22:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1089,10 +1178,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1215,
+                    "id": 1262,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "869:7:6",
+                    "src": "891:7:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1103,12 +1192,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1218,
+                  "id": 1265,
                   "indexed": true,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1222,
-                  "src": "903:21:6",
+                  "scope": 1269,
+                  "src": "925:21:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1116,10 +1205,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1217,
+                    "id": 1264,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "903:7:6",
+                    "src": "925:7:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1130,12 +1219,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1220,
+                  "id": 1267,
                   "indexed": false,
                   "name": "delegateAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1222,
-                  "src": "936:23:6",
+                  "scope": 1269,
+                  "src": "958:23:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1143,10 +1232,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1219,
+                    "id": 1266,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "936:7:6",
+                    "src": "958:7:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1156,29 +1245,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "858:108:6"
+              "src": "880:108:6"
             },
-            "src": "831:136:6"
+            "src": "853:136:6"
           }
         ],
-        "scope": 1224,
-        "src": "112:864:6"
+        "scope": 1271,
+        "src": "106:892:6"
       }
     ],
-    "src": "0:978:6"
+    "src": "0:1000:6"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/components/future-payment-delegate/FuturePaymentDelegateFactory.sol",
+    "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/components/payment-delegate/PaymentDelegateFactory.sol",
     "exportedSymbols": {
-      "FuturePaymentDelegateFactory": [
-        1223
+      "PaymentDelegateFactory": [
+        1270
       ]
     },
-    "id": 1224,
+    "id": 1271,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1140,
+        "id": 1180,
         "literals": [
           "solidity",
           "^",
@@ -1191,22 +1280,22 @@
       {
         "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/external/CloneFactory.sol",
         "file": "../../external/CloneFactory.sol",
-        "id": 1141,
+        "id": 1181,
         "nodeType": "ImportDirective",
-        "scope": 1224,
-        "sourceUnit": 2198,
+        "scope": 1271,
+        "sourceUnit": 2291,
         "src": "28:41:6",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/components/future-payment-delegate/FuturePaymentDelegate.sol",
-        "file": "./FuturePaymentDelegate.sol",
-        "id": 1142,
+        "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/components/payment-delegate/PaymentDelegate.sol",
+        "file": "./PaymentDelegate.sol",
+        "id": 1182,
         "nodeType": "ImportDirective",
-        "scope": 1224,
-        "sourceUnit": 1139,
-        "src": "71:37:6",
+        "scope": 1271,
+        "sourceUnit": 1179,
+        "src": "71:31:6",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -1216,42 +1305,42 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1143,
+              "id": 1183,
               "name": "CloneFactory",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2197,
-              "src": "153:12:6",
+              "referencedDeclaration": 2290,
+              "src": "141:12:6",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_CloneFactory_$2197",
+                "typeIdentifier": "t_contract$_CloneFactory_$2290",
                 "typeString": "contract CloneFactory"
               }
             },
-            "id": 1144,
+            "id": 1184,
             "nodeType": "InheritanceSpecifier",
-            "src": "153:12:6"
+            "src": "141:12:6"
           }
         ],
         "contractDependencies": [
-          2197
+          2290
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1223,
+        "id": 1270,
         "linearizedBaseContracts": [
-          1223,
-          2197
+          1270,
+          2290
         ],
-        "name": "FuturePaymentDelegateFactory",
+        "name": "PaymentDelegateFactory",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 1146,
+            "id": 1186,
             "name": "blockCreated",
             "nodeType": "VariableDeclaration",
-            "scope": 1223,
-            "src": "179:24:6",
+            "scope": 1270,
+            "src": "167:24:6",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1259,10 +1348,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 1145,
+              "id": 1185,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "179:4:6",
+              "src": "167:4:6",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1273,27 +1362,27 @@
           },
           {
             "constant": false,
-            "id": 1148,
+            "id": 1188,
             "name": "blueprint",
             "nodeType": "VariableDeclaration",
-            "scope": 1223,
-            "src": "216:38:6",
+            "scope": 1270,
+            "src": "204:32:6",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-              "typeString": "contract FuturePaymentDelegate"
+              "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+              "typeString": "contract PaymentDelegate"
             },
             "typeName": {
               "contractScope": null,
-              "id": 1147,
-              "name": "FuturePaymentDelegate",
+              "id": 1187,
+              "name": "PaymentDelegate",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1138,
-              "src": "216:21:6",
+              "referencedDeclaration": 1178,
+              "src": "204:15:6",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                "typeString": "contract FuturePaymentDelegate"
+                "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                "typeString": "contract PaymentDelegate"
               }
             },
             "value": null,
@@ -1301,26 +1390,26 @@
           },
           {
             "body": {
-              "id": 1162,
+              "id": 1202,
               "nodeType": "Block",
-              "src": "321:79:6",
+              "src": "297:79:6",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1156,
+                    "id": 1196,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 1153,
+                      "id": 1193,
                       "name": "blockCreated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1146,
-                      "src": "332:12:6",
+                      "referencedDeclaration": 1186,
+                      "src": "308:12:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1332,18 +1421,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 1154,
+                        "id": 1194,
                         "name": "block",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 4098,
-                        "src": "347:5:6",
+                        "referencedDeclaration": 4385,
+                        "src": "323:5:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_block",
                           "typeString": "block"
                         }
                       },
-                      "id": 1155,
+                      "id": 1195,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1351,72 +1440,72 @@
                       "memberName": "number",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "347:12:6",
+                      "src": "323:12:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "332:27:6",
+                    "src": "308:27:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1157,
+                  "id": 1197,
                   "nodeType": "ExpressionStatement",
-                  "src": "332:27:6"
+                  "src": "308:27:6"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1160,
+                    "id": 1200,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 1158,
+                      "id": 1198,
                       "name": "blueprint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1148,
-                      "src": "370:9:6",
+                      "referencedDeclaration": 1188,
+                      "src": "346:9:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                        "typeString": "contract FuturePaymentDelegate"
+                        "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                        "typeString": "contract PaymentDelegate"
                       }
                     },
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 1159,
+                      "id": 1199,
                       "name": "_blueprint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1150,
-                      "src": "382:10:6",
+                      "referencedDeclaration": 1190,
+                      "src": "358:10:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                        "typeString": "contract FuturePaymentDelegate"
+                        "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                        "typeString": "contract PaymentDelegate"
                       }
                     },
-                    "src": "370:22:6",
+                    "src": "346:22:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                      "typeString": "contract FuturePaymentDelegate"
+                      "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                      "typeString": "contract PaymentDelegate"
                     }
                   },
-                  "id": 1161,
+                  "id": 1201,
                   "nodeType": "ExpressionStatement",
-                  "src": "370:22:6"
+                  "src": "346:22:6"
                 }
               ]
             },
             "documentation": null,
-            "id": 1163,
+            "id": 1203,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -1424,78 +1513,78 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1151,
+              "id": 1191,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1150,
+                  "id": 1190,
                   "name": "_blueprint",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1163,
-                  "src": "280:32:6",
+                  "scope": 1203,
+                  "src": "262:26:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                    "typeString": "contract FuturePaymentDelegate"
+                    "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                    "typeString": "contract PaymentDelegate"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1149,
-                    "name": "FuturePaymentDelegate",
+                    "id": 1189,
+                    "name": "PaymentDelegate",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1138,
-                    "src": "280:21:6",
+                    "referencedDeclaration": 1178,
+                    "src": "262:15:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                      "typeString": "contract FuturePaymentDelegate"
+                      "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                      "typeString": "contract PaymentDelegate"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "279:34:6"
+              "src": "261:28:6"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1152,
+              "id": 1192,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "321:0:6"
+              "src": "297:0:6"
             },
-            "scope": 1223,
-            "src": "267:133:6",
+            "scope": 1270,
+            "src": "249:127:6",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 1213,
+              "id": 1260,
               "nodeType": "Block",
-              "src": "525:294:6",
+              "src": "495:346:6",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1179,
+                    "id": 1219,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 1173,
+                      "id": 1213,
                       "name": "delegate",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1171,
-                      "src": "536:8:6",
+                      "referencedDeclaration": 1211,
+                      "src": "506:8:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                        "typeString": "contract FuturePaymentDelegate"
+                        "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                        "typeString": "contract PaymentDelegate"
                       }
                     },
                     "nodeType": "Assignment",
@@ -1508,37 +1597,37 @@
                           "arguments": [
                             {
                               "argumentTypes": null,
-                              "id": 1176,
+                              "id": 1216,
                               "name": "blueprint",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1148,
-                              "src": "581:9:6",
+                              "referencedDeclaration": 1188,
+                              "src": "545:9:6",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                                "typeString": "contract FuturePaymentDelegate"
+                                "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                                "typeString": "contract PaymentDelegate"
                               }
                             }
                           ],
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                                "typeString": "contract FuturePaymentDelegate"
+                                "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                                "typeString": "contract PaymentDelegate"
                               }
                             ],
-                            "id": 1175,
+                            "id": 1215,
                             "name": "createClone",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2196,
-                            "src": "569:11:6",
+                            "referencedDeclaration": 2289,
+                            "src": "533:11:6",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$_t_address_$",
                               "typeString": "function (address) returns (address)"
                             }
                           },
-                          "id": 1177,
+                          "id": 1217,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1546,7 +1635,7 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "569:22:6",
+                          "src": "533:22:6",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -1560,18 +1649,18 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 1174,
-                        "name": "FuturePaymentDelegate",
+                        "id": 1214,
+                        "name": "PaymentDelegate",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1138,
-                        "src": "547:21:6",
+                        "referencedDeclaration": 1178,
+                        "src": "517:15:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_FuturePaymentDelegate_$1138_$",
-                          "typeString": "type(contract FuturePaymentDelegate)"
+                          "typeIdentifier": "t_type$_t_contract$_PaymentDelegate_$1178_$",
+                          "typeString": "type(contract PaymentDelegate)"
                         }
                       },
-                      "id": 1178,
+                      "id": 1218,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1579,56 +1668,75 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "547:45:6",
+                      "src": "517:39:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                        "typeString": "contract FuturePaymentDelegate"
+                        "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                        "typeString": "contract PaymentDelegate"
                       }
                     },
-                    "src": "536:56:6",
+                    "src": "506:50:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                      "typeString": "contract FuturePaymentDelegate"
+                      "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                      "typeString": "contract PaymentDelegate"
                     }
                   },
-                  "id": 1180,
+                  "id": 1220,
                   "nodeType": "ExpressionStatement",
-                  "src": "536:56:6"
+                  "src": "506:50:6"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "arguments": [],
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1224,
+                        "name": "this",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4442,
+                        "src": "587:4:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_PaymentDelegateFactory_$1270",
+                          "typeString": "contract PaymentDelegateFactory"
+                        }
+                      }
+                    ],
                     "expression": {
-                      "argumentTypes": [],
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_PaymentDelegateFactory_$1270",
+                          "typeString": "contract PaymentDelegateFactory"
+                        }
+                      ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 1181,
+                        "id": 1221,
                         "name": "delegate",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1171,
-                        "src": "603:8:6",
+                        "referencedDeclaration": 1211,
+                        "src": "567:8:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                          "typeString": "contract FuturePaymentDelegate"
+                          "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                          "typeString": "contract PaymentDelegate"
                         }
                       },
-                      "id": 1183,
+                      "id": 1223,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "initialize",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 860,
-                      "src": "603:19:6",
+                      "referencedDeclaration": 734,
+                      "src": "567:19:6",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_external_nonpayable$__$returns$__$",
-                        "typeString": "function () external"
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address) external"
                       }
                     },
-                    "id": 1184,
+                    "id": 1225,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1636,15 +1744,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "603:21:6",
+                    "src": "567:25:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1185,
+                  "id": 1226,
                   "nodeType": "ExpressionStatement",
-                  "src": "603:21:6"
+                  "src": "567:25:6"
                 },
                 {
                   "body": {
@@ -1655,26 +1763,26 @@
                           "argumentTypes": null,
                           "baseExpression": {
                             "argumentTypes": null,
-                            "id": 1200,
+                            "id": 1241,
                             "name": "schedulerList",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1168,
-                            "src": "719:13:6",
+                            "referencedDeclaration": 1208,
+                            "src": "687:13:6",
                             "typeDescriptions": {
                               "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                               "typeString": "address[] memory"
                             }
                           },
-                          "id": 1202,
+                          "id": 1243,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 1201,
+                            "id": 1242,
                             "name": "i",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1187,
-                            "src": "733:1:6",
+                            "referencedDeclaration": 1228,
+                            "src": "701:1:6",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -1685,7 +1793,7 @@
                           "isPure": false,
                           "lValueRequested": false,
                           "nodeType": "IndexAccess",
-                          "src": "719:16:6",
+                          "src": "687:16:6",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -1701,32 +1809,32 @@
                         ],
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1197,
+                          "id": 1238,
                           "name": "delegate",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1171,
-                          "src": "697:8:6",
+                          "referencedDeclaration": 1211,
+                          "src": "665:8:6",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                            "typeString": "contract FuturePaymentDelegate"
+                            "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                            "typeString": "contract PaymentDelegate"
                           }
                         },
-                        "id": 1199,
+                        "id": 1240,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "addScheduler",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1051,
-                        "src": "697:21:6",
+                        "referencedDeclaration": 1084,
+                        "src": "665:21:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_bool_$",
                           "typeString": "function (address) external returns (bool)"
                         }
                       },
-                      "id": 1203,
+                      "id": 1244,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1734,15 +1842,15 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "697:39:6",
+                      "src": "665:39:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
                       }
                     },
-                    "id": 1204,
+                    "id": 1245,
                     "nodeType": "ExpressionStatement",
-                    "src": "697:39:6"
+                    "src": "665:39:6"
                   },
                   "condition": {
                     "argumentTypes": null,
@@ -1750,19 +1858,19 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 1193,
+                    "id": 1234,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
-                      "id": 1190,
+                      "id": 1231,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1187,
-                      "src": "653:1:6",
+                      "referencedDeclaration": 1228,
+                      "src": "621:1:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1774,18 +1882,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 1191,
+                        "id": 1232,
                         "name": "schedulerList",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1168,
-                        "src": "657:13:6",
+                        "referencedDeclaration": 1208,
+                        "src": "625:13:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                           "typeString": "address[] memory"
                         }
                       },
-                      "id": 1192,
+                      "id": 1233,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1793,31 +1901,31 @@
                       "memberName": "length",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "657:20:6",
+                      "src": "625:20:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "653:24:6",
+                    "src": "621:24:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 1205,
+                  "id": 1246,
                   "initializationExpression": {
                     "assignments": [
-                      1187
+                      1228
                     ],
                     "declarations": [
                       {
                         "constant": false,
-                        "id": 1187,
+                        "id": 1228,
                         "name": "i",
                         "nodeType": "VariableDeclaration",
-                        "scope": 1214,
-                        "src": "641:6:6",
+                        "scope": 1261,
+                        "src": "609:6:6",
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
@@ -1825,10 +1933,10 @@
                           "typeString": "uint256"
                         },
                         "typeName": {
-                          "id": 1186,
+                          "id": 1227,
                           "name": "uint",
                           "nodeType": "ElementaryTypeName",
-                          "src": "641:4:6",
+                          "src": "609:4:6",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -1838,18 +1946,18 @@
                         "visibility": "internal"
                       }
                     ],
-                    "id": 1189,
+                    "id": 1230,
                     "initialValue": {
                       "argumentTypes": null,
                       "hexValue": "30",
-                      "id": 1188,
+                      "id": 1229,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "650:1:6",
+                      "src": "618:1:6",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
@@ -1858,12 +1966,12 @@
                       "value": "0"
                     },
                     "nodeType": "VariableDeclarationStatement",
-                    "src": "641:10:6"
+                    "src": "609:10:6"
                   },
                   "loopExpression": {
                     "expression": {
                       "argumentTypes": null,
-                      "id": 1195,
+                      "id": 1236,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1871,15 +1979,15 @@
                       "nodeType": "UnaryOperation",
                       "operator": "++",
                       "prefix": false,
-                      "src": "679:3:6",
+                      "src": "647:3:6",
                       "subExpression": {
                         "argumentTypes": null,
-                        "id": 1194,
+                        "id": 1235,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1187,
-                        "src": "679:1:6",
+                        "referencedDeclaration": 1228,
+                        "src": "647:1:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1890,12 +1998,82 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 1196,
+                    "id": 1237,
                     "nodeType": "ExpressionStatement",
-                    "src": "679:3:6"
+                    "src": "647:3:6"
                   },
                   "nodeType": "ForStatement",
-                  "src": "637:99:6"
+                  "src": "605:99:6"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1250,
+                        "name": "owner",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1205,
+                        "src": "752:5:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1247,
+                        "name": "delegate",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1211,
+                        "src": "725:8:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                          "typeString": "contract PaymentDelegate"
+                        }
+                      },
+                      "id": 1249,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "transferOwnership",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3532,
+                      "src": "725:26:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address) external"
+                      }
+                    },
+                    "id": 1251,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "725:33:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1252,
+                  "nodeType": "ExpressionStatement",
+                  "src": "725:33:6"
                 },
                 {
                   "eventCall": {
@@ -1905,18 +2083,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1207,
+                          "id": 1254,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4108,
-                          "src": "783:3:6",
+                          "referencedDeclaration": 4395,
+                          "src": "805:3:6",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1208,
+                        "id": 1255,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1924,7 +2102,7 @@
                         "memberName": "sender",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "783:10:6",
+                        "src": "805:10:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1932,12 +2110,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1209,
+                        "id": 1256,
                         "name": "owner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1165,
-                        "src": "795:5:6",
+                        "referencedDeclaration": 1205,
+                        "src": "817:5:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1945,15 +2123,15 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 1210,
+                        "id": 1257,
                         "name": "delegate",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1171,
-                        "src": "802:8:6",
+                        "referencedDeclaration": 1211,
+                        "src": "824:8:6",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                          "typeString": "contract FuturePaymentDelegate"
+                          "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                          "typeString": "contract PaymentDelegate"
                         }
                       }
                     ],
@@ -1968,22 +2146,22 @@
                           "typeString": "address"
                         },
                         {
-                          "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                          "typeString": "contract FuturePaymentDelegate"
+                          "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                          "typeString": "contract PaymentDelegate"
                         }
                       ],
-                      "id": 1206,
+                      "id": 1253,
                       "name": "CreateDelegate_event",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1222,
-                      "src": "762:20:6",
+                      "referencedDeclaration": 1269,
+                      "src": "784:20:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_address_$returns$__$",
                         "typeString": "function (address,address,address)"
                       }
                     },
-                    "id": 1211,
+                    "id": 1258,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1991,20 +2169,20 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "762:49:6",
+                    "src": "784:49:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1212,
+                  "id": 1259,
                   "nodeType": "EmitStatement",
-                  "src": "757:54:6"
+                  "src": "779:54:6"
                 }
               ]
             },
             "documentation": null,
-            "id": 1214,
+            "id": 1261,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -2012,16 +2190,16 @@
             "name": "createDelegate",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1169,
+              "id": 1209,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1165,
+                  "id": 1205,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1214,
-                  "src": "437:13:6",
+                  "scope": 1261,
+                  "src": "413:13:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2029,10 +2207,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1164,
+                    "id": 1204,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "437:7:6",
+                    "src": "413:7:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -2043,11 +2221,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 1168,
+                  "id": 1208,
                   "name": "schedulerList",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1214,
-                  "src": "452:23:6",
+                  "scope": 1261,
+                  "src": "428:23:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2056,19 +2234,19 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 1166,
+                      "id": 1206,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "452:7:6",
+                      "src": "428:7:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-                    "id": 1167,
+                    "id": 1207,
                     "length": null,
                     "nodeType": "ArrayTypeName",
-                    "src": "452:9:6",
+                    "src": "428:9:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -2078,46 +2256,46 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "436:40:6"
+              "src": "412:40:6"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1172,
+              "id": 1212,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1171,
+                  "id": 1211,
                   "name": "delegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1214,
-                  "src": "493:30:6",
+                  "scope": 1261,
+                  "src": "469:24:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                    "typeString": "contract FuturePaymentDelegate"
+                    "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                    "typeString": "contract PaymentDelegate"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 1170,
-                    "name": "FuturePaymentDelegate",
+                    "id": 1210,
+                    "name": "PaymentDelegate",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1138,
-                    "src": "493:21:6",
+                    "referencedDeclaration": 1178,
+                    "src": "469:15:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_FuturePaymentDelegate_$1138",
-                      "typeString": "contract FuturePaymentDelegate"
+                      "typeIdentifier": "t_contract$_PaymentDelegate_$1178",
+                      "typeString": "contract PaymentDelegate"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "492:32:6"
+              "src": "468:26:6"
             },
-            "scope": 1223,
-            "src": "412:407:6",
+            "scope": 1270,
+            "src": "388:453:6",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -2125,21 +2303,21 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 1222,
+            "id": 1269,
             "name": "CreateDelegate_event",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1221,
+              "id": 1268,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1216,
+                  "id": 1263,
                   "indexed": true,
                   "name": "caller",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1222,
-                  "src": "869:22:6",
+                  "scope": 1269,
+                  "src": "891:22:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2147,10 +2325,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1215,
+                    "id": 1262,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "869:7:6",
+                    "src": "891:7:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -2161,12 +2339,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1218,
+                  "id": 1265,
                   "indexed": true,
                   "name": "owner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1222,
-                  "src": "903:21:6",
+                  "scope": 1269,
+                  "src": "925:21:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2174,10 +2352,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1217,
+                    "id": 1264,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "903:7:6",
+                    "src": "925:7:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -2188,12 +2366,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1220,
+                  "id": 1267,
                   "indexed": false,
                   "name": "delegateAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1222,
-                  "src": "936:23:6",
+                  "scope": 1269,
+                  "src": "958:23:6",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2201,10 +2379,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1219,
+                    "id": 1266,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "936:7:6",
+                    "src": "958:7:6",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -2214,22 +2392,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "858:108:6"
+              "src": "880:108:6"
             },
-            "src": "831:136:6"
+            "src": "853:136:6"
           }
         ],
-        "scope": 1224,
-        "src": "112:864:6"
+        "scope": 1271,
+        "src": "106:892:6"
       }
     ],
-    "src": "0:978:6"
+    "src": "0:1000:6"
   },
   "compiler": {
     "name": "solc",
     "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0x7a280c1c1f6b69752608351d959e293b9b659b66",
+      "transactionHash": "0xb428ed57be42ef4d8b2864f6d077d22bea1eb29ceca464faed2b99cfc6d92385"
+    }
+  },
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-10-13T04:35:07.880Z"
+  "updatedAt": "2018-10-16T21:51:53.405Z"
 }

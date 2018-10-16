@@ -3,19 +3,20 @@ pragma solidity ^0.4.23;
 import "../../external/Owned.sol";
 import "../../Interfaces.sol";
 
-contract RecurringPayment is IFuturePayment {
+contract RecurringPayment is IPayment {
     
     uint public blockCreated;
+    address public factory;
 
-    ITask alarmClock;
-    IFuturePaymentDelegate public delegate;
+    IRecurringAlarmClock alarmClock;
+    IPaymentDelegate public delegate;
     IDelegatedWallet public wallet;
     address public token;
     address public recipient;
     uint public paymentAmount;
     
     function initialize (
-        IFuturePaymentDelegate _delegate,
+        IPaymentDelegate _delegate,
         IDelegatedWallet _wallet,
         address _token,
         address _recipient,
@@ -23,13 +24,15 @@ contract RecurringPayment is IFuturePayment {
     ) public {
         require(blockCreated == 0, "contract can only be initialized once");
 
+        blockCreated = block.number;
+        factory = msg.sender;
+
         delegate = _delegate;
         wallet = _wallet;
         token = _token;
         recipient = _recipient;
-        paymentAmount = _amount;
 
-        blockCreated = block.number;
+        paymentAmount = _amount;
     }
 
     function getOptions () public view returns (address[5], uint) {
@@ -51,6 +54,9 @@ contract RecurringPayment is IFuturePayment {
     
     function () public onlyAlarmClock {
         delegate.execute();
+
+        if(alarmClock.currentInterval() == alarmClock.maximumIntervals())
+            delegate.unschedule();
     }
 
     function cancel () public onlyDelegates {

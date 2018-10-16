@@ -1,11 +1,13 @@
 pragma solidity ^0.4.23;
 
 import "../../Interfaces.sol";
+import "../recurring-payment/RecurringPaymentFactory.sol";
+import "../recurring-payment/RecurringPayment.sol";
 import "../RecurringAlarmClockAssistant.sol";
-import "./RecurringPaymentFactory.sol";
-import "./RecurringPayment.sol";
 
 contract RecurringPaymentScheduler {
+
+    uint public blockCreated;
 
     RecurringAlarmClockAssistant public Assistant;
     RecurringPaymentFactory public Factory;
@@ -14,12 +16,13 @@ contract RecurringPaymentScheduler {
         RecurringAlarmClockAssistant assistant,
         RecurringPaymentFactory factory
     ) public {
+        blockCreated = block.number;
         Assistant = assistant;
         Factory = factory;
     }
 
     function createRecurringPayment (
-        IFuturePaymentDelegate delegate,
+        IPaymentDelegate delegate,
         IDelegatedWallet wallet,
         address token,
         address recipient,
@@ -29,7 +32,7 @@ contract RecurringPaymentScheduler {
         uint period,
         uint gas
     ) public returns (RecurringPayment paymentTask) {
-        require(wallet.isDelegate(delegate), "future payment delegate is not a delegate for the provided wallet");
+        require(wallet.isDelegate(delegate), "payment delegate is not a delegate for the provided wallet");
         require(wallet.isDelegate(msg.sender), "msg.sender is not a delegate for the provided wallet");
         
         RecurringAlarmClock alarmClock = Assistant.createRecurringAlarmClock(
@@ -38,7 +41,7 @@ contract RecurringPaymentScheduler {
             startTimestamp, // the starting timestamp (in seconds)
             totalPayments,  // how many payments to execute
             period,         // how long between each payment (in seconds)
-            gas             // how much gas to use when executing each alarm
+            gas             // how much gas to use when executing each alarm,
         );
 
         paymentTask = Factory.createRecurringPayment(

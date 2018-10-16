@@ -17,7 +17,7 @@ contract RecurringAlarmClockAssistant {
     }
 
     function createRecurringAlarmClock(
-        IFuturePaymentDelegate delegate,
+        IPaymentDelegate delegate,
         IDelegatedWallet wallet,
         uint startTimestamp,
         uint totalPayments,

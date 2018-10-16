@@ -1,6 +1,4 @@
-const DelegatedWallet = artifacts.require("DelegatedWallet");
-const AddressList = artifacts.require("AddressList");
-const AddressListFactory = artifacts.require("AddressListFactory");
+const DelegatedWalletBlueprint = artifacts.require("DelegatedWallet");
 const MiniMeToken = artifacts.require("MiniMeToken");
 
 var q = require('q');
@@ -11,139 +9,169 @@ contract('Delegated Wallet Blueprint', function(accounts) {
     const quarterEther = web3.toWei(0.25, 'ether');
 
     var ERC20Token;
+    var Wallet;
 
-    var wallet;
-    var delegates;
+    var defaultCaller = accounts[0];
+    var owner = accounts[1];
+    var attacker = accounts[2];
+    var delegate0 = accounts[3];
+    var delegate1 = accounts[4];
+    var delegate2 = accounts[5];
+    var recipient = accounts[6];
+
     var initTx;
     
     it("initialize the delegated wallet blueprint", function(){
-        return q.all([
-            AddressListFactory.deployed(),
-            DelegatedWallet.deployed(),
-            MiniMeToken.deployed(),
-        ])
-        .then(promises => {
-            var factory = promises[0];
-            wallet = promises[1];
-            ERC20Token = promises[2];
-
-            return q.all([
-                factory.createAddressList(accounts[0], [accounts[1]], {from: accounts[0]}),
-                ERC20Token.generateTokens(accounts[0], oneEther, {from: accounts[0]}),
-            ]);
-        })
-        .then(tx => AddressList.at(tx[0].logs[0].args.addressList))
-        .then(instance => {
-            delegates = instance;
-
-            return wallet.initialize(
-                delegates.address,
-                {from: accounts[0]}
-            );
+        DelegatedWalletBlueprint.deployed()
+        .then(wallet => {
+            Wallet = wallet;
+            return Wallet.initialize(owner, {from: defaultCaller});
         })
         .then(tx => {
             initTx = tx;
-
+            return MiniMeToken.deployed()
+        })
+        .then(erc20Token => {
+            ERC20Token = erc20Token;
+            
             return q.all([
-                web3.eth.sendTransaction({to: wallet.address, from: accounts[8], value: oneEther}),
-                ERC20Token.transfer(wallet.address, oneEther, {from:accounts[0]})
+                web3.eth.sendTransaction({to: Wallet.address, from: defaultCaller, value: oneEther}),
+                ERC20Token.generateTokens(Wallet.address, oneEther, {from: defaultCaller}),
             ]);
         })
-        .then(tx => {
+        .then(txs => {
             return q.all([
-                web3.eth.getBalance(wallet.address),
-                ERC20Token.balanceOf(wallet.address)
+                web3.eth.getBalance(Wallet.address),
+                ERC20Token.balanceOf(Wallet.address)
             ]);
         })
         .then(balances => {
             var etherBalance = balances[0];
             var tokenBalance = balances[1];
             assert(etherBalance == oneEther, "wallet ether balance should equal one ether");
-            assert(tokenBalance == oneEther, "wallet erc20 token balance should equal one ether");
-        })
-        .catch(err => {
-            console.log(err);
-            assert(false, 'delegated wallet failed to initialize');
+            assert(tokenBalance == oneEther, "wallet erc20 token balance should equal 10^18 (one ether)");
         })
     });
 
     it("attempt to re-initialize the delegated wallet", function(){
-        return wallet.initialize(
-            accounts[3],
-            {from: accounts[2]}
-        )
+        return Wallet.initialize(attacker, {from: attacker})
         .then(() => {
             assert(false, "the delegated wallet should only be able to be initialized once");
         })
-        .catch(() => wallet.delegates())
-        .then(delegatesAddress => {
-            assert(delegatesAddress == delegates.address, "the owner should still be set to accounts[0]");
+        .catch(err => assert(true))
+    });
+
+    it("have the owner add delegates", () => {
+        return q.all([
+            Wallet.addDelegate(delegate0, {from: owner}),
+            Wallet.addDelegate(delegate1, {from: owner}),
+            Wallet.addDelegate(delegate2, {from: owner}),
+        ]).then(txs => {
+            return Wallet.getDelegates();
+        })
+        .then(delegates => {
+            assert(delegates[0] == delegate0, "delegates[0] should be set to delegate0");
+            assert(delegates[1] == delegate1, "delegates[1] should be set to delegate1");
+            assert(delegates[2] == delegate2, "delegates[2] should be set to delegate2");
+        })
+    });
+
+    it("have the owner remove a delegate", () => {
+        return Wallet.removeDelegate(delegate0, {from: owner})
+        .then(txs => {
+            return Wallet.getDelegates();
+        })
+        .then(delegates => {
+            assert(delegates[0] == delegate2, "delegates[0] should be set to delegate2");
+            assert(delegates[1] == delegate1, "delegates[1] should be set to delegate1");
         })
     });
 
     it("check correctness of the initialization", function() {
         return q.all([
-            wallet.blockCreated(),
-            wallet.delegates(),
+            Wallet.owner(),
+            Wallet.blockCreated(),
+            Wallet.getDelegates(),
+            web3.eth.getBalance(Wallet.address),
+            ERC20Token.balanceOf(Wallet.address)
         ])
         .then(promises => {
-            var blockCreated = promises[0];
-            var delegatesAddress = promises[1];
+            var ownerAddress = promises[0];
+            var blockCreated = promises[1];
+            var delegates = promises[2];
+            var etherBalance = promises[3];
+            var tokenBalance = promises[4];
 
-            assert(initTx.receipt.blockNumber == blockCreated, "delegated wallet should be initialized");
-            assert(delegatesAddress == delegates.address, "delegated wallet delegates address list not set correctly");
+            assert(ownerAddress == owner, "the owner address should still be set to owner");
+            assert(blockCreated == initTx.receipt.blockNumber, "delegated wallet should be initialized");
+            assert(delegates[0] == delegate2, "delegates[0] should be set to delegate2");
+            assert(delegates[1] == delegate1, "delegates[1] should be set to delegate1");
+            assert(etherBalance == oneEther, "wallet ether balance should equal one ether");
+            assert(tokenBalance == oneEther, "wallet erc20 token balance should equal 10^18 (one ether)");
         })
     });
 
     it("have a delegate transfer ether from the wallet", function() {
-        return wallet.isDelegate(accounts[1])
-        .then(isDelegate => {
-            assert(isDelegate, "accounts[1] should be set as a delegate");
-            return wallet.transfer('0x0', accounts[1], halfEther, {from: accounts[1]})
-        })
-        .then(tx => web3.eth.getBalance(wallet.address))
+        return Wallet.transfer('0x0', recipient, halfEther, {from: delegate1})
+        .then(tx => web3.eth.getBalance(Wallet.address))
         .then(etherBalance => {
             assert(etherBalance == halfEther, "wallet ether balance should equal half an ether");
         })
     });
 
     it("have a delegate transfer erc20 tokens from the wallet", function() {
-        return wallet.isDelegate(accounts[1])
-        .then(isDelegate => {
-            assert(isDelegate, "accounts[1] should be set as a delegate");
-            return wallet.transfer(ERC20Token.address, accounts[1], halfEther, {from: accounts[1]})
-        })
+        return Wallet.transfer(ERC20Token.address, recipient, halfEther, {from: delegate1})
         .then(tx => q.all([
-            ERC20Token.balanceOf(accounts[1]),
-            ERC20Token.balanceOf(wallet.address)
+            ERC20Token.balanceOf(recipient),
+            ERC20Token.balanceOf(Wallet.address)
         ]))
         .then(balances => {
-            var accountBalance = balances[0];
+            var recipientBalance = balances[0];
             var walletBalance = balances[1];
-            assert(accountBalance == halfEther, "account[1] token balance should equal half an ether");
+            assert(recipientBalance == halfEther, "recipient token balance should equal half an ether");
             assert(walletBalance == halfEther, "wallet token balance should equal half an ether");
         })
     });
 
     it("have a non-delegate attempt to transfer ether from the delegated wallet", function() {
-        return wallet.transfer('0x0', accounts[2], quarterEther, {from: accounts[2]})
+        return Wallet.transfer('0x0', attacker, quarterEther, {from: attacker})
         .then(tx => {
-            assert(false, "accounts[2] should not be able to send ether")
+            assert(false, "attacker should not be able to send ether")
         })
-        .catch(err => web3.eth.getBalance(wallet.address))
+        .catch(err => web3.eth.getBalance(Wallet.address))
         .then(etherBalance => {
             assert(etherBalance == halfEther, "wallet ether balance should equal half an ether");
         })
     });    
 
     it("have a non-delegate attempt to transfer erc20 tokens from the delegated wallet", function() {
-        return wallet.transfer(ERC20Token.address, accounts[2], quarterEther, {from: accounts[2]})
+        return Wallet.transfer(ERC20Token.address, attacker, quarterEther, {from: attacker})
         .then(tx => {
-            assert(false, "accounts[2] should not be able to send erc20 tokens")
+            assert(false, "attacker should not be able to send erc20 tokens")
         })
-        .catch(err => ERC20Token.balanceOf(wallet.address))
+        .catch(err => ERC20Token.balanceOf(Wallet.address))
         .then(function(tokenBalance){
             assert(tokenBalance == halfEther, "wallet token balance should equal half an ether");
+        })
+    });
+
+    it("have a non-owner attempt to add an address", () => {
+        return Wallet.addDelegate(attacker, {from: attacker})
+        .then(tx => {
+            assert(false, "a non-owner should never be allowed to add an address")
+        })
+        .catch(() => {
+            // expected outcome
+        })
+    });
+
+    it("have a non-owner attempt to remove an address", () => {
+        return Wallet.removeDelegate(attacker, {from: attacker})
+        .then(tx => {
+            assert(false, "a non-owner should never be allowed to remove an address")
+        })
+        .catch(() => {
+            // expected outcome
         })
     });
 

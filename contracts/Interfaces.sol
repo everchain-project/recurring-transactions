@@ -8,29 +8,36 @@ contract ITokenSender {
     function transfer (address token, address recipient, uint amount) public returns (bool);
 }
 
-contract IDelegated {
+// implements a transfer function only callable by delegates
+contract IDelegatedWallet is ITokenSender, ITokenReceiver {
     function isDelegate (address _address) public view returns (bool);
 }
 
-contract IDelegatedWallet is IDelegated, ITokenSender, ITokenReceiver {
-    // implements a transfer function only callable by delegates
+contract IPaymentDelegate {
+    function execute () public returns (bool);
+    function schedule (IPayment payment) public;
+    function unschedule (IPayment payment) public;
+    function unschedule() public;
 }
 
 contract ITask {
     function cancel() public;
 }
 
-contract IFuturePayment is ITask {
-    IFuturePaymentDelegate public delegate;
+contract IPayment is ITask {
+    IPaymentDelegate public delegate;
     IDelegatedWallet public wallet;
     address public recipient;
     address public token;
     function amount () public view returns (uint);
 }
 
-contract IFuturePaymentDelegate {
-    function execute () public returns (bool);
-    function schedule (IFuturePayment payment) public;
-    function unschedule (IFuturePayment payment) public;
-    function unschedule() public;
+contract IRecurringAlarmClock is IPayment {
+    uint public currentInterval;
+    uint public maximumIntervals;
+    ITask public task;
+}
+
+contract IRecurringPayment is IPayment {
+    IRecurringAlarmClock public alarmClock;
 }

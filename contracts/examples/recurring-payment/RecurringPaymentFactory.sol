@@ -6,14 +6,17 @@ import "./RecurringPayment.sol";
 
 contract RecurringPaymentFactory is CloneFactory {
 
+    uint public blockCreated;
+
     RecurringPayment public blueprint;
 
     constructor (RecurringPayment _blueprint) public {
+        blockCreated = block.number;
         blueprint = _blueprint;
     }
 
     function createRecurringPayment (
-        IFuturePaymentDelegate delegate,
+        IPaymentDelegate delegate,
         IDelegatedWallet wallet,
         address token,
         address recipient,

@@ -18,7 +18,7 @@ contract RecurringAlarmClockFactory is CloneFactory {
     }
 
     function createRecurringAlarmClock(
-        IFuturePaymentDelegate delegate,
+        IPaymentDelegate delegate,
         IDelegatedWallet wallet,
         address priorityCaller,
         bytes callData,
@@ -26,7 +26,6 @@ contract RecurringAlarmClockFactory is CloneFactory {
         uint[10] ethereumAlarmClockOptions
     ) public returns (RecurringAlarmClock recurringAlarmClock) {
         recurringAlarmClock = RecurringAlarmClock(createClone(alarmClockBlueprint));
-        delegate.schedule(recurringAlarmClock);
         recurringAlarmClock.initialize(
             ethereumAlarmClock,
             delegate,
