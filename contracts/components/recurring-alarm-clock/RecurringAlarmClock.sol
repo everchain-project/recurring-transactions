@@ -5,6 +5,8 @@ import "../../Interfaces.sol";
 
 contract RecurringAlarmClock is IRecurringAlarmClock {
 
+    address constant ETHER = address(0x0);
+
     uint public blockCreated;               // The block the alarm clock was started
     address public factory;                 // The factory that created this contract
 
@@ -15,7 +17,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
     address public token;                   // The token to pull when funding an alarm. default of 0x0 represents native ether
     address public recipient;               // The recipient to send pulled funds to. set to 'this' at initialization
     address public priorityCaller;          // The priority recipient of part of the alarm deposit
-    address public alarm;                   // The next scheduled alarm contract
+    address public executor;                // The next scheduled alarm contract
     
     bytes public callData;                  // The data for the task to execute when the alarm is triggered
 
@@ -39,7 +41,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
 
         blockCreated = block.number;
         factory = msg.sender;
-        maxGasPrice = 10000000;
+        maxGasPrice = 1000000000;
 
         eac = _eac;
         delegate = _delegate;
@@ -62,7 +64,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         currentInterval = 1;
         task = _task;
         
-        scheduleAlarm();
+        executor = newAlarm();
     }
 
     function () public payable {
@@ -77,27 +79,30 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         return maxGasPrice * gas * safetyMultiplier;
     }
 
-    function cancel () public onlyTask {
+    function cancel () public {
+        require(msg.sender == address(task), "msg.sender is not the alarm task");
+
         delegate.unschedule();
     }
 
     function handleAlarmCall () internal {
-        require(msg.sender == alarm);
-
+        require(msg.sender == executor, "only the executor should be able to handle an alarm call");
+        executor = address(0x0);
+        
         bool success = address(task).call.gas(gasleft())(callData);
         emit Execute_event(currentInterval, success);
-
+        
         if(currentInterval < maximumIntervals){
             currentInterval++;
             eacOptions[5] += intervalDuration;
-            scheduleAlarm();
-        } else {
-            delegate.unschedule();
-            alarm = address(0x0);
+            executor = newAlarm();
+            
+            if(currentInterval == maximumIntervals)
+                delegate.unschedule();
         }
     }
 
-    function scheduleAlarm () internal {
+    function newAlarm () internal returns (address newExecutor) {
         delegate.execute();
         
         uint endowment = address(this).balance;    
@@ -133,16 +138,11 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         );
 
         if(params[0] && params[1] && params[2] && params[3] && params[4] && params[5]){
-            alarm = eac.createValidatedRequest.value(endowment)(addressOptions, uintOptions, "");
-            emit ValidRequest_event(msg.sender, alarm);
+            newExecutor = eac.createValidatedRequest.value(endowment)(addressOptions, uintOptions, "");
+            emit ValidRequest_event(msg.sender, newExecutor);
         } else {
             emit InvalidRequest_event(params);
         }
-    }
-
-    modifier onlyTask () {
-        require(msg.sender == address(task), "msg.sender is not the alarm task");
-        _;
     }
     
     event Execute_event(uint indexed currentInterval, bool success);

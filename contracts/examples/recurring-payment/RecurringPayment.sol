@@ -8,7 +8,7 @@ contract RecurringPayment is IPayment {
     uint public blockCreated;
     address public factory;
 
-    IRecurringAlarmClock alarmClock;
+    address public executor;
     IPaymentDelegate public delegate;
     IDelegatedWallet public wallet;
     address public token;
@@ -16,6 +16,7 @@ contract RecurringPayment is IPayment {
     uint public paymentAmount;
     
     function initialize (
+        address _executor,
         IPaymentDelegate _delegate,
         IDelegatedWallet _wallet,
         address _token,
@@ -27,6 +28,7 @@ contract RecurringPayment is IPayment {
         blockCreated = block.number;
         factory = msg.sender;
 
+        executor = _executor;
         delegate = _delegate;
         wallet = _wallet;
         token = _token;
@@ -38,7 +40,7 @@ contract RecurringPayment is IPayment {
     function getOptions () public view returns (address[5], uint) {
         return (
             [
-                address(alarmClock),
+                executor,
                 delegate,
                 wallet,
                 token,
@@ -52,26 +54,20 @@ contract RecurringPayment is IPayment {
         return paymentAmount;
     }
     
-    function () public onlyAlarmClock {
-        delegate.execute();
+    function () public {
+        require(msg.sender == executor, "msg.sender is not the alarm clock");
 
+        delegate.execute();
+        IRecurringAlarmClock alarmClock = IRecurringAlarmClock(executor);
         if(alarmClock.currentInterval() == alarmClock.maximumIntervals())
             delegate.unschedule();
     }
 
-    function cancel () public onlyDelegates {
-        alarmClock.cancel();
-        delegate.unschedule();
-    }
-
-    modifier onlyAlarmClock () {
-        require(msg.sender == address(alarmClock), "msg.sender is not the alarm clock");
-        _;
-    }
-
-    modifier onlyDelegates () {
+    function cancel () public {
         require(wallet.isDelegate(msg.sender), "msg.sender is not a delegate");
-        _;
+
+        IRecurringAlarmClock(executor).cancel();
+        delegate.unschedule();
     }
     
 }

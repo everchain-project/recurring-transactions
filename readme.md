@@ -14,17 +14,21 @@ Features include:
 
 | Contract Name | Contract Address |
 | --- | --- |
-| ListLib | 0x7fb0d9384923a2a492dea3bb371fc467c2074b71 |
-| DelegatedWallet | 0xc25f9fc13399b3ed1edf231e384ded6b0cb401bd |
-| DelegatedWalletFactory | 0x934dfcdd03f0108fa5dca74d69777a8a8b2b2b73 |
-| PaymentDelegate | 0xe6d1a0a779b7acce5917f848496172e04dc15360 |
-| PaymentDelegateFactory | 0x7a280c1c1f6b69752608351d959e293b9b659b66 |
-| RecurringAlarmClock | 0x516f6ebbef7d1e94d2bfa7b5f23bfe9f1f803bdb |
-| RecurringAlarmClockFactory | 0x339b7ecb8a72ceddd63855544ceedb623b7155d1 |
-| RecurringAlarmClockAssistant | 0x5505e0c7d69069890e9c2617803cd647fa60ce40 |
-| RecurringPayment | 0xb73ac282f8ac59aeb56317a7db10080b48e96d8f |
-| RecurringPaymentFactory | 0x518633d094e1c0dc8ea211d5e0f92942a2aa26f8 |
-| RecurringPaymentScheduler | 0x20f0caabb6a3a59755cfc29613df9017adc88793 |
+| ListLib | 0xb9bbf33094d8b85e37465dfdd9f8ba591dfbf191 |
+| ListLibTests | 0x95a0e99049c731defb47ff9acb09f57cc79b9b15 |
+| SimpleTask | 0xadd385c8ed4d6c3f295d2bbc2eeb04199ea7e6fa |
+| SimplePayment | 0xbe052bf987c0086a634be02b418e7c231f462472 |
+| DelegatedWallet | 0x7dac8e8303978d940b963e1b42d9549bbc75efd2 |
+| DelegatedWalletFactory | 0xdbe6ca300b5b82a57d3f3e89bdaf88beb25fe35a |
+| DelegatedWalletManager | 0x018185ea01a80cf0dcf937ece592833e80e58add |
+| PaymentDelegate | 0x29cf4cb37f2a6edf1ec062a660b24e794a159d87 |
+| PaymentDelegateFactory | 0xeef868388d898d6245e073285443628b17f735fa |
+| RecurringAlarmClock | 0x593a45ce4c4b95fa2778dc5907dc0a2a0ca33c6c |
+| RecurringAlarmClockFactory | 0x88d2af7fb9bc68f059f42ae3ba08153dfc87a309 |
+| RecurringAlarmClockAssistant | 0x73dad50ad210c719733f8938e32c958d7cef5dcb |
+| RecurringPayment | 0xaae8dcced5ece8b8e50d522b97e23cf1b6f72a3d |
+| RecurringPaymentFactory | 0x57630c57e99e852dc3878847f9cabe54d7385dd3 |
+| RecurringPaymentScheduler | 0x685cd117dcbcc6d968f07544f3095ca8a7e7bc4a |
 
 ### Main Ethereum Network
 

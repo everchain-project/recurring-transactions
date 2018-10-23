@@ -21,6 +21,8 @@ contract IPaymentDelegate {
 }
 
 contract ITask {
+    address public factory;
+    address public executor;
     function cancel() public;
 }
 
@@ -36,8 +38,4 @@ contract IRecurringAlarmClock is IPayment {
     uint public currentInterval;
     uint public maximumIntervals;
     ITask public task;
-}
-
-contract IRecurringPayment is IPayment {
-    IRecurringAlarmClock public alarmClock;
 }

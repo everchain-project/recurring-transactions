@@ -41,25 +41,16 @@ var EAC_KOVAN = {
 };
 
 module.exports = function(deployer, network, accounts) {
+    
+    var owner = accounts[0];
     var EthereumAlarmClock;
-
     if(network == "kovan")
         EthereumAlarmClock = EAC_KOVAN.requestFactory;
     else
         EthereumAlarmClock = RequestFactory.address;
 
     deployer.deploy(MiniMeTokenFactory, {overwrite: false})
-    .then(() => deployer.deploy(
-        MiniMeToken, 
-        MiniMeTokenFactory.address, 
-        '0x0', 
-        0, 
-        'Test Token', 
-        18, 
-        'tkn', 
-        true,
-        {overwrite: false}
-    ))
+    .then(() => deployer.deploy(MiniMeToken, MiniMeTokenFactory.address, '0x0', 0, 'Test Token', 18, 'tkn', true, {overwrite: false}))
     .then(() => deployer.deploy(ListLib, {overwrite: false}))
     .then(() => {
         deployer.link(ListLib, ListLibTests);
@@ -69,19 +60,32 @@ module.exports = function(deployer, network, accounts) {
 
         return deployer.deploy(ListLibTests, {overwrite: false});
     })
-    .then(() => deployer.deploy(DelegatedWallet, {overwrite: false}))
-    .then(() => deployer.deploy(DelegatedWalletFactory, DelegatedWallet.address, {overwrite: false}))
-    .then(() => deployer.deploy(PaymentDelegate, {overwrite: false}))
-    .then(() => deployer.deploy(PaymentDelegateFactory, PaymentDelegate.address, {overwrite: false}))
     .then(() => deployer.deploy(SimpleTask, {overwrite: false}))
     .then(() => deployer.deploy(SimplePayment, {overwrite: false}))
-    .then(() => deployer.deploy(RecurringAlarmClock, {overwrite: false}))
-    .then(() => deployer.deploy(RecurringAlarmClockFactory, EthereumAlarmClock, RecurringAlarmClock.address,{overwrite: false}))
-    .then(() => deployer.deploy(RecurringAlarmClockAssistant, accounts[9], RecurringAlarmClockFactory.address, {overwrite: false}))
-    .then(() => deployer.deploy(RecurringPayment, {overwrite: false}))
-    .then(() => deployer.deploy(RecurringPaymentFactory, RecurringPayment.address, {overwrite: false}))
-    .then(() => deployer.deploy(RecurringPaymentScheduler, RecurringAlarmClockAssistant.address, RecurringPaymentFactory.address,{overwrite: false}))
-    .then(function(){
-        console.log("Finished deploying contracts");
-    });
+    .then(() => deployer.deploy(DelegatedWallet, {overwrite: false}))
+    .then(() => deployer.deploy(DelegatedWalletFactory, DelegatedWallet.address, {overwrite: false}))
+    .then(() => deployer.deploy(DelegatedWalletManager, DelegatedWalletFactory.address, {overwrite: true}))
+    .then(() => deployer.deploy(PaymentDelegate, {overwrite: true}))
+    .then(() => deployer.deploy(PaymentDelegateFactory, PaymentDelegate.address, {overwrite: true}))
+    .then(() => deployer.deploy(RecurringAlarmClock, {overwrite: true}))
+    .then(() => deployer.deploy(RecurringAlarmClockFactory, EthereumAlarmClock, RecurringAlarmClock.address, {overwrite: true}))
+    .then(() => deployer.deploy(RecurringAlarmClockAssistant, accounts[9], RecurringAlarmClockFactory.address, {overwrite: true}))
+    .then(() => deployer.deploy(RecurringPayment, {overwrite: true}))
+    .then(() => deployer.deploy(RecurringPaymentFactory, RecurringPayment.address, {overwrite: true}))
+    .then(() => deployer.deploy(RecurringPaymentScheduler, RecurringAlarmClockAssistant.address, RecurringPaymentFactory.address, {overwrite: true}))
+    .then(() => PaymentDelegate.deployed())
+    .then(instance => {
+        instance.initialize(owner, {from: owner})
+        .then(tx => {
+            return instance.addScheduler(RecurringPaymentScheduler.address, {from: owner})
+        })
+        .then(tx => {
+            console.log("Finished deploying contracts");
+        })
+        .catch(err => {
+            // already initialized
+            console.log("Finished deploying contracts");
+        })
+    })
+
 };

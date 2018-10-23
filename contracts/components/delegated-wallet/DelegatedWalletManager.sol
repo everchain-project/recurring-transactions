@@ -19,8 +19,14 @@ contract DelegatedWalletManager {
             emit AddWallet_event(msg.sender, wallet);
     }
 
-    function addWallet (address[] delegates) public returns (bool success) {
-        DelegatedWallet wallet = DefaultFactory.createWallet();
+    function addWallet (DelegatedWalletFactory customFactory, address[] delegates) public returns (bool success) {
+        DelegatedWalletFactory Factory;
+        if(customFactory == address(0x0))
+            Factory = DefaultFactory;
+        else
+            Factory = customFactory;
+            
+        DelegatedWallet wallet = Factory.createWallet();
         for(uint i = 0; i < delegates.length; i++)
             wallet.addDelegate(delegates[i]);
         

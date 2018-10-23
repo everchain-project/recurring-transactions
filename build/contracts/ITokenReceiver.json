@@ -11,7 +11,7 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.4.23;\r\n\r\ncontract ITokenReceiver {\r\n    function () public payable;\r\n}\r\n\r\ncontract ITokenSender {\r\n    function transfer (address token, address recipient, uint amount) public returns (bool);\r\n}\r\n\r\n// implements a transfer function only callable by delegates\r\ncontract IDelegatedWallet is ITokenSender, ITokenReceiver {\r\n    function isDelegate (address _address) public view returns (bool);\r\n}\r\n\r\ncontract IPaymentDelegate {\r\n    function execute () public returns (bool);\r\n    function schedule (IPayment payment) public;\r\n    function unschedule (IPayment payment) public;\r\n    function unschedule() public;\r\n}\r\n\r\ncontract ITask {\r\n    function cancel() public;\r\n}\r\n\r\ncontract IPayment is ITask {\r\n    IPaymentDelegate public delegate;\r\n    IDelegatedWallet public wallet;\r\n    address public recipient;\r\n    address public token;\r\n    function amount () public view returns (uint);\r\n}\r\n\r\ncontract IRecurringAlarmClock is IPayment {\r\n    uint public currentInterval;\r\n    uint public maximumIntervals;\r\n    ITask public task;\r\n}\r\n\r\ncontract IRecurringPayment is IPayment {\r\n    IRecurringAlarmClock public alarmClock;\r\n}\r\n",
+  "source": "pragma solidity ^0.4.23;\r\n\r\ncontract ITokenReceiver {\r\n    function () public payable;\r\n}\r\n\r\ncontract ITokenSender {\r\n    function transfer (address token, address recipient, uint amount) public returns (bool);\r\n}\r\n\r\n// implements a transfer function only callable by delegates\r\ncontract IDelegatedWallet is ITokenSender, ITokenReceiver {\r\n    function isDelegate (address _address) public view returns (bool);\r\n}\r\n\r\ncontract IPaymentDelegate {\r\n    function execute () public returns (bool);\r\n    function schedule (IPayment payment) public;\r\n    function unschedule (IPayment payment) public;\r\n    function unschedule() public;\r\n}\r\n\r\ncontract ITask {\r\n    address public factory;\r\n    address public executor;\r\n    function cancel() public;\r\n}\r\n\r\ncontract IPayment is ITask {\r\n    IPaymentDelegate public delegate;\r\n    IDelegatedWallet public wallet;\r\n    address public recipient;\r\n    address public token;\r\n    function amount () public view returns (uint);\r\n}\r\n\r\ncontract IRecurringAlarmClock is IPayment {\r\n    uint public currentInterval;\r\n    uint public maximumIntervals;\r\n    ITask public task;\r\n}\r\n",
   "sourcePath": "C:\\Users\\My\\Documents\\GitHub\\everchain-project\\recurring-alarm-clock\\contracts\\Interfaces.sol",
   "ast": {
     "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/Interfaces.sol",
@@ -20,19 +20,16 @@
         29
       ],
       "IPayment": [
-        68
+        72
       ],
       "IPaymentDelegate": [
         48
       ],
       "IRecurringAlarmClock": [
-        77
-      ],
-      "IRecurringPayment": [
-        82
+        81
       ],
       "ITask": [
-        52
+        56
       ],
       "ITokenReceiver": [
         5
@@ -41,7 +38,7 @@
         17
       ]
     },
-    "id": 83,
+    "id": 82,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -98,7 +95,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 83,
+        "scope": 82,
         "src": "28:61:0"
       },
       {
@@ -250,7 +247,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 83,
+        "scope": 82,
         "src": "93:120:0"
       },
       {
@@ -392,7 +389,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 83,
+        "scope": 82,
         "src": "279:134:0"
       },
       {
@@ -488,7 +485,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IPayment_$68",
+                    "typeIdentifier": "t_contract$_IPayment_$72",
                     "typeString": "contract IPayment"
                   },
                   "typeName": {
@@ -496,10 +493,10 @@
                     "id": 35,
                     "name": "IPayment",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 68,
+                    "referencedDeclaration": 72,
                     "src": "517:8:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IPayment_$68",
+                      "typeIdentifier": "t_contract$_IPayment_$72",
                       "typeString": "contract IPayment"
                     }
                   },
@@ -546,7 +543,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IPayment_$68",
+                    "typeIdentifier": "t_contract$_IPayment_$72",
                     "typeString": "contract IPayment"
                   },
                   "typeName": {
@@ -554,10 +551,10 @@
                     "id": 40,
                     "name": "IPayment",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 68,
+                    "referencedDeclaration": 72,
                     "src": "569:8:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IPayment_$68",
+                      "typeIdentifier": "t_contract$_IPayment_$72",
                       "typeString": "contract IPayment"
                     }
                   },
@@ -610,7 +607,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 83,
+        "scope": 82,
         "src": "417:215:0"
       },
       {
@@ -619,17 +616,69 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 52,
+        "id": 56,
         "linearizedBaseContracts": [
-          52
+          56
         ],
         "name": "ITask",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
+            "constant": false,
+            "id": 50,
+            "name": "factory",
+            "nodeType": "VariableDeclaration",
+            "scope": 56,
+            "src": "658:22:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 49,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "658:7:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 52,
+            "name": "executor",
+            "nodeType": "VariableDeclaration",
+            "scope": 56,
+            "src": "687:23:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 51,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "687:7:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
             "body": null,
             "documentation": null,
-            "id": 51,
+            "id": 55,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -637,27 +686,27 @@
             "name": "cancel",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 49,
+              "id": 53,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "673:2:0"
+              "src": "732:2:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 50,
+              "id": 54,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "682:0:0"
+              "src": "741:0:0"
             },
-            "scope": 52,
-            "src": "658:25:0",
+            "scope": 56,
+            "src": "717:25:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 83,
-        "src": "636:50:0"
+        "scope": 82,
+        "src": "636:109:0"
       },
       {
         "baseContracts": [
@@ -665,42 +714,42 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 53,
+              "id": 57,
               "name": "ITask",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 52,
-              "src": "711:5:0",
+              "referencedDeclaration": 56,
+              "src": "770:5:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ITask_$52",
+                "typeIdentifier": "t_contract$_ITask_$56",
                 "typeString": "contract ITask"
               }
             },
-            "id": 54,
+            "id": 58,
             "nodeType": "InheritanceSpecifier",
-            "src": "711:5:0"
+            "src": "770:5:0"
           }
         ],
         "contractDependencies": [
-          52
+          56
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 68,
+        "id": 72,
         "linearizedBaseContracts": [
-          68,
-          52
+          72,
+          56
         ],
         "name": "IPayment",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 56,
+            "id": 60,
             "name": "delegate",
             "nodeType": "VariableDeclaration",
-            "scope": 68,
-            "src": "724:32:0",
+            "scope": 72,
+            "src": "783:32:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -709,11 +758,11 @@
             },
             "typeName": {
               "contractScope": null,
-              "id": 55,
+              "id": 59,
               "name": "IPaymentDelegate",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 48,
-              "src": "724:16:0",
+              "src": "783:16:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_IPaymentDelegate_$48",
                 "typeString": "contract IPaymentDelegate"
@@ -724,11 +773,11 @@
           },
           {
             "constant": false,
-            "id": 58,
+            "id": 62,
             "name": "wallet",
             "nodeType": "VariableDeclaration",
-            "scope": 68,
-            "src": "763:30:0",
+            "scope": 72,
+            "src": "822:30:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -737,11 +786,11 @@
             },
             "typeName": {
               "contractScope": null,
-              "id": 57,
+              "id": 61,
               "name": "IDelegatedWallet",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 29,
-              "src": "763:16:0",
+              "src": "822:16:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_IDelegatedWallet_$29",
                 "typeString": "contract IDelegatedWallet"
@@ -752,11 +801,11 @@
           },
           {
             "constant": false,
-            "id": 60,
+            "id": 64,
             "name": "recipient",
             "nodeType": "VariableDeclaration",
-            "scope": 68,
-            "src": "800:24:0",
+            "scope": 72,
+            "src": "859:24:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -764,10 +813,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 59,
+              "id": 63,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "800:7:0",
+              "src": "859:7:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -778,11 +827,11 @@
           },
           {
             "constant": false,
-            "id": 62,
+            "id": 66,
             "name": "token",
             "nodeType": "VariableDeclaration",
-            "scope": 68,
-            "src": "831:20:0",
+            "scope": 72,
+            "src": "890:20:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -790,10 +839,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 61,
+              "id": 65,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "831:7:0",
+              "src": "890:7:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -805,7 +854,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 67,
+            "id": 71,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -813,23 +862,23 @@
             "name": "amount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 63,
+              "id": 67,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "874:2:0"
+              "src": "933:2:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 66,
+              "id": 70,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 65,
+                  "id": 69,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 67,
-                  "src": "898:4:0",
+                  "scope": 71,
+                  "src": "957:4:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -837,10 +886,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 64,
+                    "id": 68,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "898:4:0",
+                    "src": "957:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -850,17 +899,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "897:6:0"
+              "src": "956:6:0"
             },
-            "scope": 68,
-            "src": "858:46:0",
+            "scope": 72,
+            "src": "917:46:0",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 83,
-        "src": "690:217:0"
+        "scope": 82,
+        "src": "749:217:0"
       },
       {
         "baseContracts": [
@@ -868,44 +917,44 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 69,
+              "id": 73,
               "name": "IPayment",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 68,
-              "src": "944:8:0",
+              "referencedDeclaration": 72,
+              "src": "1003:8:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IPayment_$68",
+                "typeIdentifier": "t_contract$_IPayment_$72",
                 "typeString": "contract IPayment"
               }
             },
-            "id": 70,
+            "id": 74,
             "nodeType": "InheritanceSpecifier",
-            "src": "944:8:0"
+            "src": "1003:8:0"
           }
         ],
         "contractDependencies": [
-          52,
-          68
+          56,
+          72
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 77,
+        "id": 81,
         "linearizedBaseContracts": [
-          77,
-          68,
-          52
+          81,
+          72,
+          56
         ],
         "name": "IRecurringAlarmClock",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 72,
+            "id": 76,
             "name": "currentInterval",
             "nodeType": "VariableDeclaration",
-            "scope": 77,
-            "src": "960:27:0",
+            "scope": 81,
+            "src": "1019:27:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -913,10 +962,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 71,
+              "id": 75,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "960:4:0",
+              "src": "1019:4:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -927,11 +976,11 @@
           },
           {
             "constant": false,
-            "id": 74,
+            "id": 78,
             "name": "maximumIntervals",
             "nodeType": "VariableDeclaration",
-            "scope": 77,
-            "src": "994:28:0",
+            "scope": 81,
+            "src": "1053:28:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -939,10 +988,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 73,
+              "id": 77,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "994:4:0",
+              "src": "1053:4:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -953,26 +1002,26 @@
           },
           {
             "constant": false,
-            "id": 76,
+            "id": 80,
             "name": "task",
             "nodeType": "VariableDeclaration",
-            "scope": 77,
-            "src": "1029:17:0",
+            "scope": 81,
+            "src": "1088:17:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_ITask_$52",
+              "typeIdentifier": "t_contract$_ITask_$56",
               "typeString": "contract ITask"
             },
             "typeName": {
               "contractScope": null,
-              "id": 75,
+              "id": 79,
               "name": "ITask",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 52,
-              "src": "1029:5:0",
+              "referencedDeclaration": 56,
+              "src": "1088:5:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ITask_$52",
+                "typeIdentifier": "t_contract$_ITask_$56",
                 "typeString": "contract ITask"
               }
             },
@@ -980,80 +1029,11 @@
             "visibility": "public"
           }
         ],
-        "scope": 83,
-        "src": "911:139:0"
-      },
-      {
-        "baseContracts": [
-          {
-            "arguments": null,
-            "baseName": {
-              "contractScope": null,
-              "id": 78,
-              "name": "IPayment",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 68,
-              "src": "1084:8:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IPayment_$68",
-                "typeString": "contract IPayment"
-              }
-            },
-            "id": 79,
-            "nodeType": "InheritanceSpecifier",
-            "src": "1084:8:0"
-          }
-        ],
-        "contractDependencies": [
-          52,
-          68
-        ],
-        "contractKind": "contract",
-        "documentation": null,
-        "fullyImplemented": false,
-        "id": 82,
-        "linearizedBaseContracts": [
-          82,
-          68,
-          52
-        ],
-        "name": "IRecurringPayment",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "constant": false,
-            "id": 81,
-            "name": "alarmClock",
-            "nodeType": "VariableDeclaration",
-            "scope": 82,
-            "src": "1100:38:0",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IRecurringAlarmClock_$77",
-              "typeString": "contract IRecurringAlarmClock"
-            },
-            "typeName": {
-              "contractScope": null,
-              "id": 80,
-              "name": "IRecurringAlarmClock",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 77,
-              "src": "1100:20:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IRecurringAlarmClock_$77",
-                "typeString": "contract IRecurringAlarmClock"
-              }
-            },
-            "value": null,
-            "visibility": "public"
-          }
-        ],
-        "scope": 83,
-        "src": "1054:88:0"
+        "scope": 82,
+        "src": "970:139:0"
       }
     ],
-    "src": "0:1144:0"
+    "src": "0:1111:0"
   },
   "legacyAST": {
     "absolutePath": "/C/Users/My/Documents/GitHub/everchain-project/recurring-alarm-clock/contracts/Interfaces.sol",
@@ -1062,19 +1042,16 @@
         29
       ],
       "IPayment": [
-        68
+        72
       ],
       "IPaymentDelegate": [
         48
       ],
       "IRecurringAlarmClock": [
-        77
-      ],
-      "IRecurringPayment": [
-        82
+        81
       ],
       "ITask": [
-        52
+        56
       ],
       "ITokenReceiver": [
         5
@@ -1083,7 +1060,7 @@
         17
       ]
     },
-    "id": 83,
+    "id": 82,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -1140,7 +1117,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 83,
+        "scope": 82,
         "src": "28:61:0"
       },
       {
@@ -1292,7 +1269,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 83,
+        "scope": 82,
         "src": "93:120:0"
       },
       {
@@ -1434,7 +1411,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 83,
+        "scope": 82,
         "src": "279:134:0"
       },
       {
@@ -1530,7 +1507,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IPayment_$68",
+                    "typeIdentifier": "t_contract$_IPayment_$72",
                     "typeString": "contract IPayment"
                   },
                   "typeName": {
@@ -1538,10 +1515,10 @@
                     "id": 35,
                     "name": "IPayment",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 68,
+                    "referencedDeclaration": 72,
                     "src": "517:8:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IPayment_$68",
+                      "typeIdentifier": "t_contract$_IPayment_$72",
                       "typeString": "contract IPayment"
                     }
                   },
@@ -1588,7 +1565,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IPayment_$68",
+                    "typeIdentifier": "t_contract$_IPayment_$72",
                     "typeString": "contract IPayment"
                   },
                   "typeName": {
@@ -1596,10 +1573,10 @@
                     "id": 40,
                     "name": "IPayment",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 68,
+                    "referencedDeclaration": 72,
                     "src": "569:8:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IPayment_$68",
+                      "typeIdentifier": "t_contract$_IPayment_$72",
                       "typeString": "contract IPayment"
                     }
                   },
@@ -1652,7 +1629,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 83,
+        "scope": 82,
         "src": "417:215:0"
       },
       {
@@ -1661,17 +1638,69 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 52,
+        "id": 56,
         "linearizedBaseContracts": [
-          52
+          56
         ],
         "name": "ITask",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
+            "constant": false,
+            "id": 50,
+            "name": "factory",
+            "nodeType": "VariableDeclaration",
+            "scope": 56,
+            "src": "658:22:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 49,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "658:7:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 52,
+            "name": "executor",
+            "nodeType": "VariableDeclaration",
+            "scope": 56,
+            "src": "687:23:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 51,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "687:7:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
             "body": null,
             "documentation": null,
-            "id": 51,
+            "id": 55,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1679,27 +1708,27 @@
             "name": "cancel",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 49,
+              "id": 53,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "673:2:0"
+              "src": "732:2:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 50,
+              "id": 54,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "682:0:0"
+              "src": "741:0:0"
             },
-            "scope": 52,
-            "src": "658:25:0",
+            "scope": 56,
+            "src": "717:25:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 83,
-        "src": "636:50:0"
+        "scope": 82,
+        "src": "636:109:0"
       },
       {
         "baseContracts": [
@@ -1707,42 +1736,42 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 53,
+              "id": 57,
               "name": "ITask",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 52,
-              "src": "711:5:0",
+              "referencedDeclaration": 56,
+              "src": "770:5:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ITask_$52",
+                "typeIdentifier": "t_contract$_ITask_$56",
                 "typeString": "contract ITask"
               }
             },
-            "id": 54,
+            "id": 58,
             "nodeType": "InheritanceSpecifier",
-            "src": "711:5:0"
+            "src": "770:5:0"
           }
         ],
         "contractDependencies": [
-          52
+          56
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 68,
+        "id": 72,
         "linearizedBaseContracts": [
-          68,
-          52
+          72,
+          56
         ],
         "name": "IPayment",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 56,
+            "id": 60,
             "name": "delegate",
             "nodeType": "VariableDeclaration",
-            "scope": 68,
-            "src": "724:32:0",
+            "scope": 72,
+            "src": "783:32:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1751,11 +1780,11 @@
             },
             "typeName": {
               "contractScope": null,
-              "id": 55,
+              "id": 59,
               "name": "IPaymentDelegate",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 48,
-              "src": "724:16:0",
+              "src": "783:16:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_IPaymentDelegate_$48",
                 "typeString": "contract IPaymentDelegate"
@@ -1766,11 +1795,11 @@
           },
           {
             "constant": false,
-            "id": 58,
+            "id": 62,
             "name": "wallet",
             "nodeType": "VariableDeclaration",
-            "scope": 68,
-            "src": "763:30:0",
+            "scope": 72,
+            "src": "822:30:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1779,11 +1808,11 @@
             },
             "typeName": {
               "contractScope": null,
-              "id": 57,
+              "id": 61,
               "name": "IDelegatedWallet",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 29,
-              "src": "763:16:0",
+              "src": "822:16:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_contract$_IDelegatedWallet_$29",
                 "typeString": "contract IDelegatedWallet"
@@ -1794,11 +1823,11 @@
           },
           {
             "constant": false,
-            "id": 60,
+            "id": 64,
             "name": "recipient",
             "nodeType": "VariableDeclaration",
-            "scope": 68,
-            "src": "800:24:0",
+            "scope": 72,
+            "src": "859:24:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1806,10 +1835,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 59,
+              "id": 63,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "800:7:0",
+              "src": "859:7:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -1820,11 +1849,11 @@
           },
           {
             "constant": false,
-            "id": 62,
+            "id": 66,
             "name": "token",
             "nodeType": "VariableDeclaration",
-            "scope": 68,
-            "src": "831:20:0",
+            "scope": 72,
+            "src": "890:20:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1832,10 +1861,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 61,
+              "id": 65,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "831:7:0",
+              "src": "890:7:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -1847,7 +1876,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 67,
+            "id": 71,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1855,23 +1884,23 @@
             "name": "amount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 63,
+              "id": 67,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "874:2:0"
+              "src": "933:2:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 66,
+              "id": 70,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 65,
+                  "id": 69,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 67,
-                  "src": "898:4:0",
+                  "scope": 71,
+                  "src": "957:4:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1879,10 +1908,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 64,
+                    "id": 68,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "898:4:0",
+                    "src": "957:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1892,17 +1921,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "897:6:0"
+              "src": "956:6:0"
             },
-            "scope": 68,
-            "src": "858:46:0",
+            "scope": 72,
+            "src": "917:46:0",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 83,
-        "src": "690:217:0"
+        "scope": 82,
+        "src": "749:217:0"
       },
       {
         "baseContracts": [
@@ -1910,44 +1939,44 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 69,
+              "id": 73,
               "name": "IPayment",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 68,
-              "src": "944:8:0",
+              "referencedDeclaration": 72,
+              "src": "1003:8:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IPayment_$68",
+                "typeIdentifier": "t_contract$_IPayment_$72",
                 "typeString": "contract IPayment"
               }
             },
-            "id": 70,
+            "id": 74,
             "nodeType": "InheritanceSpecifier",
-            "src": "944:8:0"
+            "src": "1003:8:0"
           }
         ],
         "contractDependencies": [
-          52,
-          68
+          56,
+          72
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 77,
+        "id": 81,
         "linearizedBaseContracts": [
-          77,
-          68,
-          52
+          81,
+          72,
+          56
         ],
         "name": "IRecurringAlarmClock",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 72,
+            "id": 76,
             "name": "currentInterval",
             "nodeType": "VariableDeclaration",
-            "scope": 77,
-            "src": "960:27:0",
+            "scope": 81,
+            "src": "1019:27:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1955,10 +1984,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 71,
+              "id": 75,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "960:4:0",
+              "src": "1019:4:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1969,11 +1998,11 @@
           },
           {
             "constant": false,
-            "id": 74,
+            "id": 78,
             "name": "maximumIntervals",
             "nodeType": "VariableDeclaration",
-            "scope": 77,
-            "src": "994:28:0",
+            "scope": 81,
+            "src": "1053:28:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1981,10 +2010,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 73,
+              "id": 77,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "994:4:0",
+              "src": "1053:4:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1995,26 +2024,26 @@
           },
           {
             "constant": false,
-            "id": 76,
+            "id": 80,
             "name": "task",
             "nodeType": "VariableDeclaration",
-            "scope": 77,
-            "src": "1029:17:0",
+            "scope": 81,
+            "src": "1088:17:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_ITask_$52",
+              "typeIdentifier": "t_contract$_ITask_$56",
               "typeString": "contract ITask"
             },
             "typeName": {
               "contractScope": null,
-              "id": 75,
+              "id": 79,
               "name": "ITask",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 52,
-              "src": "1029:5:0",
+              "referencedDeclaration": 56,
+              "src": "1088:5:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ITask_$52",
+                "typeIdentifier": "t_contract$_ITask_$56",
                 "typeString": "contract ITask"
               }
             },
@@ -2022,80 +2051,11 @@
             "visibility": "public"
           }
         ],
-        "scope": 83,
-        "src": "911:139:0"
-      },
-      {
-        "baseContracts": [
-          {
-            "arguments": null,
-            "baseName": {
-              "contractScope": null,
-              "id": 78,
-              "name": "IPayment",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 68,
-              "src": "1084:8:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IPayment_$68",
-                "typeString": "contract IPayment"
-              }
-            },
-            "id": 79,
-            "nodeType": "InheritanceSpecifier",
-            "src": "1084:8:0"
-          }
-        ],
-        "contractDependencies": [
-          52,
-          68
-        ],
-        "contractKind": "contract",
-        "documentation": null,
-        "fullyImplemented": false,
-        "id": 82,
-        "linearizedBaseContracts": [
-          82,
-          68,
-          52
-        ],
-        "name": "IRecurringPayment",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "constant": false,
-            "id": 81,
-            "name": "alarmClock",
-            "nodeType": "VariableDeclaration",
-            "scope": 82,
-            "src": "1100:38:0",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IRecurringAlarmClock_$77",
-              "typeString": "contract IRecurringAlarmClock"
-            },
-            "typeName": {
-              "contractScope": null,
-              "id": 80,
-              "name": "IRecurringAlarmClock",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 77,
-              "src": "1100:20:0",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IRecurringAlarmClock_$77",
-                "typeString": "contract IRecurringAlarmClock"
-              }
-            },
-            "value": null,
-            "visibility": "public"
-          }
-        ],
-        "scope": 83,
-        "src": "1054:88:0"
+        "scope": 82,
+        "src": "970:139:0"
       }
     ],
-    "src": "0:1144:0"
+    "src": "0:1111:0"
   },
   "compiler": {
     "name": "solc",
@@ -2103,5 +2063,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-10-16T21:26:29.833Z"
+  "updatedAt": "2018-10-23T06:59:14.669Z"
 }

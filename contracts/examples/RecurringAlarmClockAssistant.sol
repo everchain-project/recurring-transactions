@@ -1,12 +1,13 @@
 pragma solidity ^0.4.23;
 
+import "../external/Owned.sol";
 import "../components/recurring-alarm-clock/RecurringAlarmClockFactory.sol";
 
-contract RecurringAlarmClockAssistant {
+contract RecurringAlarmClockAssistant is Owned {
     
     RecurringAlarmClockFactory public Factory;
     address public priorityCaller;
-    uint public safetyMultiplier = 10^18;
+    uint public safetyMultiplier = 1;
 
     constructor (
         address everchain, 
@@ -51,6 +52,10 @@ contract RecurringAlarmClockAssistant {
             recurringAlarmClockOptions,
             ethereumAlarmClockOptions
         );
+    }
+
+    function updateSafetyMultiplier(uint newSafetyMultiplier) public onlyOwner {
+        safetyMultiplier = newSafetyMultiplier;
     }
 
 }

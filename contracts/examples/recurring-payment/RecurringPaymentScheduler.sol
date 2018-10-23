@@ -45,6 +45,7 @@ contract RecurringPaymentScheduler {
         );
 
         paymentTask = Factory.createRecurringPayment(
+            alarmClock,     // the executor that calls each payment
             delegate,       // the delegate that executes the payment
             wallet,         // supplies delegates that can cancel the task
             token,          // the token to use when making a payment

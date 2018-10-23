@@ -47,7 +47,7 @@ contract PaymentDelegate is Owned, IPaymentDelegate, ITokenSender {
         require(outgoing[payment.wallet()].add(payment), "failed to add payment to wallet payment list");
         require(incoming[payment.recipient()].add(payment), "failed to add payment to recipient payment list");
 
-        emit Schedule_event(msg.sender, payment);
+        emit Schedule_event(msg.sender, payment.wallet(), payment.recipient(), payment);
     }
 
     function unschedule (IPayment payment) public {
@@ -123,7 +123,7 @@ contract PaymentDelegate is Owned, IPaymentDelegate, ITokenSender {
     }
     
     event Payment_event (IPayment indexed payment, uint amount, bool success);
-    event Schedule_event (address indexed scheduler, IPayment payment);
+    event Schedule_event (address indexed scheduler, address indexed wallet, address indexed recipient, IPayment payment);
     event Unschedule_event (address indexed caller, IPayment payment);
 
 }

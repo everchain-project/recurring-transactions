@@ -16,6 +16,7 @@ contract RecurringPaymentFactory is CloneFactory {
     }
 
     function createRecurringPayment (
+        IRecurringAlarmClock alarmClock,
         IPaymentDelegate delegate,
         IDelegatedWallet wallet,
         address token,
@@ -24,8 +25,9 @@ contract RecurringPaymentFactory is CloneFactory {
     ) public returns (RecurringPayment paymentTask) {
         paymentTask = RecurringPayment(createClone(blueprint));
         paymentTask.initialize(
-            delegate,       // the wallet that executes the payment
-            wallet,         // supplies delegates that can cancel the task
+            alarmClock,     // the alarm clock that acts as the executor of the payment
+            delegate,       // the payment delegate that forwards each payment
+            wallet,         // the delegated wallet the payment originates from
             token,          // the token to use when making a payment
             recipient,      // the recipient of the payment
             paymentAmount   // how much of the token to send each payment
