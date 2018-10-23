@@ -1,0 +1,7 @@
+.payment-row {
+    border-radius: 32px;
+    margin: 8px 8px 0px 8px;
+}
+.payment-row:hover {
+    background-color: rgba(33,33,33,0.2);
+}

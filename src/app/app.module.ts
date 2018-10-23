@@ -1,20 +1,40 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { AppComponent } from './app.component';
-import { Web3Service } from './web3/web3.service';
-import { EverchainService } from './everchain/everchain.service';
-import { SidebarComponent, SnackBarPopupComponent, WalletDeployedComponent } from './sidebar/sidebar.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home/home.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatSlideToggleModule, MatSnackBarModule, MatDialogModule, MatToolbarModule, MatInputModule, MatButtonModule, MatFormFieldModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { WalletComponent } from './wallet/wallet.component';
-import { TokenComponent } from './token/token.component';
-import { DelegatesComponent } from './delegates/delegates.component';
-import { TransferComponent } from './transfer/transfer.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { NgModule } from '@angular/core';
+import { 
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule 
+} from '@angular/material';
+
+import { Web3Service } from './services/web3/web3.service';
+import { NameService } from './services/name/name.service';
+
+import { AppComponent } from './components/app/app.component';
+import { DelegatesComponent } from './components/delegates/delegates.component';
+import { HomeComponent } from './components/home/home.component';
+import { TokenComponent } from './components/token/token.component';
+import { SchedulerComponent } from './components/scheduler/scheduler.component';
+import { WalletComponent } from './components/wallet/wallet.component';
+import { SidebarComponent, SnackBarPopupComponent, WalletDeployedComponent } from './components/sidebar/sidebar.component';
+import { DeployWalletComponent } from './components/sidebar/deploy-wallet-dialog/deploy-wallet.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +46,8 @@ import { TransferComponent } from './transfer/transfer.component';
         SnackBarPopupComponent,
         WalletDeployedComponent,
         DelegatesComponent,
-        TransferComponent
+        SchedulerComponent,
+        DeployWalletComponent,
     ],
     imports: [
         BrowserModule,
@@ -35,6 +56,7 @@ import { TransferComponent } from './transfer/transfer.component';
         AppRoutingModule,
         BrowserAnimationsModule,
         LayoutModule,
+        MatDialogModule,
         MatSelectModule,
         MatDatepickerModule,
         MatNativeDateModule,
@@ -54,18 +76,20 @@ import { TransferComponent } from './transfer/transfer.component';
         FlexLayoutModule,
     ],
     exports: [
-        MatNativeDateModule
+        MatNativeDateModule,
+        MatDialogModule,
     ],
     providers: [
         Web3Service,
-        EverchainService
+        NameService,
     ],
     bootstrap: [
-        AppComponent
+        AppComponent,
     ],
     entryComponents: [
         SnackBarPopupComponent,
-        WalletDeployedComponent
+        WalletDeployedComponent,
+        DeployWalletComponent,
     ],
 })
 export class AppModule {}

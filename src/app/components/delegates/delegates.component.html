@@ -1,0 +1,7 @@
+<div *ngIf="initialized" class="padding" fxLayout="column">
+    <h5>Delegates</h5>
+    <div *ngFor="let delegateAddress of wallet.delegates" fxLayout="column" style="padding-bottom: 8px;">
+        <small>{{getDelegateName(delegateAddress)}}</small>
+        <small style="color: gray">{{delegateAddress}}</small>
+    </div>
+</div>
