@@ -1,6 +1,6 @@
 pragma solidity ^0.4.23;
 
-import "../libraries/ListLib.sol";
+import "./ListLib.sol";
 
 contract ListLibTests {
 

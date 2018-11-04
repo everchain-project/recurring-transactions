@@ -49,24 +49,40 @@ library ListLib {
         return true;
     }
     
+    /// @notice Fetches the length of the list
     /// @param list The storage that holds the list
     /// @return The length of the 'list'
     function getLength (AddressList storage list) public constant returns (uint) {
         return list.array.length;
     }
     
-     function contains (AddressList storage list, address value) public view returns (bool) {
+    /// @notice Fetches the length of the list
+    /// @param list The storage that holds the list
+    /// @param value The value to search for
+    /// @return True if the value exists in the list
+    function contains (AddressList storage list, address value) public view returns (bool) {
         return list.exists[value];
     }
 
+    /// @notice Fetches the address of a given index
+    /// @param list The storage that holds the list
+    /// @param i The index to fetch
+    /// @return The address at index 'i'
     function index (AddressList storage list, uint i) public view returns (address) {
         return list.array[i];
     }
 
+    /// @notice Fetches the index of a given address
+    /// @param list The storage that holds the list
+    /// @param value The address to fetch the index of
+    /// @return The index of 'value'
     function indexOf (AddressList storage list, address value) public view returns (uint) {
         return list.getIndex[value];
     }
 
+    /// @notice Fetches the list of addresses
+    /// @param list The storage that holds the list
+    /// @return The list of addresses
     function get (AddressList storage list) public view returns (address[]) {
         return list.array;
     }
