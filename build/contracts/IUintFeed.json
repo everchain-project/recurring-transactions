@@ -1,66 +1,10 @@
 {
-  "contractName": "IPayment",
+  "contractName": "IUintFeed",
   "abi": [
     {
       "constant": true,
       "inputs": [],
-      "name": "wallet",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "recipient",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "delegate",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "token",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "amount",
+      "name": "read",
       "outputs": [
         {
           "name": "",
@@ -1448,7 +1392,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.0-beta.2",
-  "updatedAt": "2018-11-25T22:53:41.256Z",
+  "updatedAt": "2018-11-25T22:53:41.266Z",
   "devdoc": {
     "methods": {}
   },

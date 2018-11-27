@@ -1,4 +1,4 @@
-pragma solidity 0.4.24;
+pragma solidity ^0.5.0;
 
 contract TransactionRequestInterface {
     
@@ -8,11 +8,11 @@ contract TransactionRequestInterface {
     function claim() public payable returns (bool);
 
     // Proxy function
-    function proxy(address recipient, bytes callData) public payable returns (bool);
+    function proxy(address recipient, bytes memory callData) public payable returns (bool);
 
     // Data accessors
-    function requestData() public view returns (address[6], bool[3], uint[15], uint8[1]);
-    function callData() public view returns (bytes);
+    function requestData() public view returns (address[6] memory, bool[3] memory, uint[15] memory, uint8[1] memory);
+    function callData() public view returns (bytes memory);
 
     // Pull mechanisms for payments.
     function refundClaimDeposit() public returns (bool);

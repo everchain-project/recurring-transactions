@@ -1,74 +1,13 @@
 {
-  "contractName": "IPayment",
+  "contractName": "ICancellable",
   "abi": [
     {
-      "constant": true,
+      "constant": false,
       "inputs": [],
-      "name": "wallet",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
+      "name": "cancel",
+      "outputs": [],
       "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "recipient",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "delegate",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "token",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "amount",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
       "type": "function"
     }
   ],

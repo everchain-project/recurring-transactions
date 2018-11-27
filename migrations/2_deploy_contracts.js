@@ -1,51 +1,68 @@
-var MiniMeTokenFactory = artifacts.require("MiniMeTokenFactory");
-var MiniMeToken = artifacts.require("MiniMeToken");
+// Imported
+var EthereumAlarmClock = artifacts.require("RequestFactory");
 
+// Libraries
+var DateTimeLib = artifacts.require("BokkyPooBahsDateTimeLibrary");
 var ListLib = artifacts.require("ListLib");
-var ListLibTests = artifacts.require("ListLibTests");
 
-var DelegatedWallet = artifacts.require("DelegatedWallet");
-var DelegatedWalletFactory = artifacts.require("DelegatedWalletFactory");
-var DelegatedWalletManager = artifacts.require("DelegatedWalletManager");
-
-var PaymentDelegate = artifacts.require("PaymentDelegate");
-var PaymentDelegateFactory = artifacts.require("PaymentDelegateFactory");
-
-var SimpleTask = artifacts.require("SimpleTask");
-var SimplePayment = artifacts.require("SimplePayment");
-var RequestFactory = artifacts.require("RequestFactory");
+// Platform
+var GasPriceOracle = artifacts.require("GasPriceOracle");
 var RecurringAlarmClock = artifacts.require("RecurringAlarmClock");
 var RecurringAlarmClockFactory = artifacts.require("RecurringAlarmClockFactory");
-var RecurringAlarmClockAssistant = artifacts.require("RecurringAlarmClockAssistant");
+var PaymentDelegate = artifacts.require("PaymentDelegate");
+// var PaymentDelegateFactory = artifacts.require("PaymentDelegateFactory");
 
-var RecurringPayment = artifacts.require("RecurringPayment");
-var RecurringPaymentFactory = artifacts.require("RecurringPaymentFactory");
-var RecurringPaymentScheduler = artifacts.require("RecurringPaymentScheduler");
+// Tests
+var ExampleTask = artifacts.require("ExampleTask");
+var OneTimePayment = artifacts.require("OneTimePayment");
 
-var EAC_KOVAN = {
-    baseScheduler: "0xf9d49fcc9a9c3bf792fcee05cdbcc09188700db5",
-    blockScheduler: "0x74e3412a7f95b810cb86dfb380ff084471b70821",
-    claimLib: "0x91b74fe18472815b39bd1719f6416e7a3d13b669",
-    executionLib: "0x8f10f41122dfc5ac376f0ffada2d6279b4edfefd",
-    iterTools: "0xb2b54d84c61b5a083a9ac2b2f6a70942ae635e1e",
-    mathLib: "0x4fa38929055dc881f656532ff778c501c4be9825",
-    paymentLib: "0xc8c405fede09a9cda5b6ba6b0214070e26311d5e",
-    requestFactory: "0x20e24880b2f9da6c18ea238ac01b4c86de988532",
-    requestLib: "0x5c6f0101c1da5529942112162b6db8af5013ecfe",
-    requestMetaLib: "0xccba4b0187191a040bd9f9e4d00f1dbe49c68aad",
-    requestScheduleLib: "0x2266a08f479c04f8a3a7ae9d01e9ec7f74cbf4d0",
-    safeMath: "0x8e05c79ef74d3893d4ebf7cef77c24780bfda1bc",
-    timestampScheduler: "0x44b28e47fe781eabf8095a2a21449a82a635745b",
-    transactionRequestCore: "0xa33d611a92895a56e38dacaf57c1fc4f54432e28",
-    transactionRecorder: "0x1e856137f325fd5f3729c33cccf13ff0fbde56c4"
-};
+var BANCOR = {
+    gasPriceOracle: {
+        "live": "0x607a5C47978e2Eb6d59C6C6f51bc0bF411f4b85a",
+        "kovan": null,
+    }
+}
+
+var MAKER = {
+    dai: {
+        "live": "0x729D19f657BD0614b4985Cf1D82531c67569197B",
+        "kovan": "0xa5aA4e07F5255E14F02B385b1f04b35cC50bdb66",
+    }
+}
 
 module.exports = function(deployer, network, accounts) {
     
     var owner = accounts[0];
+
+    if(network == "live"){
+        console.log("Live network not supported yet")
+        
+    } 
+    else if(network == "kovan"){
+        deployer.deploy(DateTimeLib)
+        .then(() => deployer.deploy(ListLib))
+        .then(() => {
+            deployer.link(DateTimeLib, RecurringAlarmClock);
+            deployer.link(ListLib, PaymentDelegate);
+        })
+        .then(() => deployer.deploy(GasPriceOracle))
+        .then(() => deployer.deploy(RecurringAlarmClock))
+        .then(() => deployer.deploy(RecurringAlarmClockFactory, EthereumAlarmClock.address, RecurringAlarmClock.address))
+        .then(() => deployer.deploy(PaymentDelegate, owner))
+        .then(() => {
+            
+        })
+    } 
+    else if(network == "develop"){
+        
+    }
+
+    /*
+    var owner = accounts[0];
+    var PriorityCaller = accounts[9];
     var EthereumAlarmClock;
     if(network == "kovan")
-        EthereumAlarmClock = EAC_KOVAN.requestFactory;
+        EthereumAlarmClock = EAC.KOVAN.requestFactory;
     else
         EthereumAlarmClock = RequestFactory.address;
 
@@ -60,26 +77,30 @@ module.exports = function(deployer, network, accounts) {
 
         return deployer.deploy(ListLibTests, {overwrite: false});
     })
-    .then(() => deployer.deploy(SimpleTask, {overwrite: false}))
-    .then(() => deployer.deploy(SimplePayment, {overwrite: false}))
+    .then(() => deployer.deploy(ExampleTask, {overwrite: false}))
+    .then(() => deployer.deploy(OneTimePayment, {overwrite: false}))
     .then(() => deployer.deploy(DelegatedWallet, {overwrite: false}))
     .then(() => deployer.deploy(DelegatedWalletFactory, DelegatedWallet.address, {overwrite: false}))
-    .then(() => deployer.deploy(DelegatedWalletManager, DelegatedWalletFactory.address, {overwrite: true}))
-    .then(() => deployer.deploy(PaymentDelegate, {overwrite: true}))
-    .then(() => deployer.deploy(PaymentDelegateFactory, PaymentDelegate.address, {overwrite: true}))
-    .then(() => deployer.deploy(RecurringAlarmClock, {overwrite: true}))
-    .then(() => deployer.deploy(RecurringAlarmClockFactory, EthereumAlarmClock, RecurringAlarmClock.address, {overwrite: true}))
-    .then(() => deployer.deploy(RecurringAlarmClockAssistant, accounts[9], RecurringAlarmClockFactory.address, {overwrite: true}))
-    .then(() => deployer.deploy(RecurringPayment, {overwrite: true}))
-    .then(() => deployer.deploy(RecurringPaymentFactory, RecurringPayment.address, {overwrite: true}))
-    .then(() => deployer.deploy(RecurringPaymentScheduler, RecurringAlarmClockAssistant.address, RecurringPaymentFactory.address, {overwrite: true}))
+    .then(() => deployer.deploy(DelegatedWalletManager, DelegatedWalletFactory.address, {overwrite: false}))
+    .then(() => deployer.deploy(PaymentDelegate, {overwrite: false}))
+    .then(() => deployer.deploy(PaymentDelegateFactory, PaymentDelegate.address, {overwrite: false}))
+    .then(() => deployer.deploy(RecurringAlarmClock, {overwrite: false}))
+    .then(() => deployer.deploy(RecurringAlarmClockFactory, RequestFactory.address, RecurringAlarmClock.address, {overwrite: false}))
+    .then(() => deployer.deploy(RecurringAlarmClockAssistant, PriorityCaller, RecurringAlarmClockFactory.address, {overwrite: false}))
+    .then(() => deployer.deploy(RecurringPayment, {overwrite: false}))
+    .then(() => deployer.deploy(RecurringPaymentFactory, RecurringPayment.address, 500000, {overwrite: false}))
+    .then(() => deployer.deploy(RecurringPaymentScheduler, RecurringAlarmClockAssistant.address, RecurringPaymentFactory.address, {overwrite: false}))
     .then(() => PaymentDelegate.deployed())
     .then(instance => {
-        instance.initialize(owner, {from: owner})
+        return instance.initialize(owner, {from: owner})
         .then(tx => {
-            return instance.addScheduler(RecurringPaymentScheduler.address, {from: owner})
+            return Promise.all([
+                instance.addScheduler(RecurringPaymentScheduler.address, {from: owner}),
+                instance.addScheduler(RecurringAlarmClockAssistant.address, {from: owner}),
+            ])
         })
-        .then(tx => {
+        .then(promises => {
+            // successfully initialized
             console.log("Finished deploying contracts");
         })
         .catch(err => {
@@ -88,4 +109,5 @@ module.exports = function(deployer, network, accounts) {
         })
     })
 
+    */
 };
