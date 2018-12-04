@@ -1,0 +1,62 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="example-toolbar">
+        <button fxHide fxShow.gt-md mat-icon-button (click)="leftNav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <button fxShow fxHide.gt-md mat-icon-button (click)="leftNav.toggle() && rightNav.close()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        &nbsp;
+
+        <h3>Alarm Clock Manager</h3>
+
+        <span fxFlex></span>
+
+        <button *ngIf="!rightNav.opened" fxHide fxShow.gt-md mat-icon-button (click)="rightNav.toggle()">
+            <mat-icon>alarm_add</mat-icon>
+        </button>
+        <button *ngIf="!rightNav.opened" fxShow fxHide.gt-md mat-icon-button (click)="rightNav.toggle() && leftNav.close()">
+            <mat-icon>alarm_add</mat-icon>
+        </button>
+        <button *ngIf="rightNav.opened" mat-icon-button (click)="rightNav.toggle()">
+            <mat-icon>alarm_off</mat-icon>
+        </button>
+    </mat-toolbar>
+    
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #leftNav 
+            class="borderRight"
+            position="start"
+            [opened]="!mobileQuery.matches"
+            [mode]="mobileQuery.matches ? 'over' : 'side'" 
+            [fixedInViewport]="mobileQuery.matches" 
+            fixedTopGap="56"
+            fxFlex="320px">
+            <app-left-nav></app-left-nav>
+        </mat-sidenav>
+
+        <mat-sidenav #rightNav 
+            class="borderLeft"
+            position="end" 
+            [mode]="mobileQuery.matches ? 'over' : 'side'" 
+            [fixedInViewport]="mobileQuery.matches" 
+            fixedTopGap="56"
+            fxFlex="320px">
+            <app-right-nav></app-right-nav>
+        </mat-sidenav>
+    
+        <mat-sidenav-content class="padding" layout="column">
+            <app-home></app-home>
+            <div *ngFor="let alarmClock of alarmClocks" style="margin-bottom: 16px;">
+                <app-alarm-clock [alarmClock]="alarmClock"></app-alarm-clock>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+
+<div *ngIf="showQrCode" class="cursor" style="position: absolute; top: 0px; left: 0px;">
+    <div style="padding: 16px; background-color: white;" (click)="showQrCode = false">
+        <qrcode [qrdata]="'Your QR code data string'" [size]="256" [level]="'M'"></qrcode>
+    </div>
+</div>

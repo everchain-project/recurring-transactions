@@ -1,75 +1,51 @@
 pragma solidity ^0.5.0;
 
-import "../external/Owned.sol";
 import "../external/ListLib.sol";
 import "../Interfaces.sol";
 
 /// @title PaymentDelegate Contract
 /// @author Joseph Reed
-/// @dev The PaymentDelegate has a list of trusted payment schedulers with permission to add payments to user's accounts.
-///      The PaymentDelegate can be centralized so more advanced payment types can be added efficiently and have the 
-///      option to make it more decentralized later, or a user can control their own Payment Delegate and be responsible 
-///      for updating it themselves. If using a personal Payment Delegate, the user must send the address of the 
-///      PaymentDelegate to the recipient for them to know about the payment.
-contract PaymentDelegate is Owned, IPaymentDelegate {
+/// @dev The PaymentDelegate acts as a central location for sending and recieving payments. A scheduler must be a 
+///      delegate of the supplied wallet to schedule a payment with it. If using a personal Payment Delegate, the  
+///      user must send the address of the PaymentDelegate to the recipient for them to know about the payment or
+///      have the payment notify a seperate payment delegate known by the recipient.
+contract PaymentDelegate is IPaymentDelegate {
 
     using ListLib for ListLib.AddressList;  // Import the data structure AddressList from the ListLib contract
 
-    uint public blockCreated;               // The block the payment delegate was deployed
-    address public factory;                 // The factory that deployed this PaymentDelegate
-    ListLib.AddressList trustedSchedulers;  // The list of schedulers with permission to schedule a payment
-
-    mapping (address => ListLib.AddressList) incoming;  // The list of incoming payments per account
+    uint public blockCreated = block.number;            // The block the payment delegate was deployed
     mapping (address => ListLib.AddressList) outgoing;  // The list of outgoing payments per account
-
-    /// @notice Initializes the payment delegate. Uses 'initialize()' instead of a constructor to make use of the clone 
-    ///         factory at https://github.com/optionality/clone-factory. In general, 'initialize()' should be  
-    ///         called directly following it's deployment through the use of a factory.
-    /// @param _owner The address with permission to add and remove schedulers
-    function initialize (address _owner) public {
-        require(blockCreated == 0, "block created can only be set once");
-
-        blockCreated = block.number;
-        
-        factory = msg.sender;
-        owner = _owner;
-    }
+    mapping (address => ListLib.AddressList) incoming;  // The list of incoming payments per account
 
     /// @notice Executes the payment associated with the address of 'msg.sender'
+    /// @param token a
+    /// @param recipient b
+    /// @param amount c
     /// @return True if the payment executed successfully
-    function execute () public returns (bool success) {
+    function transfer (address token, address payable recipient, uint amount) public returns (bool success) {
         IPayment payment = IPayment(msg.sender);
-        require(outgoing[address(payment.wallet())].contains(address(payment)), "payment does not exist in the wallet payment list");
-        require(incoming[payment.recipient()].contains(address(payment)), "payment does not exist in the recipient payment list");
+        IDelegatedWallet wallet = payment.wallet();
+        require(outgoing[address(wallet)].contains(address(payment)), "payment does not exist in the wallet payment list");
 
-        uint paymentAmount = payment.amount();
-        success = payment.wallet().transfer(
-            payment.token(), 
-            payment.recipient(), 
-            paymentAmount
-        );
+        success = wallet.transfer(token, recipient, amount);
 
-        emit Payment_event(payment, paymentAmount, success);
+        emit Payment_event(payment, success);
     }
 
     /// @notice Schedules a payment. Only callable by a trusted payment scheduler
     /// @param payment The payment contract responsible for holding logic and data about the payment
-    function schedule (IPayment payment) public {
-        require(trustedSchedulers.contains(msg.sender), "only a trusted scheduler can schedule a payment");
-        
-        outgoing[address(payment.wallet())].add(address(payment));
-        incoming[payment.recipient()].add(address(payment));
+    function schedule (IPayment payment) internal {
+        IDelegatedWallet wallet = payment.wallet();
+        outgoing[address(wallet)].add(address(payment));
 
-        emit Schedule_event(msg.sender, address(payment.wallet()), payment.recipient(), payment);
+        emit Schedule_event(msg.sender, payment);
     }
 
     /// @notice Unschedules a payment. Only callable by a delegate of the wallet supplied with the payment
     /// @param payment The payment contract responsible for holding logic and data about the payment
     function unschedule (IPayment payment) public {
-        require(payment.wallet().isDelegate(msg.sender), "only a delegate can unschedule a payment");
-
-        outgoing[address(payment.wallet())].remove(address(payment));
-        incoming[payment.recipient()].remove(address(payment));
+        address wallet = msg.sender;
+        outgoing[wallet].remove(address(payment));
 
         emit Unschedule_event(msg.sender, payment);
     }
@@ -77,10 +53,33 @@ contract PaymentDelegate is Owned, IPaymentDelegate {
     /// @notice Unschedules a payment. Only callable by the payment contract
     function unschedule () public {
         IPayment payment = IPayment(msg.sender);
-        outgoing[address(payment.wallet())].remove(address(payment));
-        incoming[payment.recipient()].remove(address(payment));
+        address wallet = address(payment.wallet());
+        outgoing[wallet].remove(address(payment));
 
         emit Unschedule_event(address(payment), payment);
+    }
+
+    function register (address recipient) public returns (bool success) {
+        IPayment payment = IPayment(msg.sender);
+        success = incoming[recipient].add(address(payment));
+
+        if(success)
+            emit Register_event(payment, recipient);
+    }
+
+    function unregister (address recipient) public returns (bool success) {
+        IPayment payment = IPayment(msg.sender);
+        success = incoming[recipient].remove(address(payment));
+
+        if(success)
+            emit Unregister_event(payment, recipient);
+    }
+
+    function clear (IPayment payment) public {
+        address recipient = msg.sender;
+        incoming[recipient].remove(address(payment));
+
+        emit Clear_event(payment, recipient);
     }
     
     /// @notice Fetches the incoming payments of a given recipient
@@ -143,39 +142,12 @@ contract PaymentDelegate is Owned, IPaymentDelegate {
         return outgoing[wallet].contains(address(payment));
     }
 
-    /// @notice Get the list of schedulers
-    /// @return The list of trusted schedulers
-    function getSchedulers () public view returns (address[] memory) {
-        return trustedSchedulers.get();
-    }
-
-    /// @notice Determine if a scheduler is trusted
-    /// @param scheduler the scheduler to check
-    /// @return True if the given 'scheduler' is trusted
-    function containsScheduler (address scheduler) public view returns (bool) {
-        return trustedSchedulers.contains(scheduler);
-    }
-
-    /// @notice Add a scheduler to the trusted scheduler list. Can only be called by the 'owner'
-    /// @param newScheduler the scheduler to add to the list
-    function addScheduler (address newScheduler) public onlyOwner {
-        require(trustedSchedulers.add(newScheduler), "failed to add scheduler");
-
-        emit AddedScheduler_event(owner, newScheduler);
-    }
-    
-    /// @notice Remove a scheduler to the trusted scheduler list. Can only be called by the 'owner'
-    /// @param oldScheduler the scheduler to add to the list
-    function removeScheduler (address oldScheduler) public onlyOwner {
-        require(trustedSchedulers.remove(oldScheduler), "failed to remove scheduler");
-
-        emit RemovedScheduler_event(owner, oldScheduler);
-    }
-    
-    event Payment_event (IPayment indexed payment, uint amount, bool success);
-    event Schedule_event (address indexed scheduler, address indexed wallet, address indexed recipient, IPayment payment);
+    event Payment_event (IPayment indexed payment, bool success);
+    event Schedule_event (address indexed delegate, IPayment payment);
     event Unschedule_event (address indexed caller, IPayment payment);
-    event AddedScheduler_event (address indexed caller, address newScheduler);
-    event RemovedScheduler_event (address indexed caller, address oldScheduler);
+    event Register_event (IPayment payment, address recipient);
+    event Unregister_event (IPayment payment, address recipient);
+    event Clear_event(IPayment payment, address recipient);
+    event DelegateClear_event(address delegate, IPayment payment, address recipient);
 
 }

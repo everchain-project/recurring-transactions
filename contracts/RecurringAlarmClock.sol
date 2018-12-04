@@ -18,10 +18,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock, Owned {
     // Payment Options
     IDelegatedWallet public wallet;     // The address which owns the alarm and collects any leftover funds
     IPaymentDelegate public delegate;   // The delegate that pulls funds for each alarm
-    address public token;               // The token to pull when funding an alarm. default of 0x0 represents native ether
-    address public recipient;           // The recipient to send pulled funds to. set to 'this' at initialization
-    IUintFeed public gasPriceOracle;    // The Gas Price Oracle that fetches the current gas price of the network
-    IUintFeed public safetyMultiplier;  // The multiplier to use when calculating the alarm cost  
+    IGasPriceOracle public gasPrice;    // The fetches the current or future gas price of the network
     
     // Ethereum Alarm Clock Options
     RequestFactoryInterface public EthereumAlarmClock; // Interface provided by the Ethereum Alarm Clock
@@ -36,6 +33,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock, Owned {
     uint public maxIntervals;           // The number of times this alarm will go off
     uint public currentInterval;        // Keeps track of how many alarms have been called
     uint public blockStarted;           // The block the alarm clock was started
+    uint public extraGas;
 
     // Execution Options
     address public alarm;               // The next scheduled alarm contract
@@ -58,8 +56,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock, Owned {
         address _factory, 
         IDelegatedWallet _wallet,
         IPaymentDelegate _delegate,
-        IUintFeed _gasPriceOracle,
-        IUintFeed _safetyMultiplier,
+        IGasPriceOracle _oracle,
         RequestFactoryInterface _eac,
         address _priorityCaller,
         uint[5] memory _eacOptions
@@ -67,13 +64,10 @@ contract RecurringAlarmClock is IRecurringAlarmClock, Owned {
         require(factory == address(0x0), "The alarm has already been initialized");
         
         factory = _factory;                     // The factory that deployed this contract
-        token = address(0x0);                   // '0x0' == Ether; EAC alarms use ether as the default/only currency
-        recipient = address(this);              // This alarm clock is the recipient of it's own recurring payment
         
         wallet = _wallet;
         delegate = _delegate;
-        gasPriceOracle = _gasPriceOracle;
-        safetyMultiplier = _safetyMultiplier;
+        gasPrice = _oracle;
         EthereumAlarmClock = _eac;
         priorityCaller = _priorityCaller;
         eacOptions = _eacOptions;
@@ -85,13 +79,14 @@ contract RecurringAlarmClock is IRecurringAlarmClock, Owned {
         uint _windowStart,
         uint _intervalValue, 
         uint _intervalUnit, 
-        uint _maxIntervals
+        uint _maxIntervals,
+        uint extraGas
     ) public onlyDelegates {
-        require(windowStart > now + 5 minutes);
-        require(intervalValue > 0);
-        require(intervalUnit <= 5);
-        require(maxIntervals > 0);
-        require(task != address(0x0));
+        require(_windowStart > now + 5 minutes);
+        require(_intervalValue > 0);
+        require(_intervalUnit <= 5);
+        require(_maxIntervals > 0);
+        require(_task != address(0x0));
 
         windowStart = _windowStart;
         intervalValue = _intervalValue;
@@ -150,7 +145,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock, Owned {
     /// @return The new alarm scheduled
     function newAlarm () internal returns (address) {
         alarm = address(0x0);   // Clear the last alarm
-        delegate.execute();     // Pull the necessary funds for the alarm
+        delegate.transfer(address(0x0), address(this), amount()); // Pull the necessary funds for the alarm
         
         uint endowment = address(this).balance;     // Commit all available ether to the next alarm
         uint priorityFee = endowment / 100;         // Set one percent aside for the priority caller
@@ -172,7 +167,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock, Owned {
             2,              // 1 = use block based scheduling, 2 = Use timestamp based scheduling
             eacOptions[3],  // The size of the execution window
             windowStart,    // The start of the execution window
-            eacOptions[4],  // The amount of gas to be sent with the transaction
+            eacOptions[4] + extraGas,  // The amount of gas to be sent with the transaction
             0,              // The amount of ether to be sent
             0,              // The minimum gas price for the alarm when called
             0               // The required deposit by the claimer
@@ -190,7 +185,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock, Owned {
     /// @return The amount of ether to send when the payment delegate is called
     function amount () public view returns (uint) {
         uint gas = eacOptions[4];
-        return  gas * gasPriceOracle.read() * safetyMultiplier.read();
+        return  gas * gasPrice.future(windowStart);
     }
 
     function updateCallData (bytes memory newCallData) public {

@@ -1,0 +1,37 @@
+<div class="bordered" fxLayout="column">
+    <div fxLayout="row">
+        <div style="padding: 8px;" fxLayout="column">
+            <mat-icon style="margin-right: 4px; padding: 8px;">alarm_on</mat-icon>
+            <button mat-icon-button (click)="showDetails = !showDetails">
+                <mat-icon *ngIf="!showDetails">settings</mat-icon>
+                <mat-icon *ngIf="showDetails">close </mat-icon>
+            </button>
+        </div>
+        <div fxLayout="column" fxFlex>
+            <div style="padding: 16px 16px 0px 0px;" fxLayout="row">
+                <div style="padding-top: 2px;">{{alarmClock.timestamp | date:'MMM dd, yyyy'}}</div>
+                <span fxFlex></span>
+                <mat-icon svgIcon="ether"></mat-icon>
+                <h3 class="no-margin">123.4567</h3>
+            </div>
+            <div style="padding: 0px 16px 0px 0px;" fxLayout="row">
+                <small style="color: gray;">{{alarmClock.timestamp | date:'@ hh:mm a'}}</small>
+            </div>
+            <div style="padding: 8px 16px 0px 0px;" fxLayout="row">
+                <div style="color: gray;">every {{alarmClock.period.value}} {{alarmClock.period.unit}}</div>
+                <span fxFlex></span>
+                <div style="color: gray;" *ngIf="alarmClock.period.intervals == 0">{{alarmClock.period.current}}/<span style="font-size: 16px;">&infin;</span></div>
+                <div style="color: gray;" *ngIf="alarmClock.period.intervals > 0">{{alarmClock.period.current}}/{{alarmClock.period.intervals}}</div>
+            </div>
+            
+        </div>                    
+    </div>
+    <div fxLayout="row">
+        <b style="padding: 0px 16px 16px 16px; text-align: right;" fxFlex>
+            {{alarmClock.label}}
+        </b>
+    </div>
+</div>
+<div *ngIf="showDetails" class="borderLeft borderBottom borderRight padding">
+    Showing Details
+</div>

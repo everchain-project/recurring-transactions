@@ -1,0 +1,38 @@
+<div id="sidebar" *ngIf="initialized" fxLayout="column" fxFlexFill>
+    <h4 class="cursor" style="padding: 0px 8px;" routerLink="/">Recurring Alarm Clock Manager</h4>
+    <small class="sidebar-button" fxLayout="row">
+        <div *ngIf="account.isLoggedIn" fxLayout="row" fxFlex (click)="copyToClipboard(account.address)">
+            <div class="cursor" style="padding: 12px; color: gray;" fxFlex>
+                Logged in as: {{account.name}}
+            </div>
+            <button mat-icon-button>
+                <mat-icon style="font-size: 16px; color: gray;">file_copy</mat-icon>
+            </button>
+        </div>
+        <div *ngIf="!account.isLoggedIn" fxLayout="row" fxFlex>
+            <div style="padding: 12px; color: gray;" fxFlex>
+                Not logged in.
+            </div>
+            <button mat-icon-button>
+                <mat-icon style="font-size: 16px; color: gray;">feedback</mat-icon>
+            </button>
+        </div>
+    </small>
+    <h5 style="padding-left: 8px; margin-bottom: 12px" fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex>Wallets</div>
+        <button mat-icon-button (click)="createWallet()" [disabled]="!account.isLoggedIn">
+            <mat-icon style="font-size: 16px;">add</mat-icon>
+        </button>
+    </h5>
+    <div class="scrollable" style="padding-right: 8px;" fxFlex>
+        <small *ngFor="let wallet of account.wallets" class="sidebar-button" fxLayout="row" fxLayoutAlign="start center">
+            <div class="cursor" style="padding: 12px;" routerLink="/account/{{account.address}}/wallet/{{web3.utils.toChecksumAddress(wallet)}}" routerLinkActive="active-button" fxFlexFill fxFlex>
+                {{getWalletName(wallet)}}
+            </div>
+            <button mat-icon-button (click)="copyToClipboard(wallet)">
+                <mat-icon style="font-size: 16px;">file_copy</mat-icon>
+            </button>
+        </small>
+        <div style="height: 16px;"></div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<h1 *ngIf="initialized" mat-dialog-title>
+    <div *ngIf="!(tx.hash || tx.receipt)">Wallet Deployment Cost</div>
+    <div *ngIf="tx.hash && !tx.receipt">Waiting For Wallet Deployment</div>
+    <div *ngIf="tx.receipt">Wallet Deployed!</div>
+</h1>
+<div *ngIf="initialized" mat-dialog-content>
+    <div *ngIf="!(tx.hash || tx.receipt)">
+        <p style="margin-top: 0px;">
+            <small>
+                The cost of deploying a wallet is automatically calculated. You can manipulate the call gas and price cost by clicking on the 'show advanced options' button shown below
+            </small>
+        </p>
+        <div *ngIf="showAdvancedOptions" fxLayout="row">
+            <form *ngIf="!tx.hash" fxLayout="row" fxLayoutAlign="start center" fxFlex>
+                <mat-form-field style="width: 100px;">
+                    <input type="number" matInput [(ngModel)]="tx.callGas" placeholder="Call Gas" name="callGas" (ngModelChange)="tx.estimatedCost = calculateTxCost(tx.callGas, tx.gasPrice)" [disabled]="waitingForTxSignature">
+                </mat-form-field>
+                <div style="margin-bottom: 7px;">&nbsp;@&nbsp;</div>
+                <mat-form-field style="width: 100px;">
+                    <input type="number" matInput [(ngModel)]="tx.gasPrice" step="0.1" name="gasPrice" placeholder="Gwei" (ngModelChange)="tx.estimatedCost = calculateTxCost(tx.callGas, tx.gasPrice)" [disabled]="waitingForTxSignature">
+                </mat-form-field>
+                <div style="margin-bottom: 7px;">&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;</div>
+                <mat-form-field fxFlex>
+                    <input type="number" step="any" matInput [(ngModel)]="tx.estimatedCost" name="estimatedCost" placeholder="Total Cost In Ether" [disabled]="true">
+                </mat-form-field>
+            </form>
+        </div>
+        <div *ngIf="!showAdvancedOptions" fxLayout="row">
+            <mat-form-field fxFlex>
+                <input type="number" step="any" matInput [(ngModel)]="tx.estimatedCost" name="estimatedCost" placeholder="Gas Cost In Ether" [disabled]="true">
+            </mat-form-field>
+        </div>
+    </div>
+    <div *ngIf="tx.hash && !tx.receipt">
+        <p fxLayout="row">
+            <small>Deploying a wallet to the Ethereum Network can take up to several minutes.</small>
+        </p>
+        <p fxLayout="row">
+            <b>Please be patient!</b>
+        </p>
+    </div>
+    <div *ngIf="tx.receipt">
+        <p fxLayout="row">
+            Deployment Cost:
+            <span fxFlex></span>
+            ($todo) {{tx.actualCost}} ether
+        </p>
+    </div>
+    <p *ngIf="tx.hash && !tx.receipt">
+        <small>While we wait, what would you like to name your wallet?</small>
+    </p>
+    <div *ngIf="tx.hash || tx.receipt">
+        <div fxLayout="row">
+            <mat-form-field fxFlex>
+                <input type="text" matInput [(ngModel)]="wallet.name" name="walletName" placeholder="Wallet Name">
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+<div *ngIf="initialized" mat-dialog-actions fxLayout="row">
+    <div *ngIf="!(tx.hash || tx.receipt)" fxLayout="row" fxLayoutAlign="start center" fxFlex>
+        <button mat-button (click)="closeDialog()">back</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <mat-slide-toggle [(ngModel)]="showAdvancedOptions">show advanced options</mat-slide-toggle>
+        <span fxFlex></span>
+        <button mat-button color="warn" (click)="createWallet()" [disabled]="waitingForTxSignature">create wallet</button>
+    </div>
+    <div *ngIf="tx.hash || tx.receipt" fxLayout="row" fxFlex>
+        <button mat-button *ngIf="!tx.receipt" (click)="closeDialog()">skip</button>
+        <button mat-button *ngIf="tx.receipt" (click)="closeDialog()">close</button>
+        <button mat-button color="accent" (click)="openInEtherScan(tx.hash)" fxFlex>open transaction in etherscan</button>
+        <button mat-button color="primary" fxLayout="row" (click)="closeDialog(true)" [disabled]="!tx.receipt">view wallet</button>
+    </div>
+</div>

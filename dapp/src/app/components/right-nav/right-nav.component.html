@@ -1,0 +1,96 @@
+<div class="padding" fxLayout="column" fxFlex="320">
+
+    <mat-form-field style="margin-bottom: 4px;">
+        <mat-select [(ngModel)]="newAlarm.wallet" name="selectedWallet" placeholder="Delegated Wallet">
+            <mat-option value="walletAddress1" fxLayout="row">
+                &diams; 0.00 &nbsp;&nbsp;&nbsp; Wallet Name #1
+            </mat-option>
+            <mat-option value="walletAddress2" fxLayout="row">
+                &diams; 0.00 &nbsp;&nbsp;&nbsp; Really Really Long Wallet Name Defying All Logical Possible Names And Things Among Others #2
+            </mat-option>
+            <mat-option value="walletAddress3" fxLayout="row">
+                &diams; 0.00 &nbsp;&nbsp;&nbsp; 0x9C5738bFEb500EE7283AFa81B265f3C4A81790cE #3
+            </mat-option>
+            <mat-option value="walletAddress4" fxLayout="row">
+                &diams; 0.00 &nbsp;&nbsp;&nbsp; QmNZiPk974vDsPmQii3YbrMKfi12KTSNM7XMiYyiea4VYZ #4
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="custom-date-picker" fxLayout="column">
+        <small style="color: gray; padding-bottom: 6px;">Starting on</small>
+        <angular2-date-picker [(ngModel)]="newAlarm.startDate" [settings]="settings" name="startDate" fxFlex></angular2-date-picker>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <div style="padding-bottom: 8px; min-width: 98px;">Execute every</div>
+
+        <mat-form-field style="max-width: 64px; margin: 0px 4px;">
+            <input class="centered" type="number" matInput [(ngModel)]="newAlarm.period.value" name="periodValue" min="1">
+        </mat-form-field>
+
+        <mat-form-field style="max-width: 80px; text-align: center;">
+            <mat-select [(ngModel)]="newAlarm.period.unit" name="periodUnit">
+                <mat-option value="minutes">minute<span *ngIf="newAlarm.period.value > 1">s</span></mat-option>
+                <mat-option value="hours">hour<span *ngIf="newAlarm.period.value > 1">s</span></mat-option>
+                <mat-option value="days">day<span *ngIf="newAlarm.period.value > 1">s</span></mat-option>
+                <mat-option value="weeks">week<span *ngIf="newAlarm.period.value > 1">s</span></mat-option>
+                <mat-option value="months">month<span *ngIf="newAlarm.period.value > 1">s</span></mat-option>
+                <mat-option value="years">year<span *ngIf="newAlarm.period.value > 1">s</span></mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <div style="padding-bottom: 8px;">Repeat</div>
+        <mat-form-field style="text-align: center; margin-left: 4px;" fxFlex>
+            <mat-select [(ngModel)]="newAlarm.period.type" name="periodType">
+                <mat-option value="forever">forever</mat-option>
+                <mat-option value="custom">custom</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <mat-form-field *ngIf="newAlarm.period.type == 'custom'" [floatLabel]="'always'" appearance="outline">
+        <mat-label>Intervals</mat-label>
+        <input matInput type="number" [(ngModel)]="newAlarm.intervals" name="alarmIntervals" placeholder="2" min="2">
+        <mat-hint>The total number of times the alarm will be executed</mat-hint>
+    </mat-form-field>
+
+    <div style="height: 30px;" *ngIf="newAlarm.period.type == 'custom'"></div>
+
+    <mat-form-field [floatLabel]="'always'" appearance="outline">
+        <mat-label>Label</mat-label>
+        <input matInput [(ngModel)]="newAlarm.label" placeholder="Trigger monthly payment" name="newAlarmLabel">
+    </mat-form-field>
+        
+    <mat-form-field [floatLabel]="'always'" appearance="outline">
+        <mat-label>Task Contract Address</mat-label>
+        <input matInput [(ngModel)]="newAlarm.taskAddress" placeholder="0x2C5738bFEb500EE1283AFa81B265f7C4A81790cE">
+        <mat-hint>Must be a valid contract address deployed on the Ethereum Blockchain</mat-hint>
+    </mat-form-field>
+
+    <div style="height: 30px;"></div>
+
+    <mat-form-field [floatLabel]="'always'" appearance="outline">
+        <mat-label>Call Gas</mat-label>
+        <input type="number" matInput [(ngModel)]="newAlarm.extraGas" name="extraGas" placeholder="1000000" min="0">
+        <mat-hint>The total amount of gas needed to execute the task</mat-hint>
+    </mat-form-field>
+    
+    <div style="height: 30px;"></div>
+    
+    <mat-form-field [floatLabel]="'always'" appearance="outline">
+        <mat-label>Call Data</mat-label>
+        <textarea matInput placeholder="0x..." rows="3"></textarea>
+        <mat-hint>The call data to use when calling the task address</mat-hint>
+    </mat-form-field>
+
+    <div style="height: 30px;"></div>
+
+    <button mat-raised-button color="primary" (click)="createAlarm()">
+        create new alarm
+        <mat-icon>alarm_on</mat-icon>
+    </button>
+
+</div>
