@@ -132,11 +132,11 @@ export class CreateAlarmClockComponent implements OnInit {
                     txOptions
                 );
             } else if (this.data.alarmType == "set"){
-                txObject = this.data.alarmClock.methods.start({
+                txObject = this.data.alarmClock.methods.start(
                     callAddress,
                     callData,
-                    callOptions
-                })
+                    callOptions,
+                )
                 .send(txOptions)
             }
 

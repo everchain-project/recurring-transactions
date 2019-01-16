@@ -229,7 +229,9 @@ export class ToolbarComponent implements OnInit {
     }
 
     getName(id){
-        return localStorage.getItem(id + '.name');
+        var name = localStorage.getItem(id + '.name');
+        if(!name) return "Unnamed Wallet"
+        return name;
     }
 
     triggerWalletNameChange(newWalletName){

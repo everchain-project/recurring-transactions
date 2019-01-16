@@ -98,7 +98,8 @@ export class AlarmClockComponent implements OnInit {
             height: '90vh',
             data: {
                 title: "Set This Alarm",
-                alarmType: 'set'
+                alarmType: 'set',
+                alarmClock: this.alarmClock.instance,
             }
         });
     
