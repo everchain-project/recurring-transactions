@@ -1,0 +1,133 @@
+<div class="scrollable" fxLayout="column">
+	<h2>
+		{{title}}
+		<span fxFlex></span>
+		<button mat-icon-button (click)="close()">
+			<mat-icon>close</mat-icon>
+		</button>
+	</h2>
+
+	<button mat-stroked-button color="warn" (click)="fillExampleTask()">
+		Fill In Demo Alarm Clock Using Example Task
+	</button>
+
+	<div style="height: 32px;"></div>
+
+	<mat-form-field [floatLabel]="'always'" appearance="outline">
+	    <mat-label>Label</mat-label>
+	    <input matInput [(ngModel)]="newAlarm.label" placeholder="This alarm triggers..." name="newAlarmLabel">
+	</mat-form-field>
+
+	<div class="custom-date-picker" fxLayout="column">
+	    <small style="color: gray; padding-bottom: 6px;">Starting on</small>
+	    <angular2-date-picker [(ngModel)]="newAlarm.startDate" [settings]="settings" name="startDate" fxFlex></angular2-date-picker>
+	</div>
+
+	<div style="margin: 8px 0px;" fxLayout.xs="column" fxLayout.gt-xs="row">
+	    <div fxLayout="row" fxLayoutAlign="start center">
+	        <div style="padding-bottom: 8px; min-width: 98px;">Execute every</div>
+
+	        <mat-form-field style="max-width: 64px; margin: 0px 4px;">
+	            <input class="centered" type="number" matInput [(ngModel)]="newAlarm.interval.value" name="intervalValue" min="1" step="1">
+	        </mat-form-field>
+
+	        <mat-form-field style="max-width: 96px; text-align: center; margin-right: 4px">
+	            <mat-select [(ngModel)]="newAlarm.interval.unit" name="intervalUnit">
+	                <mat-option [value]="0">second<span *ngIf="newAlarm.interval.value > 1">s</span></mat-option>
+	                <mat-option [value]="1">minute<span *ngIf="newAlarm.interval.value > 1">s</span></mat-option>
+	                <mat-option [value]="2">hour<span *ngIf="newAlarm.interval.value > 1">s</span></mat-option>
+	                <mat-option [value]="3">day<span *ngIf="newAlarm.interval.value > 1">s</span></mat-option>
+	                <mat-option [value]="4">month<span *ngIf="newAlarm.interval.value > 1">s</span></mat-option>
+	                <mat-option [value]="5">year<span *ngIf="newAlarm.interval.value > 1">s</span></mat-option>
+	            </mat-select>
+	        </mat-form-field>
+	    </div>
+	    <div fxLayout="row" fxLayoutAlign="start center">
+	        <div style="padding-bottom: 8px;">&nbsp;repeat</div>
+	        <mat-form-field style="text-align: center; margin-left: 4px;" fxFlex>
+	            <mat-select [(ngModel)]="newAlarm.interval.type" name="intervalType">
+	                <mat-option value="forever">forever</mat-option>
+	                <mat-option value="custom">custom</mat-option>
+	            </mat-select>
+	        </mat-form-field>
+	    </div>
+	</div>
+
+	<mat-form-field *ngIf="newAlarm.interval.type == 'custom'" [floatLabel]="'always'" appearance="outline">
+	    <mat-label>Max Intervals</mat-label>
+	    <input matInput type="number" [(ngModel)]="newAlarm.interval.max" name="alarmIntervals" placeholder="2" min="0">
+	    <mat-hint>The total number of times the alarm will be executed. (0 = forever)</mat-hint>
+	</mat-form-field>
+
+	<div style="height: 32px;" *ngIf="newAlarm.interval.type == 'custom'"></div>
+
+	<mat-form-field [floatLabel]="'always'" appearance="outline">
+	    <mat-label>Task Contract Address</mat-label>
+	    <input matInput [(ngModel)]="newAlarm.call.address" placeholder="0x2C5738bFEb500EE1283AFa81B265f7C4A81790cE">
+	    <mat-hint>Must be a valid contract address deployed on the Ethereum Blockchain</mat-hint>
+	</mat-form-field>
+
+	<div style="height: 32px;"></div>
+	
+	<div fxLayout="row" fxLayout.xs="column">
+		<mat-form-field [floatLabel]="'always'" appearance="outline" fxFlex="50">
+		    <mat-label>Call Gas</mat-label>
+		    <input type="number" matInput [(ngModel)]="newAlarm.call.gas" name="extraGas" placeholder="1000000" min="0">
+		    <mat-hint>The total amount of gas needed to execute the task</mat-hint>
+		</mat-form-field>
+		&nbsp;
+		<mat-form-field [floatLabel]="'always'" appearance="outline" fxFlex="50">
+		    <mat-label>Call Value</mat-label>
+		    <input type="number" matInput [(ngModel)]="newAlarm.call.value" name="call value" placeholder="0" min="0">
+		    <mat-hint>The amount of ether (in wei) to send when executing the task</mat-hint>
+		</mat-form-field>
+	</div>
+
+	<div style="height: 32px;"></div>
+
+	<mat-form-field [floatLabel]="'always'" appearance="outline">
+	    <mat-label>Call Data</mat-label>
+	    <textarea matInput [(ngModel)]="newAlarm.call.data" placeholder="0x..." rows="3"></textarea>
+	    <mat-hint><a href="https://abi.hashex.org/#" target="_blank">How do I calculate this?</a> (function name = exampleWithValue)</mat-hint>
+	</mat-form-field>
+
+	<div style="height: 32px;"></div>
+
+	<mat-accordion>		
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					Advanced Options
+				</mat-panel-title>
+				<mat-panel-description fxHide.xs>
+					Only change these options if you know what you are doing...
+				</mat-panel-description>
+			</mat-expansion-panel-header>
+			<div fxLayout.xs="column" fxLayout="row">
+			    <mat-form-field [floatLabel]="'always'" appearance="outline" fxFlex="50">
+			        <mat-label>Transaction Gas</mat-label>
+			        <input type="number" matInput [(ngModel)]="newAlarm.tx.callGas" placeholder="Call Gas"  min="0" name="txCallGas" (ngModelChange)="updateCost()">
+			    </mat-form-field>
+			    <span fxHide.xs>&nbsp;</span>
+			    <mat-form-field [floatLabel]="'always'" appearance="outline" fxFlex="50">
+			        <mat-label>Gas Price (in wei)</mat-label>
+			        <input type="number" matInput [(ngModel)]="newAlarm.tx.gasPrice" step="1" min="0" name="txGasPrice" placeholder="Gwei" (ngModelChange)="updateCost()">
+			    </mat-form-field>
+			</div>
+		</mat-expansion-panel>
+	</mat-accordion>
+
+	<div style="height: 16px;"></div>
+
+	<div fxLayout="row">
+		<button mat-button (click)="close()">cancel</button>
+		&nbsp;
+		<button mat-raised-button color="primary" (disabled)="valid()" (click)="createAndStartAlarmClock()" fxFlex>
+	    	create new alarm
+	    	<mat-icon>alarm_on</mat-icon>
+		</button>
+	</div>
+
+	<div style="height: 16px;"></div>
+
+</div>

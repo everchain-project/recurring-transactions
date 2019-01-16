@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { default as Web3 } from 'web3';
-
 declare let window: any;
 
 @Injectable({
@@ -8,72 +7,74 @@ declare let window: any;
 })
 export class Web3Service {
 
-    private web3;
-    private instance;
-    private watchedAccount;
-    
-    constructor () {
-        this.web3 = new Promise((resolve, reject) => {
-            // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-            if (typeof window.web3 !== 'undefined') {
-                console.warn('Using web3 detected from external source.')
-                // Use Mist/MetaMask's provider
-                this.instance = new Web3(window.web3.currentProvider)
-            } else {
-                console.warn('No web3 detected. Falling back to http://127.0.0.1:8545.')
-                // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-                this.instance = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'))
-            }
+	watchedAccount: string;
 
-            this.instance.utils['nullAddress'] = '0x0000000000000000000000000000000000000000';
+	constructor() {
+		if (window.ethereum) { // Modern dapp browsers...
+            window.web3 = new Web3(window.ethereum);
+            this.customizeWeb3();
+        }
+        else if (window.web3) { // Legacy dapp browsers...
+            console.warn("Your financial privacy is at risk! Disable automatic account exposure with whatever ethereum wallet provider you use")
+            window.web3 = new Web3(window.web3.currentProvider);
+            this.customizeWeb3();
+        } else {
+            console.warn('Non-Ethereum browser detected. You should consider trying MetaMask!')
+        }
 
-            this.instance.eth.getAccounts()
-            .then(accounts => {
-                this.instance.eth['isLoggedIn'] = accounts.length > 0;
-                if(this.instance.eth.isLoggedIn)
-                    this.instance.eth['currentAccount'] = this.instance.utils.toChecksumAddress(accounts[0]);
-                else 
-                    this.instance.eth['currentAccount'] = null;
-                
-                this.watchedAccount = this.instance.eth['currentAccount'];
-                this.watchForAccountChanges();
+        this.watchForAccountChanges();
+	}
 
-                resolve(this.instance);
-            })
-            .catch(reject)
-        });        
+	async signIn(){
+        try {
+            // Request account access if needed
+            await window.ethereum.enable();
+            this.watchForAccountChanges();
+        } catch (error) {
+            console.log("User denied account access...");
+        }
     }
 
-    ready(){
-        return this.web3;
-    }
-
-    getCurrentAccount(){
-        return this.web3
-        .then(web3 => {
-            return web3.eth.getAccounts()
-            .then(accounts => {
-                if(accounts.length > 0){
-                    var currentAccount = web3.utils.toChecksumAddress(accounts[0]);
-                    return Promise.resolve(currentAccount);
-                } 
-                else {
-                    return Promise.resolve(null);
-                }
-            })
+	getCurrentAccount(){
+		return window.web3.eth.getAccounts()
+        .then(accounts => {
+            if(accounts)
+                return accounts[0];
+            
+            return null;
         })
-        .catch(Promise.reject);
-    }
+	}
+
+	getBalance(account){
+		return window.web3.eth.getBalance(account)
+        .then(weiBalance => {
+            var etherBalance = window.web3.utils.fromWei(weiBalance, 'ether');
+            return {
+                wei: weiBalance,
+                ether: etherBalance
+            };
+        })
+	}
 
     private watchForAccountChanges(){
-        setInterval(() => {
-            this.getCurrentAccount()
-            .then(currentAccount => {
-                // console.log(currentAccount, this.watchedAccount);
-                if(currentAccount != this.watchedAccount)
-                    location.reload();
-            })
-            .catch(console.error)
-        }, 250);
+        this.getCurrentAccount()
+        .then(currentAccount => {
+            //console.log("setting watched account to ", currentAccount);
+            this.watchedAccount = currentAccount;
+            setInterval(() => {
+                this.getCurrentAccount()
+                .then(currentAccount => {
+                    //console.log(currentAccount, this.watchedAccount)
+                    if(this.watchedAccount && this.watchedAccount != currentAccount)
+                        location.reload();
+                })
+            }, 250);
+        })
+        .catch(console.error)
     }
+
+	private customizeWeb3(){
+        window.web3.utils['nullAddress'] = '0x0000000000000000000000000000000000000000';
+		window.web3.eth['priceInUSD'] = 100;
+	}
 }

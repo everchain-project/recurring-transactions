@@ -1,0 +1,27 @@
+<h2>Welcome to the ACM</h2>
+
+<p>
+    Create automatic, on-chain, recurring alarm clocks to execute arbitrary smart contract functions. There are several prerequisites for a functional Alarm Clock:
+</p>
+<ol>
+	<li>A <a href="" target="_blank">delegated wallet</a> funded with ether</li>
+	<li>A <a href="" target="_blank">payment delegate</a> assigned as a delegate of the wallet</li>
+	<li>A <a href="" target="_blank">gas price oracle</a> to predict the cost of alarm execution at a future date</li>
+</ol>
+<p>
+    An alarm clock can be destroyed, cancelled, or rescheduled at any time by a wallet delegate.
+</p>
+
+<div *ngIf="initialized" fxLayout="column">
+	<h3>Provided Delegates</h3>
+	<ul>
+		<li>
+			<b>Decentralized Payment Delegate (DPD).</b>
+			The DPD allows any delegate to schedule a payment with their respective wallet. The DPD must also be a delegate of the wallet.
+		</li>
+		<li>
+			<b>Recurring Alarm Clock Wizard (RACW).</b>
+			The RACW allows any delegate of a wallet to create a recurring alarm clock and schedule it with a provided payment delegate. The RACW must also be a delegate of the wallet if the payment delegate provided is the DPD.
+		</li>
+	</ul>
+</div>

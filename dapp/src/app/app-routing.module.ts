@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
+import { Routes, RouterModule } from '@angular/router';
+
+import { ViewHomeComponent } from './components/view-home/view-home.component';
+import { ViewWalletComponent } from './components/view-wallet/view-wallet.component';
 
 const routes: Routes = [
-    { 
-        path: '', redirectTo: 'home', pathMatch: 'full' 
+	{
+        path: 'home', 
+        component: ViewHomeComponent 
     },
-    { 
-        path: 'home', component: HomeComponent 
+    {
+        path: 'wallet/:walletAddress', 
+        redirectTo: 'wallet/:walletAddress/alarm-clocks',
+        pathMatch: 'full'
     },
-    { 
-        path: 'account/:accountAddress/', 
-        component: HomeComponent
+    {
+        path: 'wallet/:walletAddress/:view', 
+        component: ViewWalletComponent 
     },
     {
         path: '**', 
@@ -21,7 +26,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [ RouterModule.forRoot(routes) ],
-    exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

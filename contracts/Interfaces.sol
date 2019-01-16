@@ -20,41 +20,28 @@ contract ICancellable {
 // A payment delegate lets scheduled payments withdraw tokens from the corrosponding wallet
 contract IPaymentDelegate {
     function transfer (address token, address payable recipient, uint amount) public returns (bool);
-    function schedule (IPayment payment) internal;
-    function unschedule (IPayment payment) public;
-    function unschedule() public;
+    function schedule (IPayment payment) public returns (bool success);
+    function unschedule (IPayment payment) public returns (bool success);
+    function unschedule() public returns (bool success);
     function register (address recipient) public returns (bool success);
     function unregister (address recipient) public returns (bool success);
-    function clear (IPayment payment) public;
+    function clear (IPayment payment) public returns (bool success);
+    function valid (IPayment payment) internal returns (bool);
 }
 
 // A payment contains all the necesary details to execute a payment from a payment delegate
 contract IPayment {
+    address public factory;
     IPaymentDelegate public delegate;
     IDelegatedWallet public wallet;
 }
 
 // A recurring alarm clock contains all the necesary details to execute a recurring task
 contract IRecurringAlarmClock is IPayment {
+    address public alarm;
+    address public callAddress;
+    bytes public callData;
+    uint public callGas;
     uint public currentInterval;
-    uint public maximumIntervals;
-    address public task;
-    function start(
-        address _task, 
-        bytes memory _callData,
-        uint _windowStart,
-        uint _intervalValue, 
-        uint _intervalUnit, 
-        uint _maxIntervals
-    ) public;
-}
-
-contract IRecurringAlarmClockFactory {
-    function createAlarmClock(
-        IDelegatedWallet wallet,
-        IPaymentDelegate delegate,
-        IGasPriceOracle gasPrice,
-        address priorityCaller,
-        uint[5] memory ethereumAlarmClockOptions
-    ) public returns (IRecurringAlarmClock recurringAlarmClock);
+    uint public maxIntervals;
 }

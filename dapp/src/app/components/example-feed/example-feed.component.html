@@ -1,0 +1,19 @@
+<span fxLayout="column" fxFlex.gt-xs>
+    <h4 style="padding: 0px 16px">Example Task Feed</h4>
+    <div fxLayout="row" style="padding: 4px 16px">
+        <b fxFlex="100px">Timestamp</b>
+        <b fxFlex="90px">Caller ID</b>
+        <b fxFlex>Message</b>
+        <b fxFlex="56px">Value</b>
+    </div>
+    <div class="scrollable" style="padding: 0px 16px" fxFlex>
+        <div *ngFor="let event of events.slice().reverse()">
+            <div fxLayout="row" style="padding: 4px 0px;">
+                <div fxFlex="100px">{{event.timestamp*1000 | date:'hh:mm a'}}</div>
+                <div fxFlex="90px">{{event.returnValues.caller.slice(0,6)}}</div>
+                <div fxFlex>{{event.returnValues.message}}</div>
+                <div fxFlex="100px" style="text-align: right;">{{event.returnValues.msgValue}} wei</div>
+            </div>
+        </div>
+    </div>
+</span>

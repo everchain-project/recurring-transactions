@@ -1,13 +1,11 @@
 const DelegatedWalletContract = artifacts.require("DelegatedWallet");
 const DelegatedWalletFactory = artifacts.require("DelegatedWalletFactory");
-const PaymentDelegateBlueprint = artifacts.require("PaymentDelegate");
+const DentralizedPaymentDelegateBlueprint = artifacts.require("DecentralizedPaymentDelegate");
 const OneTimePaymentBlueprint = artifacts.require("OneTimePayment");
-
-var q = require('q');
 
 contract('Payment Delegate Blueprint', function(accounts) {
     
-    var ETHER = '0x0';
+    var ETHER = '0x0000000000000000000000000000000000000000';
 
     var PaymentDelegate;
     var DelegatedWallet;
@@ -18,8 +16,7 @@ contract('Payment Delegate Blueprint', function(accounts) {
     var owner = accounts[1]; 
     var recipient = accounts[2];
     var attacker = accounts[3];
-    var trustedScheduler = accounts[4];
-    var executor = accounts[5];
+    var executor = accounts[4];
 
     var recipientStartBalance;
 
@@ -28,14 +25,14 @@ contract('Payment Delegate Blueprint', function(accounts) {
         return DelegatedWalletFactory.deployed()
         .then(instance => {
             WalletFactory = instance;
-            return WalletFactory.createWallet({from: owner})
+            return WalletFactory.createWallet(owner, [])
         })
         .then(tx => {
             instancePromise = DelegatedWalletContract.at(tx.logs[0].args.wallet)
             return instancePromise;
         })
         .then(wallet => {
-            return q.all([
+            return Promise.all([
                 wallet.addDelegate(defaultDelegate, {from: owner}),
                 wallet.addDelegate(PaymentDelegate.address, {from: owner}),
                 web3.eth.sendTransaction({from: defaultCaller, to: wallet.address, value: 1})
@@ -48,52 +45,28 @@ contract('Payment Delegate Blueprint', function(accounts) {
 
     function deployPayment(){
         var paymentInstance;
-        return OneTimePaymentBlueprint.new()
+        return OneTimePaymentBlueprint.new({from: owner})
         .then(instance => {
             paymentInstance = instance;
-
-            return instance.initialize( 
+            return paymentInstance.initialize(
                 PaymentDelegate.address,
                 DelegatedWallet.address,
                 ETHER,
                 recipient,
-                1,
-                {from: executor}
-            );
+                "1"
+            )
         })
         .then(tx => {
-            return web3.eth.getBalance(DelegatedWallet.address)
-        })
-        .then(walletBalance => {
-            assert(walletBalance == "1", "wallet balance expected to be 1 wei");
-            return paymentInstance;
+            return paymentInstance;  
         })
     }
 
     it("initialize the payment delegate", () => {
-        return PaymentDelegateBlueprint.new()
+        return DentralizedPaymentDelegateBlueprint.new({from: owner})
         .then(instance => {
             PaymentDelegate = instance;
-            return PaymentDelegate.initialize(owner, {from: owner})
-        })
-        .then(tx => {
-            return PaymentDelegate.addScheduler(trustedScheduler, {from: owner})
         })
     }); 
-
-    it("check correctness of payment delegate", () => {
-        return q.all([
-            PaymentDelegate.owner(),
-            PaymentDelegate.getSchedulers(),
-        ])
-        .then(promises => {
-            var currentOwner = promises[0];
-            var schedulers = promises[1];
-            assert(owner == currentOwner, "owner was not properly set");
-            assert(schedulers.length == 1, "payment delegate scheduler should have 1 payment scheduler");
-            assert(schedulers[0] == trustedScheduler, "the payment scheduler was not correctly set");
-        })
-    })
 
     it("schedule a payment", () => {
         return deployDelegatedWallet()
@@ -107,10 +80,10 @@ contract('Payment Delegate Blueprint', function(accounts) {
         })
         .then(instance => {
             OneTimePayment = instance;
-            return PaymentDelegate.schedule(OneTimePayment.address, {from: trustedScheduler})
+            return PaymentDelegate.schedule(OneTimePayment.address, {from: defaultDelegate})
         })
         .then(tx => {
-            return q.all([
+            return Promise.all([
                 PaymentDelegate.getOutgoingPayments(DelegatedWallet.address),
                 PaymentDelegate.getIncomingPayments(recipient),
             ]);
@@ -125,8 +98,8 @@ contract('Payment Delegate Blueprint', function(accounts) {
         })
     });
 
-    it("have a non-delegate attempt to cancel the payment", () => {
-        return PaymentDelegate.schedule(OneTimePayment.address, {from: trustedScheduler})
+    it("have a non-delegate fail to cancel the payment", () => {
+        return PaymentDelegate.schedule(OneTimePayment.address, {from: defaultDelegate})
         .then(tx => {
             return PaymentDelegate.unschedule(OneTimePayment.address, {from: attacker})
         })
@@ -134,7 +107,7 @@ contract('Payment Delegate Blueprint', function(accounts) {
             assert(false, "a non-delegate should not be able to cancel a payment");
         })
         .catch(err => {
-            return q.all([
+            return Promise.all([
                 PaymentDelegate.getOutgoingPayments(DelegatedWallet.address),
                 PaymentDelegate.getIncomingPayments(recipient),
             ]);
@@ -150,9 +123,9 @@ contract('Payment Delegate Blueprint', function(accounts) {
     });
 
     it("execute payment", () => {
-        return OneTimePayment.sendTransaction({from: executor})
+        return OneTimePayment.sendTransaction({from: defaultCaller})
         .then(tx => {
-            return q.all([
+            return Promise.all([
                 web3.eth.getBalance(DelegatedWallet.address),
                 web3.eth.getBalance(recipient),
             ]);
@@ -160,10 +133,10 @@ contract('Payment Delegate Blueprint', function(accounts) {
         .then(etherBalances => {
             var walletBalance = etherBalances[0];
             var recipientBalance = etherBalances[1];
-            var expectedBalance = recipientStartBalance.plus(1);
+            var expectedBalance = new web3.utils.BN(recipientStartBalance).add(new web3.utils.BN('1'));
             assert(walletBalance == "0", "wallet balance expected to be 0 wei");
-            assert(recipientBalance.toString() == expectedBalance.toString(), "recipient balance expected to be " + expectedBalance);
-            return q.all([
+            assert(recipientBalance == expectedBalance.toString(), "recipient balance expected to be " + expectedBalance);
+            return Promise.all([
                 PaymentDelegate.getOutgoingPayments(DelegatedWallet.address),
                 PaymentDelegate.getIncomingPayments(recipient),
             ]);
@@ -177,9 +150,14 @@ contract('Payment Delegate Blueprint', function(accounts) {
     });
 
     it("have a delegate cancel a payment", () => {
-        return PaymentDelegate.schedule(OneTimePayment.address, {from: trustedScheduler})
+        var CancellablePayment;
+        return deployPayment()
+        .then(instance => {
+            CancellablePayment = instance;
+            return PaymentDelegate.schedule(instance.address, {from: defaultDelegate})
+        })
         .then(tx => {
-            return q.all([
+            return Promise.all([
                 PaymentDelegate.getOutgoingPayments(DelegatedWallet.address),
                 PaymentDelegate.getIncomingPayments(recipient),
             ]);
@@ -188,13 +166,13 @@ contract('Payment Delegate Blueprint', function(accounts) {
             var walletPayments = paymentLists[0];
             var recipientPayments = paymentLists[1];
             assert(walletPayments.length == 1, "there should be one wallet payment scheduled");
-            assert(walletPayments[0] == OneTimePayment.address, "the only wallet payment should be the example payment");
+            assert(walletPayments[0] == CancellablePayment.address, "the only wallet payment should be the example payment");
             assert(recipientPayments.length == 1, "there should be one recipient payment scheduled");
-            assert(recipientPayments[0] == OneTimePayment.address, "the only recipient payment should be the example payment");
-            return OneTimePayment.cancel({from: defaultDelegate})
+            assert(recipientPayments[0] == CancellablePayment.address, "the only recipient payment should be the example payment");
+            return CancellablePayment.cancel({from: defaultDelegate})
         })
         .then(tx => {
-            return q.all([
+            return Promise.all([
                 PaymentDelegate.getOutgoingPayments(DelegatedWallet.address),
                 PaymentDelegate.getIncomingPayments(recipient),
             ]);
@@ -208,13 +186,13 @@ contract('Payment Delegate Blueprint', function(accounts) {
             
     });
 
-    it("have a non-scheduler attempt to schedule a payment", () => {
+    it("have a non-scheduler fail to schedule a payment", () => {
         return PaymentDelegate.schedule(OneTimePayment.address, {from: attacker})
         .then(tx => {
             assert(false, "a non-scheduler should not be able to cancel a payment");
         })
         .catch(err => {
-            return q.all([
+            return Promise.all([
                 PaymentDelegate.getOutgoingPayments(DelegatedWallet.address),
                 PaymentDelegate.getIncomingPayments(recipient),
             ]);

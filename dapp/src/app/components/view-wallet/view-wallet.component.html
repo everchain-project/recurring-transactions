@@ -1,0 +1,109 @@
+<div fxLayout="column">
+    <div *ngIf="currentView == 'alarm-clocks'" fxLayout="column" fxFlex>
+        <h4>Alarm Cost Safety Multipliers</h4>
+        <div style="padding-bottom: 16px;">
+            <div class="border-container centered floatLeft" style="width: 108px;">
+                <div class="border-inner-container">
+                    &lt;1 day <br> <b>1.1x</b>
+                </div>
+            </div>
+            <div class="border-container centered floatLeft" style="width: 108px;">
+                <div class="border-inner-container">
+                    &gt;1 day <br> <b>1.2x</b>
+                </div>
+            </div>
+            <div class="border-container centered floatLeft" style="width: 108px;">
+                <div class="border-inner-container">
+                    2-7 days <br> <b>1.5x</b>
+                </div>
+            </div>
+            <div class="border-container centered floatLeft" style="width: 108px;">
+                <div class="border-inner-container">
+                    8-30 days <br> <b>2.0x</b>
+                </div>
+            </div>
+        
+            <div class="border-container centered floatLeft" style="width: 108px;">
+                <div class="border-inner-container">
+                    1-3 months <br> <b>3.0x</b>
+                </div>
+            </div>
+            <div class="border-container centered floatLeft" style="width: 108px;">
+                <div class="border-inner-container">
+                    4-12 months <br> <b>10.0x</b>
+                </div>
+            </div>
+            <div class="border-container centered floatLeft" style="width: 108px;">
+                <div class="border-inner-container">
+                    &gt;1 year <br> <b>10.0x</b>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="alarmClocks.length == 0" class="padding centered">
+            No alarms deployed
+        </div>
+        <div *ngIf="alarmClocks.length > 0">
+            <h4>Active Alarms</h4>
+            <div *ngFor="let alarmClock of alarmClocks">
+                <app-alarm-clock *ngIf="alarmClock.alarm.active" [(alarmClock)]="alarmClock"></app-alarm-clock>
+            </div>
+
+            <h4>Failed Alarms</h4>
+            <div *ngFor="let alarmClock of alarmClocks">
+                <app-alarm-clock *ngIf="alarmClock.alarm.failed && !alarmClock.alarm.cancelled" [(alarmClock)]="alarmClock"></app-alarm-clock>
+            </div>
+
+            <h4>Inactive Alarms</h4>
+            <div *ngFor="let alarmClock of alarmClocks">
+                <app-alarm-clock *ngIf="(!alarmClock.alarm.active && !alarmClock.alarm.failed) || alarmClock.alarm.cancelled" [(alarmClock)]="alarmClock"></app-alarm-clock>
+            </div>
+            
+            &nbsp;
+            &nbsp;
+        </div>
+    </div>
+    <div *ngIf="currentView == 'delegates'" fxLayout="column" fxFlex>
+        <h3>Delegates</h3>
+
+        <mat-form-field [floatLabel]="'always'" appearance="outline">
+            <mat-label>New Delegate Address</mat-label>
+            <input matInput type="text" [(ngModel)]="newDelegateAddress" name="newDelegateAddress" placeholder="Enter a smart contract address">
+            <mat-icon matSuffix class="cursor" style="margin-right: 6px;" (click)="addDelegate()">add</mat-icon>
+            <mat-hint style="color: red;">Warning! Delegates can transfer funds at any time. Make sure it is a vetted smart contract!</mat-hint>
+        </mat-form-field>
+
+        &nbsp;
+        
+        <div *ngFor="let delegateAddress of delegates; let i = index" [attr.data-index]="i" style="margin-top: 8px;">
+            <div class="border-container" fxLayout="row">
+                <div class="border-inner-container" fxLayout="row" fxFlex>
+                    <div fxLayout="column">
+                        <b style="margin-bottom: 4px;">#{{i+1}} {{getName(delegateAddress)}}</b>
+                        <small style="color: gray">{{delegateAddress}}</small>
+                    </div>
+                    <span fxFlex></span>
+                    <button mat-icon-button (click)="removeDelegate(delegateAddress)">
+                        <mat-icon matSuffix>remove</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="currentView == 'transfer'" fxLayout="column" fxFlex>
+        <h2>Transfer</h2>
+        <mat-form-field [floatLabel]="'always'" appearance="outline">
+            <mat-label>To</mat-label>
+            <input matInput type="text" [(ngModel)]="toAddress" name="toAddress" placeholder="Enter an ethereum address">
+        </mat-form-field>
+        <mat-form-field [floatLabel]="'always'" appearance="outline">
+            <mat-label>Ether Amount</mat-label>
+            <input matInput type="number" [(ngModel)]="transferAmount" name="transferAmount" placeholder="Enter an ether amount">
+        </mat-form-field>
+        <div style="min-height: 40px;" fxLayout="row">
+            <button mat-button (click)="max()">max</button>
+            <span fxFlex="16px"></span>
+            <button mat-raised-button color="primary" [disabled]="!valid()" (click)="transfer()" fxFlex>transfer</button>
+        </div>
+    </div>
+</div>

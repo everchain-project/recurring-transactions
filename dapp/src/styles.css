@@ -1,6 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import url( 'https://fonts.googleapis.com/css?family=Roboto:400,700|Material+Icons');
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
@@ -31,7 +29,7 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 }
 
 .padding {
-    padding: 16px;
+    padding: 32px;
 }
 
 .margin {
@@ -84,4 +82,9 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 
 .mat-select-arrow-wrapper {
     padding-left: 4px !important;
+}
+
+.cdk-overlay-pane {
+    max-width: none !important;
+    width: 90vw;
 }

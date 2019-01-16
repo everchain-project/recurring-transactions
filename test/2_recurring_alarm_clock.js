@@ -1,11 +1,10 @@
 const DelegatedWalletBlueprint = artifacts.require("DelegatedWallet");
 const ExampleTaskBlueprint = artifacts.require("ExampleTask");
-const PaymentDelegateBlueprint = artifacts.require("PaymentDelegate");
+const GasPriceOracle = artifacts.require("GasPriceOracle");
+const PaymentDelegateBlueprint = artifacts.require("DecentralizedPaymentDelegate");
 const RequestFactory = artifacts.require("RequestFactory");
 const RecurringAlarmClockBlueprint = artifacts.require("RecurringAlarmClock");
 const TransactionRequestInterface = artifacts.require("TransactionRequestInterface");
-
-var q = require('q');
 
 contract('Recurring Alarm Clock Blueprint', function(accounts) {
 
@@ -13,34 +12,275 @@ contract('Recurring Alarm Clock Blueprint', function(accounts) {
     var DelegatedWallet;
 
     var ExampleTask;
-    var AlarmClockFactory = accounts[1];
     var AlarmClock;
     var Alarm;
 
     var defaultAccount = accounts[0];
-    var trustedScheduler = accounts[3];
-    var priorityCaller = accounts[4];
+    var defaultDelegate = accounts[1];
+    var priorityCaller = accounts[2];
+    var attacker = accounts[3];
 
-    var safetyMultiplier = 2;
-    var period = 30;
-    var totalPayments = 2;
-    var callGas = 800000;
+    var callData = '0x';
+    var callDataWithMessage = '0x0eb07f780000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000c48656c6c6f20576f726c64210000000000000000000000000000000000000000';
+    var callDataWithMessageAndValue = '0x16230b010000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000c48656c6c6f20576f726c64210000000000000000000000000000000000000000';
+    var callGas = 100000;
+    var windowSize = minutes(60);
+    var intervalValue = 1;
+    var intervalUnit = 1;
+    var maxIntervals = 2;
 
-    var alarmCaller;
+    it("initialize the recurring alarm clock blueprint", () => {
+        return Promise.all([
+            RecurringAlarmClockBlueprint.new(),
+            ExampleTaskBlueprint.new(),
+            deployPaymentDelegate(),
+            deployDelegatedWallet(),
+        ])
+        .then(instances => {
+            AlarmClock = instances[0];
+            ExampleTask = instances[1];
+            PaymentDelegate = instances[2];
+            DelegatedWallet = instances[3];
+            return AlarmClock.initialize(
+                RequestFactory.address,
+                DelegatedWallet.address,
+                PaymentDelegate.address,
+                {from: defaultAccount}
+            )
+        })
+        .then(txReceipt => {
+            return Promise.all([
+                AlarmClock.setExecutionLimits(
+                    [
+                        0, // minutes(5), // scheduler.claimWindowSize
+                        0, // minutes(3), // scheduler.freezePeriod
+                        0, // minutes(5), // scheduler.reservedWindowSize
+                    ],
+                    {from: defaultDelegate}
+                ),
+                AlarmClock.setGasPriceOracle(GasPriceOracle.address, {from: defaultDelegate}),
+                AlarmClock.setPriorityCaller(priorityCaller, {from: defaultDelegate})
+            ])
+        })
+        .then(txReceipts => {
+            return PaymentDelegate.schedule(AlarmClock.address, {from: defaultDelegate})
+        })
+    });
+
+    it("start alarm clock with no call data and no call value", () => {
+        return AlarmClock.start(
+            ExampleTask.address,
+            callData,
+            [
+                0, // callValue
+                callGas,
+                now() + minutes(1),
+                windowSize,
+                intervalValue,
+                intervalUnit,
+                maxIntervals,
+            ],
+            {from: defaultDelegate}
+        );
+    });
+
+    it("fail to execute alarm clock early", () => {
+        return getCurrentAlarm()
+        .then(alarm => {
+            return alarm.execute({
+                from: attacker,
+                gasPrice: 1000000000,
+                gas: 1000000
+            })
+        })
+        .then(tx => {
+            assert(tx.logs[0].event == 'Aborted', "alarm execution was not properly aborted");
+            return web3.eth.sendTransaction({
+                to: AlarmClock.address,
+                from: attacker,
+                value: 0,
+                gas: 1000000
+            })
+            .then(tx => {
+                assert(false, "should not be able to manually trigger alarm clock")
+            })
+            .catch(err => {
+                return Promise.resolve()
+            })
+        })
+    })
+
+    it("check correctness of alarm execution", () => {
+        console.log("    ? check correctness of alarm execution")        
+        return getCurrentAlarm()
+        .then(outputCurrentAlarm)
+        .then(startAlarmExecutionEngine)
+        .then(() => ExampleTask.getPastEvents('allEvents', {fromBlock: 0, toBlock: 'latest'}))
+        .then(events => {
+            assert(events.length == maxIntervals, "there should be " + maxIntervals + " events")
+        })
+    });
+
+    it("start alarm clock with call data and no call value", () => {
+        return AlarmClock.start(
+            ExampleTask.address,
+            callDataWithMessage,
+            [
+                0, // callValue
+                callGas,
+                now() + minutes(1),
+                windowSize,
+                intervalValue,
+                intervalUnit,
+                maxIntervals,
+            ],
+            {from: defaultDelegate}
+        );
+    });
+
+    it("check correctness of alarm execution", () => {
+        console.log("    ? check correctness of alarm execution")        
+        return getCurrentAlarm()
+        .then(outputCurrentAlarm)
+        .then(startAlarmExecutionEngine)
+        .then(() => ExampleTask.getPastEvents('allEvents', {fromBlock: 0, toBlock: 'latest'}))
+        .then(events => {
+            assert(events.length == maxIntervals*2, "there should be " + maxIntervals*2 + " events")
+        })
+    });
+
+    it("start alarm clock with call data and call value", () => {
+        return AlarmClock.start(
+            ExampleTask.address,
+            callDataWithMessageAndValue,
+            [
+                1, // callValue
+                callGas,
+                now() + minutes(1),
+                windowSize,
+                intervalValue,
+                intervalUnit,
+                maxIntervals,
+            ],
+            {from: defaultDelegate}
+        );
+    });
+
+    it("check correctness of alarm execution", () => {
+        console.log("    ? check correctness of alarm execution")        
+        return getCurrentAlarm()
+        .then(outputCurrentAlarm)
+        .then(startAlarmExecutionEngine)
+        .then(() => ExampleTask.getPastEvents('allEvents', {fromBlock: 0, toBlock: 'latest'}))
+        .then(events => {
+            assert(events.length == maxIntervals*3, "there should be " + maxIntervals*3 + " events")
+        })
+    });
+
+
+    function startAlarmExecutionEngine(){
+        return new Promise((resolve, reject) => {
+            var AlarmExecutionEngine = setInterval(() => {
+                fetchCurrentAlarm()
+                .then(alarm => {
+                    Alarm = alarm;
+                    return getCurrentAlarmStatus(alarm)
+                })
+                .then(ready => {
+                    if(ready){
+                        executeAlarm(Alarm)
+                        .then(getCurrentAlarm)
+                        .then(alarm => {
+                            if(alarm){
+                                outputCurrentAlarm(alarm)
+                            } else {
+                                resolve('hello');
+                                clearInterval(AlarmExecutionEngine);
+                            }
+                        })
+                        .catch(err => reject(err))
+                    } else {
+                        //console.log("      alarm execution not ready. waiting...")
+                    }
+                })
+                .catch(err => reject(err))
+            }, 15000);
+        })     
+    }
+
+    function executeAlarm(alarm){
+        return alarm.execute({
+            gas: 2000000,
+            gasPrice: 1000000000
+        })
+        .then(tx => {
+            //console.log(tx.logs)
+            var costInEther = web3.utils.fromWei((tx.receipt.gasUsed * 1000000000).toString(), 'ether');
+            console.log("      executed! " + alarm.address.slice(0,6) + " cost " + costInEther + " ether (" + tx.receipt.gasUsed + " gas @ 1 gwei)")
+            return tx;
+        })
+    }
+
+    function outputCurrentAlarm(alarm){
+        return Promise.all([
+            alarm.requestData(),
+            AlarmClock.currentInterval(),
+            AlarmClock.maxIntervals(),
+            AlarmClock.cost({
+                gasPrice: 1000000000
+            })
+        ])
+        .then(promises => {
+            var requestData = promises[0];
+            var currentInterval = promises[1];
+            var maxIntervals = promises[2];
+            var alarmCost = promises[3];
+            var alarmCostInEther = web3.utils.fromWei(alarmCost, 'ether');
+
+            var startTimestamp = requestData[2][10];
+            var currentTimestamp = now();
+            console.log("      alarm " + currentInterval + "/" + maxIntervals + " " + alarm.address.slice(0,6) + " cost " + alarmCostInEther + " ether (800000 gas @ 1gwei w/ 1.1 multiplier)");
+        })
+    }
+
+    function getCurrentAlarmStatus(alarm){
+        return alarm.requestData()
+        .then(requestData => {
+            var startTimestamp = requestData[2][10];
+            var currentTimestamp = now();
+            return (currentTimestamp >= startTimestamp);
+        })
+    }
+
+    function fetchCurrentAlarm(){
+        return AlarmClock.alarm()
+        .then(alarmAddress => {
+            if(alarmAddress == '0x0000000000000000000000000000000000000000'){
+                return Promise.reject(new Error('no current alarm clock'));
+            } else {
+                return TransactionRequestInterface.at(alarmAddress);
+            }
+        })
+    }
+
+    function getCurrentAlarm(){
+        return AlarmClock.alarm()
+        .then(alarmAddress => {
+            if(alarmAddress == '0x0000000000000000000000000000000000000000'){
+                return Promise.resolve(null);
+            } else {
+                return TransactionRequestInterface.at(alarmAddress);
+            }
+        })
+    }
 
     function deployPaymentDelegate(){
         var instance;
 
-        return PaymentDelegateBlueprint.new()
-        .then(_instance => {
-            instance = _instance;
-            return instance.initialize(defaultAccount)
-            .then(tx => {
-                return instance.addScheduler(trustedScheduler)
-            })
-            .then(tx => {
-                return instance;
-            })
+        return PaymentDelegateBlueprint.new({from: defaultAccount})
+        .then(instance => {
+            PaymentDelegate = instance;
+            return instance;
         })
     }
 
@@ -51,10 +291,13 @@ contract('Recurring Alarm Clock Blueprint', function(accounts) {
             instance = _instance;
             return instance.initialize(defaultAccount)
             .then(tx => {
-                return instance.addDelegate(PaymentDelegate.address)
+                return Promise.all([
+                    instance.addDelegate(defaultDelegate),
+                    instance.addDelegate(PaymentDelegate.address),
+                ]);
             })
             .then(tx => {
-                return sendEther({from: trustedScheduler, to: instance.address, value: ether(1)})
+                return web3.eth.sendTransaction({from: defaultDelegate, to: instance.address, value: ether(1)})
             })
             .then(tx => {
                 return instance;
@@ -62,198 +305,16 @@ contract('Recurring Alarm Clock Blueprint', function(accounts) {
         })
     }
 
-    function updateBlockchainTimestamp(){
-        return sendEther({
-            from: accounts[8],
-            to: accounts[9],
-            value: 1
-        })
-        .then(tx => {
-            //console.log(tx)
-            var deferred = q.defer();
-            web3.eth.getBlock(tx.blockNumber, function(err, blockData){
-                //console.log(err, blockData);
-                if(err)
-                    deferred.reject(err);
-                else
-                    deferred.resolve(blockData)
-            })
-            return deferred.promise;
-        })
-        .then(blockData => {
-            //console.log(blockData)
-            return blockData.timestamp;
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
-
-    function waitForAlarmExecution(){
-        var deferred = q.defer();
-
-        alarmCaller = setInterval(() => {
-            return Promise.all([
-                updateBlockchainTimestamp(),
-                Alarm.requestData(),
-            ])
-            .then(promises => {
-                var currentTimestamp = promises[0];
-                var options = promises[1];
-                var startTimestamp = options[2][10];
-                
-                if(startTimestamp < currentTimestamp){
-                    return Alarm.execute({
-                        gas: 1000000
-                    })
-                    .then(tx => {
-                        clearInterval(alarmCaller);
-                        deferred.resolve()
-                    })
-                    .catch(err => {
-                        clearInterval(alarmCaller);
-                        deferred.reject(err);
-                    })
-                } else {
-                    //console.log('        updating blockchain timestamp...   ' + currentTimestamp + '/' + startTimestamp)
-                }
-            })
-            .catch(err => {
-                clearInterval(alarmCaller);
-                deferred.reject(err);
-            })
-        }, 1000);
-
-        return deferred.promise;
-    }
-    
-    function sendEther(options){
-        var deferred = q.defer();
-        web3.eth.sendTransaction(options, function(err, txHash){
-            //console.log(err, txHash);
-            if(err)
-                deferred.reject(err);
-            else {
-                web3.eth.getTransactionReceipt(txHash, function(err, tx){
-                    //console.log(err, tx);
-                    if(err)
-                        deferred.reject(tx);
-                    else
-                        deferred.resolve(tx);
-                })
-            }
-        })
-        return deferred.promise;
-    }
-
-    function ether(toWei){
-        return web3.toWei(toWei,'ether');
+    function ether(amountInWei){
+        return web3.utils.toWei(amountInWei.toString(),'ether');
     }
 
     function minutes(toSeconds) {
         return Math.floor(60 * toSeconds);
     }
 
-    function hours(toSeconds) {
-        return Math.floor(60 * 60 * toSeconds);
-    }
-
     function now() {
         return Math.floor(Date.now() / 1000);
     }
-
-    function getCurrentAlarm(){
-        return AlarmClock.executor()
-        .then(alarmAddress => {
-            if(alarmAddress == '0x0000000000000000000000000000000000000000')
-                return Promise.resolve(alarmAddress)
-            else
-                return TransactionRequestInterface.at(alarmAddress)
-        })
-    }
-
-    it("initialize the recurring alarm clock blueprint", () => {
-        return q.all([
-            RecurringAlarmClockBlueprint.new(),
-            ExampleTaskBlueprint.new(),
-            deployPaymentDelegate(),
-        ])
-        .then(instances => {
-            AlarmClock = instances[0];
-            ExampleTask = instances[1];
-            PaymentDelegate = instances[2];
-            return deployDelegatedWallet();
-        })
-        .then(instance => {
-            DelegatedWallet = instance;
-            return q.all([
-                AlarmClock.initialize(
-                    RequestFactory.address,
-                    PaymentDelegate.address,
-                    DelegatedWallet.address,
-                    priorityCaller,
-                    "",
-                    [
-                        safetyMultiplier,   // multiplier for alarm cost to account for network price changes
-                        period,             // seconds between payments
-                        2                   // totalPayments
-                    ],
-                    [
-                        minutes(60),        // claimWindowSize
-                        15,                 // freezePeriod
-                        30,                 // reservedWindowSize
-                        2,                  // 2 = Use timestamp based scheduling instead of blocks
-                        hours(24),          // The size of the execution window
-                        now() + period,     // The start of the execution window
-                        callGas,            // The amount of extra gas to be sent with the transaction
-                        0,                  // The amount of ether to be sent
-                        0,                  // The minimum gas price for the alarm when called
-                        0                   // The required deposit by the claimer
-                    ],
-                    {from: AlarmClockFactory}
-                ),
-                ExampleTask.initialize(AlarmClock.address)
-            ])
-        })
-        .then(promises => {
-            return PaymentDelegate.schedule(AlarmClock.address, {from: trustedScheduler})
-        })
-    });
-
-    it("check correctness of alarm execution", () => {
-        console.log("    ? check correctness of alarm execution")
-        return AlarmClock.start(ExampleTask.address, {from: AlarmClockFactory})
-        .then(tx => getCurrentAlarm())
-        .then(alarm => {
-            Alarm = alarm;
-            console.log("    0/2 alarms executed...   current alarm: " + Alarm.address)
-            return waitForAlarmExecution()
-        })
-        .then(() => getCurrentAlarm())
-        .then(alarm => {
-            Alarm = alarm;
-            console.log("    1/2 alarms executed...   current alarm: " + Alarm.address)
-            return waitForAlarmExecution()
-        })
-        .then(() => getCurrentAlarm())
-        .then(alarmAddress => {
-            console.log("    2/2 alarms executed...   current alarm: " + alarmAddress)
-            
-            var deferred = q.defer();
-
-            ExampleTask.allEvents({fromBlock: 0, toBlock: 'latest'})
-            .get((err, events) => {
-                deferred.resolve(events);
-            })
-
-            return deferred.promise;
-        })
-        .then(events => {
-            assert(events.length == totalPayments, "there should be " + totalPayments + " events")
-        })
-        .catch(err => {
-            console.log(err);
-        })
-    });
 
 });

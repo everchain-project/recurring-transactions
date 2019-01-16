@@ -1,11 +1,18 @@
 pragma solidity ^0.5.0;
 
+import "../external/Owned.sol";
 import "../Interfaces.sol";
 
-contract DummyGasPriceFeed is IUintFeed {
+contract DummyGasPriceFeed is Owned, IUintFeed {
 
-    function read() public view returns (uint gasPrice) {
-        return tx.gasprice;
+	uint public gasPrice = 1000000000;
+
+    function read() public view returns (uint) {
+        return gasPrice;
+    }
+
+    function set(uint newGasPrice) public onlyOwner {
+    	gasPrice = newGasPrice;
     }
 
 }
