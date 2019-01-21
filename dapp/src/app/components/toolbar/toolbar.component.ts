@@ -1,15 +1,16 @@
-import { Component, OnInit, Input, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from "@angular/router";
 import { MatDialog, MatSnackBar } from '@angular/material';
 
 declare let web3: any;
 import { Web3Service } from '../../services/web3/web3.service';
-import { DelegatedWalletService } from '../../services/delegated-wallet/delegated-wallet.service';
+import { AlarmClockService } from '../../services/alarm-clock/alarm-clock.service';
+import { PaymentDelegateService } from '../../services/payment-delegate/payment-delegate.service';
+import { WalletManagerService } from '../../services/wallet-manager/wallet-manager.service';
+import { UserService } from '../../services/user/user.service';
+import { StorageService } from '../../services/storage/storage.service';
 import { CreateWalletComponent } from '../create-wallet/create-wallet.component';
 import { QrcodeComponent } from '../qrcode/qrcode.component';
-import { AlarmClockService } from '../../services/alarm-clock/alarm-clock.service';
-import { CreateAlarmClockComponent } from '../create-alarm-clock/create-alarm-clock.component';
-import { PaymentDelegateService } from '../../services/payment-delegate/payment-delegate.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -18,127 +19,57 @@ import { PaymentDelegateService } from '../../services/payment-delegate/payment-
 })
 export class ToolbarComponent implements OnInit {
 
-    user: any = {
-        isLoggedIn: false
-    };
-
-    currentAccount;
-	currentWallet;
-	currentRoute;
-	currentView;
+    initialized;
+    currentWallet;
+    currentRoute;
+    currentView
     newWalletName: string;
-	editWalletName: boolean = false;
-    walletAddresses;
-    currentBalance;
-
-	walletBalanceSubscriptions = [];
-
-	constructor(
-		private router: Router,
-		private dialog: MatDialog,
-		private snackbar: MatSnackBar,
-		private ngZone: NgZone,
-		private Web3: Web3Service,
+    editWalletName: boolean = false;
+    error: string = null;
+    
+    constructor(
+        private router: Router,
+        private dialog: MatDialog,
+        private snackbar: MatSnackBar,
+        private Web3: Web3Service,
         private AlarmClock: AlarmClockService,
-		private WalletService: DelegatedWalletService,
         private PaymentDelegate: PaymentDelegateService,
-	) { }
+        public WalletManager: WalletManagerService,
+        public User: UserService,
+        public Storage: StorageService,
+    ) { }
 
-	ngOnInit() {
-		//this.init();
+    ngOnInit() {
+        this.Web3.ready().then(networkId => {
+            if(networkId != 42) this.error = "Wrong network detected... Switch to the Kovan Testnet!";
+            this.initialized = true;
+        })
+        .catch(err => {
+            this.error = err;
+            this.initialized = true;
+        })
 
-        web3.eth.subscribe('newBlockHeaders', (error, blockHash) => {
-            if (!error && this.user.isLoggedIn){
-                //console.log(blockHash);
-                this.Web3.getBalance(this.user.address)
-                .then(updatedBalance => {
-                    this.user.balance = updatedBalance;
-                    console.log(updatedBalance.ether,this.PaymentDelegate.ethPriceInUsd)
-                    this.user.balance['usd'] = updatedBalance.ether * this.PaymentDelegate.ethPriceInUsd;
-                })
-            }
-        });
+        this.init();
 
-		this.router.events.forEach((event) => {
+        this.router.events.forEach((event) => {
             if(event instanceof NavigationStart) {
-            	this.destroy();
+                //this.destroy();
             }
             if(event instanceof NavigationEnd) {
-            	this.init();
+                this.init();
             }
             // NavigationCancel
             // NavigationError
             // RoutesRecognized
         });
-		
-	}
+    }
 
-	init(){
-		var option = this.router.url.split('/');
+    init(){
+        var option = this.router.url.split('/');
         this.currentWallet = option[2];
         this.currentRoute = '/' + option[1] + '/' + option[2];
         this.currentView = option[3];
-		this.newWalletName = this.getName(this.currentWallet);
-
-        this.getUser()
-        .then(user => {
-            this.user = user;
-            
-            for (var i = this.user.wallets.length - 1; i >= 0; i--) {
-                var wallet = this.user.wallets[i];
-                this.watchForWalletBalanceChanges(wallet);
-            }
-        })
-	}
-
-	destroy(){
-		var unsubscribe = this.walletBalanceSubscriptions;
-		this.walletBalanceSubscriptions = [];
-    	for (var i = unsubscribe.length - 1; i >= 0; i--) {
-        	unsubscribe[i].unsubscribe((err, success) => {
-        		//console.log(err, success);
-        	})
-        }
-	}
-
-	watchForWalletBalanceChanges(walletAddress){
-        this.walletBalanceSubscriptions.push(
-        	this.WalletService.getWallet(walletAddress)
-	        .events.allEvents(null, (err, event) => {
-	            web3.eth.getBalance(walletAddress)
-	            .then(weiBalance => {
-	                var etherBalance = Number(web3.utils.fromWei(weiBalance, 'ether'));
-	                var usdBalance = etherBalance * this.PaymentDelegate.ethPriceInUsd;
-                    console.log(usdBalance)
-
-	                this.ngZone.run(() => {
-	                    this.user[walletAddress] = {
-	                        balance: {
-	                            wei: weiBalance,
-	                            ether: etherBalance,
-	                            usd: usdBalance,
-	                        }
-	                    }
-	                })
-	            })
-	            .catch(err => {
-	                console.error(err)
-	            })
-	        })
-	    );
-    }
-
-	triggerWalletChange() {
-        if(this.currentWallet == "new"){
-            var wait = setInterval(() => {
-                this.createWallet();
-                clearInterval(wait);
-            }, 100)
-        } else {
-            var route = 'wallet/' + this.currentWallet + '/alarm-clocks';
-            //console.log("Routing to: ", route);
-            this.router.navigate([route]);
-        }
+        this.newWalletName = this.Storage.get(this.currentWallet,"name");
     }
 
     createWallet(){
@@ -149,6 +80,7 @@ export class ToolbarComponent implements OnInit {
         });
     
         dialogRef.afterClosed().subscribe(newWallet => {
+            this.init();
             if(newWallet && newWallet.tx){
                 var title = 'Waiting for ' + newWallet.name + ' to be deployed. Be patient!';
                 var buttonText = 'view on etherscan';
@@ -158,22 +90,19 @@ export class ToolbarComponent implements OnInit {
                 });
                 
                 newWallet.tx.on("confirmation", (confirmations, txReceipt)  => {
-                    console.log(confirmations);
                     if(confirmations == 0){
                         console.log("Transaction successfully buried '0' confirmations deep. This should be a custom setting eventually");                        
                         var walletAddress = txReceipt.events.AddWallet_event.returnValues.wallet;
-                        this.currentWallet = walletAddress;
                         localStorage.setItem(walletAddress + '.name', newWallet.name);
+                        this.WalletManager.watch(walletAddress);
+                        this.WalletManager.walletList.push(walletAddress);
+                        
                         var title = newWallet.name + ' Deployed';
                         var buttonText = 'view wallet';
-                        
-
                         let snackBarRef = this.snackbar.open(title, buttonText);
                         snackBarRef.onAction().subscribe(() => {
-                            console.log(walletAddress)
-                            this.ngZone.run(() => {
-                                this.router.navigate(['/wallet/' + walletAddress]);
-                            });
+                            this.User.wallets.push(walletAddress);
+                            this.router.navigate(['/wallet/' + walletAddress]);
                         });
                     }
                 })
@@ -181,30 +110,11 @@ export class ToolbarComponent implements OnInit {
                     console.error(err);
                 })   
             } else {
-            	this.currentWallet = null;
+                this.init();
             }
         });
     }
-
-    createAlarmClock(){
-        const dialogRef = this.dialog.open(CreateAlarmClockComponent, {
-            width: '90vw',
-            height: '90vh',
-            data: { 
-                title: "Create New Alarm",
-                alarmType: 'new',
-            }
-        });
     
-        dialogRef.afterClosed().subscribe(newAlarmClock => {
-        	console.log(newAlarmClock)
-            if(newAlarmClock && newAlarmClock.tx){
-                
-            } else {
-            	
-            }
-        });
-    }
 
     showQRCode(){
         console.log(this.currentWallet);
@@ -221,90 +131,28 @@ export class ToolbarComponent implements OnInit {
     signIn(){
         this.Web3.signIn()
         .then(() => {
-            this.init()
+            this.init();
+            console.log(this.Web3.watchedAccount)
+            return this.User.set(this.Web3.watchedAccount)
         })
         .catch(err => {
-            console.error('failed to login to web3');
+            console.error(err);
         })
     }
 
-    getName(id){
-        var name = localStorage.getItem(id + '.name');
-        if(!name) return "Unnamed Wallet"
-        return name;
+    triggerWalletChange() {
+        if(this.currentWallet == "new"){
+            this.createWallet();
+        } else {
+            this.router.navigate(['wallet/' + this.currentWallet + '/alarm-clocks']);
+        }
     }
 
     triggerWalletNameChange(newWalletName){
         if(newWalletName && newWalletName.length > 4){
-    		this.user[this.currentWallet].name = newWalletName;
-            localStorage.setItem(this.currentWallet + '.name', newWalletName);
+            this.User.wallets[this.currentWallet].name = newWalletName;
+            this.Storage.set(this.currentWallet,'.name', newWalletName);
         }
-    }
-
-    getUser(){
-        return Promise.all([
-            this.Web3.getCurrentAccount(),
-            this.PaymentDelegate.ready
-        ])
-        .then(promises => {
-            var currentAccount = promises[0];
-            if(!currentAccount) {
-                return Promise.resolve({
-                    isLoggedIn: false,
-                    wallets: [],
-                });
-            }
-            else {
-                this.currentAccount = currentAccount;
-                localStorage.setItem(currentAccount + ".name", "You");
-                return Promise.all([
-                    this.Web3.getBalance(currentAccount),
-                    this.WalletService.getWallets(currentAccount)
-                ])
-                .then(promises => {
-                    this.currentBalance = promises[0];
-                    this.walletAddresses = promises[1];
-                    this.currentBalance['usd'] = this.currentBalance.ether * this.PaymentDelegate.ethPriceInUsd;
-
-                    var walletBalances = [];
-                    for (var i = 0; i < this.walletAddresses.length; i++) {
-                        walletBalances.push(web3.eth.getBalance(this.walletAddresses[i]));
-                    }
-
-                    return Promise.all(walletBalances)
-                })
-                .then(walletBalances => {
-                    var user  = {
-                        isLoggedIn: true,
-                        address: this.currentAccount,
-                        balance: this.currentBalance,
-                        wallets: this.walletAddresses
-                    };
-
-                    for (var i = 0; i < this.walletAddresses.length; i++) {
-                        var walletAddress = this.walletAddresses[i];
-                        var weiBalance = walletBalances[i];
-                        var etherBalance = Number(web3.utils.fromWei(weiBalance, 'ether'));
-                        var usdBalance = etherBalance * this.PaymentDelegate.ethPriceInUsd;
-
-                        user[walletAddress] = {
-                            address: walletAddress,
-                            balance: {
-                                wei: weiBalance,
-                                ether: etherBalance,
-                                usd: usdBalance,
-                            },
-                            name: this.getName(walletAddress)
-                        }
-                    }
-
-                    return user;
-                })
-            }
-        })
-        .catch(err => {
-            console.error(err)
-        })
     }
 
 }

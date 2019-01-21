@@ -1,0 +1,58 @@
+<div class="scrollable" style="padding: 0px 16px;" *ngIf="initialized" fxLayout="column" fxFlex="50">
+	<div style="position: relative;">
+		<div style="position: absolute; top: 8px; right: 8px;">
+			<button mat-icon-button (click)="showAddDelegatePanel = !showAddDelegatePanel">
+				<mat-icon *ngIf="!showAddDelegatePanel">add</mat-icon>
+				<mat-icon *ngIf="showAddDelegatePanel">close</mat-icon>
+			</button>
+		</div>
+	</div>
+
+	<h4>Wallet Delegates</h4>
+	
+	<div *ngIf="showAddDelegatePanel" fxLayout="column">
+		<mat-form-field [floatLabel]="'always'" appearance="outline">
+		    <mat-label>New Delegate Name</mat-label>
+		    <input matInput type="text" [(ngModel)]="newDelegateName" name="newDelegateName" placeholder="Delegate Name">
+		</mat-form-field>
+
+		<mat-form-field [floatLabel]="'always'" appearance="outline">
+		    <mat-label>New Delegate Address</mat-label>
+		    <input matInput type="text" [(ngModel)]="newDelegateAddress" name="newDelegateAddress" placeholder="Enter a smart contract address">
+		    <mat-icon matSuffix class="cursor" style="margin-right: 6px;" (click)="addDelegate(newDelegateAddress, newDelegateName)">add</mat-icon>
+		    <mat-hint style="color: red;">Warning! Delegates can transfer funds at any time. Make sure it is a vetted smart contract!</mat-hint>
+		</mat-form-field>
+	</div>
+
+	&nbsp;
+
+	<div *ngFor="let delegate of WalletManager.wallets[currentWallet].delegates; let i = index" [attr.data-index]="i" style="margin-top: 8px;">
+	    <div class="border-container" fxLayout="row">
+	        <div class="border-inner-container" fxLayout="row" fxFlex>
+	            <div fxLayout="column">
+	                <b style="margin-bottom: 4px;">#{{i+1}} {{Storage.get(delegate,'name')}}</b>
+	                <small style="color: gray">{{delegate}}</small>
+	            </div>
+	            <span fxFlex></span>
+	            <button mat-icon-button (click)="removeDelegate(delegate.address)">
+	                <mat-icon matSuffix>remove</mat-icon>
+	            </button>
+	        </div>
+	    </div>
+	</div>
+</div>
+<div class="scrollable borderLeft" style="padding: 0px 16px;" fxLayout="column" fxFlex="50">
+	<h4 style="padding: 0px 16px;">Vetted Delegates</h4>
+    <div class="border-container" *ngFor="let delegate of vettedDelegates;">
+        <div class="border-inner-container" fxLayout="row" fxFlex>
+            <div fxLayout="column">
+                <b style="margin-bottom: 4px;">{{delegate.name}}</b>
+                <small style="color: gray">{{delegate.address}}</small>
+            </div>
+            <span fxFlex></span>
+            <section class="check-box">
+		    	<mat-checkbox style="margin: 0 10px;" [(ngModel)]="delegate.isDelegate" (ngModelChange)="toggleDelegate(delegate)"></mat-checkbox>
+		    </section>
+        </div>
+    </div>
+</div>

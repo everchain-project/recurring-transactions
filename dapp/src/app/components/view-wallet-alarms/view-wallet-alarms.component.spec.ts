@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewWalletComponent } from './view-wallet.component';
+import { ViewWalletAlarmsComponent } from './view-wallet-alarms.component';
 
-describe('ViewWalletComponent', () => {
-  let component: ViewWalletComponent;
-  let fixture: ComponentFixture<ViewWalletComponent>;
+describe('ViewWalletAlarmsComponent', () => {
+  let component: ViewWalletAlarmsComponent;
+  let fixture: ComponentFixture<ViewWalletAlarmsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewWalletComponent ]
+      declarations: [ ViewWalletAlarmsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ViewWalletComponent);
+    fixture = TestBed.createComponent(ViewWalletAlarmsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

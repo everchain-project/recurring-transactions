@@ -3,7 +3,7 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 
 import { Web3Service } from '../../services/web3/web3.service';
 import { AlarmClockService } from '../../services/alarm-clock/alarm-clock.service';
-import { DelegatedWalletService } from '../../services/delegated-wallet/delegated-wallet.service';
+import { WalletManagerService } from '../../services/wallet-manager/wallet-manager.service';
 import { CreateAlarmClockComponent } from '../../components/create-alarm-clock/create-alarm-clock.component';
 import { PaymentDelegateService } from '../../services/payment-delegate/payment-delegate.service';
 
@@ -14,7 +14,7 @@ import { PaymentDelegateService } from '../../services/payment-delegate/payment-
 })
 export class AlarmClockComponent implements OnInit {
 
-	@Input() alarmClock: any;
+    @Input() alarmClock: any;
 
     currentAccount;
     newLabel;
@@ -22,13 +22,13 @@ export class AlarmClockComponent implements OnInit {
     showAdvancedOptions: boolean = false;
 
 	constructor(
-		private Web3: Web3Service,
         private dialog: MatDialog,
         private snackbar: MatSnackBar,
+		private Web3: Web3Service,
         private AlarmClock: AlarmClockService,
-        private Wallet: DelegatedWalletService,
+        private WalletService: WalletManagerService,
         private PaymentDelegate: PaymentDelegateService,
-    ) { }
+    ){}
 
 	ngOnInit() {
         this.newLabel = this.alarmClock.label;
@@ -44,15 +44,25 @@ export class AlarmClockComponent implements OnInit {
         this.alarmClock.label = newLabel;
     }
 
+    execute(){
+        this.alarmClock.alarm.instance.methods.execute()
+        .send({
+            from: this.currentAccount
+        })
+        .on('transactionHash', txHash => {
+            console.log(txHash)
+        })
+        .on('confirmation', (confirmations, tx) => {
+            if(confirmations == 0)
+                console.log(tx)
+        })
+    }
+
     cancel(){
         //console.log(this.alarmClock.instance.methods)
         this.alarmClock.instance.methods.wallet().call()
         .then(walletAddress => {
-            return this.Wallet.at(walletAddress)
-        })
-        .then(instance => {
-            console.log(this.alarmClock.alarm.instance.methods)
-            return instance.methods.call(
+            return this.WalletService.wallets[walletAddress].methods.call(
                 this.alarmClock.alarm.instance._address,
                 0,
                 '0xea8a1af0' // hex id for cancel() function
@@ -63,9 +73,9 @@ export class AlarmClockComponent implements OnInit {
             .on('transactionHash', txHash => {
                 console.log(txHash)
             })
-            .on('confirmation', confirmations => {
+            .on('confirmation', (confirmations, txReceipt) => {
                 if(confirmations == 0){
-                    console.log('confirmed!')
+                    console.log(txReceipt)
                 }
             })
             .catch(err => {
@@ -82,9 +92,9 @@ export class AlarmClockComponent implements OnInit {
         .on('transactionHash', txHash => {
             console.log(txHash)
         })
-        .on('confirmation', confirmations => {
+        .on('confirmation', (confirmations, txReceipt) => {
             if(confirmations == 0){
-                console.log('confirmed!')
+                console.log(txReceipt)
             }
         })
         .catch(err => {
@@ -104,7 +114,6 @@ export class AlarmClockComponent implements OnInit {
         });
     
         dialogRef.afterClosed().subscribe(newAlarmClock => {
-            console.log(newAlarmClock)
             if(newAlarmClock && newAlarmClock.tx){
                 
             } else {

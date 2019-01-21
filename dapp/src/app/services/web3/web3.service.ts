@@ -7,31 +7,57 @@ declare let window: any;
 })
 export class Web3Service {
 
+    readyPromise;
 	watchedAccount: string;
+    networkId: number;
+    now: null;
 
 	constructor() {
-		if (window.ethereum) { // Modern dapp browsers...
-            window.web3 = new Web3(window.ethereum);
-            this.customizeWeb3();
-        }
-        else if (window.web3) { // Legacy dapp browsers...
-            console.warn("Your financial privacy is at risk! Disable automatic account exposure with whatever ethereum wallet provider you use")
-            window.web3 = new Web3(window.web3.currentProvider);
-            this.customizeWeb3();
-        } else {
-            console.warn('Non-Ethereum browser detected. You should consider trying MetaMask!')
-        }
+        this.readyPromise = new Promise((resolve, reject) => {
+            if (window.ethereum) { // Modern dapp browsers...
+                window.web3 = new Web3(window.ethereum);
+                this.customizeWeb3();
+                this.watchForAccountChanges();
+                this.watchForNewBlocks();
 
-        this.watchForAccountChanges();
+                Promise.all([
+                    this.getNetworkId(),
+                    this.getBlockAtNow(),
+                ])
+                .then(resolve)
+                .catch(reject)
+            }
+            else if (window.web3) { // Legacy dapp browsers...
+                console.warn("Your financial privacy is at risk! Disable automatic account exposure with whatever ethereum wallet provider you use")
+                window.web3 = new Web3(window.web3.currentProvider);
+                this.customizeWeb3();
+                this.watchForAccountChanges();
+                this.watchForNewBlocks();
+
+                Promise.all([
+                    this.getNetworkId(),
+                    this.getBlockAtNow(),
+                ])
+                .then(resolve)
+                .catch(reject)
+            }
+            else {
+                reject('Non-Ethereum browser detected. You should consider trying MetaMask!')
+            }            
+        })
 	}
+
+    ready(){
+        return this.readyPromise;
+    }
 
 	async signIn(){
         try {
             // Request account access if needed
             await window.ethereum.enable();
-            this.watchForAccountChanges();
+            return this.watchForAccountChanges();
         } catch (error) {
-            console.log("User denied account access...");
+            return Promise.reject(new Error("User denied account access..."));
         }
     }
 
@@ -56,8 +82,16 @@ export class Web3Service {
         })
 	}
 
+    getNetworkId(){
+        return window.web3.eth.net.getId()
+        .then(networkId => {
+            this.networkId = networkId;
+            return this.networkId;
+        })
+    }
+
     private watchForAccountChanges(){
-        this.getCurrentAccount()
+        return this.getCurrentAccount()
         .then(currentAccount => {
             //console.log("setting watched account to ", currentAccount);
             this.watchedAccount = currentAccount;
@@ -69,8 +103,25 @@ export class Web3Service {
                         location.reload();
                 })
             }, 250);
+            return currentAccount;
         })
         .catch(console.error)
+    }
+
+    getBlockAtNow(){
+        return window.web3.eth.getBlock("latest")
+        .then(blockData => {
+            this.now = blockData;
+            return this.now;
+        })
+    }
+
+    private watchForNewBlocks(){
+        window.web3.eth.subscribe('newBlockHeaders', (error, blockData) => {
+            if (!error){
+                this.now = blockData;
+            }
+        });
     }
 
 	private customizeWeb3(){

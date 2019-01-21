@@ -1,15 +1,15 @@
-<div class="border-container" style="margin-top: 8px" fxLayout="column">
+<div class="border-container" *ngIf="Web3" style="margin-top: 8px" fxLayout="column">
     <div class="border-inner-container">
         <div class="cursor" (click)="showDetails = !showDetails; showAdvancedOptions = false;">
             <div fxLayout="row">
                 <div fxLayout="column" fxLayoutAlign="start center">
-                    <div *ngIf="alarmClock.alarm.active">
+                    <div *ngIf="alarmClock.alarm.active()">
                         <button mat-icon-button>
                             <mat-icon *ngIf="!showDetails">alarm_on</mat-icon>
                             <mat-icon *ngIf="showDetails">close</mat-icon>
                         </button>
                     </div>
-                    <div *ngIf="!alarmClock.alarm.active">
+                    <div *ngIf="alarmClock.alarm.failed()">
                         <button mat-icon-button>
                             <mat-icon *ngIf="!showDetails">alarm_off</mat-icon>
                             <mat-icon *ngIf="showDetails">close</mat-icon>
@@ -26,8 +26,9 @@
                         </h4>
                     </div>
                     <div fxLayout="row">
-                        <small style="color: gray;" fxFlex>ID {{alarmClock.instance._address.slice(0,6)}}...</small>
-                        <small style="color: gray;" *ngIf="alarmClock.alarm.active">currently {{alarmClock.alarm.percentFunded}}% funded</small>
+                        <small style="color: gray;" *ngIf="!showAdvancedOptions" fxFlex>ID {{alarmClock.instance._address.slice(0,6)}}...</small>
+                        <small style="color: gray;" *ngIf="showAdvancedOptions" fxFlex>ID {{alarmClock.instance._address}}</small>
+                        <small style="color: gray;" *ngIf="Web3.now.timestamp < alarmClock.timestamp">currently {{alarmClock.alarm.percentFunded}}% funded</small>
                     </div>
                 </div>
             </div>
@@ -42,32 +43,42 @@
         </div>
         <div *ngIf="showDetails" fxLayout="column">
             <div fxLayout="row">
-                <button mat-button 
-                *ngIf="(alarmClock.alarm.active || alarmClock.alarm.failed) && !alarmClock.alarm.cancelled" 
-                (click)="cancel()">cancel</button>
+                <button mat-button *ngIf="Web3.now.timestamp < alarmClock.alarm.endClaimWindow" (click)="cancel()" [disabled]="Web3.now.timestamp > alarmClock.alarm.endClaimWindow">
+                    cancel
+                </button>
+
+                <button mat-button *ngIf="Web3.now.timestamp < alarmClock.alarm.endExecutionWindow" (click)="execute()" [disabled]="Web3.now.timestamp > alarmClock.alarm.endExecutionWindow">
+                    execute
+                </button>
                 
-                <button mat-button 
-                *ngIf="(!alarmClock.alarm.active && !alarmClock.alarm.failed) || alarmClock.alarm.cancelled || showAdvancedOptions" 
-                (click)="setAlarmClock()">set</button>
+                <button mat-button *ngIf="!Web3.now.timestamp < alarmClock.timestamp || showAdvancedOptions" (click)="setAlarmClock()">
+                    set
+                </button>
                 
                 <span fxFlex></span>
 
-                <button mat-button *ngIf="showAdvancedOptions" color="warn" (click)="destroy()">destroy</button>
-                <button mat-button (click)="showAdvancedOptions = !showAdvancedOptions">
-                    <span *ngIf="!showAdvanced">show advanced</span>
-                    <span *ngIf="showAdvanced">hide advanced</span>
+                <button mat-button *ngIf="showAdvancedOptions" color="warn" (click)="destroy()">
+                    destroy
                 </button>
-                <button mat-button *ngIf="alarmClock.alarm.active" (click)="editLabel = true; showAdvancedOptions = false;">edit label</button>
+
+                <button mat-button (click)="showAdvancedOptions = !showAdvancedOptions">
+                    <span *ngIf="!showAdvancedOptions">show advanced</span>
+                    <span *ngIf="showAdvancedOptions">hide advanced</span>
+                </button>
+
+                <button mat-button *ngIf="Web3.now.timestamp < alarmClock.timestamp" (click)="editLabel = true; showAdvancedOptions = false;">
+                    edit label
+                </button>
             </div>
-            <div *ngIf="showAdvancedOptions" style="padding: 8px;" fxLayout="column">
-                <div *ngIf="alarmClock.alarm.active">
+            <div *ngIf="showAdvancedOptions && (alarmClock.alarm.active() || alarmClock.alarm.failed())" style="padding: 8px;" fxLayout="column">
+                <div *ngIf="alarmClock.alarm.active() || alarmClock.alarm.failed()" class="smallText">
                     <h5>Alarm Status</h5>
-                    <div>address: <span fxFlex></span> {{alarmClock.alarm.instance._address}}</div>
+                    <div>alarm address: <span fxFlex></span> {{alarmClock.alarm.instance._address}}</div>
                     <div>claimed by: <span fxFlex></span> {{alarmClock.alarm.data[0][0]}}</div>
                     <div>created by: <span fxFlex></span> {{alarmClock.alarm.data[0][1]}}</div>
                     <div>owner: <span fxFlex></span> {{alarmClock.alarm.data[0][2]}}</div>
                     <div>fee recipient: <span fxFlex></span> {{alarmClock.alarm.data[0][3]}}</div>
-                    <div>bountyBenefactor: <span fxFlex></span> {{alarmClock.alarm.data[0][4]}}</div>
+                    <div>alarm caller: <span fxFlex></span> {{alarmClock.alarm.data[0][4]}}</div>
                     <div>to address: <span fxFlex></span> {{alarmClock.alarm.data[0][5]}}</div>
                     <div>is cancelled: <span fxFlex></span> {{alarmClock.alarm.data[1][0]}}</div>
                     <div>was called: <span fxFlex></span> {{alarmClock.alarm.data[1][1]}}</div>
@@ -86,12 +97,9 @@
                     <div>extra call gas: <span fxFlex></span> {{alarmClock.callGas}}</div>
                     <div>total call gas: <span fxFlex></span> {{alarmClock.alarm.data[2][11]}}</div>
                     <div>call value: <span fxFlex></span> {{alarmClock.alarm.data[2][12]}}</div>
-                    <div>gas price: <span fxFlex></span> {{alarmClock.alarm.data[2][13]}}</div>
+                    <div>minimum gas price: <span fxFlex></span> {{alarmClock.alarm.data[2][13]}}</div>
                     <div>required deposit: <span fxFlex></span> {{alarmClock.alarm.data[2][14]}}</div>
                     <div>payment modifier: <span fxFlex></span> {{alarmClock.alarm.data[3]}}</div>
-                </div>
-                <div *ngIf="!alarmClock.alarm.active">
-                    To do
                 </div>
             </div>
             <div *ngIf="editLabel" fxLayout="row">

@@ -16,3 +16,7 @@
 .border-inner-container:hover {
 	border: 1px solid rgba(33,33,33,0.93);
 }
+
+.smallText * {
+	font-size: small;
+}

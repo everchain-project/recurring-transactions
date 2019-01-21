@@ -12,11 +12,11 @@ import "./Interfaces.sol";
 ///      4. A recurring task to execute
 contract RecurringAlarmClock is IRecurringAlarmClock {
 
-    using BokkyPooBahsDateTimeLibrary for uint;
+    using BokkyPooBahsDateTimeLibrary for uint; // A Date/Time library for manipulating timestamps
     
     address public factory;             // The factory that deployed this contract
     uint public blockInitialized;       // The block the alarm clock was initialized
-    uint public BASE_GAS_COST;          // The minimum amount of gas it takes to run the alarm clock not including the triggered task.
+    uint public BASE_GAS_COST;          // The minimum amount of gas it takes to run the alarm clock not including the triggered task. 
 
     // Payment Options
     IDelegatedWallet public wallet;     // The address which owns the alarm and collects any leftover funds
@@ -27,8 +27,8 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
     RequestFactoryInterface public EAC; // Interface provided by the Ethereum Alarm Clock
     address public priorityCaller;      // The priority recipient of part of the alarm deposit
     uint[3] public limits;              // The execution limits used when calling the alarm
-    uint public alarmStart;             // The start of the execution window for the next alarm
-    uint public windowSize;             // The window of time during which an alarm can be executed
+    uint public alarmStart;             // The start of the execution window for the current alarm
+    uint public windowSize;             // The number of seconds after the alarm start in which the alarm can be executed
     
     // Recurring Alarm Clock Options
     uint public intervalValue;          // The value of the time unit when calculating the next alarm timestamp
@@ -37,11 +37,16 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
     uint public currentInterval;        // Keeps track of how many alarms have been called
 
     // Execution Options
-    address public alarm;       // The next scheduled alarm contract
-    address payable public callAddress; // The address of the task contract
-    bytes public callData;              // The data for the task to execute when the alarm is triggered
-    uint public callValue;              // The amount of ether to send when the task is triggered
-    
+    address public alarm;               // The next scheduled alarm contract
+    address payable public callAddress; // The address of the contract to call
+    bytes public callData;              // The data to send with the contract call
+    uint public callValue;              // The amount of ether to send with the contract call
+    uint public callGas;                // The amount of extra gas to add to the BASE_GAS_COST when scheduling an alarm
+
+    constructor() public {
+        blockInitialized = block.number; // force the master contract to be initialized. Ensures the master copy is never self destructed.
+    }
+
     /// @notice Uses 'initialize()' instead of a constructor to make use of the clone 
     ///         factory at https://github.com/optionality/clone-factory. In general, 'initialize()' should be  
     ///         called directly following the alarm clock deployment through the use of a factory.
@@ -53,7 +58,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         IDelegatedWallet _wallet,
         IPaymentDelegate _delegate
     ) public {
-        require(blockInitialized == 0, "the lock function can be called only once by the factory");
+        require(blockInitialized == 0, "this contract has already been initialized");
         
         factory = msg.sender;
         blockInitialized = block.number;
@@ -62,21 +67,6 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
         EAC = _EAC;
         wallet = _wallet;
         delegate = _delegate;
-    }
-
-    /// @param _limits The execution limits applied to each decentralized alarm
-    function setExecutionLimits (uint[3] memory _limits) public onlyDelegates {
-        limits = _limits;
-    }
-
-    /// @param _oracle To do
-    function setGasPriceOracle (IGasPriceOracle _oracle) public onlyDelegates {
-        gasPrice = _oracle;
-    }
-
-    /// @param _priorityCaller To do
-    function setPriorityCaller (address _priorityCaller) public onlyDelegates {
-        priorityCaller = _priorityCaller;
     }
 
     function start (
@@ -101,7 +91,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
 
         scheduleAlarm();
 
-        emit Start_event(_callAddress, _callData, _callOptions);
+        emit Start_event(msg.sender, _callAddress, _callData, _callOptions);
     }
 
     /// @notice The default function collects ether sent by the payment delegate and is also called by
@@ -123,7 +113,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
 
         if(callValue != 0) delegate.transfer(address(0x0), address(this), callValue);
         (bool success, bytes memory result) = callAddress.call.value(callValue).gas(gasleft())(callData);
-        emit Execute_event(alarm, currentInterval, maxIntervals, callAddress, callValue, callData , success, result);
+        emit Execute_event(alarm, callAddress, callValue, callData, currentInterval, maxIntervals, success, result);
 
         if(currentInterval < maxIntervals || maxIntervals == 0) {
                  if(intervalUnit == 0) alarmStart = alarmStart.addSeconds(intervalValue);
@@ -144,7 +134,7 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
     /// @notice Schedules a new alarm with the Ethereum Alarm Clock
     function scheduleAlarm () internal {
         uint totalGasCost = BASE_GAS_COST + callGas;    // The amount of gas to be sent with the transaction
-        uint currentCost = totalGasCost * gasPrice.future(alarmStart);
+        uint currentCost = totalGasCost * gasPrice.future(alarmStart + windowSize);
 
         // Pull the necessary funds for the alarm
         if(currentCost > 0) delegate.transfer(address(0x0), address(this), currentCost); 
@@ -181,33 +171,56 @@ contract RecurringAlarmClock is IRecurringAlarmClock {
             emit InvalidRequest_event(EAC.validateRequestParams(addressOptions, uintOptions, endowment));
     }
 
+    /// @notice Cleans up and destroys the alarm. Any leftover ether is sent to the wallet.
     function destroy () public onlyDelegates {
         delegate.unschedule();
+        emit Destroy_event(msg.sender);
+
         selfdestruct(address(wallet));
     }
 
+    /// @notice Sets the priority caller that receives the fee when an alarm is called
+    /// @param _priorityCaller The address that receives the alarm fee when it is triggered.
+    function setPriorityCaller (address _priorityCaller) public onlyDelegates {
+        priorityCaller = _priorityCaller;
+    }
+
+    /// @notice Sets the execution limits for when an alarm can be claimed, called, or cancelled.
+    /// @param _limits The execution limits applied to each decentralized alarm
+    function setExecutionLimits (uint[3] memory _limits) public onlyDelegates {
+        limits = _limits;
+    }
+
+    /// @notice Sets the oracle that predicts future gas prices.
+    /// @param _oracle Attempts to predict the gas price at a future date
+    function setGasPriceOracle (IGasPriceOracle _oracle) public onlyDelegates {
+        gasPrice = _oracle;
+    }
+
     modifier onlyDelegates () {
-        require(wallet.isDelegate(msg.sender), "only a wallet delegate can call this function");
+        require(wallet.isDelegate(msg.sender), "Only the call address or a delegate can update the call data");
         _;
     }
-    
-    event AlarmPaid_event (address sender, uint amount);
+
+    event AlarmPaid_event (address indexed msgSender, uint msgValue);
     event ValidRequest_event (address newAlarm);
-    event InvalidRequest_event (bool[6] params);
+    event InvalidRequest_event (bool[6] reason);
     event Start_event(
-        address callAddress,
+        address indexed delegate,
+        address indexed callAddress,
         bytes callData,
         uint[7] callOptions
-    );    
+    );
     event Execute_event(
         address alarm,
-        uint currentInterval,
-        uint maxIntervals,
-        address callAddress,
+        address indexed callAddress,
         uint callValue,
         bytes callData,
+        uint currentInterval,
+        uint maxIntervals,
         bool success,
         bytes result
     );
+    event Destroy_event(address indexed delegate);
 
 }

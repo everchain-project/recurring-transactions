@@ -26,14 +26,14 @@
     "absolutePath": "/home/joe/Documents/github/everchain-project/recurring-alarm-clock/contracts/external/DaiPriceFeed.sol",
     "exportedSymbols": {
       "DSValueInterface": [
-        3653
+        3763
       ]
     },
-    "id": 3654,
+    "id": 3764,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3647,
+        "id": 3757,
         "literals": [
           "solidity",
           "^",
@@ -48,9 +48,9 @@
         "contractKind": "contract",
         "documentation": "/// lib/ds-value/lib/ds-thing/lib/ds-auth/src/auth.sol",
         "fullyImplemented": false,
-        "id": 3653,
+        "id": 3763,
         "linearizedBaseContracts": [
-          3653
+          3763
         ],
         "name": "DSValueInterface",
         "nodeType": "ContractDefinition",
@@ -58,28 +58,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 3652,
+            "id": 3762,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "read",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3648,
+              "id": 3758,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "850:2:9"
             },
             "returnParameters": {
-              "id": 3651,
+              "id": 3761,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3650,
+                  "id": 3760,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3652,
+                  "scope": 3762,
                   "src": "874:7:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -88,7 +88,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 3649,
+                    "id": 3759,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "874:7:9",
@@ -103,14 +103,14 @@
               ],
               "src": "873:9:9"
             },
-            "scope": 3653,
+            "scope": 3763,
             "src": "837:46:9",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 3654,
+        "scope": 3764,
         "src": "805:80:9"
       }
     ],
@@ -120,14 +120,14 @@
     "absolutePath": "/home/joe/Documents/github/everchain-project/recurring-alarm-clock/contracts/external/DaiPriceFeed.sol",
     "exportedSymbols": {
       "DSValueInterface": [
-        3653
+        3763
       ]
     },
-    "id": 3654,
+    "id": 3764,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3647,
+        "id": 3757,
         "literals": [
           "solidity",
           "^",
@@ -142,9 +142,9 @@
         "contractKind": "contract",
         "documentation": "/// lib/ds-value/lib/ds-thing/lib/ds-auth/src/auth.sol",
         "fullyImplemented": false,
-        "id": 3653,
+        "id": 3763,
         "linearizedBaseContracts": [
-          3653
+          3763
         ],
         "name": "DSValueInterface",
         "nodeType": "ContractDefinition",
@@ -152,28 +152,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 3652,
+            "id": 3762,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "read",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 3648,
+              "id": 3758,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "850:2:9"
             },
             "returnParameters": {
-              "id": 3651,
+              "id": 3761,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 3650,
+                  "id": 3760,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 3652,
+                  "scope": 3762,
                   "src": "874:7:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -182,7 +182,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 3649,
+                    "id": 3759,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "874:7:9",
@@ -197,14 +197,14 @@
               ],
               "src": "873:9:9"
             },
-            "scope": 3653,
+            "scope": 3763,
             "src": "837:46:9",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 3654,
+        "scope": 3764,
         "src": "805:80:9"
       }
     ],
@@ -216,7 +216,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-01-15T22:45:48.732Z",
+  "updatedAt": "2019-01-19T23:10:55.809Z",
   "devdoc": {
     "methods": {}
   },

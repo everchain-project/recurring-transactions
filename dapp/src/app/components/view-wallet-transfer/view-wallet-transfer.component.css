@@ -1,3 +1,7 @@
+:host {
+	height: 100%;
+}
+
 .border-container {
 	border: 1px solid rgba(33,33,33,0.13);
 	border-radius: 4px;
@@ -8,15 +12,22 @@
 }
 
 .border-inner-container {
-	padding: 8px;
+	height: 100%;
 	border: 1px solid rgba(33,33,33,0.0);
 	border-radius: 3px;
+	padding: 0px 12px;
 }
 
 .border-inner-container:hover {
 	border: 1px solid rgba(33,33,33,0.93);
 }
 
-.floatLeft {
-	float: left;
+.selected {
+	border: 1px solid rgba(33,33,33,0.93);
+}
+
+.contact {
+	height: 58px;
+	margin-top: 4px;
+	margin-bottom: 29px;
 }

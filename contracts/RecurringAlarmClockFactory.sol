@@ -39,9 +39,9 @@ contract RecurringAlarmClockFactory is CloneFactory {
         alarmClock = RecurringAlarmClock(clone);
         alarmClock.initialize(EAC, wallet, delegate);
 
-        emit AlarmClock_event(msg.sender, address(alarmClock));
+        emit CreateAlarmClock_event(msg.sender, address(alarmClock));
     }
 
-    event AlarmClock_event(address indexed caller, address alarmClock);
+    event CreateAlarmClock_event(address indexed caller, address alarmClock);
 
 }

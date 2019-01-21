@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" fxLayout="column">
+<mat-toolbar *ngIf="initialized" color="primary" fxLayout="column">
     <mat-toolbar-row fxFlex="64px">
         <h1 class="cursor" (click)="routeTo('home')">
             <span fxHide.xs>Everchain Alarm Clock Manager</span>
@@ -7,25 +7,34 @@
 
         <span fxFlex></span>
 
-        <small *ngIf="user.isLoggedIn" style="margin-right: 16px;">
-            &diams; {{user.balance.ether | number:'1.3-5'}} 
+        <small *ngIf="User.address" style="margin-right: 16px;">
+            &diams; {{User.balances.ether | number:'1.3-5'}} 
             &nbsp;&nbsp;&nbsp; 
-            (${{user.balance.usd | number:'1.2-2'}})
+            (${{User.balances.usd | number:'1.2-2'}})
         </small>
-        <button *ngIf="!user.isLoggedIn" style="border: 1px solid white;" mat-button (click)="signIn()">Sign in</button>
-        <button *ngIf="user.isLoggedIn" style="color: white;" mat-button disabled="true">Logged in</button>
+        <button *ngIf="!User.address && Web3.networkId == 42" style="border: 1px solid white;" mat-button (click)="signIn()">Sign in</button>
+        <button *ngIf="User.address" style="color: white;" mat-button disabled="true">Logged in</button>
     </mat-toolbar-row>
 
     <mat-toolbar-row fxFlex="32px">
-
+        
     </mat-toolbar-row>
     
     <mat-toolbar-row fxFlex="64px">
+        <h1 *ngIf="Web3.networkId != 42" fxLayout="row" fxLayoutAlign="center" style="color: red;" fxFlex>
+            {{error}}
+        </h1>
 
-        <mat-form-field *ngIf="this.user.isLoggedIn && !editWalletName" fxFlex>
-            <mat-select [(ngModel)]="currentWallet" name="currentWallet" (ngModelChange)="triggerWalletChange()" placeholder="Select A Delegated Wallet">
-                <mat-option *ngFor="let wallet of user.wallets" value="{{user[wallet].address}}" fxLayout="row">
-                    &diams; {{user[wallet].balance.ether | number:'1.3-5'}} (${{user[wallet].balance.usd | number:'1.2-2'}}) &nbsp;&nbsp;&nbsp; {{user[wallet].name}}
+        <mat-form-field *ngIf="User.address && !editWalletName" fxFlex>
+            <mat-select name="currentWallet"
+                [(ngModel)]="currentWallet" 
+                (ngModelChange)="triggerWalletChange()" 
+                placeholder="Select A Delegated Wallet">
+                <mat-option *ngFor="let address of WalletManager.walletList;" value="{{address}}">
+                    <div *ngIf="WalletManager.wallets[address]"fxLayout="row">
+                        &diams; {{WalletManager.wallets[address].balance.ether | number:'1.3-5'}} (${{WalletManager.wallets[address].balance.usd | number:'1.2-2'}}) 
+                        &nbsp;&nbsp;&nbsp; {{WalletManager.wallets[address].name}}  
+                    </div>
                 </mat-option>
                 <mat-option value="new" fxLayout="row">
                     create new wallet
@@ -38,7 +47,6 @@
             <input matInput [(ngModel)]="newWalletName" (ngModelChange)="triggerWalletNameChange(newWalletName)" placeholder="Enter a wallet name">
         </mat-form-field>
 
-
         <div *ngIf="currentWallet" fxLayout="row">
             &nbsp;
 
@@ -47,26 +55,22 @@
                 <mat-icon *ngIf="editWalletName">close</mat-icon>
             </button>
 
-            <button mat-icon-button (click)="createAlarmClock()">
-                <mat-icon>alarm_add</mat-icon>
-            </button>
-
             <button mat-icon-button (click)="showQRCode()">
                 <mat-icon svgIcon="qrcode"></mat-icon>
             </button>
 
             &nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;
-
-            <button mat-icon-button routerLink="/{{currentRoute}}/transfer" routerLinkActive="selected">
+            
+            <button mat-icon-button [ngClass]="{'selected': currentView == 'transfer'}" routerLink="/{{currentRoute}}/transfer">
                 <mat-icon>send</mat-icon>
             </button>
 
-            <button mat-icon-button routerLink="/{{currentRoute}}/delegates" routerLinkActive="selected">
+            <button mat-icon-button [ngClass]="{'selected': currentView == 'delegates'}" routerLink="/{{currentRoute}}/delegates">
                 <mat-icon>extension</mat-icon>
             </button>
 
-            <button mat-icon-button routerLink="/{{currentRoute}}/alarm-clocks" routerLinkActive="selected">
+            <button mat-icon-button [ngClass]="{'selected': currentView == 'alarm-clocks'}" routerLink="/{{currentRoute}}/alarm-clocks">
                 <mat-icon>reorder</mat-icon>
             </button>
         </div>

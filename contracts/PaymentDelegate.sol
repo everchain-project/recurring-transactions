@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-import "./external/ListLib.sol";
+import "./external/AddressListLib.sol";
 import "./external/Owned.sol";
 import "./Interfaces.sol";
 
@@ -10,12 +10,12 @@ import "./Interfaces.sol";
 ///      for registering any recipients it has.
 contract BasePaymentDelegate is IPaymentDelegate {
 
-    using ListLib for ListLib.AddressList;      // Import the data structure AddressList from the ListLib contract
+    using AddressListLib for AddressListLib.AddressList;      // Import the data structure AddressList from the AddressListLib contract
 
     uint public blockCreated = block.number;    // The block the payment delegate was deployed
 
-    mapping (address => ListLib.AddressList) outgoingPaymentsFor;  // The list of outgoing payments per account
-    mapping (address => ListLib.AddressList) incomingPaymentsFor;  // The list of incoming payments per account
+    mapping (address => AddressListLib.AddressList) outgoingPaymentsFor;  // The list of outgoing payments per account
+    mapping (address => AddressListLib.AddressList) incomingPaymentsFor;  // The list of incoming payments per account
 
     /// @notice Executes the payment associated with the address of 'msg.sender'
     /// @param token The token to send for the payment
@@ -166,7 +166,7 @@ contract DecentralizedPaymentDelegate is BasePaymentDelegate {
 
 contract CentralizedPaymentDelegate is Owned, BasePaymentDelegate {
 
-	ListLib.AddressList trustedSchedulers;
+	AddressListLib.AddressList trustedSchedulers;
 
     /// @notice todo
     function valid (IPayment payment) internal returns (bool) {

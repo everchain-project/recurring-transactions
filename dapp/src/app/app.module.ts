@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 import { 
     MatSelectModule,
+    MatCheckboxModule,
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
@@ -31,20 +32,17 @@ import 'hammerjs';
 
 import { AppComponent } from './app.component';
 
-import { Web3Service } from './services/web3/web3.service';
-import { DelegatedWalletService } from './services/delegated-wallet/delegated-wallet.service';
-import { PaymentDelegateService } from './services/payment-delegate/payment-delegate.service';
-import { AlarmClockService } from './services/alarm-clock/alarm-clock.service';
-
 import { AlarmClockComponent } from './components/alarm-clock/alarm-clock.component';
 import { CreateWalletComponent } from './components/create-wallet/create-wallet.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ViewHomeComponent } from './components/view-home/view-home.component';
-import { ViewWalletComponent } from './components/view-wallet/view-wallet.component';
 import { QrcodeComponent } from './components/qrcode/qrcode.component';
 import { CreateAlarmClockComponent } from './components/create-alarm-clock/create-alarm-clock.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ExampleFeedComponent } from './components/example-feed/example-feed.component';
+import { ViewWalletDelegatesComponent } from './components/view-wallet-delegates/view-wallet-delegates.component';
+import { ViewWalletAlarmsComponent } from './components/view-wallet-alarms/view-wallet-alarms.component';
+import { ViewWalletTransferComponent } from './components/view-wallet-transfer/view-wallet-transfer.component';
 
 @NgModule({
   declarations: [
@@ -54,10 +52,12 @@ import { ExampleFeedComponent } from './components/example-feed/example-feed.com
     NotificationComponent,
     QrcodeComponent,
     ViewHomeComponent,
-    ViewWalletComponent,
     CreateAlarmClockComponent,
     ToolbarComponent,
     ExampleFeedComponent,
+    ViewWalletDelegatesComponent,
+    ViewWalletAlarmsComponent,
+    ViewWalletTransferComponent,
   ],
   imports: [
     AngularDateTimePickerModule,
@@ -72,6 +72,7 @@ import { ExampleFeedComponent } from './components/example-feed/example-feed.com
     MatDialogModule,
     MatExpansionModule,
     MatSelectModule,
+    MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatSlideToggleModule,
@@ -94,10 +95,7 @@ import { ExampleFeedComponent } from './components/example-feed/example-feed.com
       MatDialogModule,
   ],
   providers: [
-  	Web3Service,
-    DelegatedWalletService,
-    PaymentDelegateService,
-    AlarmClockService,
+
   ],
   entryComponents: [
       CreateAlarmClockComponent,

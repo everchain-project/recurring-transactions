@@ -1,7 +1,7 @@
 pragma solidity ^0.5.0;
 
 /// @dev A library for a simple unordered list that stores unique values.
-library ListLib {
+library AddressListLib {
     
     struct AddressList {
         address[] array; // An unordered list of unique values

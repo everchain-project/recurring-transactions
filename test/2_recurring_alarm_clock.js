@@ -3,7 +3,8 @@ const ExampleTaskBlueprint = artifacts.require("ExampleTask");
 const GasPriceOracle = artifacts.require("GasPriceOracle");
 const PaymentDelegateBlueprint = artifacts.require("DecentralizedPaymentDelegate");
 const RequestFactory = artifacts.require("RequestFactory");
-const RecurringAlarmClockBlueprint = artifacts.require("RecurringAlarmClock");
+const RecurringAlarmClockArtifact = artifacts.require("RecurringAlarmClock");
+const RecurringAlarmClockFactory = artifacts.require("RecurringAlarmClockFactory");
 const TransactionRequestInterface = artifacts.require("TransactionRequestInterface");
 
 contract('Recurring Alarm Clock Blueprint', function(accounts) {
@@ -31,24 +32,31 @@ contract('Recurring Alarm Clock Blueprint', function(accounts) {
 
     it("initialize the recurring alarm clock blueprint", () => {
         return Promise.all([
-            RecurringAlarmClockBlueprint.new(),
+            RecurringAlarmClockArtifact.new(),
             ExampleTaskBlueprint.new(),
             deployPaymentDelegate(),
             deployDelegatedWallet(),
         ])
         .then(instances => {
-            AlarmClock = instances[0];
+            AlarmClockBlueprint = instances[0];
             ExampleTask = instances[1];
             PaymentDelegate = instances[2];
             DelegatedWallet = instances[3];
-            return AlarmClock.initialize(
-                RequestFactory.address,
+
+            return RecurringAlarmClockFactory.new(RequestFactory.address, AlarmClockBlueprint.address)
+        })
+        .then(instance => {
+            return instance.createAlarmClock(
                 DelegatedWallet.address,
                 PaymentDelegate.address,
                 {from: defaultAccount}
-            )
+            );
         })
-        .then(txReceipt => {
+        .then(tx => {
+            return RecurringAlarmClockArtifact.at(tx.logs[0].args.alarmClock)
+        })
+        .then(instance => {
+            AlarmClock = instance;
             return Promise.all([
                 AlarmClock.setExecutionLimits(
                     [
@@ -177,7 +185,6 @@ contract('Recurring Alarm Clock Blueprint', function(accounts) {
         })
     });
 
-
     function startAlarmExecutionEngine(){
         return new Promise((resolve, reject) => {
             var AlarmExecutionEngine = setInterval(() => {
@@ -226,20 +233,15 @@ contract('Recurring Alarm Clock Blueprint', function(accounts) {
             alarm.requestData(),
             AlarmClock.currentInterval(),
             AlarmClock.maxIntervals(),
-            AlarmClock.cost({
-                gasPrice: 1000000000
-            })
         ])
         .then(promises => {
             var requestData = promises[0];
             var currentInterval = promises[1];
             var maxIntervals = promises[2];
-            var alarmCost = promises[3];
-            var alarmCostInEther = web3.utils.fromWei(alarmCost, 'ether');
-
+            
             var startTimestamp = requestData[2][10];
             var currentTimestamp = now();
-            console.log("      alarm " + currentInterval + "/" + maxIntervals + " " + alarm.address.slice(0,6) + " cost " + alarmCostInEther + " ether (800000 gas @ 1gwei w/ 1.1 multiplier)");
+            console.log("      alarm " + currentInterval + "/" + maxIntervals + " " + alarm.address);
         })
     }
 

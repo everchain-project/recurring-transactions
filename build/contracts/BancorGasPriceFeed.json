@@ -41,8 +41,8 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b5060405160208061027a8339810180604052602081101561003057600080fd5b8101908080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506101e9806100916000396000f3fe60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806357de26a4146100515780637dc0d1d01461007c575b600080fd5b34801561005d57600080fd5b506100666100d3565b6040518082815260200191505060405180910390f35b34801561008857600080fd5b50610091610198565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663fe173b976040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b15801561015857600080fd5b505afa15801561016c573d6000803e3d6000fd5b505050506040513d602081101561018257600080fd5b8101908080519060200190929190505050905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a7230582003723731097d29822ce97ba1323b7e4849865a7322712854ea05045fb4548eb20029",
-  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806357de26a4146100515780637dc0d1d01461007c575b600080fd5b34801561005d57600080fd5b506100666100d3565b6040518082815260200191505060405180910390f35b34801561008857600080fd5b50610091610198565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663fe173b976040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b15801561015857600080fd5b505afa15801561016c573d6000803e3d6000fd5b505050506040513d602081101561018257600080fd5b8101908080519060200190929190505050905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a7230582003723731097d29822ce97ba1323b7e4849865a7322712854ea05045fb4548eb20029",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405160208061027a8339810180604052602081101561003057600080fd5b8101908080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506101e9806100916000396000f3fe60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806357de26a4146100515780637dc0d1d01461007c575b600080fd5b34801561005d57600080fd5b506100666100d3565b6040518082815260200191505060405180910390f35b34801561008857600080fd5b50610091610198565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663fe173b976040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b15801561015857600080fd5b505afa15801561016c573d6000803e3d6000fd5b505050506040513d602081101561018257600080fd5b8101908080519060200190929190505050905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a72305820f299be521cb12bacde59e7952452cc1b35c9ae24f75ebdbcc63eb8da239be1000029",
+  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806357de26a4146100515780637dc0d1d01461007c575b600080fd5b34801561005d57600080fd5b506100666100d3565b6040518082815260200191505060405180910390f35b34801561008857600080fd5b50610091610198565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663fe173b976040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b15801561015857600080fd5b505afa15801561016c573d6000803e3d6000fd5b505050506040513d602081101561018257600080fd5b8101908080519060200190929190505050905090565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a72305820f299be521cb12bacde59e7952452cc1b35c9ae24f75ebdbcc63eb8da239be1000029",
   "sourceMap": "183:269:0:-;;;272:83;8:9:-1;5:2;;;30:1;27;20:12;5:2;272:83:0;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;272:83:0;;;;;;;;;;;;;;;;341:7;332:6;;:16;;;;;;;;;;;;;;;;;;272:83;183:269;;;;;;",
   "deployedSourceMap": "183:269:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;365:84;;8:9:-1;5:2;;;30:1;27;20:12;5:2;365:84:0;;;;;;;;;;;;;;;;;;;;;;;231:34;;8:9:-1;5:2;;;30:1;27;20:12;5:2;231:34:0;;;;;;;;;;;;;;;;;;;;;;;;;;;365:84;402:4;425:6;;;;;;;;;;;:15;;;:17;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;425:17:0;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;425:17:0;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;425:17:0;;;;;;;;;;;;;;;;418:24;;365:84;:::o;231:34::-;;;;;;;;;;;;;:::o",
   "source": "pragma solidity ^0.5.0;\n\nimport \"./external/Owned.sol\";\nimport \"./external/BokkyPooBahsDateTimeLibrary.sol\";\nimport \"./external/IBancorGasPriceLimit.sol\";\nimport \"./Interfaces.sol\";\n\ncontract BancorGasPriceFeed is IUintFeed {\n\n    IBancorGasPriceLimit public oracle;\n\n    constructor (IBancorGasPriceLimit _oracle) public {\n        oracle = _oracle;\n    }\n    \n    function read() public view returns (uint) {\n        return oracle.gasPrice();\n    }\n\n}\n\ncontract GasPriceOracle is Owned, IGasPriceOracle {\n\n    IUintFeed public gasPrice;\n    \n    uint public minute  =   11000; // 110%\n    uint public day     =   12000; // 120%\n    uint public week    =   15000; // 150%\n    uint public month   =   20000; // 200%\n    uint public quarter =   30000; // 300%\n    uint public year    =  100000; // 1000%\n    uint public beyond  =  100000; // 1000%\n\n    constructor (IUintFeed _gasPrice) public {\n        gasPrice = _gasPrice;\n    }\n\n    function current () public view returns (uint) {\n        return gasPrice.read();\n    }\n\n    function future (uint timestamp) public view returns (uint) {\n        uint interval = BokkyPooBahsDateTimeLibrary.diffDays(now, timestamp);\n        uint currentPrice = current();\n\n        if(interval > 365)\n            return currentPrice * beyond / 10000;\n        else if(interval > 90)\n            return currentPrice * year / 10000;\n        else if (interval > 30)\n            return currentPrice * quarter / 10000;\n        else if (interval > 7)\n            return currentPrice * month / 10000;\n        else if (interval > 1)\n            return currentPrice * week / 10000;\n        else if (interval > 0)\n            return currentPrice * day / 10000;\n        else\n            return currentPrice * minute / 10000;\n    }\n\n    function setDayMultiplier(uint _multiplier) public onlyOwner {\n        day = _multiplier;\n    }\n\n    function setWeekMultiplier(uint _multiplier) public onlyOwner {\n        week = _multiplier;\n    }\n\n    function setMonthMultiplier(uint _multiplier) public onlyOwner {\n        month = _multiplier;\n    }\n\n    function setQuarterMultiplier(uint _multiplier) public onlyOwner {\n        quarter = _multiplier;\n    }\n\n    function setYearMultiplier(uint _multiplier) public onlyOwner {\n        year = _multiplier;\n    }\n\n    function changeFeed(IUintFeed newFeed) public {\n        gasPrice = newFeed;\n    }\n\n}\n",
@@ -77,7 +77,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 236,
-        "sourceUnit": 4010,
+        "sourceUnit": 4126,
         "src": "25:30:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -88,7 +88,7 @@
         "id": 3,
         "nodeType": "ImportDirective",
         "scope": 236,
-        "sourceUnit": 3578,
+        "sourceUnit": 3905,
         "src": "56:52:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -99,7 +99,7 @@
         "id": 4,
         "nodeType": "ImportDirective",
         "scope": 236,
-        "sourceUnit": 3714,
+        "sourceUnit": 4034,
         "src": "109:45:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -110,7 +110,7 @@
         "id": 5,
         "nodeType": "ImportDirective",
         "scope": 236,
-        "sourceUnit": 344,
+        "sourceUnit": 396,
         "src": "155:26:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -160,7 +160,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+              "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
               "typeString": "contract IBancorGasPriceLimit"
             },
             "typeName": {
@@ -168,10 +168,10 @@
               "id": 8,
               "name": "IBancorGasPriceLimit",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3713,
+              "referencedDeclaration": 4033,
               "src": "231:20:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+                "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
                 "typeString": "contract IBancorGasPriceLimit"
               }
             },
@@ -201,7 +201,7 @@
                       "referencedDeclaration": 9,
                       "src": "332:6:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+                        "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
                         "typeString": "contract IBancorGasPriceLimit"
                       }
                     },
@@ -216,13 +216,13 @@
                       "referencedDeclaration": 11,
                       "src": "341:7:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+                        "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
                         "typeString": "contract IBancorGasPriceLimit"
                       }
                     },
                     "src": "332:16:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+                      "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
                       "typeString": "contract IBancorGasPriceLimit"
                     }
                   },
@@ -253,7 +253,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+                    "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
                     "typeString": "contract IBancorGasPriceLimit"
                   },
                   "typeName": {
@@ -261,10 +261,10 @@
                     "id": 10,
                     "name": "IBancorGasPriceLimit",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 3713,
+                    "referencedDeclaration": 4033,
                     "src": "285:20:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+                      "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
                       "typeString": "contract IBancorGasPriceLimit"
                     }
                   },
@@ -307,7 +307,7 @@
                         "referencedDeclaration": 9,
                         "src": "425:6:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+                          "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
                           "typeString": "contract IBancorGasPriceLimit"
                         }
                       },
@@ -318,7 +318,7 @@
                       "lValueRequested": false,
                       "memberName": "gasPrice",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3707,
+                      "referencedDeclaration": 4027,
                       "src": "425:15:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -411,10 +411,10 @@
               "id": 31,
               "name": "Owned",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4009,
+              "referencedDeclaration": 4125,
               "src": "481:5:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Owned_$4009",
+                "typeIdentifier": "t_contract$_Owned_$4125",
                 "typeString": "contract Owned"
               }
             },
@@ -443,7 +443,7 @@
         ],
         "contractDependencies": [
           258,
-          4009
+          4125
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -452,7 +452,7 @@
         "linearizedBaseContracts": [
           235,
           258,
-          4009
+          4125
         ],
         "name": "GasPriceOracle",
         "nodeType": "ContractDefinition",
@@ -1054,7 +1054,7 @@
                         "name": "now",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 4424,
+                        "referencedDeclaration": 4540,
                         "src": "1150:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1092,10 +1092,10 @@
                         "name": "BokkyPooBahsDateTimeLibrary",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3577,
+                        "referencedDeclaration": 3904,
                         "src": "1113:27:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_BokkyPooBahsDateTimeLibrary_$3577_$",
+                          "typeIdentifier": "t_type$_t_contract$_BokkyPooBahsDateTimeLibrary_$3904_$",
                           "typeString": "type(library BokkyPooBahsDateTimeLibrary)"
                         }
                       },
@@ -1106,7 +1106,7 @@
                       "lValueRequested": false,
                       "memberName": "diffDays",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3504,
+                      "referencedDeclaration": 3831,
                       "src": "1113:36:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
@@ -2293,7 +2293,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4008,
+                  "referencedDeclaration": 4124,
                   "src": "1808:9:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -2419,7 +2419,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4008,
+                  "referencedDeclaration": 4124,
                   "src": "1910:9:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -2545,7 +2545,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4008,
+                  "referencedDeclaration": 4124,
                   "src": "2014:9:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -2671,7 +2671,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4008,
+                  "referencedDeclaration": 4124,
                   "src": "2121:9:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -2797,7 +2797,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4008,
+                  "referencedDeclaration": 4124,
                   "src": "2227:9:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -3000,7 +3000,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 236,
-        "sourceUnit": 4010,
+        "sourceUnit": 4126,
         "src": "25:30:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -3011,7 +3011,7 @@
         "id": 3,
         "nodeType": "ImportDirective",
         "scope": 236,
-        "sourceUnit": 3578,
+        "sourceUnit": 3905,
         "src": "56:52:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -3022,7 +3022,7 @@
         "id": 4,
         "nodeType": "ImportDirective",
         "scope": 236,
-        "sourceUnit": 3714,
+        "sourceUnit": 4034,
         "src": "109:45:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -3033,7 +3033,7 @@
         "id": 5,
         "nodeType": "ImportDirective",
         "scope": 236,
-        "sourceUnit": 344,
+        "sourceUnit": 396,
         "src": "155:26:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -3083,7 +3083,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+              "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
               "typeString": "contract IBancorGasPriceLimit"
             },
             "typeName": {
@@ -3091,10 +3091,10 @@
               "id": 8,
               "name": "IBancorGasPriceLimit",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 3713,
+              "referencedDeclaration": 4033,
               "src": "231:20:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+                "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
                 "typeString": "contract IBancorGasPriceLimit"
               }
             },
@@ -3124,7 +3124,7 @@
                       "referencedDeclaration": 9,
                       "src": "332:6:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+                        "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
                         "typeString": "contract IBancorGasPriceLimit"
                       }
                     },
@@ -3139,13 +3139,13 @@
                       "referencedDeclaration": 11,
                       "src": "341:7:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+                        "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
                         "typeString": "contract IBancorGasPriceLimit"
                       }
                     },
                     "src": "332:16:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+                      "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
                       "typeString": "contract IBancorGasPriceLimit"
                     }
                   },
@@ -3176,7 +3176,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+                    "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
                     "typeString": "contract IBancorGasPriceLimit"
                   },
                   "typeName": {
@@ -3184,10 +3184,10 @@
                     "id": 10,
                     "name": "IBancorGasPriceLimit",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 3713,
+                    "referencedDeclaration": 4033,
                     "src": "285:20:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+                      "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
                       "typeString": "contract IBancorGasPriceLimit"
                     }
                   },
@@ -3230,7 +3230,7 @@
                         "referencedDeclaration": 9,
                         "src": "425:6:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3713",
+                          "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$4033",
                           "typeString": "contract IBancorGasPriceLimit"
                         }
                       },
@@ -3241,7 +3241,7 @@
                       "lValueRequested": false,
                       "memberName": "gasPrice",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3707,
+                      "referencedDeclaration": 4027,
                       "src": "425:15:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -3334,10 +3334,10 @@
               "id": 31,
               "name": "Owned",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 4009,
+              "referencedDeclaration": 4125,
               "src": "481:5:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Owned_$4009",
+                "typeIdentifier": "t_contract$_Owned_$4125",
                 "typeString": "contract Owned"
               }
             },
@@ -3366,7 +3366,7 @@
         ],
         "contractDependencies": [
           258,
-          4009
+          4125
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -3375,7 +3375,7 @@
         "linearizedBaseContracts": [
           235,
           258,
-          4009
+          4125
         ],
         "name": "GasPriceOracle",
         "nodeType": "ContractDefinition",
@@ -3977,7 +3977,7 @@
                         "name": "now",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 4424,
+                        "referencedDeclaration": 4540,
                         "src": "1150:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -4015,10 +4015,10 @@
                         "name": "BokkyPooBahsDateTimeLibrary",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3577,
+                        "referencedDeclaration": 3904,
                         "src": "1113:27:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_BokkyPooBahsDateTimeLibrary_$3577_$",
+                          "typeIdentifier": "t_type$_t_contract$_BokkyPooBahsDateTimeLibrary_$3904_$",
                           "typeString": "type(library BokkyPooBahsDateTimeLibrary)"
                         }
                       },
@@ -4029,7 +4029,7 @@
                       "lValueRequested": false,
                       "memberName": "diffDays",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 3504,
+                      "referencedDeclaration": 3831,
                       "src": "1113:36:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
@@ -5216,7 +5216,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4008,
+                  "referencedDeclaration": 4124,
                   "src": "1808:9:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -5342,7 +5342,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4008,
+                  "referencedDeclaration": 4124,
                   "src": "1910:9:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -5468,7 +5468,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4008,
+                  "referencedDeclaration": 4124,
                   "src": "2014:9:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -5594,7 +5594,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4008,
+                  "referencedDeclaration": 4124,
                   "src": "2121:9:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -5720,7 +5720,7 @@
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 4008,
+                  "referencedDeclaration": 4124,
                   "src": "2227:9:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -5898,8 +5898,8 @@
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.0",
-  "updatedAt": "2019-01-13T20:34:58.218Z",
+  "schemaVersion": "3.0.1",
+  "updatedAt": "2019-01-19T23:20:26.029Z",
   "devdoc": {
     "methods": {}
   },

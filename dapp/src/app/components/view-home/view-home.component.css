@@ -1,3 +1,12 @@
 a {
 	color: rgba(0,0,0, 0.87);
 }
+
+li {
+	margin: 0px 16px;
+	padding-bottom: 4px;
+}
+
+td, th {
+	text-align: center;
+}

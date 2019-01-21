@@ -12,8 +12,7 @@ import { Web3Service } from '../../services/web3/web3.service';
 })
 export class ViewHomeComponent implements OnInit {
 
-	web3 = web3;
-	initialized: boolean = false;
+	web3;
 
 	constructor(
 		private PaymentDelegate: PaymentDelegateService,
@@ -22,8 +21,11 @@ export class ViewHomeComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		
-
+		/*
+		this.Web3.ready().then(() => {
+			this.web3 = web3;
+		})
+		*/
 	}
 
 }

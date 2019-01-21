@@ -3,10 +3,10 @@ pragma solidity ^0.5.0;
 import "./RecurringAlarmClockFactory.sol";
 import "./PaymentDelegate.sol";
 
-/// @title RecurringAlarmClockWizard Contract
+/// @title RecurringAlarmClockDeployer
 /// @author Joseph Reed
 /// @dev This contract's goal is to make it super easy to create a recurring alarm clock by setting several default values
-contract RecurringAlarmClockWizard is Owned {
+contract RecurringAlarmClockDeployer is Owned {
 
     uint public blockCreated = block.number;
     
@@ -15,7 +15,7 @@ contract RecurringAlarmClockWizard is Owned {
     address public defaultCaller;
     uint[3] public defaultLimits;
 
-    /// @notice Constructor to create a RecurringAlarmClockWizard which aids in creating an alarm clock
+    /// @notice Constructor to create a smart contract which aids in creating a recurring alarm clock
     /// @param _defaultFactory The default factory contract responsible for deploying decentralized alarm clocks
     /// @param _defaultOracle The default gas price oracle responsible for predicting future gas costs
     constructor (
@@ -51,18 +51,20 @@ contract RecurringAlarmClockWizard is Owned {
         IDelegatedWallet wallet, 
         IPaymentDelegate delegate
     ) public returns (RecurringAlarmClock alarmClock) {
+        require(wallet.isDelegate(msg.sender), "the caller must be a wallet delegate");
+        
         alarmClock = defaultFactory.createAlarmClock(wallet,delegate);
         alarmClock.setExecutionLimits(defaultLimits);
         alarmClock.setGasPriceOracle(defaultOracle);
         alarmClock.setPriorityCaller(defaultCaller);
-        emit NewAlarmClock_event(msg.sender, address(alarmClock));
+        emit DeployAlarmClock_event(msg.sender, address(alarmClock));
     }
 
     /// @notice Creates and starts an alarm clock belonging to the specified wallet with the specified call options
     /// @param wallet The funding wallet, change address, and owner of the deployed alarms
     /// @param delegate The delegate from which to pull alarm payments
-    /// @param callAddress todo
-    /// @param callData todo
+    /// @param callAddress The address the alarm clock will call each time it is triggered
+    /// @param callData The data the alarm clock will send with the call
     /// @param callOptions The options defining how and when to trigger the alarm clock
     /// @return The recurring alarm clock contract address
     function createAndStartAlarmClock(
@@ -72,6 +74,8 @@ contract RecurringAlarmClockWizard is Owned {
         bytes memory callData,
         uint[7] memory callOptions      // callValue, callGas, startTimestamp, windowSize, intervalValue, intervalUnit, maxIntervals
     ) public returns (RecurringAlarmClock alarmClock) {
+        require(wallet.isDelegate(msg.sender), "the caller must be a wallet delegate");
+
         alarmClock = defaultFactory.createAlarmClock(wallet,delegate);
         alarmClock.setExecutionLimits(defaultLimits);
         alarmClock.setGasPriceOracle(defaultOracle);
@@ -80,8 +84,8 @@ contract RecurringAlarmClockWizard is Owned {
         delegate.schedule(alarmClock);
 
         alarmClock.start(callAddress, callData, callOptions);
-        emit NewAlarmClock_event(msg.sender, address(alarmClock));
-    }
+        emit DeployAlarmClock_event(msg.sender, address(alarmClock));
+    }    
 
     /// @notice Creates an alarm clock
     /// @param delegate The delegate from which to pull alarm payments
@@ -89,8 +93,8 @@ contract RecurringAlarmClockWizard is Owned {
     /// @param customCaller The custom caller receives a base amount of the alarm fee regardless of if they call the alarm.
     /// @param customOracle The feed that supplies the current network gas price
     /// @param customLimits The ethereum alarm clock limits used when calling decentralized alarms.
-    /// @param callAddress todo
-    /// @param callData todo
+    /// @param callAddress The address the alarm clock will call each time it is triggered
+    /// @param callData The data the alarm clock will send with the call
     /// @param callOptions The options defining how and when to trigger the alarm clock
     /// @return The recurring alarm clock contract address
     function createAndStartRawAlarmClock(
@@ -103,7 +107,9 @@ contract RecurringAlarmClockWizard is Owned {
         bytes memory callData,
         uint[7] memory callOptions      // callValue, callGas, startTimestamp, windowSize, intervalValue, intervalUnit, maxIntervals
     ) public returns (RecurringAlarmClock alarmClock) {
-        alarmClock = defaultFactory.createAlarmClock(wallet, delegate);
+        require(wallet.isDelegate(msg.sender), "the caller must be a wallet delegate");
+
+        alarmClock = defaultFactory.createAlarmClock(wallet,delegate);
         alarmClock.setExecutionLimits(customLimits);
         alarmClock.setGasPriceOracle(customOracle);
         alarmClock.setPriorityCaller(customCaller);
@@ -111,9 +117,9 @@ contract RecurringAlarmClockWizard is Owned {
         delegate.schedule(alarmClock);
 
         alarmClock.start(callAddress, callData, callOptions);
-        emit NewAlarmClock_event(msg.sender, address(alarmClock));
+        emit DeployAlarmClock_event(msg.sender, address(alarmClock));
     }
 
-    event NewAlarmClock_event(address indexed caller, address alarmClock);
+    event DeployAlarmClock_event(address indexed caller, address alarmClock);
 
 }

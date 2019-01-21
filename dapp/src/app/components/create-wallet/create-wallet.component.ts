@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 declare let web3: any;
 import { Web3Service } from 'src/app/services/web3/web3.service';
-import { DelegatedWalletService } from 'src/app/services/delegated-wallet/delegated-wallet.service';
+import { WalletManagerService } from 'src/app/services/wallet-manager/wallet-manager.service';
 import { AlarmClockService } from 'src/app/services/alarm-clock/alarm-clock.service';
 import { PaymentDelegateService } from 'src/app/services/payment-delegate/payment-delegate.service';
 
@@ -37,7 +37,7 @@ export class CreateWalletComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) public data: DialogData,
         private dialogRef: MatDialogRef<CreateWalletComponent>,
         private Web3: Web3Service,
-        private WalletManager: DelegatedWalletService,
+        private WalletManager: WalletManagerService,
         private AlarmClock: AlarmClockService,
         private PaymentDelegate: PaymentDelegateService,
     ){}
@@ -51,7 +51,7 @@ export class CreateWalletComponent implements OnInit {
             this.currentAccount = promises[0];
             var currentGasPriceInGwei = promises[1];
             this.newWallet.gasPrice = Math.round(Number(currentGasPriceInGwei)*1.25);
-            return this.PaymentDelegate.getInstance()
+            return this.PaymentDelegate.ready()
         })
         .then(instance => {
             var delegates = [this.currentAccount, instance._address, instance._address];
@@ -76,9 +76,9 @@ export class CreateWalletComponent implements OnInit {
         if(!this.newWallet.preloadEther)
             this.newWallet.preloadEther = 0;
         
-        this.PaymentDelegate.getInstance()
+        this.PaymentDelegate.ready()
         .then(instance => {
-            var delegates = [this.currentAccount, instance._address, this.AlarmClock.wizard._address];
+            var delegates = [this.currentAccount, instance._address, this.AlarmClock.deployer._address];
             console.log(delegates);
             var options = {
                 from: this.currentAccount,

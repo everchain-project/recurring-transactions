@@ -1,13 +1,7 @@
-<div class="container" fxLayout="column">
+<div *ngIf="initialized" class="container" fxLayout="column">
     
     <app-toolbar></app-toolbar>
 
-    <div fxLayout.xs="column" fxLayout="row" fxFlex>
-        <div class="scrollable" style="padding: 0px 32px" fxFlex>
-            <router-outlet></router-outlet>
-        </div>
-        
-        <app-example-feed fxFlex="40"></app-example-feed>
-    </div>
+    <router-outlet></router-outlet>
 
 </div>
