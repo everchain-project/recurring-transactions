@@ -3069,18 +3069,20 @@ THE SOFTWARE.
 @angular/forms
 MIT
 
+@angular/material/checkbox
+
 @angular/material/dialog
 
 @angular/material/datepicker
 
 @angular/material/snack-bar
 
-angular2-datetimepicker
-MIT
-
 @angular/material/select
 
 @angular/material/core
+
+angular2-datetimepicker
+MIT
 
 @angular/material/expansion
 
