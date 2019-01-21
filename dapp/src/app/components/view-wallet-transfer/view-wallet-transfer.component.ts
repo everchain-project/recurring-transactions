@@ -18,6 +18,7 @@ export class ViewWalletTransferComponent implements OnInit {
     transferAmount;
     newContactAddress: string ;
     newContactName: string;
+    addNewContact: boolean;
 
     constructor(
         private router: Router,

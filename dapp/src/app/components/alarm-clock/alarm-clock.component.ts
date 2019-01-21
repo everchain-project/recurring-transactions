@@ -24,10 +24,10 @@ export class AlarmClockComponent implements OnInit {
 	constructor(
         private dialog: MatDialog,
         private snackbar: MatSnackBar,
-		private Web3: Web3Service,
         private AlarmClock: AlarmClockService,
         private WalletService: WalletManagerService,
         private PaymentDelegate: PaymentDelegateService,
+		public Web3: Web3Service,
     ){}
 
 	ngOnInit() {
