@@ -1,0 +1,114 @@
+<div class="outer-border-container marginH" fxLayout="column">
+    <div class="inner-border-container" style="font-size: small;">
+        <div *ngIf="!rtx.ready" class="cursor" style="padding: 8px;">
+            &nbsp;
+            <br>
+            &nbsp;
+        </div>
+        <div *ngIf="rtx.ready" class="cursor" style="padding: 8px;" fxLayout="column" (click)="showDetails = !showDetails">
+            <div>
+                <div *ngIf="rtx.ready">
+                    <b fxFlex="156px">{{rtx.formattedDate}}</b>
+                    <div fxFlex>{{rtx.label()}}</div>
+                    <b style="text-align: right;" fxFlex="64px">{{rtx.status()}}</b>
+                </div>
+            </div>
+            <div style="color: rgba(0,0,0,0.5); padding-top: 4px;">
+                <div *ngIf="!rtx.ready">&nbsp;</div>
+                <div *ngIf="rtx.ready">
+                    <div fxLayoutAlign="start center" fxFlex="156px">
+                        <span>{{rtx.interval.current}}/{{rtx.interval.max}}</span>
+                        <mat-icon style="height: 16px; width: 16px; font-size: 16px; padding: 0px 4px;">cached</mat-icon>
+                        <span>{{rtx.interval.value}} {{RTx.getUnitText(rtx.interval.unit)}}</span>
+                    </div>
+                    <div fxFlex>
+                        <div>ID {{rtx.instance._address.slice(0,6)}}</div>
+                        <span fxFlex></span>
+
+                    </div>
+                    <div style="text-align: right;" fxFlex="64px">${{rtx.cost | toDai | number:'1.2-2'}}</div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="showDetails" class="" style="padding: 8px; padding-top: 0px;">
+            <div style="padding: 8px 0px;" fxLayoutAlign="start center">
+                <div fxFlex="152px">
+                    
+                </div>
+                <span fxFlex>
+                    <button mat-button style="font-size: small; min-width: 0px; padding: 0px 4px;">
+                        edit label
+                    </button>
+                    <span fxFlex="16px"></span>
+                    <button mat-button style="font-size: small; min-width: 0px; padding: 0px 4px;" (click)="rtx.alarm.cancel()">
+                        cancel
+                    </button>
+                </span>
+                <span fxFlex="16px"></span>
+                <button mat-button style="font-size: small; min-width: 0px; padding: 0px 4px; color: red;" (click)="rtx.destroy()">
+                    destroy
+                </button>
+                <span fxFlex="16px"></span>
+                <button mat-button style="font-size: small; min-width: 0px; padding: 0px 4px;" (click)="rtx.reset()">
+                    reset
+                </button>
+            </div>
+            <div style="padding-top: 8px;">
+                Contract Address:
+                <span fxFlex></span>
+                {{rtx.instance._address}}
+            </div>
+            <div style="padding-top: 8px;">
+                Alarm Address: 
+                <span fxFlex></span>
+                <span *ngIf="!rtx.alarm">No scheduled alarm</span>
+                <span *ngIf="rtx.alarm">{{rtx.alarm.address}}</span>
+            </div>
+            <div *ngIf="rtx.alarm" style="padding-top: 8px;">
+                <div>
+                    Alarm Balance:
+                    <span fxFlex></span>
+                    &diams;{{rtx.alarm.balance | fromWei:'ether' | number:'1.2-5'}} (${{rtx.alarm.balance | toDai | number:'1.2-2'}})
+                </div>
+            </div>
+            <div *ngIf="rtx.alarm" style="padding-top: 8px;">
+                Target Execution:
+                <span fxFlex></span>
+                {{rtx.startDate}}
+            </div>
+            <div *ngIf="rtx.alarm" style="padding-top: 8px;">
+                Alarm Expires:
+                <span fxFlex></span>
+                {{rtx.alarm.expireDate}}
+            </div>
+            <div style="padding-top: 8px;">
+                Call Address:
+                <span fxFlex></span>
+                {{rtx.call.address}}
+            </div>
+            <div style="padding-top: 8px;">
+                Call Value:
+                <span fxFlex></span>
+                {{rtx.call.value}} wei
+            </div>
+            <div style="padding-top: 8px;">
+                Call Gas:
+                <span fxFlex></span>
+                {{rtx.call.gas}}
+            </div>
+            <div style="padding-top: 8px;">
+                <span style="color: black">
+                    Call Data: 
+                    <span fxFlex></span>
+                    <div class="cursor" (click)="showData = !showData">
+                        <span *ngIf="!showData">[ show ]</span>
+                        <span *ngIf="showData">[ hide ]</span>
+                    </div>
+                </span> 
+                <div *ngIf="showData" style="padding-top: 8px; word-wrap: break-word; color: rgba(0,0,0,0.5);">
+                    {{rtx.call.data}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

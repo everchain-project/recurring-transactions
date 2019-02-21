@@ -1,0 +1,23 @@
+<div fxLayout="column" fxFlex="60">
+    <div *ngIf="Payments.list[currentWallet]" class="scrollable" fxFlex>
+    	<div *ngIf="Payments.list[currentWallet].length == 0" class="padding centered" fxLayout="row" fxLayoutAlign="center center">
+            <div>No Recurring Transactions&nbsp;&nbsp;</div>
+            <button mat-icon-button (click)="Rtx.create()">
+                <mat-icon>alarm_add</mat-icon>
+            </button>
+        </div>
+
+    	<div *ngIf="Payments.list[currentWallet].length > 0" fxLayout="column">
+            <div *ngFor="let payment of Payments.list[currentWallet] | orderBy:'date'">
+                <app-rtx *ngIf="payment.status() == 'active'" style="margin-top: 16px;" [(rtx)]="payment"></app-rtx>
+            </div>
+            <div fxFlex="16px"></div>
+            <div *ngFor="let payment of Payments.list[currentWallet] | orderBy:'date'">
+                <app-rtx *ngIf="payment.status() != 'active'" style="margin-top: 16px;" [(rtx)]="payment"></app-rtx>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="border-left" fxLayout="column" fxFlex="40">
+    <app-rtx-feed fxLayout="column" fxFlex></app-rtx-feed>
+</div>

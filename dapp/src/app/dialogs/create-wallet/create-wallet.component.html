@@ -1,0 +1,52 @@
+<h1 mat-dialog-title fxLayout="column" fxLayout.gt-xs="row">
+    Create New Wallet
+    <span fxFlex.gt-xs></span>
+    <small fxLayout='row"'>
+    Cost: 
+    <span fxFlex></span>
+    &diams;{{newWallet.cost | fromWei:'ether' | number:'1.2-5'}} (${{newWallet.cost | toDai | number:'1.0-2'}})</small>
+</h1>
+
+<mat-card mat-dialog-content fxLayout="column">
+    <div fxLayout="column" fxLayout.gt-xs="row">
+        <mat-form-field [floatLabel]="'always'" appearance="outline" fxFlex.gt-xs>
+            <mat-label>Wallet Name</mat-label>
+            <input matInput type="text" [(ngModel)]="newWallet.name" placeholder="Enter a descriptive name">
+        </mat-form-field>
+        <span fxHide.xs>&nbsp;</span>
+        <mat-form-field [floatLabel]="'always'" appearance="outline">
+            <mat-label>Preload Ether</mat-label>
+            <input matInput type="number" min="0" [(ngModel)]="newWallet.preloadEther" placeholder="0">
+        </mat-form-field>
+    </div>
+
+    <mat-accordion fxFlex>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Advanced Options
+                </mat-panel-title>
+                <mat-panel-description fxHide.xs>
+                    Only change these options if you know what you are doing...
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div fxLayout="column" fxLayout.gt-xs="row">
+                <mat-form-field [floatLabel]="'always'" appearance="outline" fxFlex.gt-xs>
+                    <mat-label>Call Gas</mat-label>
+                    <input type="number" matInput [(ngModel)]="newWallet.callGas" placeholder="Call Gas"  min="0" name="callGas" (ngModelChange)="updateCost()">
+                </mat-form-field>
+                <span fxHide.xs>&nbsp;</span>
+                <mat-form-field [floatLabel]="'always'" appearance="outline" fxFlex.gt-xs>
+                    <mat-label>Gas Price (in wei)</mat-label>
+                    <input type="number" matInput [(ngModel)]="newWallet.gasPrice" step="1" min="0" name="gasPrice" placeholder="Gwei" (ngModelChange)="updateCost()">
+                </mat-form-field>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</mat-card>
+
+<div mat-dialog-actions fxLayout="row">
+    <button mat-button (click)="dialogRef.close()">back</button>
+    <span fxFlex></span>
+    <button mat-button color="warn" (click)="createWallet()" [disabled]="!validWallet()">create wallet</button>
+</div>

@@ -1,32 +1,32 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ViewHomeComponent } from './components/view-home/view-home.component';
-import { ViewWalletAlarmsComponent } from './components/view-wallet-alarms/view-wallet-alarms.component';
-import { ViewWalletDelegatesComponent } from './components/view-wallet-delegates/view-wallet-delegates.component';
-import { ViewWalletTransferComponent } from './components/view-wallet-transfer/view-wallet-transfer.component';
+import { HomeComponent } from './routes/home/home.component';
+import { RtxsComponent } from './routes/rtxs/rtxs.component';
+import { DelegatesComponent } from './routes/delegates/delegates.component';
+import { TransferComponent } from './routes/transfer/transfer.component';
 
 const routes: Routes = [
 	{
         path: '', 
-        component: ViewHomeComponent 
+        component: HomeComponent 
     },
     {
         path: 'wallet/:walletAddress',
-        redirectTo: 'wallet/:walletAddress/alarm-clocks',
-        pathMatch: 'full',
-    },
-    {
-        path: 'wallet/:walletAddress/alarm-clocks',
-        component: ViewWalletAlarmsComponent,
+        component: RtxsComponent,
     },
     {
         path: 'wallet/:walletAddress/delegates',
-        component: ViewWalletDelegatesComponent,
+        component: DelegatesComponent,
     },
     {
         path: 'wallet/:walletAddress/transfer',
-        component: ViewWalletTransferComponent,
+        component: TransferComponent,
+    },
+    {
+        path: 'wallet/:walletAddress/:invalid',
+        redirectTo: 'wallet/:walletAddress',
+        pathMatch: 'full',
     },
     {
         path: '**',

@@ -23,13 +23,12 @@ contract GasPriceOracle is Owned, IGasPriceOracle {
 
     IUintFeed public gasPrice;
     
-    uint public minute  =   11000; // 110%
-    uint public day     =   12000; // 120%
-    uint public week    =   15000; // 150%
-    uint public month   =   20000; // 200%
-    uint public quarter =   30000; // 300%
-    uint public year    =  100000; // 1000%
-    uint public beyond  =  100000; // 1000%
+    uint public day     =   50000; //  5x
+    uint public week    =   60000; //  6x
+    uint public month   =   70000; //  7x
+    uint public quarter =   80000; //  8x
+    uint public year    =   90000; //  9x
+    uint public beyond  =  100000; // 10x
 
     constructor (IUintFeed _gasPrice) public {
         gasPrice = _gasPrice;
@@ -41,7 +40,7 @@ contract GasPriceOracle is Owned, IGasPriceOracle {
 
     function future (uint timestamp) public view returns (uint) {
         uint interval = BokkyPooBahsDateTimeLibrary.diffDays(now, timestamp);
-        uint currentPrice = current();
+        uint currentPrice = gasPrice.read();
 
         if(interval > 365)
             return currentPrice * beyond / 10000;
@@ -53,10 +52,8 @@ contract GasPriceOracle is Owned, IGasPriceOracle {
             return currentPrice * month / 10000;
         else if (interval > 1)
             return currentPrice * week / 10000;
-        else if (interval > 0)
+        else 
             return currentPrice * day / 10000;
-        else
-            return currentPrice * minute / 10000;
     }
 
     function setDayMultiplier(uint _multiplier) public onlyOwner {
@@ -76,6 +73,10 @@ contract GasPriceOracle is Owned, IGasPriceOracle {
     }
 
     function setYearMultiplier(uint _multiplier) public onlyOwner {
+        year = _multiplier;
+    }
+
+    function setBeyondMultiplier(uint _multiplier) public onlyOwner {
         year = _multiplier;
     }
 

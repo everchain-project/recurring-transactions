@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd } from "@angular/router";
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { Router, NavigationEnd } from "@angular/router";
+import { MatDialog } from '@angular/material';
 
-declare let web3: any;
 import { Web3Service } from '../../services/web3/web3.service';
-import { AlarmClockService } from '../../services/alarm-clock/alarm-clock.service';
-import { PaymentDelegateService } from '../../services/payment-delegate/payment-delegate.service';
-import { WalletManagerService } from '../../services/wallet-manager/wallet-manager.service';
-import { UserService } from '../../services/user/user.service';
-import { StorageService } from '../../services/storage/storage.service';
-import { CreateWalletComponent } from '../create-wallet/create-wallet.component';
-import { QrcodeComponent } from '../qrcode/qrcode.component';
+import { WalletService } from '../../services/wallet/wallet.service';
+import { PaymentService } from '../../services/payment/payment.service';
+import { RtxService } from '../../services/rtx/rtx.service';
+
+import { QrcodeDialog } from '../../dialogs/qrcode/qrcode.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -19,106 +16,68 @@ import { QrcodeComponent } from '../qrcode/qrcode.component';
 })
 export class ToolbarComponent implements OnInit {
 
-    initialized;
     currentWallet;
     currentRoute;
-    currentView
+    currentView;
+
     newWalletName: string;
     editWalletName: boolean = false;
-    error: string = null;
     
     constructor(
         private router: Router,
         private dialog: MatDialog,
-        private snackbar: MatSnackBar,
-        private Web3: Web3Service,
-        private AlarmClock: AlarmClockService,
-        private PaymentDelegate: PaymentDelegateService,
-        public WalletManager: WalletManagerService,
-        public User: UserService,
-        public Storage: StorageService,
-    ) { }
+        public Web3: Web3Service,
+        public Wallets: WalletService,
+        public Payments: PaymentService,
+        public RTx: RtxService,
+    ){}
 
     ngOnInit() {
-        this.Web3.ready().then(networkId => {
-            if(networkId != 42) this.error = "Wrong network detected... Switch to the Kovan Testnet!";
-            this.initialized = true;
+        
+        this.Web3.ready()
+        .then(() => {
+            return this.Wallets.ready()
+        })
+        .then(() => {
+            this.parseRoute();
         })
         .catch(err => {
-            this.error = err;
-            this.initialized = true;
+            console.error(err);
         })
 
-        this.init();
-
         this.router.events.forEach((event) => {
-            if(event instanceof NavigationStart) {
-                //this.destroy();
-            }
             if(event instanceof NavigationEnd) {
-                this.init();
+                this.parseRoute();
             }
-            // NavigationCancel
-            // NavigationError
-            // RoutesRecognized
         });
     }
 
-    init(){
+    parseRoute(){
         var option = this.router.url.split('/');
         this.currentWallet = option[2];
         this.currentRoute = '/' + option[1] + '/' + option[2];
         this.currentView = option[3];
-        this.newWalletName = this.Storage.get(this.currentWallet,"name");
+
+        if(this.currentWallet){
+            this.Wallets.update(this.currentWallet);
+            this.newWalletName = this.Wallets.wallets[this.currentWallet].name;
+
+            this.Payments.watch(this.currentWallet)
+            .catch(err => {
+                console.error(err);
+            })
+        }
     }
 
     createWallet(){
-        const dialogRef = this.dialog.open(CreateWalletComponent, {
-            //width: '90vw',
-            //height: '90vh',
-            //data: {}
-        });
-    
-        dialogRef.afterClosed().subscribe(newWallet => {
-            this.init();
-            if(newWallet && newWallet.tx){
-                var title = 'Waiting for ' + newWallet.name + ' to be deployed. Be patient!';
-                var buttonText = 'view on etherscan';
-                let snackBarRef = this.snackbar.open(title, buttonText);
-                snackBarRef.onAction().subscribe(() => {
-                    window.open('https://kovan.etherscan.io/tx/' + newWallet.txHash);
-                });
-                
-                newWallet.tx.on("confirmation", (confirmations, txReceipt)  => {
-                    if(confirmations == 0){
-                        console.log("Transaction successfully buried '0' confirmations deep. This should be a custom setting eventually");                        
-                        var walletAddress = txReceipt.events.AddWallet_event.returnValues.wallet;
-                        localStorage.setItem(walletAddress + '.name', newWallet.name);
-                        this.WalletManager.watch(walletAddress);
-                        this.WalletManager.walletList.push(walletAddress);
-                        
-                        var title = newWallet.name + ' Deployed';
-                        var buttonText = 'view wallet';
-                        let snackBarRef = this.snackbar.open(title, buttonText);
-                        snackBarRef.onAction().subscribe(() => {
-                            this.User.wallets.push(walletAddress);
-                            this.router.navigate(['/wallet/' + walletAddress]);
-                        });
-                    }
-                })
-                .catch(err => {
-                    console.error(err);
-                })   
-            } else {
-                this.init();
-            }
-        });
+        this.Wallets.create()
+        .then(() => {
+            this.parseRoute()
+        })
     }
-    
 
     showQRCode(){
-        console.log(this.currentWallet);
-        const dialogRef = this.dialog.open(QrcodeComponent, {
+        const dialogRef = this.dialog.open(QrcodeDialog, {
             width: '304px',
             data: this.currentWallet
         });
@@ -131,12 +90,10 @@ export class ToolbarComponent implements OnInit {
     signIn(){
         this.Web3.signIn()
         .then(() => {
-            this.init();
-            console.log(this.Web3.watchedAccount)
-            return this.User.set(this.Web3.watchedAccount)
-        })
-        .catch(err => {
-            console.error(err);
+            if(this.Web3.signedIn){
+                localStorage.setItem(this.Web3.account.address + '.name', 'You');
+                return this.Wallets.watch(this.Web3.account.address);
+            }
         })
     }
 
@@ -144,14 +101,14 @@ export class ToolbarComponent implements OnInit {
         if(this.currentWallet == "new"){
             this.createWallet();
         } else {
-            this.router.navigate(['wallet/' + this.currentWallet + '/alarm-clocks']);
+            this.router.navigate(['wallet', this.currentWallet, 'rtxs']);
         }
     }
 
     triggerWalletNameChange(newWalletName){
         if(newWalletName && newWalletName.length > 4){
-            this.User.wallets[this.currentWallet].name = newWalletName;
-            this.Storage.set(this.currentWallet,'.name', newWalletName);
+            this.Wallets.wallets[this.currentWallet].name = newWalletName;
+            localStorage.setItem(this.currentWallet + '.name', newWalletName);
         }
     }
 

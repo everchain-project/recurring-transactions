@@ -144,10 +144,10 @@ contract BasePaymentDelegate is IPaymentDelegate {
     }
 
     event Payment_event (IDelegatedWallet indexed wallet, IPayment indexed payment, bool success);
-    event Schedule_event (IDelegatedWallet indexed wallet, address indexed caller, IPayment payment);
-    event Unschedule_event (IDelegatedWallet indexed wallet, address indexed caller, IPayment payment);
-    event Register_event (IPayment payment, address recipient);
-    event Unregister_event (IPayment payment, address recipient);
+    event Schedule_event (IDelegatedWallet indexed wallet, address indexed caller, IPayment indexed payment);
+    event Unschedule_event (IDelegatedWallet indexed wallet, address indexed caller, IPayment indexed payment);
+    event Register_event (IPayment indexed payment, address indexed recipient);
+    event Unregister_event (IPayment indexed payment, address indexed recipient);
     event Clear_event(IPayment payment, address indexed recipient);
 
 }

@@ -5,9 +5,9 @@ var AddressListLib = artifacts.require("AddressListLib");
 // Components
 var GasPriceOracle = artifacts.require("GasPriceOracle");
 var PaymentDelegate = artifacts.require("DecentralizedPaymentDelegate");
-var RecurringAlarmClock = artifacts.require("RecurringAlarmClock");
-var RecurringAlarmClockFactory = artifacts.require("RecurringAlarmClockFactory");
-var RecurringAlarmClockDeployer = artifacts.require("RecurringAlarmClockDeployer");
+var RecurringTransaction = artifacts.require("RecurringTransaction");
+var RecurringTransactionFactory = artifacts.require("RecurringTransactionFactory");
+var RecurringTransactionDeployer = artifacts.require("RecurringTransactionDeployer");
 
 // Tests
 var DummyGasPriceFeed = artifacts.require("DummyGasPriceFeed");
@@ -30,13 +30,19 @@ module.exports = function(deployer, network, accounts) {
         console.log("Live network not supported yet")
     } 
     else if(network == "kovan"){
-        deployer.link(AddressListLib, PaymentDelegate)
-        deployer.link(DateTimeLib, RecurringAlarmClock)
-        
-        return deployer.deploy(PaymentDelegate)
-        .then(() => deployer.deploy(RecurringAlarmClock))
-        .then(() => deployer.deploy(RecurringAlarmClockFactory, EthereumAlarmClock[network], RecurringAlarmClock.address))
-        .then(() => deployer.deploy(RecurringAlarmClockDeployer, RecurringAlarmClockFactory.address, GasPriceOracle.address))
+        //deployer.deploy(DateTimeLib)
+        //.then(() => {
+            deployer.link(DateTimeLib, RecurringTransaction);
+            //deployer.link(AddressListLib, PaymentDelegate);
+        //})
+        //.then(() => deployer.deploy(ExampleTask))
+        //.then(() => deployer.deploy(DummyGasPriceFeed))
+        //.then(() => deployer.deploy(GasPriceOracle, DummyGasPriceFeed.address))
+        //.then(() => deployer.deploy(PaymentDelegate))
+        //.then(() => 
+            deployer.deploy(RecurringTransaction)
+        .then(() => deployer.deploy(RecurringTransactionFactory, EthereumAlarmClock[network], RecurringTransaction.address))
+        .then(() => deployer.deploy(RecurringTransactionDeployer, PaymentDelegate.address, RecurringTransactionFactory.address, GasPriceOracle.address))
         .then(() => {
             console.log("Finished deploying contracts to " + network);
         })
@@ -45,18 +51,18 @@ module.exports = function(deployer, network, accounts) {
         deployer.deploy(DateTimeLib)
         .then(() => deployer.deploy(AddressListLib))
         .then(() => {
-            deployer.link(DateTimeLib, RecurringAlarmClock);
+            deployer.link(DateTimeLib, RecurringTransaction);
             deployer.link(AddressListLib, PaymentDelegate);
         })
         .then(() => deployer.deploy(ExampleTask))
         .then(() => deployer.deploy(DummyGasPriceFeed))
         .then(() => deployer.deploy(GasPriceOracle, DummyGasPriceFeed.address))
         .then(() => deployer.deploy(PaymentDelegate))
-        .then(() => deployer.deploy(RecurringAlarmClock))
-        .then(() => deployer.deploy(RecurringAlarmClockFactory, EthereumAlarmClock[network], RecurringAlarmClock.address))
-        .then(() => deployer.deploy(RecurringAlarmClockDeployer, RecurringAlarmClockFactory.address, GasPriceOracle.address))
+        .then(() => deployer.deploy(RecurringTransaction))
+        .then(() => deployer.deploy(RecurringTransactionFactory, EthereumAlarmClock[network], RecurringTransaction.address))
+        .then(() => deployer.deploy(RecurringTransactionDeployer, RecurringTransactionFactory.address, GasPriceOracle.address))
         .then(() => {
-            console.log("Finished deploying contracts to develop" + network);
+            console.log("Finished deploying contracts to " + network);
         })
     }
 

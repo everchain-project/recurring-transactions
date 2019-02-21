@@ -31,33 +31,39 @@ import { QRCodeModule } from 'angularx-qrcode';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
-
-import { AlarmClockComponent } from './components/alarm-clock/alarm-clock.component';
-import { CreateWalletComponent } from './components/create-wallet/create-wallet.component';
-import { NotificationComponent } from './components/notification/notification.component';
-import { ViewHomeComponent } from './components/view-home/view-home.component';
-import { QrcodeComponent } from './components/qrcode/qrcode.component';
-import { CreateAlarmClockComponent } from './components/create-alarm-clock/create-alarm-clock.component';
+import { HomeComponent } from './routes/home/home.component';
+import { RtxsComponent } from './routes/rtxs/rtxs.component';
+import { RtxFeedComponent } from './components/rtx-feed/rtx-feed.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { ExampleFeedComponent } from './components/example-feed/example-feed.component';
-import { ViewWalletDelegatesComponent } from './components/view-wallet-delegates/view-wallet-delegates.component';
-import { ViewWalletAlarmsComponent } from './components/view-wallet-alarms/view-wallet-alarms.component';
-import { ViewWalletTransferComponent } from './components/view-wallet-transfer/view-wallet-transfer.component';
+
+import { CreateRtxDialog } from './dialogs/create-rtx/create-rtx.component';
+import { CreateWalletDialog } from './dialogs/create-wallet/create-wallet.component';
+import { QrcodeDialog } from './dialogs/qrcode/qrcode.component';
+
+import { FromWeiPipe } from './pipes/from-wei/from-wei.pipe';
+import { ToDaiPipe } from './pipes/to-dai/to-dai.pipe';
+import { OrderByPipe } from './pipes/order-by/order-by.pipe';
+import { TransferComponent } from './routes/transfer/transfer.component';
+import { DelegatesComponent } from './routes/delegates/delegates.component';
+import { RtxComponent } from './components/rtx/rtx.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlarmClockComponent,
-    CreateWalletComponent,
-    NotificationComponent,
-    QrcodeComponent,
-    ViewHomeComponent,
-    CreateAlarmClockComponent,
+    HomeComponent,
+    RtxsComponent,
+    RtxFeedComponent,
     ToolbarComponent,
-    ExampleFeedComponent,
-    ViewWalletDelegatesComponent,
-    ViewWalletAlarmsComponent,
-    ViewWalletTransferComponent,
+    CreateRtxDialog,
+    CreateWalletDialog,
+    QrcodeDialog,
+    FromWeiPipe,
+    ToDaiPipe,
+    OrderByPipe,
+    TransferComponent,
+    DelegatesComponent,
+    RtxComponent,
   ],
   imports: [
     AngularDateTimePickerModule,
@@ -98,10 +104,9 @@ import { ViewWalletTransferComponent } from './components/view-wallet-transfer/v
 
   ],
   entryComponents: [
-      CreateAlarmClockComponent,
-      CreateWalletComponent,
-      NotificationComponent,
-      QrcodeComponent,
+    CreateRtxDialog,
+    CreateWalletDialog,
+    QrcodeDialog,
   ],
   bootstrap: [AppComponent]
 })

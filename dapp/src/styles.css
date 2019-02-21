@@ -28,12 +28,32 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
     user-select: none;
 }
 
+.white-text {
+    color: rgba(255,255,255,0.87);
+}
+
 .padding {
-    padding: 32px;
+    padding: 16px;
+}
+
+.paddingH {
+    padding: 0px 16px;
+}
+
+.paddingV {
+    padding: 16px 0px;
 }
 
 .margin {
     margin: 16px;
+}
+
+.marginH {
+    margin: 0px 16px;
+}
+
+.marginV {
+    margin: 16px 0px;
 }
 
 .no-margin {
@@ -52,19 +72,38 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
     border: 1px solid rgba(33,33,33,0.33);
 }
 
-.borderLeft {
+.border-left {
     border-left: 1px solid rgba(33,33,33,0.33);
 }
-.borderRight {
+.border-right {
     border-right: 1px solid rgba(33,33,33,0.33);
 }
 
-.borderTop {
+.border-top {
     border-top: 1px solid rgba(33,33,33,0.33);
 }
 
-.borderBottom {
+.border-bottom {
     border-bottom: 1px solid rgba(33,33,33,0.33);
+}
+
+.outer-border-container {
+    border: 1px solid rgba(33,33,33,0.33);
+    border-radius: 4px;
+    margin-top: 16px;
+}
+
+.outer-border-container:hover {
+    border: 1px solid rgba(33,33,33,0.93);
+}
+
+.inner-border-container {
+    border: 1px solid rgba(33,33,33,0.0);
+    border-radius: 3px;
+}
+
+.inner-border-container:hover {
+    border: 1px solid rgba(33,33,33,0.93);
 }
 
 .wc-date-container {

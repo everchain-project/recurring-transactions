@@ -1,0 +1,18 @@
+<h4 style="padding: 0px 16px">Recurring Transaction Feed</h4>
+<small class="border-bottom paddingH" fxLayout="row" style="padding-bottom: 8px;">
+    <b fxFlex="100px">Timestamp</b>
+    <b fxFlex="64px">ID</b>
+    <b fxFlex>Data</b>
+    <b fxFlex="100px" style="text-align: right;">Value</b>
+</small>
+<div class="scrollable" *ngIf="RTx.exampleEvents.length > 0" style="padding: 0px 16px" fxFlex>
+    <div *ngFor="let event of RTx.exampleEvents.slice().reverse()">
+        <small fxLayout="row" style="padding-top: 16px;">
+            <div fxFlex="100px">{{event.formattedDate}}</div>
+            <div fxFlex="64px">{{event.returnValues.caller.slice(0,6)}}</div>
+            <div fxFlex>{{event.returnValues.message}}</div>
+            <div fxFlex="100px" style="text-align: right;">{{event.returnValues.msgValue}} wei</div>
+        </small>
+    </div>
+    <div style="margin-bottom: 16px;"></div>
+</div>
