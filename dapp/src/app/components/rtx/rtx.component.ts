@@ -11,13 +11,14 @@ export class RtxComponent implements OnInit {
 
 	@Input() rtx;
 
+	newLabel: string;
+
 	constructor(
         public RTx: RtxService,
 	){}
 
 	ngOnInit() {
-		//console.log(this.rtx);
-		//this.RTx.getDetails(this.rtx)
+		this.newLabel = this.rtx.label();
 	}
 
 }

@@ -16,87 +16,100 @@ export class PaymentService {
 
     private readyPromise: Promise<any>;    
     public instance: any;
+    public factories = [];
     
-    private factories = [];
-    private factoryTypes = {};
-    private watching = {};
-    public list = {};
+    //private factoryTypes = {};
+    //private watching = {};
+    //public list = {};
+
+    private subscriptions = {};
+    private for = {};
 
     constructor(
         private Web3: Web3Service,
         public RTx: RtxService,
-    ){
+    ){}
+
+    async ready () {
+        if(this.readyPromise) return this.readyPromise;
+
         this.readyPromise = this.Web3.ready()
         .then(() => {
             this.setDelegate();
         })
-        .catch(err => {
-            // console.error(err);
-        });
-    }
 
-    async ready () {
         return this.readyPromise;
     }
 
-    watch (account) {
-        return this.ready()
-        .then(() => {
-            if (!this.list[account]) {
-                this.list[account] = [];
-            
-                // watch for changes
-                console.log('watching')
-                this.instance.events.Schedule_event({wallet:[account]}, (err, event) => {
-                    console.log(err, event)
-                    var wallet = event.returnValues.wallet;
-                    var payment = {
-                        address: event.returnValues.payment,
-                        direction: 'outgoing'
-                    }
+    subscribe(account){
+        if(this.for[account]) return Promise.resolve(this.for[account]);
+        else this.for[account] = [];
 
-                    this.getPaymentDetails(payment)
-                    .then(() => {
-                        this.list[wallet].push(payment);
-                    });
-                })
+        this.watch(account);
 
-                this.instance.events.Unschedule_event({wallet:[account]}, (err, event) => {
-                    console.log(err, event)
-                    var wallet = event.returnValues.wallet;
-                    var payment = event.returnValues.payment;
-                    this.remove(payment, wallet);
-                })
-
-                this.instance.events.Register_event({recipient:[account]}, (err, event) => {
-                    console.log(err, event)
-                })
-
-                this.instance.events.Unregister_event({recipient:[account]}, (err, event) => {
-                    console.log(err, event)
-                })
-
-                this.instance.events.Unregister_event({recipient:[account]}, (err, event) => {
-                    console.log(err, event)
-                })
-            }
-
-            return this.getPayments(account);
+        return this.getPayments(account)
+        .then(payments => {
+            this.for[account] = payments;
+            return this.for[account];
         })
     }
 
-    remove(payment, wallet){
-        var index;
-        for (var i = this.list[wallet].length - 1; i >= 0; i--) {
-            var current = this.list[wallet][i];
-            if(current.address == payment.address)
-                index = i;
+    watch (account) {
+        if(this.subscriptions[account]) return;
+        else this.subscriptions[account] = {};
+
+        try {
+            this.subscriptions[account]['schedule'] = this.instance.events.Schedule_event({wallet:[account]}, (err, event) => {
+                console.log(err, event)
+                var wallet = event.returnValues.wallet;
+                var payment = {
+                    address: event.returnValues.payment,
+                    direction: 'outgoing'
+                }
+
+                this.getPaymentDetails(payment)
+                .then(() => {
+                    if(!this.for[wallet])
+                        this.for[wallet] = [payment];
+                    else
+                        this.for[wallet].push(payment);
+                });
+            })
+
+            this.subscriptions[account]['unschedule'] = this.instance.events.Unschedule_event({wallet:[account]}, (err, event) => {
+                var wallet = event.returnValues.wallet;
+                var payment = event.returnValues.payment;
+                var index;
+                for (var i = this.for[wallet].length - 1; i >= 0; i--) {
+                    var current = this.for[wallet][i];
+                    if(current.address == payment.address)
+                        index = i;
+                }
+            
+                this.for[wallet].splice(index,1);
+            })
+
+            /*
+            this.instance.events.Register_event({recipient:[account]}, (err, event) => {
+                console.log(err, event)
+            })
+
+            this.instance.events.Unregister_event({recipient:[account]}, (err, event) => {
+                console.log(err, event)
+            })
+
+            this.instance.events.Unregister_event({recipient:[account]}, (err, event) => {
+                console.log(err, event)
+            })
+            */
+        } 
+        catch(err){
+            return Promise.reject(err);
         }
-        
-        this.list[wallet].splice(index,1);
     }
 
     getPayments (account) {
+        console.log('get payments for', account)
         return Promise.all([
             this.instance.methods.getOutgoingPayments(account).call(),
             this.instance.methods.getIncomingPayments(account).call()
@@ -104,11 +117,11 @@ export class PaymentService {
         .then(paymentLists => {
             var outgoing = paymentLists[0];
             var incoming = paymentLists[1];
-
-            var outgoingPromises = [];
+            
+            var paymentPromises = [];
             for (var i = outgoing.length - 1; i >= 0; i--) {
                 var address = outgoing[i];
-                outgoingPromises.push(
+                paymentPromises.push(
                     this.getPaymentDetails({
                         address: address,
                         direction: 'outgoing'
@@ -116,44 +129,28 @@ export class PaymentService {
                 );
             }
 
-            var incomingPromises = [];
             for (var i = incoming.length - 1; i >= 0; i--) {
                 var address = incoming[i];
-                incomingPromises.push(
+                paymentPromises.push(
                     this.getPaymentDetails({
                         address: address,
                         direction: 'incoming'
                     })
-                );              
+                );
             }
 
-            return Promise.all([
-                Promise.all(outgoingPromises), 
-                Promise.all(incomingPromises),
-            ]);
+            return Promise.all(paymentPromises);
         })
-        .then(paymentLists => {
-            var outgoing = paymentLists[0];
-            var incoming = paymentLists[1];
-
-            var payment;
-            for (var i = outgoing.length - 1; i >= 0; i--) {
-                var payment = outgoing[i];
-                if(!this.watching[payment.address] && this.factories.includes(payment.factory)){
-                    this.list[account].push(payment);
-                    this.watching[payment.address] = true;
+        .then(payments => {
+            var filteredPayments = [];
+            for (var i = payments.length - 1; i >= 0; i--) {
+                var payment = payments[i];
+        
+                if(this.factories.includes(payment.factory)){
+                    filteredPayments.push(payment);
                 }
             }
-
-            for (var i = incoming.length - 1; i >= 0; i--) {
-                var payment = incoming[i];
-                if(!this.watching[payment.address] && this.factories.includes(payment.factory)){
-                    this.list[account].push(incoming[i]);
-                    this.watching[payment.address] = true;
-                }
-            }
-
-            return this.list[account];
+            return filteredPayments;
         })
         .catch(err => {
             console.error(err);
@@ -161,32 +158,26 @@ export class PaymentService {
     }
 
     getPaymentDetails (payment) {
-        payment['instance'] = new web3.eth.Contract(IPaymentArtifact.abi, payment.address);
+        payment['payment'] = new web3.eth.Contract(IPaymentArtifact.abi, payment.address);
         payment['label'] = () => {
             var label = localStorage.getItem(payment.address+'.label');
             if(!label) label = "No Label"
             return label;
         }
+        payment['unschedule'] = () => {
+            return this.instance.methods.unschedule(payment.address).send({from: this.Web3.account.address})
+        }
         
-        return payment.instance.methods.factory().call()
+        return payment.payment.methods.factory().call()
         .then(factory => {
             payment['factory'] = factory;
-            payment['type'] = this.factoryTypes[factory];
-            payment['cancel'] = () => {
-                this.instance.methods.unschedule(payment.address).send({from: this.Web3.account.address})
-            }
-
-            if(payment.factory == this.RTx.factory._address)
+            if(payment.factory == this.RTx.factory._address){
                 return this.RTx.getDetails(payment);
+            }
             else
                 return payment;
         })
-    }
-
-    registerPaymentType (factory, type) {
-        this.factories.push(factory);
-        this.factoryTypes[factory] = type;
-    }    
+    }   
 
     private setDelegate () {
         var address = PaymentDelegateArtifact.networks[this.Web3.netId].address;

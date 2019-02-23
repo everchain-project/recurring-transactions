@@ -5,58 +5,63 @@
             <br>
             &nbsp;
         </div>
-        <div *ngIf="rtx.ready" class="cursor" style="padding: 8px;" fxLayout="column" (click)="showDetails = !showDetails">
-            <div>
-                <div *ngIf="rtx.ready">
-                    <b fxFlex="156px">{{rtx.formattedDate}}</b>
-                    <div fxFlex>{{rtx.label()}}</div>
-                    <b style="text-align: right;" fxFlex="64px">{{rtx.status()}}</b>
+        <div *ngIf="rtx.ready" class="cursor" style="padding: 8px;" fxLayout="row" (click)="showDetails = !showDetails">
+            <div fxLayout="column" fxFlex="156px">
+                <b>{{rtx.formattedDate}}</b>
+                <div style="color: rgba(0,0,0,0.5); padding-top: 4px;" fxLayoutAlign="start center">
+                    <span>{{rtx.interval.current}}/{{rtx.interval.max}}</span>
+                    <mat-icon style="height: 16px; width: 16px; font-size: 16px; padding: 0px 4px;">cached</mat-icon>
+                    <span>{{rtx.interval.value}} {{RTx.getUnitText(rtx.interval.unit)}}</span>
                 </div>
             </div>
-            <div style="color: rgba(0,0,0,0.5); padding-top: 4px;">
-                <div *ngIf="!rtx.ready">&nbsp;</div>
-                <div *ngIf="rtx.ready">
-                    <div fxLayoutAlign="start center" fxFlex="156px">
-                        <span>{{rtx.interval.current}}/{{rtx.interval.max}}</span>
-                        <mat-icon style="height: 16px; width: 16px; font-size: 16px; padding: 0px 4px;">cached</mat-icon>
-                        <span>{{rtx.interval.value}} {{RTx.getUnitText(rtx.interval.unit)}}</span>
-                    </div>
-                    <div fxFlex>
-                        <div>ID {{rtx.instance._address.slice(0,6)}}</div>
-                        <span fxFlex></span>
-
-                    </div>
-                    <div style="text-align: right;" fxFlex="64px">${{rtx.cost | toDai | number:'1.2-2'}}</div>
+            <div fxLayout="column" fxFlex>
+                {{rtx.label()}}
+            </div>
+            <div fxLayout="column" fxFlex="96px">
+                <b style="text-align: right;">{{rtx.status()}}</b>
+                <div style="color: rgba(0,0,0,0.5); text-align: right; padding-top: 4px;">
+                    ${{rtx.alarm.balance | toDai | number:'1.2-2'}}/${{rtx.cost | toDai | number:'1.2-2'}}
                 </div>
             </div>
         </div>
         <div *ngIf="showDetails" class="" style="padding: 8px; padding-top: 0px;">
-            <div style="padding: 8px 0px;" fxLayoutAlign="start center">
-                <div fxFlex="152px">
-                    
+            <div style="padding: 8px 0px; max-height: 52px;" fxLayoutAlign="start center">
+                <div style="color: rgba(0,0,0,0.5);" fxFlex="148px">
+                    <div>ID: &nbsp;{{rtx.rtx._address.slice(0,6)}}</div>
                 </div>
-                <span fxFlex>
-                    <button mat-button style="font-size: small; min-width: 0px; padding: 0px 4px;">
+                <span *ngIf="!editLabel" fxFlex>
+                    <button mat-button style="font-size: small; min-width: 0px; padding: 0px 4px;" (click)="editLabel = !editLabel">
                         edit label
                     </button>
                     <span fxFlex="16px"></span>
                     <button mat-button style="font-size: small; min-width: 0px; padding: 0px 4px;" (click)="rtx.alarm.cancel()">
                         cancel
                     </button>
+                    <span fxFlex></span>
+                    <span fxFlex="16px"></span>
+                    <button mat-button style="font-size: small; min-width: 0px; padding: 0px 4px; color: red;" (click)="rtx.destroy()">
+                        destroy
+                    </button>
+                    <span fxFlex="16px"></span>
+                    <button mat-button style="font-size: small; min-width: 0px; padding: 0px 4px;" (click)="rtx.reset()">
+                        reset
+                    </button>
                 </span>
-                <span fxFlex="16px"></span>
-                <button mat-button style="font-size: small; min-width: 0px; padding: 0px 4px; color: red;" (click)="rtx.destroy()">
-                    destroy
-                </button>
-                <span fxFlex="16px"></span>
-                <button mat-button style="font-size: small; min-width: 0px; padding: 0px 4px;" (click)="rtx.reset()">
-                    reset
-                </button>
+                <div *ngIf="editLabel" fxLayout="row" fxFlex>
+                    <button mat-button style="font-size: small; min-width: 0px; padding: 0px 4px;" (click)="editLabel = !editLabel">
+                        done
+                    </button>
+                    <span fxFlex="16px"></span>
+                    <mat-form-field *ngIf="editLabel" fxFlex>
+                        <mat-label>Enter A New Label</mat-label>
+                        <input matInput [(ngModel)]="newLabel" (ngModelChange)="rtx.changeLabel(newLabel)" placeholder="Enter a new label">
+                    </mat-form-field>
+                </div>
             </div>
             <div style="padding-top: 8px;">
                 Contract Address:
                 <span fxFlex></span>
-                {{rtx.instance._address}}
+                {{rtx.rtx._address}}
             </div>
             <div style="padding-top: 8px;">
                 Alarm Address: 
@@ -107,6 +112,19 @@
                 </span> 
                 <div *ngIf="showData" style="padding-top: 8px; word-wrap: break-word; color: rgba(0,0,0,0.5);">
                     {{rtx.call.data}}
+                </div>
+            </div>
+            <div style="padding-top: 8px;">
+                <b>Event History</b>
+                <span fxFlex></span>
+                <div class="cursor" (click)="showEvents = !showEvents">
+                    <span *ngIf="!showEvents">[ show ]</span>
+                    <span *ngIf="showEvents">[ hide ]</span>
+                </div>
+            </div>
+            <div *ngIf="showEvents">
+                <div style="padding-top: 8px;" *ngFor="let event of rtx.events">
+                    {{event.event.split('_')[0]}} Event <span fxFlex></span> {{event.timestamp*1000 | date:'full'}}
                 </div>
             </div>
         </div>

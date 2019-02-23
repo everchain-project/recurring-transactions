@@ -61,11 +61,6 @@ export class ToolbarComponent implements OnInit {
         if(this.currentWallet){
             this.Wallets.update(this.currentWallet);
             this.newWalletName = this.Wallets.wallets[this.currentWallet].name;
-
-            this.Payments.watch(this.currentWallet)
-            .catch(err => {
-                console.error(err);
-            })
         }
     }
 

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from "@angular/platform-browser";
+import { Router, NavigationEnd } from "@angular/router";
 
 import { Web3Service } from './services/web3/web3.service';
-import { UserService } from './services/user/user.service';
 import { WalletService } from './services/wallet/wallet.service';
 import { RtxService } from './services/rtx/rtx.service';
 import { PaymentService } from './services/payment/payment.service';
@@ -16,11 +16,10 @@ import { ContactService } from './services/contact/contact.service';
 })
 export class AppComponent implements OnInit {
 
-    initialized: boolean = false;
-
     constructor(
         private matIconRegistry: MatIconRegistry,
         private domSanitizer: DomSanitizer,
+        private router: Router,
         private Web3: Web3Service,
         private Wallets: WalletService,
         private RTx: RtxService,
@@ -36,29 +35,48 @@ export class AppComponent implements OnInit {
                 return Promise.all([
                     this.RTx.ready(),
                     this.Payments.ready(),
+                    this.Wallets.ready(),
                 ])
             }
         })
         .then(() => {
-            this.Payments.registerPaymentType(this.RTx.factory._address, "rtx");
+            this.watchPayments();
             this.Wallets.addVettedDelegate(this.Payments.instance._address);
             this.Wallets.addVettedDelegate(this.RTx.factory._address);
             this.Wallets.addVettedDelegate(this.RTx.deployer._address);
+            this.Payments.factories.push(this.RTx.factory._address);
+
             if(this.Web3.signedIn){
                 localStorage.setItem(this.Web3.account.address + '.name', 'You');
-                return this.Wallets.watch(this.Web3.account.address);
+                this.Wallets.watch(this.Web3.account.address);
             }
-        })
-        .then(() => {
-            this.initialized = true;
+
+            this.router.events.forEach((event) => {
+                if(event instanceof NavigationEnd) {
+                    this.watchPayments();
+                }
+            });
         })
         .catch(err => {
-            console.warn(err);
+            console.error(err);
         })
 
         // Add custom icons
         this.matIconRegistry.addSvgIcon("ether", this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/ethereum-logo.svg"));
         this.matIconRegistry.addSvgIcon("qrcode", this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/qrcode.svg"));
+    }
+    
+    watchPayments(){
+        var option = this.router.url.split('/');
+        var currentWallet = option[2];
+        this.Wallets.current = currentWallet;
+        
+        if(currentWallet){
+            this.Payments.subscribe(currentWallet)
+            .then(payments => {
+                
+            });
+        }
     }
 
 }

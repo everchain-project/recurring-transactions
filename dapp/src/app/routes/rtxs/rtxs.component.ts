@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from "@angular/router";
 
-import { Web3Service } from '../../services/web3/web3.service';
 import { PaymentService } from '../../services/payment/payment.service';
-import { RtxService } from '../../services/rtx/rtx.service';
+import { WalletService } from '../../services/wallet/wallet.service';
 
 @Component({
   selector: 'app-rtxs',
@@ -12,30 +10,13 @@ import { RtxService } from '../../services/rtx/rtx.service';
 })
 export class RtxsComponent implements OnInit {
 
-    initialized: boolean;
-	currentWallet: string;
-    routerSubscription: any;
-
-	constructor(
-		private router: Router,
-		private Web3: Web3Service,
+    constructor(
         public Payments: PaymentService,
-        public Rtx: RtxService,
-	){}
+        public Wallets: WalletService,
+    ){}
 
-	ngOnInit() {
-        this.parseRoute();
+    ngOnInit() {
 
-        this.router.events.forEach((event) => {
-            if(event instanceof NavigationEnd) {
-                this.parseRoute();
-            }
-        });
-    }
-
-    parseRoute(){
-        var option = this.router.url.split('/');
-        this.currentWallet = option[2];
     }
 
 }

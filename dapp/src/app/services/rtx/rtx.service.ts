@@ -1,4 +1,3 @@
-import { NgZone } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 
@@ -29,14 +28,11 @@ export class RtxService {
     public example: any;
     public oracle: any;
 
-    public factories = [];
     public exampleEvents = [];
-    public rtxs = {};
 
     constructor (
         private dialog: MatDialog,
         private Web3: Web3Service,
-        private ngZone: NgZone,
     ) {
         this.readyPromise = this.Web3.ready()
         .then(() => {
@@ -99,48 +95,55 @@ export class RtxService {
     }
 
     getDetails (rtx) {
-        if(!this.rtxs[rtx.address]){
-            this.rtxs[rtx.address] = rtx;
+        rtx['type'] = "rtx";
+        rtx['rtx'] = new web3.eth.Contract(RecurringTransactionArtifact.abi, rtx.address);
+        rtx['events'] = [];
+        rtx['changeLabel'] = (newLabel) => {
+            localStorage.setItem(rtx.address + '.label', newLabel);
+        }
+        if(!rtx.eventSubscription){
+            rtx['eventSubscription'] = rtx.rtx.events.allEvents(null, (err, event) => {
+                console.log(err, event);
+                rtx.events.push(event);
+                if(event.event == 'Destroy_event'){
+                    /*
+                    this.rtxs[event.address].events.unsubscribe();
+                    if(this.rtxs[event.address].alarm)
+                        this.rtxs[event.address].alarm.events.unsubscribe();
+                    */
+                }
+                else {
+                    this.getDetails(rtx)
+                }
+            })                
         }
 
-        rtx['instance'] = new web3.eth.Contract(RecurringTransactionArtifact.abi, rtx.address);
-        if(!rtx.events){
-            rtx.instance.methods.blockStarted().call()
-            .then(startBlock => {
-        /*
-                rtx.instance.events.allEvents({fromBlock: startBlock}, (err, events) => {
-                    console.log(err, events)
-                })
-        //*/
-                rtx['events'] = rtx.instance.events.allEvents(null, (err, event) => {
-                    console.log(err, event);
-                    if(event.event == 'Destroy_event'){
-                        this.rtxs[event.address].events.unsubscribe();
-                        if(this.rtxs[event.address].alarm)
-                            this.rtxs[event.address].alarm.events.unsubscribe();
-                    }
-                    else {
-                        this.ngZone.run(() => {
-                            this.getDetails(this.rtxs[event.address])
-                        });
-                    }
-                })                
+        rtx.rtx.methods.blockStarted().call()
+        .then(startBlock => {
+            rtx.rtx.events.allEvents({fromBlock: startBlock}, (err, event) => {
+                if(!err){
+                    this.Web3.getBlock(event.blockNumber)
+                    .then(blockData => {
+                        event['timestamp'] = blockData.timestamp;
+                        rtx.events.push(event);
+                    })
+                }
             })
-        }
+        })
 
-        return rtx.instance.methods.txRequest().call()
+        return rtx.rtx.methods.txRequest().call()
         .then(alarmAddress => {
             
             var rtxPromises = [
-                rtx.instance.methods.alarmStart().call(),
-                rtx.instance.methods.intervalValue().call(),
-                rtx.instance.methods.intervalUnit().call(),
-                rtx.instance.methods.currentInterval().call(),
-                rtx.instance.methods.maxIntervals().call(),
-                rtx.instance.methods.callAddress().call(),
-                rtx.instance.methods.callData().call(),
-                rtx.instance.methods.callValue().call(),
-                rtx.instance.methods.callGas().call(),
+                rtx.rtx.methods.alarmStart().call(),
+                rtx.rtx.methods.intervalValue().call(),
+                rtx.rtx.methods.intervalUnit().call(),
+                rtx.rtx.methods.currentInterval().call(),
+                rtx.rtx.methods.maxIntervals().call(),
+                rtx.rtx.methods.callAddress().call(),
+                rtx.rtx.methods.callData().call(),
+                rtx.rtx.methods.callValue().call(),
+                rtx.rtx.methods.callGas().call(),
                 web3.eth.getGasPrice(),
             ];
 
@@ -153,9 +156,8 @@ export class RtxService {
                 if(!rtx.alarm.events){
                     rtx.alarm['events'] = rtx.alarm.instance.events.allEvents(null, (err, event) => {
                         console.log(err, event);
-                        this.ngZone.run(() => {
-                            this.getDetails(this.rtxs[event.address])
-                        });
+                        rtx.events.push(event);
+                        this.getDetails(rtx);
                     })
                 }
 
@@ -251,7 +253,7 @@ export class RtxService {
                 }
 
                 rtx['destroy'] = () => {
-                    rtx.instance.methods.destroy().send({
+                    rtx.rtx.methods.destroy().send({
                         from: this.Web3.account.address
                     })
                 }
@@ -263,7 +265,7 @@ export class RtxService {
                         data: {
                             type: 'set',
                             RTx: this,
-                            rtx: rtx.instance,
+                            rtx: rtx.rtx,
                         }
                     });
                 }
@@ -312,18 +314,8 @@ export class RtxService {
         )
         .send(txOptions)
         .on('confirmation', (confirmations, txReceipt) => {
-            if(confirmations == 0){
-                console.log(txReceipt)
-                this.ngZone.run(() => {
-                    var rtxAddress = txReceipt.events.Deploy_event.returnValues.rtx;
-                    console.log(rtxAddress, label);
-                    localStorage.setItem(rtxAddress + ".label", label);
-                    console.log(localStorage.getItem(rtxAddress + ".label"));
-                })
-            }
-            else {
-                console.log(confirmations)
-            }
+            var rtxAddress = txReceipt.events.Deploy_event[0].returnValues.rtx;
+            localStorage.setItem(rtxAddress + ".label", label);
         });
     }
 

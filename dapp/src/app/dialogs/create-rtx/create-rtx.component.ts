@@ -230,16 +230,18 @@ export class CreateRtxDialog implements OnInit {
             .on('transactionHash', txHash => {
                 console.log(txHash)
                 this.dialogRef.close({
+                    rtx: this.newRTx,
                     txObject: txObject,
                     wallet: wallet,
-                    callAddress: callAddress,
-                    callData: callData,
-                    callOptions: callOptions,
                     txOptions: txOptions
                 });
             })
             .on('confirmation', (confirmations, txReceipt) => {
-                if(confirmations == 0) console.log(txReceipt)
+                if(confirmations == 0){
+                    console.log(txReceipt);
+                    var rtxAddress = txReceipt.events.ValidRequest_event.address;
+                    localStorage.setItem(rtxAddress + '.label', this.newRTx.label)
+                } 
             })
             .catch(err => {
                 console.error(err)

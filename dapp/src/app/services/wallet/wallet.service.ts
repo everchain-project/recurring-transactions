@@ -22,6 +22,8 @@ export class WalletService {
     private factory: any;
     private manager: any;
 
+    public current: string = null;
+
     public list = [];
     public wallets = {};
     public vettedDelegates = [];
@@ -114,6 +116,7 @@ export class WalletService {
     }
 
     watch(account){
+        console.log('watching wallet ' + account);
         this.manager.events.AddWallet_event({owner: this.Web3.account.address}, (err, event) => {
             console.log(err, event)
             if(!err){
@@ -121,41 +124,45 @@ export class WalletService {
             }
         })
 
-        this.manager.methods.getWallets(account).call()
+        return this.manager.methods.getWallets(account).call()
         .then(walletAddresses => {
             this.list = walletAddresses;
 
+            var updatePromises = [];
             for (var i = walletAddresses.length - 1; i >= 0; i--) {
-                this.update(walletAddresses[i])
+                updatePromises.push(this.update(walletAddresses[i]));
             }
+
+            return Promise.all(updatePromises);
         })
     }
 
     update(address){
         if(!this.wallets[address]){
-            this.wallets[address] = new web3.eth.Contract(DelegatedWalletArtifact.abi, address);
-            this.wallets[address]['address'] = address;
-            this.wallets[address]['balance'] = null;
-            this.wallets[address]['delegates'] = null;
+            this.wallets[address] = {
+                address: address,
+                instance: new web3.eth.Contract(DelegatedWalletArtifact.abi, address),
+            };
         }
 
         var name = localStorage.getItem(address + '.name');
         if(!name) name = "Unnamed Wallet";
         this.wallets[address]['name'] = name;
         
-        this.wallets[address]['ready'] = Promise.all([
+        this.wallets[address]['subscription'] = this.wallets[address].instance.events.allEvents(null, (err, event) => {
+            //console.log(err, event);
+            this.updateWalletBalance(address)
+        });
+
+        return this.wallets[address]['ready'] = Promise.all([
             this.Web3.getBalance(address),
-            this.wallets[address].methods.getDelegates().call(),
+            this.wallets[address].instance.methods.getDelegates().call(),
         ])
         .then(promises => {
             this.wallets[address]['balance'] = promises[0];
             this.wallets[address]['delegates'] = promises[1];
+            return this.wallets[address];
         })
-
-        this.wallets[address]['subscription'] = this.wallets[address].events.allEvents(null, (err, event) => {
-            //console.log(err, event);
-            this.updateWalletBalance(address)
-        });
     }
 
     updateWalletBalance(walletAddress){
