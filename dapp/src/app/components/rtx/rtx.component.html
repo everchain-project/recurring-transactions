@@ -19,7 +19,7 @@
             </div>
             <div fxLayout="column" fxFlex="96px">
                 <b style="text-align: right;">{{rtx.status()}}</b>
-                <div style="color: rgba(0,0,0,0.5); text-align: right; padding-top: 4px;">
+                <div *ngIf="rtx.alarm" style="color: rgba(0,0,0,0.5); text-align: right; padding-top: 4px;">
                     ${{rtx.alarm.balance | toDai | number:'1.2-2'}}/${{rtx.cost | toDai | number:'1.2-2'}}
                 </div>
             </div>
@@ -27,7 +27,7 @@
         <div *ngIf="showDetails" class="" style="padding: 8px; padding-top: 0px;">
             <div style="padding: 8px 0px; max-height: 52px;" fxLayoutAlign="start center">
                 <div style="color: rgba(0,0,0,0.5);" fxFlex="148px">
-                    <div>ID: &nbsp;{{rtx.rtx._address.slice(0,6)}}</div>
+                    <div>ID: &nbsp;{{rtx.address.slice(0,6)}}</div>
                 </div>
                 <span *ngIf="!editLabel" fxFlex>
                     <button mat-button style="font-size: small; min-width: 0px; padding: 0px 4px;" (click)="editLabel = !editLabel">
@@ -61,13 +61,15 @@
             <div style="padding-top: 8px;">
                 Contract Address:
                 <span fxFlex></span>
-                {{rtx.rtx._address}}
+                <a href="https://kovan.etherscan.io/address/{{rtx.address}}" target="_blank">{{rtx.address}}</a>
             </div>
             <div style="padding-top: 8px;">
                 Alarm Address: 
                 <span fxFlex></span>
                 <span *ngIf="!rtx.alarm">No scheduled alarm</span>
-                <span *ngIf="rtx.alarm">{{rtx.alarm.address}}</span>
+                <span *ngIf="rtx.alarm">
+                    <a href="https://app.chronologic.network/transactions/{{rtx.alarm.address}}" target="_blank">{{rtx.alarm.address}}</a>
+                </span>
             </div>
             <div *ngIf="rtx.alarm" style="padding-top: 8px;">
                 <div>
@@ -89,7 +91,7 @@
             <div style="padding-top: 8px;">
                 Call Address:
                 <span fxFlex></span>
-                {{rtx.call.address}}
+                <a href="https://kovan.etherscan.io/address//{{rtx.call.address}}" target="_blank">{{rtx.call.address}}</a>
             </div>
             <div style="padding-top: 8px;">
                 Call Value:
@@ -123,7 +125,7 @@
                 </div>
             </div>
             <div *ngIf="showEvents">
-                <div style="padding-top: 8px;" *ngFor="let event of rtx.events">
+                <div style="padding-top: 8px;" *ngFor="let event of rtx.events | orderBy:'-timestamp'">
                     {{event.event.split('_')[0]}} Event <span fxFlex></span> {{event.timestamp*1000 | date:'full'}}
                 </div>
             </div>

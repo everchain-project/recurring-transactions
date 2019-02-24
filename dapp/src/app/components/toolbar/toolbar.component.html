@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" fxLayout="column">
     <mat-toolbar-row fxFlex="64px">
-        <h1 class="cursor" routerLink="/">Everchain</h1>
+        <h1 class="cursor" routerLink="/">Everchain RTx</h1>
         <span fxFlex></span>
         <div *ngIf="Web3.signedIn" style="font-size: 14px;" fxLayout="row">
             <div style="margin-right: 16px;">&diams; {{Web3.account.balance | fromWei:'ether' | number:'1.2-5'}}</div>

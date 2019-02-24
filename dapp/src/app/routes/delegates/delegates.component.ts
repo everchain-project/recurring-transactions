@@ -16,7 +16,8 @@ export class DelegatesComponent implements OnInit {
     currentWallet: string;
     newDelegateAddress: string;
     newDelegateName: string;
-
+    showAddDelegatePanel: boolean;
+    
     constructor(
         private router: Router,
         public Web3: Web3Service,
@@ -45,7 +46,7 @@ export class DelegatesComponent implements OnInit {
         
         this.Web3.getCurrentAccount()
         .then(currentAccount => {
-            this.Wallets.wallets[this.currentWallet].methods.addDelegate(delegateAddress).send({
+            this.Wallets.wallets[this.currentWallet].instance.methods.addDelegate(delegateAddress).send({
                 from: currentAccount
             })
             .on('transactionHash', txHash => {
@@ -72,7 +73,7 @@ export class DelegatesComponent implements OnInit {
         
         this.Web3.getCurrentAccount()
         .then(currentAccount => {
-            this.Wallets.wallets[this.currentWallet].methods.removeDelegate(delegateAddress).send({
+            this.Wallets.wallets[this.currentWallet].instance.methods.removeDelegate(delegateAddress).send({
                 from: currentAccount
             })
             .on('transactionHash', txHash => {

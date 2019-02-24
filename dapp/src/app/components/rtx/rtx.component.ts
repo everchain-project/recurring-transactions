@@ -12,7 +12,8 @@ export class RtxComponent implements OnInit {
 	@Input() rtx;
 
 	newLabel: string;
-
+	showDetails: boolean;
+	
 	constructor(
         public RTx: RtxService,
 	){}

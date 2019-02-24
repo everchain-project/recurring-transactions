@@ -23,7 +23,7 @@ export class PaymentService {
     //public list = {};
 
     private subscriptions = {};
-    private for = {};
+    public for = {};
 
     constructor(
         private Web3: Web3Service,

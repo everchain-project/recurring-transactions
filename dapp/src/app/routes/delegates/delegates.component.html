@@ -65,7 +65,7 @@
 	            </div>
 	            <span fxFlex></span>
 	            <div>
-			    	<button mat-icon-button (click)="toggleDelegate(delegate)">
+			    	<button *ngIf="Wallets.wallets[currentWallet].delegates" mat-icon-button (click)="toggleDelegate(delegate)">
 			    		<mat-icon *ngIf="Wallets.wallets[currentWallet].delegates.includes(delegate)">check</mat-icon>
 			    		<mat-icon *ngIf="!Wallets.wallets[currentWallet].delegates.includes(delegate)">add</mat-icon>
 			    	</button>

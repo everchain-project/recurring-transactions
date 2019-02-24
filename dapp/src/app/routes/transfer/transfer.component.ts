@@ -22,7 +22,7 @@ export class TransferComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private Web3: Web3Service,
+        public Web3: Web3Service,
         public Wallets: WalletService,
         public Contacts: ContactService,
     ){}
@@ -51,7 +51,7 @@ export class TransferComponent implements OnInit {
     transfer(){
         this.Web3.getCurrentAccount()
         .then(currentAccount => {
-            this.Wallets.wallets[this.currentWallet].methods.transfer(
+            this.Wallets.wallets[this.currentWallet].instance.methods.transfer(
                 web3.utils.nullAddress, // ether
                 this.toAddress,
                 web3.utils.toWei(this.transferAmount.toString(),"ether")
