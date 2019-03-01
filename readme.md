@@ -6,7 +6,7 @@ Features:
 
 - Decentralized alarms provided by [Ethereum Alarm Clock](https://www.ethereum-alarm-clock.com/)
 - Static (ie: every 7 days) or smart intervals (ie: on the first of each month) made possible by [bokkypoobah](https://github.com/bokkypoobah/BokkyPooBahsDateTimeLibrary)
-- An easy to use [RTx Manager](https://everchain-project.github.io/recurring-alarm-clock/) for creating and managing Alarm Clocks.
+- An easy to use [RTx Manager](https://everchain-project.github.io/recurring-transactions/) for creating and managing Recurring Transactions.
 - Flexible [wallet architecture](https://github.com/everchain-project/delegated-wallet) gives dapps plug-n-play access to your wallet funds.
 
 ### Current Smart Contract Addresses
