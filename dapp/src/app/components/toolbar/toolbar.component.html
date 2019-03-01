@@ -10,18 +10,27 @@
             <div *ngIf="Web3.netId == 1">live</div>
             <div *ngIf="Web3.netId == 42">kovan</div>
         </button>
-        <button *ngIf="!Web3.signedIn" mat-button class="signin-button" (click)="signIn()">
-            Sign in
+        <button *ngIf="!Web3.signedIn && Web3.netId == 42" 
+            mat-button 
+            class="signin-button"
+            (click)="signIn()">
+            sign in
         </button>
-        <button *ngIf="!Web3.netId" style="color: white;" mat-button disabled="true">
-            web3 not detected
-        </button>
+        <a *ngIf="!Web3.netId" href="https://metamask.io/" 
+            class="signin-button"
+            style="max-width: 120px; width: 120px"
+            target="_blank" 
+            mat-button>
+            try metamask
+        </a>
     </mat-toolbar-row>
 
     <mat-toolbar-row fxFlex="32px"></mat-toolbar-row>
     
     <mat-toolbar-row fxFlex="64px">
-        <h1 *ngIf="!Web3.signedIn" class="centered" fxFlex>*Sign in to view your wallets*</h1>
+        <h1 *ngIf="!Web3.signedIn && this.Web3.netId == 42" class="centered" fxFlex>Welcome to Everchain Rtx</h1>
+        <h1 *ngIf="!Web3.signedIn && this.Web3.netId != 42 && this.Web3.netId" class="centered" style="color: yellow" fxFlex>Wrong Network! Switch to the Kovan Testnet</h1>
+        <h1 *ngIf="!Web3.netId" class="centered" style="color: yellow" fxFlex>Cannot communicate with Ethereum Network!<a style="color: yellow" >Metamask</a>.</h1>
         
         <mat-form-field *ngIf="Web3.signedIn && !editWalletName" fxFlex>
             <mat-select name="currentWallet"

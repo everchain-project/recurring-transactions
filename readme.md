@@ -27,68 +27,48 @@ These are the currently deployed smart contracts for creating and managing Recur
 | BokkyPooBahs Date/Time Library | coming soon |
 | Gas Price Oracle | coming soon |
 | Payment Delegate | coming soon |
-| Recurring Alarm Clock Blueprint | coming soon |
-| Recurring Alarm Clock Factory | coming soon |
-| Recurring Alarm Clock Deployer | coming soon |
+| Recurring Transaction Blueprint | coming soon |
+| Recurring Transaction Factory | coming soon |
+| Recurring Transaction Deployer | coming soon |
 
-### Creating a Recurring Alarm Clock Using the Alarm Clock Factory
+### Creating a Recurring Transaction Using the Factory
 
-Creating an Alarm Clock using the Alarm Clock Factory requires only two arguments:
+Creating an Recurring Transaction using the Factory requires only two arguments:
 
 ```
-function createAlarmClock(
+function create (
     IDelegatedWallet wallet,
     IPaymentDelegate delegate
-) public returns (RecurringAlarmClock alarmClock)
+) public returns (RecurringTransaction rtx)
 ```
 
-The provided Payment Delegate **must** be a delegate of the provided Wallet in order for the Alarm Clock to function. A delegate of the Wallet must then also schedule the created Alarm Clock with the Payment Delegate.
+The provided Payment Delegate **must** be a delegate of the provided Wallet in order for the Recurring Transaction to function. A delegate of the Wallet must then also schedule the created Recurring Transaction with the Payment Delegate.
 
 ```
-/// @notice Schedules a payment. Only callable by a wallet delegate
-/// @param payment The payment contract responsible for holding logic and data about the payment
 function schedule (IPayment payment) public returns (bool success)
 ```
-The Payment Delegate is responsible for pulling funds for each alarm created by the alarm clock.
+The Payment Delegate is responsible for pulling funds for each alarm created by the recurring transaction.
 
-### Creating a Recurring Alarm Clock Using the Alarm Clock Deployer
+### Creating a Recurring Transaction Using the Recurring Transaction Deployer
 
-The above process is fairly tedious and thus the Alarm Clock Deployer does all of the heavy lifting by scheduling and/or starting the alarm in one function. It uses as many default options as possible in order to be the most convenient way to deploy an Alarm Clock:
+The above process is fairly tedious and thus the Recurring Transaction Deployer does all of the heavy lifting by scheduling and/or starting the alarm in one function. It uses as many default options as possible in order to be the most convenient way to deploy an Recurring Transaction:
 
 ```
-/// @notice Creates an alarm clock belonging to the specified wallet
+/// @notice Creates an recurring transaction belonging to the specified wallet
 /// @param wallet The funding wallet, change address, and owner of the deployed alarms
-/// @return The recurring alarm clock contract address
-function deploy (IDelegatedWallet wallet) public returns (RecurringAlarmClock alarmClock)
+/// @return The recurring recurring transaction contract address
+function deploy (IDelegatedWallet wallet) public returns (RecurringTransaction rtx)
 ```
 
-The Alarm Clock Deployer also provides a way to deploy and start an Alarm Clock using the default settings:
+The Recurring Transaction Deployer also provides a way to deploy and start an Recurring Transaction using the default settings:
 
 ```
-/// @notice Creates and starts an alarm clock belonging to the specified wallet with the specified call options
-/// @param wallet The funding wallet, change address, and owner of the deployed alarms
-/// @param callAddress The address the alarm clock will call each time it is triggered
-/// @param callData The data the alarm clock will send with the call
-/// @param callOptions The options defining how and when to trigger the alarm clock
-/// @return The recurring alarm clock contract address
 function deployAndStart (
     IDelegatedWallet wallet,
     address payable callAddress,
     bytes memory callData,
-    uint[7] memory callOptions      // callValue, callGas, startTimestamp, windowSize, intervalValue, intervalUnit, maxIntervals
-) public returns (RecurringAlarmClock alarmClock)
-```
-
-### Starting/Restarting an Alarm Clock
-
-Once the Alarm Clock is deployed, it can be started (and restarted) by a wallet delegate at any time:
-
-```
-function start (
-    address payable _callAddress,   // The address of the contract to call
-    bytes memory _callData,         // The data to send with the contract call
-    uint[7] memory _callOptions     // The options to use when calling the transaction
-) public onlyDelegates
+    uint[7] memory callOptions    // callValue, callGas, startTimestamp, windowSize, intervalValue, intervalUnit, maxIntervals
+) public returns (RecurringTransaction rtx)
 ```
 
 where:
@@ -101,5 +81,17 @@ _callOptions[3] = windowSize;       // The number of seconds after the alarm sta
 _callOptions[4] = intervalValue;    // The value of the time unit when calculating the next alarm timestamp
 _callOptions[5] = intervalUnit;     // The time unit used when calculating the next alarm timestamp: 
                                     // 0 = seconds, 1 = minutes, 2 = hours, 3 = days, 4 = months, 5 = years
-_callOptions[6] = maxIntervals;     // The number of times this alarm clock will go off. 0 = infinite
+_callOptions[6] = maxIntervals;     // The number of times this recurring transaction will go off. 0 = infinite
+```
+
+### Starting/Resetting a Recurring Transaction
+
+Once the Recurring Transaction is deployed, it can be started (and reset) by a wallet delegate at any time:
+
+```
+function start (
+    address payable _callAddress,   // The address of the contract to call
+    bytes memory _callData,         // The data to send with the contract call
+    uint[7] memory _callOptions     // The options to use when calling the transaction
+) public onlyDelegates
 ```

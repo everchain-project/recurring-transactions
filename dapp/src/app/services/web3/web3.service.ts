@@ -11,8 +11,11 @@ let DaiPriceFeedArtifact = require('../../../../../build/contracts/DSValueInterf
 })
 export class Web3Service {
 
-    private KOVAN_DAI_PRICE_FEED = "0xa5aA4e07F5255E14F02B385b1f04b35cC50bdb66";
     private readyPromise: Promise<any>;
+    private DAI_PRICE_FEED = {
+        '1': "0x729D19f657BD0614b4985Cf1D82531c67569197B",
+        '42': "0xa5aA4e07F5255E14F02B385b1f04b35cC50bdb66",
+    }
 
     block: any = null;
     netId: number = null;
@@ -37,26 +40,36 @@ export class Web3Service {
                     window.web3 = new Web3(window.web3.currentProvider);
                 }
 
-                this.DaiPriceFeed = new window.web3.eth.Contract(DaiPriceFeedArtifact.abi, this.KOVAN_DAI_PRICE_FEED);
-
                 Promise.all([
                     window.web3.eth.net.getId(),
                     this.getBlock('latest'),
                     this.getCurrentAccount(),
-                    this.DaiPriceFeed.methods.read().call(),
                 ])
                 .then(promises => {
                     this.netId = promises[0];
                     this.block = promises[1];
                     this.account.address = promises[2];
-                    this.ethPriceInDai = Number(window.web3.utils.fromWei(promises[3],"ether"));
+
+                    if(!this.netId){
+                        return Promise.reject("no network detected");
+                    }
+                    else if(this.netId == 1 || this.netId == 42) {
+                        this.DaiPriceFeed = new window.web3.eth.Contract(DaiPriceFeedArtifact.abi, this.DAI_PRICE_FEED[this.netId]);
+                        return this.DaiPriceFeed.methods.read().call();
+                    }
+                    else {
+                        return Promise.reject("wrong network detected")
+                    }
+                })
+                .then(daiPriceInWei => {
+                    this.ethPriceInDai = Number(window.web3.utils.fromWei(daiPriceInWei,"ether"));
 
                     this.customizeWeb3();
                     this.watchForAccountChanges();
                     this.watchForNewBlocks();
 
                     if(this.signedIn){
-                        this.getBalance(promises[2]);
+                        this.getBalance(this.account.address);
                         this.watchAccountBalance();
                     }
 

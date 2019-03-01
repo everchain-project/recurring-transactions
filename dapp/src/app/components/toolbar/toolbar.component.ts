@@ -36,10 +36,12 @@ export class ToolbarComponent implements OnInit {
         
         this.Web3.ready()
         .then(() => {
-            return this.Wallets.ready()
-        })
-        .then(() => {
-            this.parseRoute();
+            if(this.Web3.netId == 42){
+                return this.Wallets.ready()
+                .then(() => {
+                    this.parseRoute();
+                })
+            }
         })
         .catch(err => {
             console.error(err);
@@ -58,7 +60,7 @@ export class ToolbarComponent implements OnInit {
         this.currentRoute = '/' + option[1] + '/' + option[2];
         this.currentView = option[3];
 
-        if(this.currentWallet){
+        if(this.Web3.netId == 42 && this.currentWallet){
             this.Wallets.update(this.currentWallet);
             this.newWalletName = this.Wallets.wallets[this.currentWallet].name;
         }

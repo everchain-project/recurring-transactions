@@ -29,7 +29,7 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 }
 
 .white-text {
-    color: rgba(255,255,255,0.87);
+    color: rgba(255,255,255, 0.87) !important;
 }
 
 .padding {

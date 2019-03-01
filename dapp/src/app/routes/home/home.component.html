@@ -1,9 +1,9 @@
 <div fxLayout="column" fxFlex>
 	<div class="scrollable paddingH" style="max-width: 1196px; margin: 0px auto;" fxFlex>
 		
-		<h2 class="margin padding centered">
+		<h1>
 			Recurring Transactions on the Ethereum Blockchain
-		</h2>
+		</h1>
 
 		<ol style="font-weight: bold;">
 			<li>Sign in to your <a href="https://metamask.io/" target="_blank">Ethereum Account</a></li>
@@ -11,6 +11,26 @@
 			<li>Create your first Recurring Transaction (RTx)</li>
 		</ol>
 		
+		<mat-divider></mat-divider>
+
+
+		<div class="paddingH" fxLayout="column" fxLayout.gt-sm="row">
+			<p style="text-align: justify" fxFlex="50">
+				Blockchains provide unstoppable transactions but also have an inherent problem: nothing happens automatically. Someone in the real world must create and send a transaction to interact with the blockchain. The <a href="https://github.com/ethereum-alarm-clock/ethereum-alarm-clock" target="_blank">Ethereum Alarm Clock</a> solves this problem by creating a one time use alarm that will financially incentivize someone else to safely trigger a transaction on your behalf at a future time.
+			</p>
+
+			<div fxLayoutAlign="center center" fxFlex="100px">
+				<mat-icon style="width: 40px; height: 40px; font-size: 40px;">
+					<span fxHide fxShow.gt-sm>keyboard_arrow_right</span>
+					<span fxHide.gt-sm>keyboard_arrow_down</span>
+				</mat-icon>
+			</div>
+
+			<p style="text-align: justify" fxFlex="50">
+				Everchain RTx takes this one step further with recurring transaction smart contracts. An RTx will automatically execute an on-chain task at a future time and safely refunds itself for the next execution. A Recurring Transaction can interact with any smart contract in the Ethereum Network and as long as the supplying wallet has enough funds to pay for execution, the recurring transactions will continue to function.
+			</p>
+		</div>
+
 		<mat-divider></mat-divider>
 
 		<h4>Transaction Costs</h4>
@@ -22,19 +42,20 @@
 		<p>
 			The <a href="https://support.bancor.network/hc/en-us/articles/360002703591-Why-does-Bancor-set-a-maximum-gas-price-" target="_blank">current gas price</a> is set by the Bancor network. The Bancor Network needs a maximum gas price to prevent front running but an RTx repurposes this value as the best current gas price.
 		</p>
+
 		<p>
-			The Alarm Cost Safety Multiplier is a temporary measure to ensure in the event of a drastic price drop or spike in gas costs, the alarm will still have enough funds to execute. In the future, a new mechanism can be created that funds alarms <i>at the time of execution</i> and removes the need for an oracle. In addition, the new mechanism will also enable <i>paying in any desired ERC20 token</i> such as Dai.
+			The Safety Multiplier is a temporary measure to ensure in the event of a drastic price drop or spike in gas costs, the alarm will still have enough funds to execute. In the future, a new mechanism can be created that funds alarms <i>at the time of execution</i> and removes the need for an oracle. In addition, the new mechanism will also enable <i>paying in any desired ERC20 token</i> such as Dai.
 		</p>
 
 	    <table style="width: 100%; margin: 16px 0px;" border="1" cellpadding="2">
 			<tbody>
 			<tr>
-				<th>1 days</th>
-				<th>2-7 days</th>
-				<th>8-30 days</th>
-				<th>1-3 mo.</th>
-				<th>4-12 mo.</th>
-				<th>1 year +</th>
+				<th>1 day</th>
+				<th>1 week</th>
+				<th>1 month</th>
+				<th>1 Quarter</th>
+				<th>1 year</th>
+				<th>1+ years</th>
 			</tr>
 			<tr>
 				<td>5x</td>
@@ -50,10 +71,10 @@
 		<mat-divider></mat-divider>
 
 		<p>
-		     To fork this repo visit the <a href="https://github.com/everchain-project/recurring-alarm-clock" target="_blank">Everchain Alarm Clock</a> github page.
+		     To fork this repo visit the <a href="https://github.com/everchain-project/recurring-transaction" target="_blank">Everchain RTx</a> github page. More resources on recurring transactions can be found by <a href="https://drive.google.com/open?id=16Ik9crElmCX-VsSPU31hyz0ETqjyzDYb" target="_blank">following this link</a>.
 		</p>
 	</div>
 </div>
-<div *ngIf="Web3.netId" class="border-left" fxLayout="column" fxFlex="40">
+<div *ngIf="Web3.netId == 42" class="border-left" fxLayout="column" fxFlex="40">
     <app-rtx-feed fxLayout="column" fxFlex></app-rtx-feed>
 </div>

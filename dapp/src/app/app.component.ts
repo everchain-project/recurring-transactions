@@ -29,14 +29,15 @@ export class AppComponent implements OnInit {
     ngOnInit() {
         this.Web3.ready()
         .then(() => {
-            if(this.Web3.netId != 42) 
-                return Promise.reject(new Error("Wrong network detected... Switch to the Kovan Testnet!"));
-            else {
+            if(this.Web3.netId == 42){
                 return Promise.all([
                     this.RTx.ready(),
                     this.Payments.ready(),
                     this.Wallets.ready(),
                 ])
+            }
+            else {
+                return Promise.reject("network id not supported")
             }
         })
         .then(() => {
