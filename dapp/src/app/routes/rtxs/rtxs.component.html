@@ -2,7 +2,7 @@
     <div *ngIf="Payments.for[this.Wallets.current]" class="scrollable" fxFlex>
     	<div *ngIf="Payments.for[this.Wallets.current].length == 0" class="padding centered" fxLayout="row" fxLayoutAlign="center center">
             <div>No Recurring Transactions&nbsp;&nbsp;</div>
-            <button mat-icon-button (click)="Rtx.create()">
+            <button mat-icon-button (click)="RTx.create()">
                 <mat-icon>alarm_add</mat-icon>
             </button>
         </div>

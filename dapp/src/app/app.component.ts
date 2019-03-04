@@ -42,10 +42,10 @@ export class AppComponent implements OnInit {
         })
         .then(() => {
             this.watchPayments();
-            this.Wallets.addVettedDelegate(this.Payments.instance._address);
-            this.Wallets.addVettedDelegate(this.RTx.factory._address);
-            this.Wallets.addVettedDelegate(this.RTx.deployer._address);
-            this.Payments.factories.push(this.RTx.factory._address);
+            this.Wallets.addVettedDelegate(this.Payments.instance.address);
+            this.Wallets.addVettedDelegate(this.RTx.factory.address);
+            this.Wallets.addVettedDelegate(this.RTx.deployer.address);
+            this.Payments.factories.push(this.RTx.factory.address);
 
             if(this.Web3.signedIn){
                 localStorage.setItem(this.Web3.account.address + '.name', 'You');
@@ -73,10 +73,7 @@ export class AppComponent implements OnInit {
         this.Wallets.current = currentWallet;
         
         if(currentWallet){
-            this.Payments.subscribe(currentWallet)
-            .then(payments => {
-                
-            });
+            this.Payments.subscribe(currentWallet);
         }
     }
 

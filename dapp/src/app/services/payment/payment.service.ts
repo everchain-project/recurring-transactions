@@ -17,11 +17,6 @@ export class PaymentService {
     private readyPromise: Promise<any>;    
     public instance: any;
     public factories = [];
-    
-    //private factoryTypes = {};
-    //private watching = {};
-    //public list = {};
-
     private subscriptions = {};
     public for = {};
 
@@ -42,8 +37,10 @@ export class PaymentService {
     }
 
     subscribe(account){
-        if(this.for[account]) return Promise.resolve(this.for[account]);
-        else this.for[account] = [];
+        if(this.for[account]) 
+            return Promise.resolve(this.for[account]);
+        else 
+            this.for[account] = [];
 
         this.watch(account);
 
@@ -59,7 +56,7 @@ export class PaymentService {
         else this.subscriptions[account] = {};
 
         try {
-            this.subscriptions[account]['schedule'] = this.instance.events.Schedule_event({wallet:[account]}, (err, event) => {
+            this.subscriptions[account]['schedule'] = this.instance.events.Schedule_event({topics:{wallet:[account]}}, (err, event) => {
                 console.log(err, event)
                 var wallet = event.returnValues.wallet;
                 var payment = {
@@ -69,6 +66,7 @@ export class PaymentService {
 
                 this.getPaymentDetails(payment)
                 .then(() => {
+                    console.log(payment.status())
                     if(!this.for[wallet])
                         this.for[wallet] = [payment];
                     else
@@ -76,7 +74,7 @@ export class PaymentService {
                 });
             })
 
-            this.subscriptions[account]['unschedule'] = this.instance.events.Unschedule_event({wallet:[account]}, (err, event) => {
+            this.subscriptions[account]['unschedule'] = this.instance.events.Unschedule_event({topics:{wallet:[account]}}, (err, event) => {
                 var wallet = event.returnValues.wallet;
                 var payment = event.returnValues.payment;
                 var index;
@@ -117,14 +115,16 @@ export class PaymentService {
         .then(paymentLists => {
             var outgoing = paymentLists[0];
             var incoming = paymentLists[1];
-            
             var paymentPromises = [];
             for (var i = outgoing.length - 1; i >= 0; i--) {
                 var address = outgoing[i];
                 paymentPromises.push(
                     this.getPaymentDetails({
                         address: address,
-                        direction: 'outgoing'
+                        direction: 'outgoing',
+                        status: () => {
+                            return 'loading';
+                        }
                     })
                 );
             }
@@ -134,7 +134,10 @@ export class PaymentService {
                 paymentPromises.push(
                     this.getPaymentDetails({
                         address: address,
-                        direction: 'incoming'
+                        direction: 'incoming',
+                        status: () => {
+                            return 'loading';
+                        }
                     })
                 );
             }
@@ -171,7 +174,7 @@ export class PaymentService {
         return payment.payment.methods.factory().call()
         .then(factory => {
             payment['factory'] = factory;
-            if(payment.factory == this.RTx.factory._address){
+            if(payment.factory == this.RTx.factory.address){
                 return this.RTx.getDetails(payment);
             }
             else

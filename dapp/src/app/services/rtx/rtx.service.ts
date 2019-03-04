@@ -66,8 +66,7 @@ export class RtxService {
             })
 
             this.example.events.Trigger_event(null, (err, event) => {
-                console.log(err, event)
-
+                //console.log(err, event)
                 var included = false;
                 for (var i = this.exampleEvents.length - 1; i >= 0; i--) {
                     if(this.exampleEvents[i].transactionHash == event.transactionHash)
@@ -228,8 +227,8 @@ export class RtxService {
                 } else {
                     rtx['alarm'] = null;
                 }
-
-                if(!rtx.status){
+                
+                if(rtx.status() == 'loading'){
                     rtx['status'] = () => {
                         var status = 'active';
 
@@ -314,6 +313,7 @@ export class RtxService {
         )
         .send(txOptions)
         .on('confirmation', (confirmations, txReceipt) => {
+            console.log(confirmations + '/25', txReceipt, label);
             var rtxAddress = txReceipt.events.Deploy_event[0].returnValues.rtx;
             localStorage.setItem(rtxAddress + ".label", label);
         });

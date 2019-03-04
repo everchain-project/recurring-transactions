@@ -117,7 +117,7 @@ export class WalletService {
 
     watch(account){
         console.log('watching wallet ' + account);
-        this.manager.events.AddWallet_event({owner: this.Web3.account.address}, (err, event) => {
+        this.manager.events.AddWallet_event({topics:{owner: this.Web3.account.address}}, (err, event) => {
             console.log(err, event)
             if(!err){
                 // this.list.push(todo)

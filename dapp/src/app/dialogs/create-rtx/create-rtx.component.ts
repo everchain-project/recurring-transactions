@@ -260,7 +260,7 @@ export class CreateRtxDialog implements OnInit {
         this.newRTx.interval.unit = 1;
         this.newRTx.interval.type = 'custom';
         this.newRTx.interval.max = 3;
-        this.newRTx.call.address = this.RTx.example._address;
+        this.newRTx.call.address = this.RTx.example.address;
         this.newRTx.call.gas = 100000;
         this.newRTx.call.value = 1;
         this.newRTx.call.data = "0xbd1c91570000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000c48656c6c6f20576f726c64210000000000000000000000000000000000000000";
