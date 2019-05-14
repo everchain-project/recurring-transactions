@@ -17,10 +17,10 @@ contract RecurringTransactionFactory is CloneFactory {
     mapping (address => bool) public created;
 
     /// @notice Constructor to create a DelegatedWalletFactory
-    /// @param _EAC The contract responsible for deploying decentralized alarms 
-    /// @param _blueprint The recurring transaction blueprint 
+    /// @param _EAC The contract responsible for deploying decentralized alarms
+    /// @param _blueprint The recurring transaction blueprint
     constructor (
-        RequestFactoryInterface _EAC, 
+        RequestFactoryInterface _EAC,
         address _blueprint
     ) public {
         EAC = _EAC;
@@ -33,9 +33,9 @@ contract RecurringTransactionFactory is CloneFactory {
     /// @return The recurring transaction contract address
     function create (
         IDelegatedWallet wallet,
-        IPaymentDelegate delegate
+        ITransactionScheduler delegate
     ) public returns (RecurringTransaction rtx) {
-        // for converting to payable addresses see: 
+        // for converting to payable addresses see:
         // https://solidity.readthedocs.io/en/v0.5.0/050-breaking-changes.html?highlight=address_make_payable
         address payable clone = address(uint160(createClone(blueprint)));
         rtx = RecurringTransaction(clone);

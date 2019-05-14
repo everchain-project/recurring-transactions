@@ -1,6 +1,20 @@
 {
-  "contractName": "DSValueInterface",
+  "contractName": "DaiPriceFeed",
   "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "ethPerDai",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
     {
       "constant": true,
       "inputs": [],
@@ -8,7 +22,7 @@
       "outputs": [
         {
           "name": "",
-          "type": "bytes32"
+          "type": "uint256"
         }
       ],
       "payable": false,
@@ -16,11 +30,11 @@
       "type": "function"
     }
   ],
-  "metadata": "",
-  "bytecode": "0x",
-  "deployedBytecode": "0x",
-  "sourceMap": "",
-  "deployedSourceMap": "",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.0+commit.1d4f565a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"ethPerDai\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"read\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/feeds/DaiPriceFeed.sol\":\"DaiPriceFeed\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/Interfaces.sol\":{\"keccak256\":\"0xc24f5f5138746deed7425c1681dd689b585f8d6dbe599425847ff931a38a3dac\",\"urls\":[\"bzzr://3956db2af26dcd6efc10830834ff383ad95dcd0cc395129ec3fc5d5a282dfe66\"]},\"/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/external/Interfaces.sol\":{\"keccak256\":\"0x65f64f82459d752b43902d337d4fbfbf6ff4b76530b33b7e87d893d9ae6e6f60\",\"urls\":[\"bzzr://edf33a2dcbcf6d26a143fbba82ac37d9d6f4d155090fdf11241a319fa6a0673d\"]},\"/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/feeds/DaiPriceFeed.sol\":{\"keccak256\":\"0xc0f8c73075d1bdddcd6f07154dc411abef631c03183b000c556cce45a7a874e2\",\"urls\":[\"bzzr://9946f97ed556cb5c3bafdc00f2b171abfdcc679aefcb602bc9e6c531369a582e\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506101ed806100206000396000f3fe60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631690742b1461005157806357de26a4146100a8575b600080fd5b34801561005d57600080fd5b506100666100d3565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100b457600080fd5b506100bd6100f8565b6040518082815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166357de26a46040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b15801561017d57600080fd5b505afa158015610191573d6000803e3d6000fd5b505050506040513d60208110156101a757600080fd5b81019080805190602001909291905050506001900490509056fea165627a7a7230582049bb69f430774ea93178c24f88c79bec1c27612d4bdf8ed92defbd7006e62c6c0029",
+  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631690742b1461005157806357de26a4146100a8575b600080fd5b34801561005d57600080fd5b506100666100d3565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100b457600080fd5b506100bd6100f8565b6040518082815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166357de26a46040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b15801561017d57600080fd5b505afa158015610191573d6000803e3d6000fd5b505050506040513d60208110156101a757600080fd5b81019080805190602001909291905050506001900490509056fea165627a7a7230582049bb69f430774ea93178c24f88c79bec1c27612d4bdf8ed92defbd7006e62c6c0029",
+  "sourceMap": "136:171:13:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;136:171:13;;;;;;;",
+  "deployedSourceMap": "136:171:13:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;178:33;;8:9:-1;5:2;;;30:1;27;20:12;5:2;178:33:13;;;;;;;;;;;;;;;;;;;;;;;;;;;215:89;;8:9:-1;5:2;;;30:1;27;20:12;5:2;215:89:13;;;;;;;;;;;;;;;;;;;;;;;178:33;;;;;;;;;;;;;:::o;215:89::-;252:4;280:9;;;;;;;;;;;:14;;;:16;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;280:16:13;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;280:16:13;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;280:16:13;;;;;;;;;;;;;;;;275:22;;;268:29;;215:89;:::o",
   "source": "pragma solidity ^0.5.0;\n\nimport \"../Interfaces.sol\";\n\ncontract DSValueInterface {\n    function read() public view returns (bytes32);\n}\n\ncontract DaiPriceFeed is IUintFeed {\n\n    DSValueInterface public ethPerDai;\n\n\tfunction read() public view returns (uint) {\n        return uint(ethPerDai.read());\n    }\n\n}\n",
   "sourcePath": "/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/feeds/DaiPriceFeed.sol",
   "ast": {

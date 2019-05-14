@@ -1,44 +1,38 @@
 pragma solidity ^0.5.0;
 
-import "./external/RequestFactoryInterface.sol";
-import "./external/IDelegatedWallet.sol";
+import "./external/Interfaces.sol";
+
+contract ICancellable {
+    function cancel() public;
+}
 
 contract IUintFeed {
     function read() public view returns (uint);
 }
 
-contract IGasPriceOracle {
-    function current() public view returns (uint);
-    function future(uint timestamp) public view returns (uint);
-}
-
-// A cancellable contract can be cancelled
-contract ICancellable {
-    function cancel() public;
-}
-
-// A payment delegate lets scheduled payments withdraw tokens from the corrosponding wallet
-contract IPaymentDelegate {
+contract ITransactionScheduler {
     function transfer (address token, address payable recipient, uint amount) public returns (bool);
-    function schedule (IPayment payment) public returns (bool success);
-    function unschedule (IPayment payment) public returns (bool success);
-    function unschedule() public returns (bool success);
-    function register (address recipient) public returns (bool success);
-    function unregister (address recipient) public returns (bool success);
-    function clear (IPayment payment) public returns (bool success);
-    function valid (IPayment payment) internal returns (bool);
+    function call (address callAddress, uint callValue, bytes memory callData) public returns (bool success, bytes memory data);
+    function schedule (IFutureTransaction ftx) public returns (bool success);
+    function unschedule (IFutureTransaction ftx) public returns (bool success);
+    function unschedule () public returns (bool success);
 }
 
-// A payment contains all the necesary details to execute a payment from a payment delegate
-contract IPayment {
+contract IFutureTransaction {
     address public factory;
-    IPaymentDelegate public delegate;
+    ITransactionScheduler public scheduler;
     IDelegatedWallet public wallet;
 }
 
-// A recurring alarm clock contains all the necesary details to execute a recurring task
+contract IPayment is IFutureTransaction {
+    address payable public recipient;
+    ERC20 public token;
+
+    function amount () public returns (uint);
+}
+
 contract IRecurringTransaction is IPayment {
-    IGasPriceOracle public gasPrice;
+    IUintFeed public gasPrice;
     address public priorityCaller;
     uint[3] public limits;
     uint public alarmStart;
@@ -47,7 +41,6 @@ contract IRecurringTransaction is IPayment {
     uint public intervalUnit;
     uint public maxIntervals;
     uint public currentInterval;
-
     address public txRequest;
     address payable public callAddress;
     bytes public callData;
@@ -55,9 +48,9 @@ contract IRecurringTransaction is IPayment {
     uint public callGas;
 
     function () external payable;
-    function start (address payable _callAddress, bytes memory _callData, uint[7] memory _callOptions) public;
-    function destroy () public;
-    function setPriorityCaller (address _priorityCaller) public;
     function setExecutionLimits (uint[3] memory _limits) public;
-    function setGasPriceOracle (IGasPriceOracle _oracle) public;
+    function setPriorityCaller (address _priorityCaller) public;
+    function setGasPriceFeed (IUintFeed newGasPriceFeed) public;
+    function start (address payable _callAddress, bytes memory _callData, uint[8] memory _callOptions) public;
+    function destroy () public;
 }

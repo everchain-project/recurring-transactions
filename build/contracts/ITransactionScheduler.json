@@ -1,84 +1,110 @@
 {
-  "contractName": "IPayment",
+  "contractName": "ITransactionScheduler",
   "abi": [
     {
-      "constant": true,
-      "inputs": [],
-      "name": "wallet",
+      "constant": false,
+      "inputs": [
+        {
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
       "outputs": [
         {
           "name": "",
-          "type": "address"
+          "type": "bool"
         }
       ],
       "payable": false,
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "recipient",
+      "constant": false,
+      "inputs": [
+        {
+          "name": "callAddress",
+          "type": "address"
+        },
+        {
+          "name": "callValue",
+          "type": "uint256"
+        },
+        {
+          "name": "callData",
+          "type": "bytes"
+        }
+      ],
+      "name": "call",
       "outputs": [
         {
-          "name": "",
-          "type": "address"
+          "name": "success",
+          "type": "bool"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
         }
       ],
       "payable": false,
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "factory",
-      "outputs": [
+      "constant": false,
+      "inputs": [
         {
-          "name": "",
+          "name": "ftx",
           "type": "address"
         }
       ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "scheduler",
+      "name": "schedule",
       "outputs": [
         {
-          "name": "",
-          "type": "address"
+          "name": "success",
+          "type": "bool"
         }
       ],
       "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "token",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "constant": false,
       "inputs": [],
-      "name": "amount",
+      "name": "unschedule",
       "outputs": [
         {
-          "name": "",
-          "type": "uint256"
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "ftx",
+          "type": "address"
+        }
+      ],
+      "name": "unschedule",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
         }
       ],
       "payable": false,
@@ -3623,7 +3649,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.9",
-  "updatedAt": "2019-05-14T22:16:21.097Z",
+  "updatedAt": "2019-05-14T22:16:21.098Z",
   "devdoc": {
     "methods": {}
   },

@@ -30,24 +30,28 @@
       "type": "function"
     }
   ],
+  "metadata": "",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.5.0;\n\n/*\n    Bancor Gas Price Limit interface\n*/\ncontract IBancorGasPriceLimit {\n    function gasPrice() public view returns (uint256);\n    function validateGasPrice(uint256) public view;\n}",
-  "sourcePath": "/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/external/IBancorGasPriceLimit.sol",
+  "source": "pragma solidity ^0.5.0;\n\nimport \"../Interfaces.sol\";\n\n/// @notice Bancor Gas Price Limit interface\ncontract IBancorGasPriceLimit {\n    function gasPrice() public view returns (uint256);\n    function validateGasPrice(uint256) public view;\n}\n\ncontract BancorGasPriceFeed is IUintFeed {\n\n    IBancorGasPriceLimit public oracle;\n\n    constructor (IBancorGasPriceLimit _oracle) public {\n        oracle = _oracle;\n    }\n\n    function read() public view returns (uint) {\n        return oracle.gasPrice();\n    }\n\n}\n",
+  "sourcePath": "/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/feeds/BancorGasPriceFeed.sol",
   "ast": {
-    "absolutePath": "/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/external/IBancorGasPriceLimit.sol",
+    "absolutePath": "/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/feeds/BancorGasPriceFeed.sol",
     "exportedSymbols": {
+      "BancorGasPriceFeed": [
+        4022
+      ],
       "IBancorGasPriceLimit": [
-        4040
+        3997
       ]
     },
-    "id": 4041,
+    "id": 4023,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 4029,
+        "id": 3985,
         "literals": [
           "solidity",
           "^",
@@ -58,14 +62,25 @@
         "src": "0:23:12"
       },
       {
+        "absolutePath": "/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/Interfaces.sol",
+        "file": "../Interfaces.sol",
+        "id": 3986,
+        "nodeType": "ImportDirective",
+        "scope": 4023,
+        "sourceUnit": 143,
+        "src": "25:27:12",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
-        "documentation": null,
+        "documentation": "@notice Bancor Gas Price Limit interface",
         "fullyImplemented": false,
-        "id": 4040,
+        "id": 3997,
         "linearizedBaseContracts": [
-          4040
+          3997
         ],
         "name": "IBancorGasPriceLimit",
         "nodeType": "ContractDefinition",
@@ -73,29 +88,29 @@
           {
             "body": null,
             "documentation": null,
-            "id": 4034,
+            "id": 3991,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "gasPrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4030,
+              "id": 3987,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "121:2:12"
+              "src": "152:2:12"
             },
             "returnParameters": {
-              "id": 4033,
+              "id": 3990,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4032,
+                  "id": 3989,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4034,
-                  "src": "145:7:12",
+                  "scope": 3991,
+                  "src": "176:7:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -103,10 +118,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4031,
+                    "id": 3988,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "145:7:12",
+                    "src": "176:7:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -116,10 +131,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "144:9:12"
+              "src": "175:9:12"
             },
-            "scope": 4040,
-            "src": "104:50:12",
+            "scope": 3997,
+            "src": "135:50:12",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
@@ -127,23 +142,23 @@
           {
             "body": null,
             "documentation": null,
-            "id": 4039,
+            "id": 3996,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "validateGasPrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4037,
+              "id": 3994,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4036,
+                  "id": 3993,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4039,
-                  "src": "185:7:12",
+                  "scope": 3996,
+                  "src": "216:7:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -151,10 +166,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4035,
+                    "id": 3992,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "185:7:12",
+                    "src": "216:7:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -164,39 +179,329 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "184:9:12"
+              "src": "215:9:12"
             },
             "returnParameters": {
-              "id": 4038,
+              "id": 3995,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "205:0:12"
+              "src": "236:0:12"
             },
-            "scope": 4040,
-            "src": "159:47:12",
+            "scope": 3997,
+            "src": "190:47:12",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 4041,
-        "src": "68:140:12"
+        "scope": 4023,
+        "src": "99:140:12"
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 3998,
+              "name": "IUintFeed",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 12,
+              "src": "272:9:12",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IUintFeed_$12",
+                "typeString": "contract IUintFeed"
+              }
+            },
+            "id": 3999,
+            "nodeType": "InheritanceSpecifier",
+            "src": "272:9:12"
+          }
+        ],
+        "contractDependencies": [
+          12
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 4022,
+        "linearizedBaseContracts": [
+          4022,
+          12
+        ],
+        "name": "BancorGasPriceFeed",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 4001,
+            "name": "oracle",
+            "nodeType": "VariableDeclaration",
+            "scope": 4022,
+            "src": "289:34:12",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+              "typeString": "contract IBancorGasPriceLimit"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 4000,
+              "name": "IBancorGasPriceLimit",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3997,
+              "src": "289:20:12",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+                "typeString": "contract IBancorGasPriceLimit"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 4010,
+              "nodeType": "Block",
+              "src": "380:33:12",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 4008,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 4006,
+                      "name": "oracle",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4001,
+                      "src": "390:6:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+                        "typeString": "contract IBancorGasPriceLimit"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 4007,
+                      "name": "_oracle",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4003,
+                      "src": "399:7:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+                        "typeString": "contract IBancorGasPriceLimit"
+                      }
+                    },
+                    "src": "390:16:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+                      "typeString": "contract IBancorGasPriceLimit"
+                    }
+                  },
+                  "id": 4009,
+                  "nodeType": "ExpressionStatement",
+                  "src": "390:16:12"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 4011,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4004,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4003,
+                  "name": "_oracle",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4011,
+                  "src": "343:28:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+                    "typeString": "contract IBancorGasPriceLimit"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 4002,
+                    "name": "IBancorGasPriceLimit",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 3997,
+                    "src": "343:20:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+                      "typeString": "contract IBancorGasPriceLimit"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "342:30:12"
+            },
+            "returnParameters": {
+              "id": 4005,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "380:0:12"
+            },
+            "scope": 4022,
+            "src": "330:83:12",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 4020,
+              "nodeType": "Block",
+              "src": "462:41:12",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 4016,
+                        "name": "oracle",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4001,
+                        "src": "479:6:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+                          "typeString": "contract IBancorGasPriceLimit"
+                        }
+                      },
+                      "id": 4017,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "gasPrice",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3991,
+                      "src": "479:15:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
+                        "typeString": "function () view external returns (uint256)"
+                      }
+                    },
+                    "id": 4018,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "479:17:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 4015,
+                  "id": 4019,
+                  "nodeType": "Return",
+                  "src": "472:24:12"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 4021,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "read",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4012,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "432:2:12"
+            },
+            "returnParameters": {
+              "id": 4015,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4014,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4021,
+                  "src": "456:4:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4013,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "456:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "455:6:12"
+            },
+            "scope": 4022,
+            "src": "419:84:12",
+            "stateMutability": "view",
+            "superFunction": 11,
+            "visibility": "public"
+          }
+        ],
+        "scope": 4023,
+        "src": "241:265:12"
       }
     ],
-    "src": "0:208:12"
+    "src": "0:507:12"
   },
   "legacyAST": {
-    "absolutePath": "/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/external/IBancorGasPriceLimit.sol",
+    "absolutePath": "/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/feeds/BancorGasPriceFeed.sol",
     "exportedSymbols": {
+      "BancorGasPriceFeed": [
+        4022
+      ],
       "IBancorGasPriceLimit": [
-        4040
+        3997
       ]
     },
-    "id": 4041,
+    "id": 4023,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 4029,
+        "id": 3985,
         "literals": [
           "solidity",
           "^",
@@ -207,14 +512,25 @@
         "src": "0:23:12"
       },
       {
+        "absolutePath": "/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/Interfaces.sol",
+        "file": "../Interfaces.sol",
+        "id": 3986,
+        "nodeType": "ImportDirective",
+        "scope": 4023,
+        "sourceUnit": 143,
+        "src": "25:27:12",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
-        "documentation": null,
+        "documentation": "@notice Bancor Gas Price Limit interface",
         "fullyImplemented": false,
-        "id": 4040,
+        "id": 3997,
         "linearizedBaseContracts": [
-          4040
+          3997
         ],
         "name": "IBancorGasPriceLimit",
         "nodeType": "ContractDefinition",
@@ -222,29 +538,29 @@
           {
             "body": null,
             "documentation": null,
-            "id": 4034,
+            "id": 3991,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "gasPrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4030,
+              "id": 3987,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "121:2:12"
+              "src": "152:2:12"
             },
             "returnParameters": {
-              "id": 4033,
+              "id": 3990,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4032,
+                  "id": 3989,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4034,
-                  "src": "145:7:12",
+                  "scope": 3991,
+                  "src": "176:7:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -252,10 +568,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4031,
+                    "id": 3988,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "145:7:12",
+                    "src": "176:7:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -265,10 +581,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "144:9:12"
+              "src": "175:9:12"
             },
-            "scope": 4040,
-            "src": "104:50:12",
+            "scope": 3997,
+            "src": "135:50:12",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
@@ -276,23 +592,23 @@
           {
             "body": null,
             "documentation": null,
-            "id": 4039,
+            "id": 3996,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "validateGasPrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4037,
+              "id": 3994,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4036,
+                  "id": 3993,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4039,
-                  "src": "185:7:12",
+                  "scope": 3996,
+                  "src": "216:7:12",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -300,10 +616,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4035,
+                    "id": 3992,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "185:7:12",
+                    "src": "216:7:12",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -313,38 +629,326 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "184:9:12"
+              "src": "215:9:12"
             },
             "returnParameters": {
-              "id": 4038,
+              "id": 3995,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "205:0:12"
+              "src": "236:0:12"
             },
-            "scope": 4040,
-            "src": "159:47:12",
+            "scope": 3997,
+            "src": "190:47:12",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 4041,
-        "src": "68:140:12"
+        "scope": 4023,
+        "src": "99:140:12"
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 3998,
+              "name": "IUintFeed",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 12,
+              "src": "272:9:12",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IUintFeed_$12",
+                "typeString": "contract IUintFeed"
+              }
+            },
+            "id": 3999,
+            "nodeType": "InheritanceSpecifier",
+            "src": "272:9:12"
+          }
+        ],
+        "contractDependencies": [
+          12
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 4022,
+        "linearizedBaseContracts": [
+          4022,
+          12
+        ],
+        "name": "BancorGasPriceFeed",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 4001,
+            "name": "oracle",
+            "nodeType": "VariableDeclaration",
+            "scope": 4022,
+            "src": "289:34:12",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+              "typeString": "contract IBancorGasPriceLimit"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 4000,
+              "name": "IBancorGasPriceLimit",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3997,
+              "src": "289:20:12",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+                "typeString": "contract IBancorGasPriceLimit"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 4010,
+              "nodeType": "Block",
+              "src": "380:33:12",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 4008,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 4006,
+                      "name": "oracle",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4001,
+                      "src": "390:6:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+                        "typeString": "contract IBancorGasPriceLimit"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 4007,
+                      "name": "_oracle",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4003,
+                      "src": "399:7:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+                        "typeString": "contract IBancorGasPriceLimit"
+                      }
+                    },
+                    "src": "390:16:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+                      "typeString": "contract IBancorGasPriceLimit"
+                    }
+                  },
+                  "id": 4009,
+                  "nodeType": "ExpressionStatement",
+                  "src": "390:16:12"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 4011,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4004,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4003,
+                  "name": "_oracle",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4011,
+                  "src": "343:28:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+                    "typeString": "contract IBancorGasPriceLimit"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 4002,
+                    "name": "IBancorGasPriceLimit",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 3997,
+                    "src": "343:20:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+                      "typeString": "contract IBancorGasPriceLimit"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "342:30:12"
+            },
+            "returnParameters": {
+              "id": 4005,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "380:0:12"
+            },
+            "scope": 4022,
+            "src": "330:83:12",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 4020,
+              "nodeType": "Block",
+              "src": "462:41:12",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 4016,
+                        "name": "oracle",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 4001,
+                        "src": "479:6:12",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IBancorGasPriceLimit_$3997",
+                          "typeString": "contract IBancorGasPriceLimit"
+                        }
+                      },
+                      "id": 4017,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "gasPrice",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3991,
+                      "src": "479:15:12",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
+                        "typeString": "function () view external returns (uint256)"
+                      }
+                    },
+                    "id": 4018,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "479:17:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 4015,
+                  "id": 4019,
+                  "nodeType": "Return",
+                  "src": "472:24:12"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 4021,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "read",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4012,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "432:2:12"
+            },
+            "returnParameters": {
+              "id": 4015,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4014,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4021,
+                  "src": "456:4:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4013,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "456:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "455:6:12"
+            },
+            "scope": 4022,
+            "src": "419:84:12",
+            "stateMutability": "view",
+            "superFunction": 11,
+            "visibility": "public"
+          }
+        ],
+        "scope": 4023,
+        "src": "241:265:12"
       }
     ],
-    "src": "0:208:12"
+    "src": "0:507:12"
   },
   "compiler": {
     "name": "solc",
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-20T03:57:04.568Z",
+  "schemaVersion": "3.0.9",
+  "updatedAt": "2019-05-14T22:16:21.135Z",
   "devdoc": {
     "methods": {}
   },
   "userdoc": {
-    "methods": {}
+    "methods": {},
+    "notice": "Bancor Gas Price Limit interface"
   }
 }

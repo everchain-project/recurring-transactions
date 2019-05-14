@@ -1,24 +1,10 @@
 {
-  "contractName": "IPayment",
+  "contractName": "IFutureTransaction",
   "abi": [
     {
       "constant": true,
       "inputs": [],
       "name": "wallet",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "recipient",
       "outputs": [
         {
           "name": "",
@@ -56,41 +42,13 @@
       "payable": false,
       "stateMutability": "view",
       "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "token",
-      "outputs": [
-        {
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [],
-      "name": "amount",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
     }
   ],
-  "metadata": "",
-  "bytecode": "0x",
-  "deployedBytecode": "0x",
-  "sourceMap": "",
-  "deployedSourceMap": "",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.0+commit.1d4f565a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"wallet\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"factory\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"scheduler\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/Interfaces.sol\":\"IFutureTransaction\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/Interfaces.sol\":{\"keccak256\":\"0xc24f5f5138746deed7425c1681dd689b585f8d6dbe599425847ff931a38a3dac\",\"urls\":[\"bzzr://3956db2af26dcd6efc10830834ff383ad95dcd0cc395129ec3fc5d5a282dfe66\"]},\"/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/external/Interfaces.sol\":{\"keccak256\":\"0x65f64f82459d752b43902d337d4fbfbf6ff4b76530b33b7e87d893d9ae6e6f60\",\"urls\":[\"bzzr://edf33a2dcbcf6d26a143fbba82ac37d9d6f4d155090fdf11241a319fa6a0673d\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506101fe806100206000396000f3fe608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063521eb2731461005c578063c45a0155146100b3578063d1ad17bf1461010a575b600080fd5b34801561006857600080fd5b50610071610161565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100bf57600080fd5b506100c8610187565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561011657600080fd5b5061011f6101ac565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a723058203a72b939a79fe723536c4245445a0ca5e33429039a1196e11c7d78d7ac805dab0029",
+  "deployedBytecode": "0x608060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063521eb2731461005c578063c45a0155146100b3578063d1ad17bf1461010a575b600080fd5b34801561006857600080fd5b50610071610161565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100bf57600080fd5b506100c8610187565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561011657600080fd5b5061011f6101ac565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a723058203a72b939a79fe723536c4245445a0ca5e33429039a1196e11c7d78d7ac805dab0029",
+  "sourceMap": "673:139:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;673:139:0;;;;;;;",
+  "deployedSourceMap": "673:139:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;779:30;;8:9:-1;5:2;;;30:1;27;20:12;5:2;779:30:0;;;;;;;;;;;;;;;;;;;;;;;;;;;707:22;;8:9:-1;5:2;;;30:1;27;20:12;5:2;707:22:0;;;;;;;;;;;;;;;;;;;;;;;;;;;735:38;;8:9:-1;5:2;;;30:1;27;20:12;5:2;735:38:0;;;;;;;;;;;;;;;;;;;;;;;;;;;779:30;;;;;;;;;;;;;:::o;707:22::-;;;;;;;;;;;;;:::o;735:38::-;;;;;;;;;;;;;:::o",
   "source": "pragma solidity ^0.5.0;\n\nimport \"./external/Interfaces.sol\";\n\ncontract ICancellable {\n    function cancel() public;\n}\n\ncontract IUintFeed {\n    function read() public view returns (uint);\n}\n\ncontract ITransactionScheduler {\n    function transfer (address token, address payable recipient, uint amount) public returns (bool);\n    function call (address callAddress, uint callValue, bytes memory callData) public returns (bool success, bytes memory data);\n    function schedule (IFutureTransaction ftx) public returns (bool success);\n    function unschedule (IFutureTransaction ftx) public returns (bool success);\n    function unschedule () public returns (bool success);\n}\n\ncontract IFutureTransaction {\n    address public factory;\n    ITransactionScheduler public scheduler;\n    IDelegatedWallet public wallet;\n}\n\ncontract IPayment is IFutureTransaction {\n    address payable public recipient;\n    ERC20 public token;\n\n    function amount () public returns (uint);\n}\n\ncontract IRecurringTransaction is IPayment {\n    IUintFeed public gasPrice;\n    address public priorityCaller;\n    uint[3] public limits;\n    uint public alarmStart;\n    uint public windowSize;\n    uint public intervalValue;\n    uint public intervalUnit;\n    uint public maxIntervals;\n    uint public currentInterval;\n    address public txRequest;\n    address payable public callAddress;\n    bytes public callData;\n    uint public callValue;\n    uint public callGas;\n\n    function () external payable;\n    function setExecutionLimits (uint[3] memory _limits) public;\n    function setPriorityCaller (address _priorityCaller) public;\n    function setGasPriceFeed (IUintFeed newGasPriceFeed) public;\n    function start (address payable _callAddress, bytes memory _callData, uint[8] memory _callOptions) public;\n    function destroy () public;\n}\n",
   "sourcePath": "/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/Interfaces.sol",
   "ast": {
@@ -3623,7 +3581,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.9",
-  "updatedAt": "2019-05-14T22:16:21.097Z",
+  "updatedAt": "2019-05-14T22:16:21.096Z",
   "devdoc": {
     "methods": {}
   },

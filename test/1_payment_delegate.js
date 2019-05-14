@@ -1,10 +1,10 @@
-const DelegatedWalletContract = artifacts.require("DelegatedWallet");
-const DelegatedWalletFactory = artifacts.require("DelegatedWalletFactory");
-const DentralizedPaymentDelegateBlueprint = artifacts.require("DecentralizedPaymentDelegate");
-const OneTimePaymentBlueprint = artifacts.require("OneTimePayment");
+// const DelegatedWalletContract = artifacts.require("DelegatedWallet");
+// const DelegatedWalletFactory = artifacts.require("DelegatedWalletFactory");
+// const DentralizedPaymentDelegateBlueprint = artifacts.require("DecentralizedPaymentDelegate");
+// const OneTimePaymentBlueprint = artifacts.require("OneTimePayment");
 
 contract('Payment Delegate Blueprint', function(accounts) {
-    
+/*
     var ETHER = '0x0000000000000000000000000000000000000000';
 
     var PaymentDelegate;
@@ -13,7 +13,7 @@ contract('Payment Delegate Blueprint', function(accounts) {
 
     var defaultCaller = accounts[0];
     var defaultDelegate = accounts[0];
-    var owner = accounts[1]; 
+    var owner = accounts[1];
     var recipient = accounts[2];
     var attacker = accounts[3];
     var executor = accounts[4];
@@ -57,7 +57,7 @@ contract('Payment Delegate Blueprint', function(accounts) {
             )
         })
         .then(tx => {
-            return paymentInstance;  
+            return paymentInstance;
         })
     }
 
@@ -66,7 +66,7 @@ contract('Payment Delegate Blueprint', function(accounts) {
         .then(instance => {
             PaymentDelegate = instance;
         })
-    }); 
+    });
 
     it("schedule a payment", () => {
         return deployDelegatedWallet()
@@ -183,7 +183,7 @@ contract('Payment Delegate Blueprint', function(accounts) {
             assert(walletPayments.length == 0, "there should be no wallet payments scheduled");
             assert(recipientPayments.length == 0, "there should be no recipient payments scheduled");
         })
-            
+
     });
 
     it("have a non-scheduler fail to schedule a payment", () => {
@@ -204,5 +204,5 @@ contract('Payment Delegate Blueprint', function(accounts) {
             assert(recipientPayments.length == 0, "there should be no recipient payments scheduled");
         })
     });
-
+*/
 });

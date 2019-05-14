@@ -1,7 +1,0 @@
-<div class="cursor" fxLayout="column" (click)="copyToClipboard()">
-	<qrcode [qrdata]="dataToCopy" [size]="256" [level]="'M'"></qrcode>
-	<div style="padding: 0px 16px;" fxLayout="column">
-		<b style="margin: 16px 0px; text-align: center; word-wrap: break-word;">{{dataToCopy}}</b>
-		<small style="text-align: center;">- click to copy -</small>
-	</div>
-</div>

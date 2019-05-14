@@ -155,6 +155,7 @@
       "type": "function"
     }
   ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.0+commit.1d4f565a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"list\",\"type\":\"AddressListLib.AddressList storage\"},{\"name\":\"value\",\"type\":\"address\"}],\"name\":\"contains\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"list\",\"type\":\"AddressListLib.AddressList storage\"}],\"name\":\"getLength\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"list\",\"type\":\"AddressListLib.AddressList storage\"}],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"address[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"list\",\"type\":\"AddressListLib.AddressList storage\"},{\"name\":\"i\",\"type\":\"uint256\"}],\"name\":\"index\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"list\",\"type\":\"AddressListLib.AddressList storage\"},{\"name\":\"value\",\"type\":\"address\"}],\"name\":\"remove\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"list\",\"type\":\"AddressListLib.AddressList storage\"},{\"name\":\"value\",\"type\":\"address\"}],\"name\":\"add\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"list\",\"type\":\"AddressListLib.AddressList storage\"},{\"name\":\"value\",\"type\":\"address\"}],\"name\":\"indexOf\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"A library for a simple unordered list that stores unique values.\",\"methods\":{\"add(AddressListLib.AddressList storage,address)\":{\"params\":{\"list\":\"The storage that holds the list\",\"value\":\"The value to add to 'list'\"},\"return\":\"True if the 'value' is added, false if it already exists in the list\"},\"contains(AddressListLib.AddressList storage,address)\":{\"params\":{\"list\":\"The storage that holds the list\",\"value\":\"The value to search for\"},\"return\":\"True if the value exists in the list\"},\"get(AddressListLib.AddressList storage)\":{\"params\":{\"list\":\"The storage that holds the list\"},\"return\":\"The list of addresses\"},\"getLength(AddressListLib.AddressList storage)\":{\"params\":{\"list\":\"The storage that holds the list\"},\"return\":\"The length of the 'list'\"},\"index(AddressListLib.AddressList storage,uint256)\":{\"params\":{\"i\":\"The index to fetch\",\"list\":\"The storage that holds the list\"},\"return\":\"The address at index 'i'\"},\"indexOf(AddressListLib.AddressList storage,address)\":{\"params\":{\"list\":\"The storage that holds the list\",\"value\":\"The address to fetch the index of\"},\"return\":\"The index of 'value'\"},\"remove(AddressListLib.AddressList storage,address)\":{\"params\":{\"list\":\"The storage that holds the list\",\"value\":\"The value to remove from 'list'\"},\"return\":\"True if the 'value' is removed, false if the 'value' did not exists in the list\"}}},\"userdoc\":{\"methods\":{\"add(AddressListLib.AddressList storage,address)\":{\"notice\":\"Called when a address value is added to 'list'\"},\"contains(AddressListLib.AddressList storage,address)\":{\"notice\":\"Fetches the length of the list\"},\"get(AddressListLib.AddressList storage)\":{\"notice\":\"Fetches the list of addresses\"},\"getLength(AddressListLib.AddressList storage)\":{\"notice\":\"Fetches the length of the list\"},\"index(AddressListLib.AddressList storage,uint256)\":{\"notice\":\"Fetches the address of a given index\"},\"indexOf(AddressListLib.AddressList storage,address)\":{\"notice\":\"Fetches the index of a given address\"},\"remove(AddressListLib.AddressList storage,address)\":{\"notice\":\"Called when a address value is removed from 'list'\"}}}},\"settings\":{\"compilationTarget\":{\"/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/external/AddressListLib.sol\":\"AddressListLib\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/external/AddressListLib.sol\":{\"keccak256\":\"0xa87e5a9ecf75b409af9f7b7fbe7dbe3b4061ddcbf52854dfc00af303e7e75d53\",\"urls\":[\"bzzr://cda1e892b7a0cdaa7cc1ba24600c2ab547d160e3d2efa2a055f550cbd64a104b\"]}},\"version\":1}",
   "bytecode": "0x610959610030600b82828239805160001a6073146000811461002057610022565bfe5b5030600052607381538281f3fe730000000000000000000000000000000000000000301460806040526004361061009a576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631a65cb951461009f5780631ecb74861461010557806330b05fbc14610147578063492d214c146101ca5780636c11a8a31461024257806390c158cb146102b5578063f3d50dbc14610328575b600080fd5b6100eb600480360360408110156100b557600080fd5b8101908080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061038a565b604051808215151515815260200191505060405180910390f35b6101316004803603602081101561011b57600080fd5b81019080803590602001909291905050506103e3565b6040518082815260200191505060405180910390f35b6101736004803603602081101561015d57600080fd5b81019080803590602001909291905050506103f4565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b838110156101b657808201518184015260208101905061019b565b505050509050019250505060405180910390f35b610200600480360360408110156101e057600080fd5b810190808035906020019092919080359060200190929190505050610486565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b81801561024e57600080fd5b5061029b6004803603604081101561026557600080fd5b8101908080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506104cc565b604051808215151515815260200191505060405180910390f35b8180156102c157600080fd5b5061030e600480360360408110156102d857600080fd5b8101908080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610717565b604051808215151515815260200191505060405180910390f35b6103746004803603604081101561033e57600080fd5b8101908080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610890565b6040518082815260200191505060405180910390f35b60008260010160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16905092915050565b600081600001805490509050919050565b60608160000180548060200260200160405190810160405280929190818152602001828054801561047a57602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019060010190808311610430575b50505050509050919050565b6000826000018281548110151561049957fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905092915050565b60008260010160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16151561052c5760009050610711565b60008360020160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050600084600001600186600001805490500381548110151561058f57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1690508085600001838154811015156105ce57fe5b9060005260206000200160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550818560020160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055508460000180548091906001900361067391906108dc565b508460010160008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81549060ff02191690558460020160008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600090556001925050505b92915050565b60008260010160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff1615610776576000905061088a565b82600001805490508360020160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208190555060018360010160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff021916908315150217905550826000018290806001815401808255809150509060018203906000526020600020016000909192909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050600190505b92915050565b60008260020160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054905092915050565b815481835581811115610903578183600052602060002091820191016109029190610908565b5b505050565b61092a91905b8082111561092657600081600090555060010161090e565b5090565b9056fea165627a7a723058208fd88808c16dda894116e1f10a313099060d40a1f03ac17b4b5c4cc115b4db2e0029",
   "deployedBytecode": "0x730000000000000000000000000000000000000000301460806040526004361061009a576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631a65cb951461009f5780631ecb74861461010557806330b05fbc14610147578063492d214c146101ca5780636c11a8a31461024257806390c158cb146102b5578063f3d50dbc14610328575b600080fd5b6100eb600480360360408110156100b557600080fd5b8101908080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061038a565b604051808215151515815260200191505060405180910390f35b6101316004803603602081101561011b57600080fd5b81019080803590602001909291905050506103e3565b6040518082815260200191505060405180910390f35b6101736004803603602081101561015d57600080fd5b81019080803590602001909291905050506103f4565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b838110156101b657808201518184015260208101905061019b565b505050509050019250505060405180910390f35b610200600480360360408110156101e057600080fd5b810190808035906020019092919080359060200190929190505050610486565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b81801561024e57600080fd5b5061029b6004803603604081101561026557600080fd5b8101908080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506104cc565b604051808215151515815260200191505060405180910390f35b8180156102c157600080fd5b5061030e600480360360408110156102d857600080fd5b8101908080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610717565b604051808215151515815260200191505060405180910390f35b6103746004803603604081101561033e57600080fd5b8101908080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610890565b6040518082815260200191505060405180910390f35b60008260010160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16905092915050565b600081600001805490509050919050565b60608160000180548060200260200160405190810160405280929190818152602001828054801561047a57602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019060010190808311610430575b50505050509050919050565b6000826000018281548110151561049957fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905092915050565b60008260010160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16151561052c5760009050610711565b60008360020160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050600084600001600186600001805490500381548110151561058f57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1690508085600001838154811015156105ce57fe5b9060005260206000200160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550818560020160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020819055508460000180548091906001900361067391906108dc565b508460010160008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81549060ff02191690558460020160008573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600090556001925050505b92915050565b60008260010160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff1615610776576000905061088a565b82600001805490508360020160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208190555060018360010160008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff021916908315150217905550826000018290806001815401808255809150509060018203906000526020600020016000909192909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050600190505b92915050565b60008260020160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054905092915050565b815481835581811115610903578183600052602060002091820191016109029190610908565b5b505050565b61092a91905b8082111561092657600081600090555060010161090e565b5090565b9056fea165627a7a723058208fd88808c16dda894116e1f10a313099060d40a1f03ac17b4b5c4cc115b4db2e0029",
   "sourceMap": "99:3439:7:-;;132:2:-1;166:7;155:9;146:7;137:37;252:7;246:14;243:1;238:23;232:4;229:33;270:1;265:20;;;;222:63;;265:20;274:9;222:63;;298:9;295:1;288:20;328:4;319:7;311:22;352:7;343;336:24",
@@ -165,14 +166,14 @@
     "absolutePath": "/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/external/AddressListLib.sol",
     "exportedSymbols": {
       "AddressListLib": [
-        2313
+        2024
       ]
     },
-    "id": 2314,
+    "id": 2025,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2111,
+        "id": 1822,
         "literals": [
           "solidity",
           "^",
@@ -188,23 +189,23 @@
         "contractKind": "library",
         "documentation": "@dev A library for a simple unordered list that stores unique values.",
         "fullyImplemented": true,
-        "id": 2313,
+        "id": 2024,
         "linearizedBaseContracts": [
-          2313
+          2024
         ],
         "name": "AddressListLib",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "AddressListLib.AddressList",
-            "id": 2123,
+            "id": 1834,
             "members": [
               {
                 "constant": false,
-                "id": 2114,
+                "id": 1825,
                 "name": "array",
                 "nodeType": "VariableDeclaration",
-                "scope": 2123,
+                "scope": 1834,
                 "src": "162:15:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -214,7 +215,7 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 2112,
+                    "id": 1823,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "162:7:7",
@@ -224,7 +225,7 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 2113,
+                  "id": 1824,
                   "length": null,
                   "nodeType": "ArrayTypeName",
                   "src": "162:9:7",
@@ -238,10 +239,10 @@
               },
               {
                 "constant": false,
-                "id": 2118,
+                "id": 1829,
                 "name": "exists",
                 "nodeType": "VariableDeclaration",
-                "scope": 2123,
+                "scope": 1834,
                 "src": "225:32:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -250,9 +251,9 @@
                   "typeString": "mapping(address => bool)"
                 },
                 "typeName": {
-                  "id": 2117,
+                  "id": 1828,
                   "keyType": {
-                    "id": 2115,
+                    "id": 1826,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "234:7:7",
@@ -268,7 +269,7 @@
                     "typeString": "mapping(address => bool)"
                   },
                   "valueType": {
-                    "id": 2116,
+                    "id": 1827,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "245:4:7",
@@ -283,10 +284,10 @@
               },
               {
                 "constant": false,
-                "id": 2122,
+                "id": 1833,
                 "name": "getIndex",
                 "nodeType": "VariableDeclaration",
-                "scope": 2123,
+                "scope": 1834,
                 "src": "307:34:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -295,9 +296,9 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "typeName": {
-                  "id": 2121,
+                  "id": 1832,
                   "keyType": {
-                    "id": 2119,
+                    "id": 1830,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "316:7:7",
@@ -313,7 +314,7 @@
                     "typeString": "mapping(address => uint256)"
                   },
                   "valueType": {
-                    "id": 2120,
+                    "id": 1831,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "327:4:7",
@@ -329,13 +330,13 @@
             ],
             "name": "AddressList",
             "nodeType": "StructDefinition",
-            "scope": 2313,
+            "scope": 2024,
             "src": "133:255:7",
             "visibility": "public"
           },
           {
             "body": {
-              "id": 2167,
+              "id": 1878,
               "nodeType": "Block",
               "src": "731:285:7",
               "statements": [
@@ -346,39 +347,39 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2132,
+                        "id": 1843,
                         "name": "list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2125,
+                        "referencedDeclaration": 1836,
                         "src": "805:4:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                          "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                           "typeString": "struct AddressListLib.AddressList storage pointer"
                         }
                       },
-                      "id": 2133,
+                      "id": 1844,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "exists",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2118,
+                      "referencedDeclaration": 1829,
                       "src": "805:11:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                         "typeString": "mapping(address => bool)"
                       }
                     },
-                    "id": 2135,
+                    "id": 1846,
                     "indexExpression": {
                       "argumentTypes": null,
-                      "id": 2134,
+                      "id": 1845,
                       "name": "value",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2127,
+                      "referencedDeclaration": 1838,
                       "src": "817:5:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -397,14 +398,14 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 2138,
+                  "id": 1849,
                   "nodeType": "IfStatement",
                   "src": "802:47:7",
                   "trueBody": {
                     "expression": {
                       "argumentTypes": null,
                       "hexValue": "66616c7365",
-                      "id": 2136,
+                      "id": 1847,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -419,8 +420,8 @@
                       },
                       "value": "false"
                     },
-                    "functionReturnParameters": 2131,
-                    "id": 2137,
+                    "functionReturnParameters": 1842,
+                    "id": 1848,
                     "nodeType": "Return",
                     "src": "837:12:7"
                   }
@@ -428,7 +429,7 @@
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2147,
+                    "id": 1858,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -439,39 +440,39 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2139,
+                          "id": 1850,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2125,
+                          "referencedDeclaration": 1836,
                           "src": "868:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2142,
+                        "id": 1853,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "getIndex",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2122,
+                        "referencedDeclaration": 1833,
                         "src": "868:13:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 2143,
+                      "id": 1854,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 2141,
+                        "id": 1852,
                         "name": "value",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2127,
+                        "referencedDeclaration": 1838,
                         "src": "882:5:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -497,32 +498,32 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2144,
+                          "id": 1855,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2125,
+                          "referencedDeclaration": 1836,
                           "src": "891:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2145,
+                        "id": 1856,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "array",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2114,
+                        "referencedDeclaration": 1825,
                         "src": "891:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 2146,
+                      "id": 1857,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
@@ -542,14 +543,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2148,
+                  "id": 1859,
                   "nodeType": "ExpressionStatement",
                   "src": "868:40:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2155,
+                    "id": 1866,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -560,39 +561,39 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2149,
+                          "id": 1860,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2125,
+                          "referencedDeclaration": 1836,
                           "src": "918:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2152,
+                        "id": 1863,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "exists",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2118,
+                        "referencedDeclaration": 1829,
                         "src": "918:11:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 2153,
+                      "id": 1864,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 2151,
+                        "id": 1862,
                         "name": "value",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2127,
+                        "referencedDeclaration": 1838,
                         "src": "930:5:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -615,7 +616,7 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "74727565",
-                      "id": 2154,
+                      "id": 1865,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -636,7 +637,7 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 2156,
+                  "id": 1867,
                   "nodeType": "ExpressionStatement",
                   "src": "918:25:7"
                 },
@@ -646,11 +647,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2162,
+                        "id": 1873,
                         "name": "value",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2127,
+                        "referencedDeclaration": 1838,
                         "src": "969:5:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -669,32 +670,32 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2157,
+                          "id": 1868,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2125,
+                          "referencedDeclaration": 1836,
                           "src": "953:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2160,
+                        "id": 1871,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "array",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2114,
+                        "referencedDeclaration": 1825,
                         "src": "953:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 2161,
+                      "id": 1872,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -708,7 +709,7 @@
                         "typeString": "function (address) returns (uint256)"
                       }
                     },
-                    "id": 2163,
+                    "id": 1874,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -722,7 +723,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2164,
+                  "id": 1875,
                   "nodeType": "ExpressionStatement",
                   "src": "953:22:7"
                 },
@@ -730,7 +731,7 @@
                   "expression": {
                     "argumentTypes": null,
                     "hexValue": "74727565",
-                    "id": 2165,
+                    "id": 1876,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -745,46 +746,46 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 2131,
-                  "id": 2166,
+                  "functionReturnParameters": 1842,
+                  "id": 1877,
                   "nodeType": "Return",
                   "src": "998:11:7"
                 }
               ]
             },
             "documentation": "@notice Called when a address value is added to 'list'\n @param list The storage that holds the list\n @param value The value to add to 'list'\n @return True if the 'value' is added, false if it already exists in the list",
-            "id": 2168,
+            "id": 1879,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "add",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2128,
+              "id": 1839,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2125,
+                  "id": 1836,
                   "name": "list",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2168,
+                  "scope": 1879,
                   "src": "660:24:7",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                    "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                     "typeString": "struct AddressListLib.AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2124,
+                    "id": 1835,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2123,
+                    "referencedDeclaration": 1834,
                     "src": "660:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                       "typeString": "struct AddressListLib.AddressList"
                     }
                   },
@@ -793,10 +794,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2127,
+                  "id": 1838,
                   "name": "value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2168,
+                  "scope": 1879,
                   "src": "686:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -805,7 +806,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2126,
+                    "id": 1837,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "686:7:7",
@@ -822,15 +823,15 @@
               "src": "659:41:7"
             },
             "returnParameters": {
-              "id": 2131,
+              "id": 1842,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2130,
+                  "id": 1841,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2168,
+                  "scope": 1879,
                   "src": "717:12:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -839,7 +840,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2129,
+                    "id": 1840,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "717:4:7",
@@ -854,7 +855,7 @@
               ],
               "src": "716:14:7"
             },
-            "scope": 2313,
+            "scope": 2024,
             "src": "646:370:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -862,14 +863,14 @@
           },
           {
             "body": {
-              "id": 2242,
+              "id": 1953,
               "nodeType": "Block",
               "src": "1382:656:7",
               "statements": [
                 {
                   "condition": {
                     "argumentTypes": null,
-                    "id": 2181,
+                    "id": 1892,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -884,39 +885,39 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2177,
+                          "id": 1888,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2170,
+                          "referencedDeclaration": 1881,
                           "src": "1452:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2178,
+                        "id": 1889,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "exists",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2118,
+                        "referencedDeclaration": 1829,
                         "src": "1452:11:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 2180,
+                      "id": 1891,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 2179,
+                        "id": 1890,
                         "name": "value",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2172,
+                        "referencedDeclaration": 1883,
                         "src": "1464:5:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -940,14 +941,14 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 2184,
+                  "id": 1895,
                   "nodeType": "IfStatement",
                   "src": "1448:48:7",
                   "trueBody": {
                     "expression": {
                       "argumentTypes": null,
                       "hexValue": "66616c7365",
-                      "id": 2182,
+                      "id": 1893,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -962,23 +963,23 @@
                       },
                       "value": "false"
                     },
-                    "functionReturnParameters": 2176,
-                    "id": 2183,
+                    "functionReturnParameters": 1887,
+                    "id": 1894,
                     "nodeType": "Return",
                     "src": "1484:12:7"
                   }
                 },
                 {
                   "assignments": [
-                    2186
+                    1897
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2186,
+                      "id": 1897,
                       "name": "indexBeingRemoved",
                       "nodeType": "VariableDeclaration",
-                      "scope": 2242,
+                      "scope": 1953,
                       "src": "1511:22:7",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -987,7 +988,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 2185,
+                        "id": 1896,
                         "name": "uint",
                         "nodeType": "ElementaryTypeName",
                         "src": "1511:4:7",
@@ -1000,46 +1001,46 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2191,
+                  "id": 1902,
                   "initialValue": {
                     "argumentTypes": null,
                     "baseExpression": {
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2187,
+                        "id": 1898,
                         "name": "list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2170,
+                        "referencedDeclaration": 1881,
                         "src": "1536:4:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                          "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                           "typeString": "struct AddressListLib.AddressList storage pointer"
                         }
                       },
-                      "id": 2188,
+                      "id": 1899,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getIndex",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2122,
+                      "referencedDeclaration": 1833,
                       "src": "1536:13:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                         "typeString": "mapping(address => uint256)"
                       }
                     },
-                    "id": 2190,
+                    "id": 1901,
                     "indexExpression": {
                       "argumentTypes": null,
-                      "id": 2189,
+                      "id": 1900,
                       "name": "value",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2172,
+                      "referencedDeclaration": 1883,
                       "src": "1550:5:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -1062,15 +1063,15 @@
                 },
                 {
                   "assignments": [
-                    2193
+                    1904
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2193,
+                      "id": 1904,
                       "name": "replacementValue",
                       "nodeType": "VariableDeclaration",
-                      "scope": 2242,
+                      "scope": 1953,
                       "src": "1590:24:7",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -1079,7 +1080,7 @@
                         "typeString": "address"
                       },
                       "typeName": {
-                        "id": 2192,
+                        "id": 1903,
                         "name": "address",
                         "nodeType": "ElementaryTypeName",
                         "src": "1590:7:7",
@@ -1093,46 +1094,46 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2202,
+                  "id": 1913,
                   "initialValue": {
                     "argumentTypes": null,
                     "baseExpression": {
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2194,
+                        "id": 1905,
                         "name": "list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2170,
+                        "referencedDeclaration": 1881,
                         "src": "1617:4:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                          "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                           "typeString": "struct AddressListLib.AddressList storage pointer"
                         }
                       },
-                      "id": 2195,
+                      "id": 1906,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "array",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2114,
+                      "referencedDeclaration": 1825,
                       "src": "1617:10:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_address_$dyn_storage",
                         "typeString": "address[] storage ref"
                       }
                     },
-                    "id": 2201,
+                    "id": 1912,
                     "indexExpression": {
                       "argumentTypes": null,
                       "commonType": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 2200,
+                      "id": 1911,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1143,32 +1144,32 @@
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-                            "id": 2196,
+                            "id": 1907,
                             "name": "list",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2170,
+                            "referencedDeclaration": 1881,
                             "src": "1628:4:7",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                              "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                               "typeString": "struct AddressListLib.AddressList storage pointer"
                             }
                           },
-                          "id": 2197,
+                          "id": 1908,
                           "isConstant": false,
                           "isLValue": true,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "array",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 2114,
+                          "referencedDeclaration": 1825,
                           "src": "1628:10:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_storage",
                             "typeString": "address[] storage ref"
                           }
                         },
-                        "id": 2198,
+                        "id": 1909,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -1187,7 +1188,7 @@
                       "rightExpression": {
                         "argumentTypes": null,
                         "hexValue": "31",
-                        "id": 2199,
+                        "id": 1910,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1225,7 +1226,7 @@
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2209,
+                    "id": 1920,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1236,39 +1237,39 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2203,
+                          "id": 1914,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2170,
+                          "referencedDeclaration": 1881,
                           "src": "1759:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2206,
+                        "id": 1917,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "array",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2114,
+                        "referencedDeclaration": 1825,
                         "src": "1759:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 2207,
+                      "id": 1918,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 2205,
+                        "id": 1916,
                         "name": "indexBeingRemoved",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2186,
+                        "referencedDeclaration": 1897,
                         "src": "1770:17:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1290,11 +1291,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2208,
+                      "id": 1919,
                       "name": "replacementValue",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2193,
+                      "referencedDeclaration": 1904,
                       "src": "1791:16:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -1307,14 +1308,14 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 2210,
+                  "id": 1921,
                   "nodeType": "ExpressionStatement",
                   "src": "1759:48:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2217,
+                    "id": 1928,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1325,39 +1326,39 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2211,
+                          "id": 1922,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2170,
+                          "referencedDeclaration": 1881,
                           "src": "1817:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2214,
+                        "id": 1925,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "getIndex",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2122,
+                        "referencedDeclaration": 1833,
                         "src": "1817:13:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 2215,
+                      "id": 1926,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 2213,
+                        "id": 1924,
                         "name": "replacementValue",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2193,
+                        "referencedDeclaration": 1904,
                         "src": "1831:16:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -1379,11 +1380,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2216,
+                      "id": 1927,
                       "name": "indexBeingRemoved",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2186,
+                      "referencedDeclaration": 1897,
                       "src": "1851:17:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -1396,14 +1397,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2218,
+                  "id": 1929,
                   "nodeType": "ExpressionStatement",
                   "src": "1817:51:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2224,
+                    "id": 1935,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1418,32 +1419,32 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2219,
+                          "id": 1930,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2170,
+                          "referencedDeclaration": 1881,
                           "src": "1878:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2222,
+                        "id": 1933,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "array",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2114,
+                        "referencedDeclaration": 1825,
                         "src": "1878:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 2223,
+                      "id": 1934,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
@@ -1462,14 +1463,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2225,
+                  "id": 1936,
                   "nodeType": "ExpressionStatement",
                   "src": "1878:19:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2231,
+                    "id": 1942,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1487,39 +1488,39 @@
                             "argumentTypes": null,
                             "expression": {
                               "argumentTypes": null,
-                              "id": 2226,
+                              "id": 1937,
                               "name": "list",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 2170,
+                              "referencedDeclaration": 1881,
                               "src": "1944:4:7",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                                "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                                 "typeString": "struct AddressListLib.AddressList storage pointer"
                               }
                             },
-                            "id": 2227,
+                            "id": 1938,
                             "isConstant": false,
                             "isLValue": true,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "exists",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 2118,
+                            "referencedDeclaration": 1829,
                             "src": "1944:11:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                               "typeString": "mapping(address => bool)"
                             }
                           },
-                          "id": 2229,
+                          "id": 1940,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 2228,
+                            "id": 1939,
                             "name": "value",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2172,
+                            "referencedDeclaration": 1883,
                             "src": "1956:5:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -1538,7 +1539,7 @@
                           }
                         }
                       ],
-                      "id": 2230,
+                      "id": 1941,
                       "isConstant": false,
                       "isInlineArray": false,
                       "isLValue": true,
@@ -1556,14 +1557,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2232,
+                  "id": 1943,
                   "nodeType": "ExpressionStatement",
                   "src": "1937:26:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2238,
+                    "id": 1949,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1581,39 +1582,39 @@
                             "argumentTypes": null,
                             "expression": {
                               "argumentTypes": null,
-                              "id": 2233,
+                              "id": 1944,
                               "name": "list",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 2170,
+                              "referencedDeclaration": 1881,
                               "src": "1980:4:7",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                                "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                                 "typeString": "struct AddressListLib.AddressList storage pointer"
                               }
                             },
-                            "id": 2234,
+                            "id": 1945,
                             "isConstant": false,
                             "isLValue": true,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "getIndex",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 2122,
+                            "referencedDeclaration": 1833,
                             "src": "1980:13:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                               "typeString": "mapping(address => uint256)"
                             }
                           },
-                          "id": 2236,
+                          "id": 1947,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 2235,
+                            "id": 1946,
                             "name": "value",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2172,
+                            "referencedDeclaration": 1883,
                             "src": "1994:5:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -1632,7 +1633,7 @@
                           }
                         }
                       ],
-                      "id": 2237,
+                      "id": 1948,
                       "isConstant": false,
                       "isInlineArray": false,
                       "isLValue": true,
@@ -1650,7 +1651,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2239,
+                  "id": 1950,
                   "nodeType": "ExpressionStatement",
                   "src": "1973:28:7"
                 },
@@ -1658,7 +1659,7 @@
                   "expression": {
                     "argumentTypes": null,
                     "hexValue": "74727565",
-                    "id": 2240,
+                    "id": 1951,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -1673,46 +1674,46 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 2176,
-                  "id": 2241,
+                  "functionReturnParameters": 1887,
+                  "id": 1952,
                   "nodeType": "Return",
                   "src": "2020:11:7"
                 }
               ]
             },
             "documentation": "@notice Called when a address value is removed from 'list'\n @param list The storage that holds the list\n @param value The value to remove from 'list'\n @return True if the 'value' is removed, false if the 'value' did not exists in the list",
-            "id": 2243,
+            "id": 1954,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "remove",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2173,
+              "id": 1884,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2170,
+                  "id": 1881,
                   "name": "list",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2243,
+                  "scope": 1954,
                   "src": "1311:24:7",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                    "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                     "typeString": "struct AddressListLib.AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2169,
+                    "id": 1880,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2123,
+                    "referencedDeclaration": 1834,
                     "src": "1311:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                       "typeString": "struct AddressListLib.AddressList"
                     }
                   },
@@ -1721,10 +1722,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2172,
+                  "id": 1883,
                   "name": "value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2243,
+                  "scope": 1954,
                   "src": "1337:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1733,7 +1734,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2171,
+                    "id": 1882,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1337:7:7",
@@ -1750,15 +1751,15 @@
               "src": "1310:41:7"
             },
             "returnParameters": {
-              "id": 2176,
+              "id": 1887,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2175,
+                  "id": 1886,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2243,
+                  "scope": 1954,
                   "src": "1368:12:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1767,7 +1768,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2174,
+                    "id": 1885,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1368:4:7",
@@ -1782,7 +1783,7 @@
               ],
               "src": "1367:14:7"
             },
-            "scope": 2313,
+            "scope": 2024,
             "src": "1294:744:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1790,7 +1791,7 @@
           },
           {
             "body": {
-              "id": 2254,
+              "id": 1965,
               "nodeType": "Block",
               "src": "2261:41:7",
               "statements": [
@@ -1801,32 +1802,32 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2250,
+                        "id": 1961,
                         "name": "list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2245,
+                        "referencedDeclaration": 1956,
                         "src": "2278:4:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                          "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                           "typeString": "struct AddressListLib.AddressList storage pointer"
                         }
                       },
-                      "id": 2251,
+                      "id": 1962,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "array",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2114,
+                      "referencedDeclaration": 1825,
                       "src": "2278:10:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_address_$dyn_storage",
                         "typeString": "address[] storage ref"
                       }
                     },
-                    "id": 2252,
+                    "id": 1963,
                     "isConstant": false,
                     "isLValue": true,
                     "isPure": false,
@@ -1840,46 +1841,46 @@
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 2249,
-                  "id": 2253,
+                  "functionReturnParameters": 1960,
+                  "id": 1964,
                   "nodeType": "Return",
                   "src": "2271:24:7"
                 }
               ]
             },
             "documentation": "@notice Fetches the length of the list\n @param list The storage that holds the list\n @return The length of the 'list'",
-            "id": 2255,
+            "id": 1966,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getLength",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2246,
+              "id": 1957,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2245,
+                  "id": 1956,
                   "name": "list",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2255,
+                  "scope": 1966,
                   "src": "2208:24:7",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                    "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                     "typeString": "struct AddressListLib.AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2244,
+                    "id": 1955,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2123,
+                    "referencedDeclaration": 1834,
                     "src": "2208:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                       "typeString": "struct AddressListLib.AddressList"
                     }
                   },
@@ -1890,15 +1891,15 @@
               "src": "2207:26:7"
             },
             "returnParameters": {
-              "id": 2249,
+              "id": 1960,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2248,
+                  "id": 1959,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2255,
+                  "scope": 1966,
                   "src": "2255:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1907,7 +1908,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2247,
+                    "id": 1958,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2255:4:7",
@@ -1922,7 +1923,7 @@
               ],
               "src": "2254:6:7"
             },
-            "scope": 2313,
+            "scope": 2024,
             "src": "2188:114:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -1930,7 +1931,7 @@
           },
           {
             "body": {
-              "id": 2269,
+              "id": 1980,
               "nodeType": "Block",
               "src": "2596:42:7",
               "statements": [
@@ -1941,39 +1942,39 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2264,
+                        "id": 1975,
                         "name": "list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2257,
+                        "referencedDeclaration": 1968,
                         "src": "2613:4:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                          "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                           "typeString": "struct AddressListLib.AddressList storage pointer"
                         }
                       },
-                      "id": 2265,
+                      "id": 1976,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "exists",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2118,
+                      "referencedDeclaration": 1829,
                       "src": "2613:11:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                         "typeString": "mapping(address => bool)"
                       }
                     },
-                    "id": 2267,
+                    "id": 1978,
                     "indexExpression": {
                       "argumentTypes": null,
-                      "id": 2266,
+                      "id": 1977,
                       "name": "value",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2259,
+                      "referencedDeclaration": 1970,
                       "src": "2625:5:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -1991,46 +1992,46 @@
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 2263,
-                  "id": 2268,
+                  "functionReturnParameters": 1974,
+                  "id": 1979,
                   "nodeType": "Return",
                   "src": "2606:25:7"
                 }
               ]
             },
             "documentation": "@notice Fetches the length of the list\n @param list The storage that holds the list\n @param value The value to search for\n @return True if the value exists in the list",
-            "id": 2270,
+            "id": 1981,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "contains",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2260,
+              "id": 1971,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2257,
+                  "id": 1968,
                   "name": "list",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2270,
+                  "scope": 1981,
                   "src": "2528:24:7",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                    "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                     "typeString": "struct AddressListLib.AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2256,
+                    "id": 1967,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2123,
+                    "referencedDeclaration": 1834,
                     "src": "2528:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                       "typeString": "struct AddressListLib.AddressList"
                     }
                   },
@@ -2039,10 +2040,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2259,
+                  "id": 1970,
                   "name": "value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2270,
+                  "scope": 1981,
                   "src": "2554:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2051,7 +2052,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2258,
+                    "id": 1969,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2554:7:7",
@@ -2068,15 +2069,15 @@
               "src": "2527:41:7"
             },
             "returnParameters": {
-              "id": 2263,
+              "id": 1974,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2262,
+                  "id": 1973,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2270,
+                  "scope": 1981,
                   "src": "2590:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2085,7 +2086,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2261,
+                    "id": 1972,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "2590:4:7",
@@ -2100,7 +2101,7 @@
               ],
               "src": "2589:6:7"
             },
-            "scope": 2313,
+            "scope": 2024,
             "src": "2509:129:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -2108,7 +2109,7 @@
           },
           {
             "body": {
-              "id": 2284,
+              "id": 1995,
               "nodeType": "Block",
               "src": "2906:37:7",
               "statements": [
@@ -2119,39 +2120,39 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2279,
+                        "id": 1990,
                         "name": "list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2272,
+                        "referencedDeclaration": 1983,
                         "src": "2923:4:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                          "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                           "typeString": "struct AddressListLib.AddressList storage pointer"
                         }
                       },
-                      "id": 2280,
+                      "id": 1991,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "array",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2114,
+                      "referencedDeclaration": 1825,
                       "src": "2923:10:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_address_$dyn_storage",
                         "typeString": "address[] storage ref"
                       }
                     },
-                    "id": 2282,
+                    "id": 1993,
                     "indexExpression": {
                       "argumentTypes": null,
-                      "id": 2281,
+                      "id": 1992,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2274,
+                      "referencedDeclaration": 1985,
                       "src": "2934:1:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -2169,46 +2170,46 @@
                       "typeString": "address"
                     }
                   },
-                  "functionReturnParameters": 2278,
-                  "id": 2283,
+                  "functionReturnParameters": 1989,
+                  "id": 1994,
                   "nodeType": "Return",
                   "src": "2916:20:7"
                 }
               ]
             },
             "documentation": "@notice Fetches the address of a given index\n @param list The storage that holds the list\n @param i The index to fetch\n @return The address at index 'i'",
-            "id": 2285,
+            "id": 1996,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "index",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2275,
+              "id": 1986,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2272,
+                  "id": 1983,
                   "name": "list",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2285,
+                  "scope": 1996,
                   "src": "2842:24:7",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                    "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                     "typeString": "struct AddressListLib.AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2271,
+                    "id": 1982,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2123,
+                    "referencedDeclaration": 1834,
                     "src": "2842:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                       "typeString": "struct AddressListLib.AddressList"
                     }
                   },
@@ -2217,10 +2218,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2274,
+                  "id": 1985,
                   "name": "i",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2285,
+                  "scope": 1996,
                   "src": "2868:6:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2229,7 +2230,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2273,
+                    "id": 1984,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2868:4:7",
@@ -2245,15 +2246,15 @@
               "src": "2841:34:7"
             },
             "returnParameters": {
-              "id": 2278,
+              "id": 1989,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2277,
+                  "id": 1988,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2285,
+                  "scope": 1996,
                   "src": "2897:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2262,7 +2263,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2276,
+                    "id": 1987,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2897:7:7",
@@ -2278,7 +2279,7 @@
               ],
               "src": "2896:9:7"
             },
-            "scope": 2313,
+            "scope": 2024,
             "src": "2826:117:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -2286,7 +2287,7 @@
           },
           {
             "body": {
-              "id": 2299,
+              "id": 2010,
               "nodeType": "Block",
               "src": "3232:44:7",
               "statements": [
@@ -2297,39 +2298,39 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2294,
+                        "id": 2005,
                         "name": "list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2287,
+                        "referencedDeclaration": 1998,
                         "src": "3249:4:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                          "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                           "typeString": "struct AddressListLib.AddressList storage pointer"
                         }
                       },
-                      "id": 2295,
+                      "id": 2006,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getIndex",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2122,
+                      "referencedDeclaration": 1833,
                       "src": "3249:13:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                         "typeString": "mapping(address => uint256)"
                       }
                     },
-                    "id": 2297,
+                    "id": 2008,
                     "indexExpression": {
                       "argumentTypes": null,
-                      "id": 2296,
+                      "id": 2007,
                       "name": "value",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2289,
+                      "referencedDeclaration": 2000,
                       "src": "3263:5:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -2347,46 +2348,46 @@
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 2293,
-                  "id": 2298,
+                  "functionReturnParameters": 2004,
+                  "id": 2009,
                   "nodeType": "Return",
                   "src": "3242:27:7"
                 }
               ]
             },
             "documentation": "@notice Fetches the index of a given address\n @param list The storage that holds the list\n @param value The address to fetch the index of\n @return The index of 'value'",
-            "id": 2300,
+            "id": 2011,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "indexOf",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2290,
+              "id": 2001,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2287,
+                  "id": 1998,
                   "name": "list",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2300,
+                  "scope": 2011,
                   "src": "3164:24:7",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                    "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                     "typeString": "struct AddressListLib.AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2286,
+                    "id": 1997,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2123,
+                    "referencedDeclaration": 1834,
                     "src": "3164:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                       "typeString": "struct AddressListLib.AddressList"
                     }
                   },
@@ -2395,10 +2396,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2289,
+                  "id": 2000,
                   "name": "value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2300,
+                  "scope": 2011,
                   "src": "3190:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2407,7 +2408,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2288,
+                    "id": 1999,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "3190:7:7",
@@ -2424,15 +2425,15 @@
               "src": "3163:41:7"
             },
             "returnParameters": {
-              "id": 2293,
+              "id": 2004,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2292,
+                  "id": 2003,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2300,
+                  "scope": 2011,
                   "src": "3226:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2441,7 +2442,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2291,
+                    "id": 2002,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "3226:4:7",
@@ -2456,7 +2457,7 @@
               ],
               "src": "3225:6:7"
             },
-            "scope": 2313,
+            "scope": 2024,
             "src": "3146:130:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -2464,7 +2465,7 @@
           },
           {
             "body": {
-              "id": 2311,
+              "id": 2022,
               "nodeType": "Block",
               "src": "3497:34:7",
               "statements": [
@@ -2473,71 +2474,71 @@
                     "argumentTypes": null,
                     "expression": {
                       "argumentTypes": null,
-                      "id": 2308,
+                      "id": 2019,
                       "name": "list",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2302,
+                      "referencedDeclaration": 2013,
                       "src": "3514:4:7",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                        "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                         "typeString": "struct AddressListLib.AddressList storage pointer"
                       }
                     },
-                    "id": 2309,
+                    "id": 2020,
                     "isConstant": false,
                     "isLValue": true,
                     "isPure": false,
                     "lValueRequested": false,
                     "memberName": "array",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 2114,
+                    "referencedDeclaration": 1825,
                     "src": "3514:10:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage",
                       "typeString": "address[] storage ref"
                     }
                   },
-                  "functionReturnParameters": 2307,
-                  "id": 2310,
+                  "functionReturnParameters": 2018,
+                  "id": 2021,
                   "nodeType": "Return",
                   "src": "3507:17:7"
                 }
               ]
             },
             "documentation": "@notice Fetches the list of addresses\n @param list The storage that holds the list\n @return The list of addresses",
-            "id": 2312,
+            "id": 2023,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "get",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2303,
+              "id": 2014,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2302,
+                  "id": 2013,
                   "name": "list",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2312,
+                  "scope": 2023,
                   "src": "3432:24:7",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                    "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                     "typeString": "struct AddressListLib.AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2301,
+                    "id": 2012,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2123,
+                    "referencedDeclaration": 1834,
                     "src": "3432:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                       "typeString": "struct AddressListLib.AddressList"
                     }
                   },
@@ -2548,15 +2549,15 @@
               "src": "3431:26:7"
             },
             "returnParameters": {
-              "id": 2307,
+              "id": 2018,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2306,
+                  "id": 2017,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2312,
+                  "scope": 2023,
                   "src": "3479:16:7",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -2566,7 +2567,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2304,
+                      "id": 2015,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "3479:7:7",
@@ -2576,7 +2577,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2305,
+                    "id": 2016,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "3479:9:7",
@@ -2591,14 +2592,14 @@
               ],
               "src": "3478:18:7"
             },
-            "scope": 2313,
+            "scope": 2024,
             "src": "3418:113:7",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 2314,
+        "scope": 2025,
         "src": "99:3439:7"
       }
     ],
@@ -2608,14 +2609,14 @@
     "absolutePath": "/home/joe/Documents/github/everchain-project/recurring-transactions/contracts/external/AddressListLib.sol",
     "exportedSymbols": {
       "AddressListLib": [
-        2313
+        2024
       ]
     },
-    "id": 2314,
+    "id": 2025,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2111,
+        "id": 1822,
         "literals": [
           "solidity",
           "^",
@@ -2631,23 +2632,23 @@
         "contractKind": "library",
         "documentation": "@dev A library for a simple unordered list that stores unique values.",
         "fullyImplemented": true,
-        "id": 2313,
+        "id": 2024,
         "linearizedBaseContracts": [
-          2313
+          2024
         ],
         "name": "AddressListLib",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "AddressListLib.AddressList",
-            "id": 2123,
+            "id": 1834,
             "members": [
               {
                 "constant": false,
-                "id": 2114,
+                "id": 1825,
                 "name": "array",
                 "nodeType": "VariableDeclaration",
-                "scope": 2123,
+                "scope": 1834,
                 "src": "162:15:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -2657,7 +2658,7 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 2112,
+                    "id": 1823,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "162:7:7",
@@ -2667,7 +2668,7 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 2113,
+                  "id": 1824,
                   "length": null,
                   "nodeType": "ArrayTypeName",
                   "src": "162:9:7",
@@ -2681,10 +2682,10 @@
               },
               {
                 "constant": false,
-                "id": 2118,
+                "id": 1829,
                 "name": "exists",
                 "nodeType": "VariableDeclaration",
-                "scope": 2123,
+                "scope": 1834,
                 "src": "225:32:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -2693,9 +2694,9 @@
                   "typeString": "mapping(address => bool)"
                 },
                 "typeName": {
-                  "id": 2117,
+                  "id": 1828,
                   "keyType": {
-                    "id": 2115,
+                    "id": 1826,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "234:7:7",
@@ -2711,7 +2712,7 @@
                     "typeString": "mapping(address => bool)"
                   },
                   "valueType": {
-                    "id": 2116,
+                    "id": 1827,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "245:4:7",
@@ -2726,10 +2727,10 @@
               },
               {
                 "constant": false,
-                "id": 2122,
+                "id": 1833,
                 "name": "getIndex",
                 "nodeType": "VariableDeclaration",
-                "scope": 2123,
+                "scope": 1834,
                 "src": "307:34:7",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -2738,9 +2739,9 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "typeName": {
-                  "id": 2121,
+                  "id": 1832,
                   "keyType": {
-                    "id": 2119,
+                    "id": 1830,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "316:7:7",
@@ -2756,7 +2757,7 @@
                     "typeString": "mapping(address => uint256)"
                   },
                   "valueType": {
-                    "id": 2120,
+                    "id": 1831,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "327:4:7",
@@ -2772,13 +2773,13 @@
             ],
             "name": "AddressList",
             "nodeType": "StructDefinition",
-            "scope": 2313,
+            "scope": 2024,
             "src": "133:255:7",
             "visibility": "public"
           },
           {
             "body": {
-              "id": 2167,
+              "id": 1878,
               "nodeType": "Block",
               "src": "731:285:7",
               "statements": [
@@ -2789,39 +2790,39 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2132,
+                        "id": 1843,
                         "name": "list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2125,
+                        "referencedDeclaration": 1836,
                         "src": "805:4:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                          "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                           "typeString": "struct AddressListLib.AddressList storage pointer"
                         }
                       },
-                      "id": 2133,
+                      "id": 1844,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "exists",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2118,
+                      "referencedDeclaration": 1829,
                       "src": "805:11:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                         "typeString": "mapping(address => bool)"
                       }
                     },
-                    "id": 2135,
+                    "id": 1846,
                     "indexExpression": {
                       "argumentTypes": null,
-                      "id": 2134,
+                      "id": 1845,
                       "name": "value",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2127,
+                      "referencedDeclaration": 1838,
                       "src": "817:5:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -2840,14 +2841,14 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 2138,
+                  "id": 1849,
                   "nodeType": "IfStatement",
                   "src": "802:47:7",
                   "trueBody": {
                     "expression": {
                       "argumentTypes": null,
                       "hexValue": "66616c7365",
-                      "id": 2136,
+                      "id": 1847,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -2862,8 +2863,8 @@
                       },
                       "value": "false"
                     },
-                    "functionReturnParameters": 2131,
-                    "id": 2137,
+                    "functionReturnParameters": 1842,
+                    "id": 1848,
                     "nodeType": "Return",
                     "src": "837:12:7"
                   }
@@ -2871,7 +2872,7 @@
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2147,
+                    "id": 1858,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2882,39 +2883,39 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2139,
+                          "id": 1850,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2125,
+                          "referencedDeclaration": 1836,
                           "src": "868:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2142,
+                        "id": 1853,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "getIndex",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2122,
+                        "referencedDeclaration": 1833,
                         "src": "868:13:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 2143,
+                      "id": 1854,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 2141,
+                        "id": 1852,
                         "name": "value",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2127,
+                        "referencedDeclaration": 1838,
                         "src": "882:5:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -2940,32 +2941,32 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2144,
+                          "id": 1855,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2125,
+                          "referencedDeclaration": 1836,
                           "src": "891:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2145,
+                        "id": 1856,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "array",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2114,
+                        "referencedDeclaration": 1825,
                         "src": "891:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 2146,
+                      "id": 1857,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
@@ -2985,14 +2986,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2148,
+                  "id": 1859,
                   "nodeType": "ExpressionStatement",
                   "src": "868:40:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2155,
+                    "id": 1866,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3003,39 +3004,39 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2149,
+                          "id": 1860,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2125,
+                          "referencedDeclaration": 1836,
                           "src": "918:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2152,
+                        "id": 1863,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "exists",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2118,
+                        "referencedDeclaration": 1829,
                         "src": "918:11:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 2153,
+                      "id": 1864,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 2151,
+                        "id": 1862,
                         "name": "value",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2127,
+                        "referencedDeclaration": 1838,
                         "src": "930:5:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -3058,7 +3059,7 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "74727565",
-                      "id": 2154,
+                      "id": 1865,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -3079,7 +3080,7 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 2156,
+                  "id": 1867,
                   "nodeType": "ExpressionStatement",
                   "src": "918:25:7"
                 },
@@ -3089,11 +3090,11 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 2162,
+                        "id": 1873,
                         "name": "value",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2127,
+                        "referencedDeclaration": 1838,
                         "src": "969:5:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -3112,32 +3113,32 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2157,
+                          "id": 1868,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2125,
+                          "referencedDeclaration": 1836,
                           "src": "953:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2160,
+                        "id": 1871,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "array",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2114,
+                        "referencedDeclaration": 1825,
                         "src": "953:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 2161,
+                      "id": 1872,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -3151,7 +3152,7 @@
                         "typeString": "function (address) returns (uint256)"
                       }
                     },
-                    "id": 2163,
+                    "id": 1874,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3165,7 +3166,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2164,
+                  "id": 1875,
                   "nodeType": "ExpressionStatement",
                   "src": "953:22:7"
                 },
@@ -3173,7 +3174,7 @@
                   "expression": {
                     "argumentTypes": null,
                     "hexValue": "74727565",
-                    "id": 2165,
+                    "id": 1876,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -3188,46 +3189,46 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 2131,
-                  "id": 2166,
+                  "functionReturnParameters": 1842,
+                  "id": 1877,
                   "nodeType": "Return",
                   "src": "998:11:7"
                 }
               ]
             },
             "documentation": "@notice Called when a address value is added to 'list'\n @param list The storage that holds the list\n @param value The value to add to 'list'\n @return True if the 'value' is added, false if it already exists in the list",
-            "id": 2168,
+            "id": 1879,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "add",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2128,
+              "id": 1839,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2125,
+                  "id": 1836,
                   "name": "list",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2168,
+                  "scope": 1879,
                   "src": "660:24:7",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                    "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                     "typeString": "struct AddressListLib.AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2124,
+                    "id": 1835,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2123,
+                    "referencedDeclaration": 1834,
                     "src": "660:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                       "typeString": "struct AddressListLib.AddressList"
                     }
                   },
@@ -3236,10 +3237,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2127,
+                  "id": 1838,
                   "name": "value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2168,
+                  "scope": 1879,
                   "src": "686:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3248,7 +3249,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2126,
+                    "id": 1837,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "686:7:7",
@@ -3265,15 +3266,15 @@
               "src": "659:41:7"
             },
             "returnParameters": {
-              "id": 2131,
+              "id": 1842,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2130,
+                  "id": 1841,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2168,
+                  "scope": 1879,
                   "src": "717:12:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3282,7 +3283,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2129,
+                    "id": 1840,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "717:4:7",
@@ -3297,7 +3298,7 @@
               ],
               "src": "716:14:7"
             },
-            "scope": 2313,
+            "scope": 2024,
             "src": "646:370:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -3305,14 +3306,14 @@
           },
           {
             "body": {
-              "id": 2242,
+              "id": 1953,
               "nodeType": "Block",
               "src": "1382:656:7",
               "statements": [
                 {
                   "condition": {
                     "argumentTypes": null,
-                    "id": 2181,
+                    "id": 1892,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3327,39 +3328,39 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2177,
+                          "id": 1888,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2170,
+                          "referencedDeclaration": 1881,
                           "src": "1452:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2178,
+                        "id": 1889,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "exists",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2118,
+                        "referencedDeclaration": 1829,
                         "src": "1452:11:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 2180,
+                      "id": 1891,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 2179,
+                        "id": 1890,
                         "name": "value",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2172,
+                        "referencedDeclaration": 1883,
                         "src": "1464:5:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -3383,14 +3384,14 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 2184,
+                  "id": 1895,
                   "nodeType": "IfStatement",
                   "src": "1448:48:7",
                   "trueBody": {
                     "expression": {
                       "argumentTypes": null,
                       "hexValue": "66616c7365",
-                      "id": 2182,
+                      "id": 1893,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -3405,23 +3406,23 @@
                       },
                       "value": "false"
                     },
-                    "functionReturnParameters": 2176,
-                    "id": 2183,
+                    "functionReturnParameters": 1887,
+                    "id": 1894,
                     "nodeType": "Return",
                     "src": "1484:12:7"
                   }
                 },
                 {
                   "assignments": [
-                    2186
+                    1897
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2186,
+                      "id": 1897,
                       "name": "indexBeingRemoved",
                       "nodeType": "VariableDeclaration",
-                      "scope": 2242,
+                      "scope": 1953,
                       "src": "1511:22:7",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -3430,7 +3431,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 2185,
+                        "id": 1896,
                         "name": "uint",
                         "nodeType": "ElementaryTypeName",
                         "src": "1511:4:7",
@@ -3443,46 +3444,46 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2191,
+                  "id": 1902,
                   "initialValue": {
                     "argumentTypes": null,
                     "baseExpression": {
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2187,
+                        "id": 1898,
                         "name": "list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2170,
+                        "referencedDeclaration": 1881,
                         "src": "1536:4:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                          "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                           "typeString": "struct AddressListLib.AddressList storage pointer"
                         }
                       },
-                      "id": 2188,
+                      "id": 1899,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getIndex",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2122,
+                      "referencedDeclaration": 1833,
                       "src": "1536:13:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                         "typeString": "mapping(address => uint256)"
                       }
                     },
-                    "id": 2190,
+                    "id": 1901,
                     "indexExpression": {
                       "argumentTypes": null,
-                      "id": 2189,
+                      "id": 1900,
                       "name": "value",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2172,
+                      "referencedDeclaration": 1883,
                       "src": "1550:5:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -3505,15 +3506,15 @@
                 },
                 {
                   "assignments": [
-                    2193
+                    1904
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 2193,
+                      "id": 1904,
                       "name": "replacementValue",
                       "nodeType": "VariableDeclaration",
-                      "scope": 2242,
+                      "scope": 1953,
                       "src": "1590:24:7",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -3522,7 +3523,7 @@
                         "typeString": "address"
                       },
                       "typeName": {
-                        "id": 2192,
+                        "id": 1903,
                         "name": "address",
                         "nodeType": "ElementaryTypeName",
                         "src": "1590:7:7",
@@ -3536,46 +3537,46 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 2202,
+                  "id": 1913,
                   "initialValue": {
                     "argumentTypes": null,
                     "baseExpression": {
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2194,
+                        "id": 1905,
                         "name": "list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2170,
+                        "referencedDeclaration": 1881,
                         "src": "1617:4:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                          "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                           "typeString": "struct AddressListLib.AddressList storage pointer"
                         }
                       },
-                      "id": 2195,
+                      "id": 1906,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "array",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2114,
+                      "referencedDeclaration": 1825,
                       "src": "1617:10:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_address_$dyn_storage",
                         "typeString": "address[] storage ref"
                       }
                     },
-                    "id": 2201,
+                    "id": 1912,
                     "indexExpression": {
                       "argumentTypes": null,
                       "commonType": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 2200,
+                      "id": 1911,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -3586,32 +3587,32 @@
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-                            "id": 2196,
+                            "id": 1907,
                             "name": "list",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2170,
+                            "referencedDeclaration": 1881,
                             "src": "1628:4:7",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                              "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                               "typeString": "struct AddressListLib.AddressList storage pointer"
                             }
                           },
-                          "id": 2197,
+                          "id": 1908,
                           "isConstant": false,
                           "isLValue": true,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "array",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 2114,
+                          "referencedDeclaration": 1825,
                           "src": "1628:10:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_storage",
                             "typeString": "address[] storage ref"
                           }
                         },
-                        "id": 2198,
+                        "id": 1909,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -3630,7 +3631,7 @@
                       "rightExpression": {
                         "argumentTypes": null,
                         "hexValue": "31",
-                        "id": 2199,
+                        "id": 1910,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -3668,7 +3669,7 @@
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2209,
+                    "id": 1920,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3679,39 +3680,39 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2203,
+                          "id": 1914,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2170,
+                          "referencedDeclaration": 1881,
                           "src": "1759:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2206,
+                        "id": 1917,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "array",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2114,
+                        "referencedDeclaration": 1825,
                         "src": "1759:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 2207,
+                      "id": 1918,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 2205,
+                        "id": 1916,
                         "name": "indexBeingRemoved",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2186,
+                        "referencedDeclaration": 1897,
                         "src": "1770:17:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -3733,11 +3734,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2208,
+                      "id": 1919,
                       "name": "replacementValue",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2193,
+                      "referencedDeclaration": 1904,
                       "src": "1791:16:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -3750,14 +3751,14 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 2210,
+                  "id": 1921,
                   "nodeType": "ExpressionStatement",
                   "src": "1759:48:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2217,
+                    "id": 1928,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3768,39 +3769,39 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2211,
+                          "id": 1922,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2170,
+                          "referencedDeclaration": 1881,
                           "src": "1817:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2214,
+                        "id": 1925,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "getIndex",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2122,
+                        "referencedDeclaration": 1833,
                         "src": "1817:13:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 2215,
+                      "id": 1926,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 2213,
+                        "id": 1924,
                         "name": "replacementValue",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2193,
+                        "referencedDeclaration": 1904,
                         "src": "1831:16:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -3822,11 +3823,11 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 2216,
+                      "id": 1927,
                       "name": "indexBeingRemoved",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2186,
+                      "referencedDeclaration": 1897,
                       "src": "1851:17:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -3839,14 +3840,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2218,
+                  "id": 1929,
                   "nodeType": "ExpressionStatement",
                   "src": "1817:51:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2224,
+                    "id": 1935,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3861,32 +3862,32 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 2219,
+                          "id": 1930,
                           "name": "list",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2170,
+                          "referencedDeclaration": 1881,
                           "src": "1878:4:7",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                            "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                             "typeString": "struct AddressListLib.AddressList storage pointer"
                           }
                         },
-                        "id": 2222,
+                        "id": 1933,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "array",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2114,
+                        "referencedDeclaration": 1825,
                         "src": "1878:10:7",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_storage",
                           "typeString": "address[] storage ref"
                         }
                       },
-                      "id": 2223,
+                      "id": 1934,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
@@ -3905,14 +3906,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 2225,
+                  "id": 1936,
                   "nodeType": "ExpressionStatement",
                   "src": "1878:19:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2231,
+                    "id": 1942,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3930,39 +3931,39 @@
                             "argumentTypes": null,
                             "expression": {
                               "argumentTypes": null,
-                              "id": 2226,
+                              "id": 1937,
                               "name": "list",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 2170,
+                              "referencedDeclaration": 1881,
                               "src": "1944:4:7",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                                "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                                 "typeString": "struct AddressListLib.AddressList storage pointer"
                               }
                             },
-                            "id": 2227,
+                            "id": 1938,
                             "isConstant": false,
                             "isLValue": true,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "exists",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 2118,
+                            "referencedDeclaration": 1829,
                             "src": "1944:11:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                               "typeString": "mapping(address => bool)"
                             }
                           },
-                          "id": 2229,
+                          "id": 1940,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 2228,
+                            "id": 1939,
                             "name": "value",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2172,
+                            "referencedDeclaration": 1883,
                             "src": "1956:5:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -3981,7 +3982,7 @@
                           }
                         }
                       ],
-                      "id": 2230,
+                      "id": 1941,
                       "isConstant": false,
                       "isInlineArray": false,
                       "isLValue": true,
@@ -3999,14 +4000,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2232,
+                  "id": 1943,
                   "nodeType": "ExpressionStatement",
                   "src": "1937:26:7"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 2238,
+                    "id": 1949,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -4024,39 +4025,39 @@
                             "argumentTypes": null,
                             "expression": {
                               "argumentTypes": null,
-                              "id": 2233,
+                              "id": 1944,
                               "name": "list",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 2170,
+                              "referencedDeclaration": 1881,
                               "src": "1980:4:7",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                                "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                                 "typeString": "struct AddressListLib.AddressList storage pointer"
                               }
                             },
-                            "id": 2234,
+                            "id": 1945,
                             "isConstant": false,
                             "isLValue": true,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "getIndex",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 2122,
+                            "referencedDeclaration": 1833,
                             "src": "1980:13:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                               "typeString": "mapping(address => uint256)"
                             }
                           },
-                          "id": 2236,
+                          "id": 1947,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 2235,
+                            "id": 1946,
                             "name": "value",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2172,
+                            "referencedDeclaration": 1883,
                             "src": "1994:5:7",
                             "typeDescriptions": {
                               "typeIdentifier": "t_address",
@@ -4075,7 +4076,7 @@
                           }
                         }
                       ],
-                      "id": 2237,
+                      "id": 1948,
                       "isConstant": false,
                       "isInlineArray": false,
                       "isLValue": true,
@@ -4093,7 +4094,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2239,
+                  "id": 1950,
                   "nodeType": "ExpressionStatement",
                   "src": "1973:28:7"
                 },
@@ -4101,7 +4102,7 @@
                   "expression": {
                     "argumentTypes": null,
                     "hexValue": "74727565",
-                    "id": 2240,
+                    "id": 1951,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -4116,46 +4117,46 @@
                     },
                     "value": "true"
                   },
-                  "functionReturnParameters": 2176,
-                  "id": 2241,
+                  "functionReturnParameters": 1887,
+                  "id": 1952,
                   "nodeType": "Return",
                   "src": "2020:11:7"
                 }
               ]
             },
             "documentation": "@notice Called when a address value is removed from 'list'\n @param list The storage that holds the list\n @param value The value to remove from 'list'\n @return True if the 'value' is removed, false if the 'value' did not exists in the list",
-            "id": 2243,
+            "id": 1954,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "remove",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2173,
+              "id": 1884,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2170,
+                  "id": 1881,
                   "name": "list",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2243,
+                  "scope": 1954,
                   "src": "1311:24:7",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                    "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                     "typeString": "struct AddressListLib.AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2169,
+                    "id": 1880,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2123,
+                    "referencedDeclaration": 1834,
                     "src": "1311:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                       "typeString": "struct AddressListLib.AddressList"
                     }
                   },
@@ -4164,10 +4165,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2172,
+                  "id": 1883,
                   "name": "value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2243,
+                  "scope": 1954,
                   "src": "1337:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4176,7 +4177,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2171,
+                    "id": 1882,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1337:7:7",
@@ -4193,15 +4194,15 @@
               "src": "1310:41:7"
             },
             "returnParameters": {
-              "id": 2176,
+              "id": 1887,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2175,
+                  "id": 1886,
                   "name": "success",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2243,
+                  "scope": 1954,
                   "src": "1368:12:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4210,7 +4211,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2174,
+                    "id": 1885,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1368:4:7",
@@ -4225,7 +4226,7 @@
               ],
               "src": "1367:14:7"
             },
-            "scope": 2313,
+            "scope": 2024,
             "src": "1294:744:7",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -4233,7 +4234,7 @@
           },
           {
             "body": {
-              "id": 2254,
+              "id": 1965,
               "nodeType": "Block",
               "src": "2261:41:7",
               "statements": [
@@ -4244,32 +4245,32 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2250,
+                        "id": 1961,
                         "name": "list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2245,
+                        "referencedDeclaration": 1956,
                         "src": "2278:4:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                          "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                           "typeString": "struct AddressListLib.AddressList storage pointer"
                         }
                       },
-                      "id": 2251,
+                      "id": 1962,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "array",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2114,
+                      "referencedDeclaration": 1825,
                       "src": "2278:10:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_address_$dyn_storage",
                         "typeString": "address[] storage ref"
                       }
                     },
-                    "id": 2252,
+                    "id": 1963,
                     "isConstant": false,
                     "isLValue": true,
                     "isPure": false,
@@ -4283,46 +4284,46 @@
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 2249,
-                  "id": 2253,
+                  "functionReturnParameters": 1960,
+                  "id": 1964,
                   "nodeType": "Return",
                   "src": "2271:24:7"
                 }
               ]
             },
             "documentation": "@notice Fetches the length of the list\n @param list The storage that holds the list\n @return The length of the 'list'",
-            "id": 2255,
+            "id": 1966,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getLength",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2246,
+              "id": 1957,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2245,
+                  "id": 1956,
                   "name": "list",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2255,
+                  "scope": 1966,
                   "src": "2208:24:7",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                    "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                     "typeString": "struct AddressListLib.AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2244,
+                    "id": 1955,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2123,
+                    "referencedDeclaration": 1834,
                     "src": "2208:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                       "typeString": "struct AddressListLib.AddressList"
                     }
                   },
@@ -4333,15 +4334,15 @@
               "src": "2207:26:7"
             },
             "returnParameters": {
-              "id": 2249,
+              "id": 1960,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2248,
+                  "id": 1959,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2255,
+                  "scope": 1966,
                   "src": "2255:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4350,7 +4351,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2247,
+                    "id": 1958,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2255:4:7",
@@ -4365,7 +4366,7 @@
               ],
               "src": "2254:6:7"
             },
-            "scope": 2313,
+            "scope": 2024,
             "src": "2188:114:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -4373,7 +4374,7 @@
           },
           {
             "body": {
-              "id": 2269,
+              "id": 1980,
               "nodeType": "Block",
               "src": "2596:42:7",
               "statements": [
@@ -4384,39 +4385,39 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2264,
+                        "id": 1975,
                         "name": "list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2257,
+                        "referencedDeclaration": 1968,
                         "src": "2613:4:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                          "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                           "typeString": "struct AddressListLib.AddressList storage pointer"
                         }
                       },
-                      "id": 2265,
+                      "id": 1976,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "exists",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2118,
+                      "referencedDeclaration": 1829,
                       "src": "2613:11:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                         "typeString": "mapping(address => bool)"
                       }
                     },
-                    "id": 2267,
+                    "id": 1978,
                     "indexExpression": {
                       "argumentTypes": null,
-                      "id": 2266,
+                      "id": 1977,
                       "name": "value",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2259,
+                      "referencedDeclaration": 1970,
                       "src": "2625:5:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -4434,46 +4435,46 @@
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 2263,
-                  "id": 2268,
+                  "functionReturnParameters": 1974,
+                  "id": 1979,
                   "nodeType": "Return",
                   "src": "2606:25:7"
                 }
               ]
             },
             "documentation": "@notice Fetches the length of the list\n @param list The storage that holds the list\n @param value The value to search for\n @return True if the value exists in the list",
-            "id": 2270,
+            "id": 1981,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "contains",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2260,
+              "id": 1971,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2257,
+                  "id": 1968,
                   "name": "list",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2270,
+                  "scope": 1981,
                   "src": "2528:24:7",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                    "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                     "typeString": "struct AddressListLib.AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2256,
+                    "id": 1967,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2123,
+                    "referencedDeclaration": 1834,
                     "src": "2528:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                       "typeString": "struct AddressListLib.AddressList"
                     }
                   },
@@ -4482,10 +4483,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2259,
+                  "id": 1970,
                   "name": "value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2270,
+                  "scope": 1981,
                   "src": "2554:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4494,7 +4495,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2258,
+                    "id": 1969,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2554:7:7",
@@ -4511,15 +4512,15 @@
               "src": "2527:41:7"
             },
             "returnParameters": {
-              "id": 2263,
+              "id": 1974,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2262,
+                  "id": 1973,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2270,
+                  "scope": 1981,
                   "src": "2590:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4528,7 +4529,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2261,
+                    "id": 1972,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "2590:4:7",
@@ -4543,7 +4544,7 @@
               ],
               "src": "2589:6:7"
             },
-            "scope": 2313,
+            "scope": 2024,
             "src": "2509:129:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -4551,7 +4552,7 @@
           },
           {
             "body": {
-              "id": 2284,
+              "id": 1995,
               "nodeType": "Block",
               "src": "2906:37:7",
               "statements": [
@@ -4562,39 +4563,39 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2279,
+                        "id": 1990,
                         "name": "list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2272,
+                        "referencedDeclaration": 1983,
                         "src": "2923:4:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                          "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                           "typeString": "struct AddressListLib.AddressList storage pointer"
                         }
                       },
-                      "id": 2280,
+                      "id": 1991,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "array",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2114,
+                      "referencedDeclaration": 1825,
                       "src": "2923:10:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_address_$dyn_storage",
                         "typeString": "address[] storage ref"
                       }
                     },
-                    "id": 2282,
+                    "id": 1993,
                     "indexExpression": {
                       "argumentTypes": null,
-                      "id": 2281,
+                      "id": 1992,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2274,
+                      "referencedDeclaration": 1985,
                       "src": "2934:1:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -4612,46 +4613,46 @@
                       "typeString": "address"
                     }
                   },
-                  "functionReturnParameters": 2278,
-                  "id": 2283,
+                  "functionReturnParameters": 1989,
+                  "id": 1994,
                   "nodeType": "Return",
                   "src": "2916:20:7"
                 }
               ]
             },
             "documentation": "@notice Fetches the address of a given index\n @param list The storage that holds the list\n @param i The index to fetch\n @return The address at index 'i'",
-            "id": 2285,
+            "id": 1996,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "index",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2275,
+              "id": 1986,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2272,
+                  "id": 1983,
                   "name": "list",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2285,
+                  "scope": 1996,
                   "src": "2842:24:7",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                    "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                     "typeString": "struct AddressListLib.AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2271,
+                    "id": 1982,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2123,
+                    "referencedDeclaration": 1834,
                     "src": "2842:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                       "typeString": "struct AddressListLib.AddressList"
                     }
                   },
@@ -4660,10 +4661,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2274,
+                  "id": 1985,
                   "name": "i",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2285,
+                  "scope": 1996,
                   "src": "2868:6:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4672,7 +4673,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2273,
+                    "id": 1984,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2868:4:7",
@@ -4688,15 +4689,15 @@
               "src": "2841:34:7"
             },
             "returnParameters": {
-              "id": 2278,
+              "id": 1989,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2277,
+                  "id": 1988,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2285,
+                  "scope": 1996,
                   "src": "2897:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4705,7 +4706,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2276,
+                    "id": 1987,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2897:7:7",
@@ -4721,7 +4722,7 @@
               ],
               "src": "2896:9:7"
             },
-            "scope": 2313,
+            "scope": 2024,
             "src": "2826:117:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -4729,7 +4730,7 @@
           },
           {
             "body": {
-              "id": 2299,
+              "id": 2010,
               "nodeType": "Block",
               "src": "3232:44:7",
               "statements": [
@@ -4740,39 +4741,39 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 2294,
+                        "id": 2005,
                         "name": "list",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2287,
+                        "referencedDeclaration": 1998,
                         "src": "3249:4:7",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                          "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                           "typeString": "struct AddressListLib.AddressList storage pointer"
                         }
                       },
-                      "id": 2295,
+                      "id": 2006,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": false,
                       "memberName": "getIndex",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 2122,
+                      "referencedDeclaration": 1833,
                       "src": "3249:13:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                         "typeString": "mapping(address => uint256)"
                       }
                     },
-                    "id": 2297,
+                    "id": 2008,
                     "indexExpression": {
                       "argumentTypes": null,
-                      "id": 2296,
+                      "id": 2007,
                       "name": "value",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2289,
+                      "referencedDeclaration": 2000,
                       "src": "3263:5:7",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -4790,46 +4791,46 @@
                       "typeString": "uint256"
                     }
                   },
-                  "functionReturnParameters": 2293,
-                  "id": 2298,
+                  "functionReturnParameters": 2004,
+                  "id": 2009,
                   "nodeType": "Return",
                   "src": "3242:27:7"
                 }
               ]
             },
             "documentation": "@notice Fetches the index of a given address\n @param list The storage that holds the list\n @param value The address to fetch the index of\n @return The index of 'value'",
-            "id": 2300,
+            "id": 2011,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "indexOf",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2290,
+              "id": 2001,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2287,
+                  "id": 1998,
                   "name": "list",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2300,
+                  "scope": 2011,
                   "src": "3164:24:7",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                    "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                     "typeString": "struct AddressListLib.AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2286,
+                    "id": 1997,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2123,
+                    "referencedDeclaration": 1834,
                     "src": "3164:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                       "typeString": "struct AddressListLib.AddressList"
                     }
                   },
@@ -4838,10 +4839,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2289,
+                  "id": 2000,
                   "name": "value",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2300,
+                  "scope": 2011,
                   "src": "3190:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4850,7 +4851,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2288,
+                    "id": 1999,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "3190:7:7",
@@ -4867,15 +4868,15 @@
               "src": "3163:41:7"
             },
             "returnParameters": {
-              "id": 2293,
+              "id": 2004,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2292,
+                  "id": 2003,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2300,
+                  "scope": 2011,
                   "src": "3226:4:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4884,7 +4885,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2291,
+                    "id": 2002,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "3226:4:7",
@@ -4899,7 +4900,7 @@
               ],
               "src": "3225:6:7"
             },
-            "scope": 2313,
+            "scope": 2024,
             "src": "3146:130:7",
             "stateMutability": "view",
             "superFunction": null,
@@ -4907,7 +4908,7 @@
           },
           {
             "body": {
-              "id": 2311,
+              "id": 2022,
               "nodeType": "Block",
               "src": "3497:34:7",
               "statements": [
@@ -4916,71 +4917,71 @@
                     "argumentTypes": null,
                     "expression": {
                       "argumentTypes": null,
-                      "id": 2308,
+                      "id": 2019,
                       "name": "list",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2302,
+                      "referencedDeclaration": 2013,
                       "src": "3514:4:7",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                        "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                         "typeString": "struct AddressListLib.AddressList storage pointer"
                       }
                     },
-                    "id": 2309,
+                    "id": 2020,
                     "isConstant": false,
                     "isLValue": true,
                     "isPure": false,
                     "lValueRequested": false,
                     "memberName": "array",
                     "nodeType": "MemberAccess",
-                    "referencedDeclaration": 2114,
+                    "referencedDeclaration": 1825,
                     "src": "3514:10:7",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage",
                       "typeString": "address[] storage ref"
                     }
                   },
-                  "functionReturnParameters": 2307,
-                  "id": 2310,
+                  "functionReturnParameters": 2018,
+                  "id": 2021,
                   "nodeType": "Return",
                   "src": "3507:17:7"
                 }
               ]
             },
             "documentation": "@notice Fetches the list of addresses\n @param list The storage that holds the list\n @return The list of addresses",
-            "id": 2312,
+            "id": 2023,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "get",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2303,
+              "id": 2014,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2302,
+                  "id": 2013,
                   "name": "list",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2312,
+                  "scope": 2023,
                   "src": "3432:24:7",
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                    "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                     "typeString": "struct AddressListLib.AddressList"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 2301,
+                    "id": 2012,
                     "name": "AddressList",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 2123,
+                    "referencedDeclaration": 1834,
                     "src": "3432:11:7",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_AddressList_$2123_storage_ptr",
+                      "typeIdentifier": "t_struct$_AddressList_$1834_storage_ptr",
                       "typeString": "struct AddressListLib.AddressList"
                     }
                   },
@@ -4991,15 +4992,15 @@
               "src": "3431:26:7"
             },
             "returnParameters": {
-              "id": 2307,
+              "id": 2018,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2306,
+                  "id": 2017,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2312,
+                  "scope": 2023,
                   "src": "3479:16:7",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -5009,7 +5010,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2304,
+                      "id": 2015,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "3479:7:7",
@@ -5019,7 +5020,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 2305,
+                    "id": 2016,
                     "length": null,
                     "nodeType": "ArrayTypeName",
                     "src": "3479:9:7",
@@ -5034,14 +5035,14 @@
               ],
               "src": "3478:18:7"
             },
-            "scope": 2313,
+            "scope": 2024,
             "src": "3418:113:7",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 2314,
+        "scope": 2025,
         "src": "99:3439:7"
       }
     ],
@@ -5051,22 +5052,9 @@
     "name": "solc",
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
-  "networks": {
-    "42": {
-      "events": {},
-      "links": {},
-      "address": "0x3B09fdAE6D5c6C2A5aC1A4F34C11a78B86632aAA",
-      "transactionHash": "0x00d8921de6e3a6a79ad3a1bd07e714374bb5bf39ecd02dd2724333857e83e049"
-    },
-    "4447": {
-      "events": {},
-      "links": {},
-      "address": "0xB416c61BA589e7D1A3e6FF2177712Ecbb6Bc698c",
-      "transactionHash": "0xb3b05df4cf821802ca9685d6b52490cc02bc9b71808ddf483931fda1443aca67"
-    }
-  },
-  "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-20T06:34:10.868Z",
+  "networks": {},
+  "schemaVersion": "3.0.9",
+  "updatedAt": "2019-05-14T22:16:21.115Z",
   "devdoc": {
     "details": "A library for a simple unordered list that stores unique values.",
     "methods": {
